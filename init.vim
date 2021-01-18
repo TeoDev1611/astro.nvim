@@ -76,6 +76,10 @@ nmap <Leader>qt :NERDTreeClose<CR>
 "Abrir Nerdtree
 nmap <Leader>nt :NERDTreeFind<CR>
 
+
+nmap <Leader>gis :Git status<CR>
+nmap <Leader>giad :Git add . <CR>
+nmap <Leader>gip :Git push origin master<CR>
 " TAB en modo normal se moverá al siguiente buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB para ir a atras 
