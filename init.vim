@@ -55,6 +55,8 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 "JEDI
 Plug 'davidhalter/jedi-vim'
+"Git Fugitive
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "--------------------------------Plugins Config--------------------------------------------
@@ -81,7 +83,7 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "cerrar buffer
 nmap <leader>bd :bdelete<CR>
 "Config Colores
-colorscheme spacegray
+colorscheme minimalist
 set noshowmode
 let g:airline_theme= 'minimalist'
 
