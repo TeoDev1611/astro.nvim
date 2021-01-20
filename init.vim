@@ -32,7 +32,6 @@ vnoremap > >gv
 call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
-Plug 'ackyshake/spacegray.vim'
 Plug 'dikiaap/minimalist'
  "Nerdtree
 Plug 'preservim/nerdtree'|
@@ -75,21 +74,20 @@ nmap <leader>gs  :CocSearch
 nmap <Leader>qt :NERDTreeClose<CR>
 "Abrir Nerdtree
 nmap <Leader>nt :NERDTreeFind<CR>
+"MINIMAL UI
+let NERDTreeMinimalUI = 1
 
-
-nmap <Leader>gis :Git status<CR>
-nmap <Leader>giad :Git add . <CR>
-nmap <Leader>gip :Git push origin master<CR>
 " TAB en modo normal se moverá al siguiente buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB para ir a atras 
 nnoremap <silent> <S-TAB> :bprevious<CR>
 "cerrar buffer
 nmap <leader>bd :bdelete<CR>
+
 "Config Colores
-colorscheme minimalist
+colorscheme gruvbox
 set noshowmode
-let g:airline_theme= 'minimalist'
+let g:airline_theme= 'gruvbox'
 
 "Tab airline 
 let g:airline#extensions#tabline#enabled = 1
@@ -98,12 +96,15 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
 set showtabline=2
+
 "POWER LINE FONTS
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+
 "Cerrar tags automaticamente
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.js'
+
 "-----------------------------------------------------------------
 "GITHUB CONFIG
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -118,6 +119,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \}
+
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0"
 let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0"
 
