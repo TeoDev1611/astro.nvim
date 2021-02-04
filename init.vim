@@ -13,31 +13,28 @@ set laststatus=2
 set backspace=2
 set guioptions-=T
 set guioptions-=L
-
-"Salir de modo insertar
+set cursorline
+"
+""Salir de modo insertar
 imap jk <Esc>
 imap <C-c> <Esc>l
 "mueve bloques de codigo en modo visual o V-Line
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv 
-
-" Mejor Indentación
+"
+"" Mejor Indentación
 vnoremap < <gv
 vnoremap > >gv
 
-
-"-------------------------------Plugins-------------------------------
-"Plugins
 call plug#begin()
 " Temas
-Plug 'morhetz/gruvbox'
+ Plug 'morhetz/gruvbox'
 Plug 'sainnhe/sonokai'
-Plug 'dikiaap/minimalist'
+Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
 "Nerdtree
-Plug 'preservim/nerdtree'|
-      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-	    \ Plug 'ryanoasis/vim-devicons'
+ Plug 'preservim/nerdtree'|
+       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
 "Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -46,40 +43,29 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Cerrar los pares () [] {} '' 
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
-"PYTHON
+"       "PYTHON
 Plug 'hdima/python-syntax'
-"Emmet
+"       "Emmet
 Plug 'mattn/emmet-vim'
-"MAS TEMAS
-"Auto Cambio de pares
+"       "Auto Cambio de pares
 Plug 'tpope/vim-surround'
-"Git Fugitive
+"       "Git Fugitive
 Plug 'tpope/vim-fugitive'
-"Vim Hex Color
-Plug 'etdev/vim-hexcolor'
-"Indent 
+"       "Indent 
 Plug 'yggdroot/indentline'
-"Files
-Plug 'SergioRibera/vim-files'
-"FUZZY FINDER
+"       "Files
+"       "FUZZY FINDER
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Multiple Cursors
-Plug 'terryma/vim-multiple-cursors'
-"NERD COMMENTER
+"       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
-"JEDI
-Plug 'davidhalter/jedi-vim'
 "Bracket Coloraizer
 Plug 'luochen1990/rainbow'
-"Rust
-Plug 'rust-lang/rust.vim'
-"FLOAT TERM
+"Terminal
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 
-"--------------------------------Plugins Config--------------------------------------------
 "ENCODING DEV ICONS
 set encoding=UTF-8
 "guardar archivo
@@ -100,10 +86,6 @@ nmap <Leader>nt :NERDTreeFind<CR>
 "MINIMAL UI
 let NERDTreeMinimalUI = 1
 
-"PLUG ATAJOS
-nmap <Leader>pi :PlugInstall<CR>
-nmap <Leader>pc :PlugClean<CR>
-
 " TAB en modo normal se moverá al siguiente buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB para ir a atras 
@@ -111,12 +93,13 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "cerrar buffer
 nmap <leader>bd :bdelete<CR>
 "Config Colores
-"colorscheme gruvbox
-"let g:airline_theme = 'gruvbox'
-"let g:gruvbox_contrast_dark = 'medium'
+if has('termguicolors')
+      set termguicolors
+endif
+let ayucolor="dark"
+colorscheme ayu
+let g:airline_theme = "sol"
 
-colorscheme sonokai
-let g:airline_theme = 'sonokai'
 
 "TAB airline 
 let g:airline#extensions#tabline#enabled = 1
@@ -162,32 +145,6 @@ let g:markdown_fenced_languages = [
       \ 'help'
       \]
 
-"VIM-FILES
-" Dirs
-noremap <leader>cd :call VimFiles#DirCreate()<Cr>
-" File
-noremap <leader>cf :call VimFiles#FileCreate()<Cr> 
-" File in Vertical Window
-noremap <leader>cv :call VimFiles#FileCreateVS()<Cr>
-"File in current Window
-noremap <leader>cw :call VimFiles#FileCreateCW()<Cr>
-"File in Tab
-noremap <leader>ct :call VimFiles#FileCreateTab()<CR>
-" Manipulate Rename Files
-noremap <leader>rw :call VimFiles#ManipulateRenameCurrentFile()<Cr>
-noremap <leader>rf :call VimFiles#ManipulateRenameFile()<Cr>
-" Manipulate Move Files
-noremap <leader>mw :call VimFiles#ManipulateMoveCurrentFile()<Cr>
-noremap <leader>mf :call VimFiles#ManipulateMoveFile()<Cr>
-" Manipulate Delete Files
-noremap <leader>dw :call VimFiles#ManipulateDeleteCurrentFile()<Cr>
-noremap <leader>df :call VimFiles#ManipulateDeleteFile()<Cr>
-  
-"Bracket Coloraizer Activate
- let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-"Rust Auto Save
-"
-let g:rustfmt_autosave = 1
-"TERMINAL
-nnoremap <Leader>tm :FloatermNew<CR>
-nnoremap <leader>tc :FloatermKill<CR>
+"New Terminal
+nmap <Leader>tm :FloatermNew<CR>
+
