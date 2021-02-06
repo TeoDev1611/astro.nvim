@@ -45,15 +45,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 "       "PYTHON
 Plug 'hdima/python-syntax'
-"       "Emmet
-Plug 'mattn/emmet-vim'
 "       "Auto Cambio de pares
 Plug 'tpope/vim-surround'
 "       "Git Fugitive
 Plug 'tpope/vim-fugitive'
 "       "Indent 
 Plug 'yggdroot/indentline'
-"       "Files
 "       "FUZZY FINDER
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -63,6 +60,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'luochen1990/rainbow'
 "Terminal
 Plug 'voldikss/vim-floaterm'
+"NEOFORMAT
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 
@@ -147,4 +146,7 @@ let g:markdown_fenced_languages = [
 
 "New Terminal
 nmap <Leader>tm :FloatermNew<CR>
-
+"RAINBOW
+let g:rainbow_active = 1
+"NEOFORMAT
+autocmd BufWritePre *.js Neoformat
