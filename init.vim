@@ -45,7 +45,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 "       "PYTHON
 Plug 'hdima/python-syntax'
-"       "Auto Cambio de pares
+"Auto Cambio de pares
 Plug 'tpope/vim-surround'
 "       "Git Fugitive
 Plug 'tpope/vim-fugitive'
