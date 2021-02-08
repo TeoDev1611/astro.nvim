@@ -64,8 +64,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter' 
 "Bracket Coloraizer
 Plug 'luochen1990/rainbow'
-"Terminal
-Plug 'vim-scripts/Conque-Shell'
 "NEOFORMAT
 Plug 'sbdchd/neoformat'
 call plug#end()
@@ -205,7 +203,7 @@ augroup my-glyph-palette
 augroup END
 
 map <Leader>n :Fern . -reveal=%<CR>
-noremap <Leader>nt  :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>=
+noremap <Leader>fn  :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>=
 
 "FERN GIT
 " Disable listing ignored files/directories
