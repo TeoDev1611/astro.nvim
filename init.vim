@@ -65,7 +65,7 @@ Plug 'preservim/nerdcommenter'
 "Bracket Coloraizer
 Plug 'luochen1990/rainbow'
 "Terminal
-Plug 'voldikss/vim-floaterm'
+Plug 'vim-scripts/Conque-Shell'
 "NEOFORMAT
 Plug 'sbdchd/neoformat'
 call plug#end()
@@ -220,3 +220,5 @@ let g:fern_git_status#disable_submodules = 1
 " Disable listing status of directories
 let g:fern_git_status#disable_directories = 1
 
+"-------------------------------------TERMINAL CONFIG-------------------
+nnoremap <C-t> :vs<bar>term<cr><c-w>H<cr>
