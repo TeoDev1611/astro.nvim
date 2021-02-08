@@ -38,6 +38,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 "FERN ICONS
 Plug 'ryanoasis/vim-devicons'
 "Airline
@@ -82,12 +83,6 @@ nmap <leader>so :so%<CR>
 nmap <leader>gs  :CocSearch<CR>
 nmap <leader>fz  :FZF<CR>
 
-
-"Cerrar Nerdtree
-nmap <Leader>qt :NERDTreeClose<CR>
-"Abrir Nerdtree
-nmap <Leader>nt :NERDTreeFind<CR>
-
 " TAB en modo normal se moverá al siguiente buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB para ir a atras 
@@ -119,25 +114,6 @@ let g:airline_right_sep = ''
 
 "Cerrar tags automaticamente
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.js'
-
-"-----------------------------------------------------------------
-"GIT CONFIG
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \}
-
-let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0"
-let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0"
-
 "Indent
 let g:indentLine_enabled = 1
 let g:indentLine_char = '|'
@@ -229,6 +205,18 @@ augroup my-glyph-palette
 augroup END
 
 map <Leader>n :Fern . -reveal=%<CR>
-noremap <silent> <C-m> :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>=
+noremap <Leader>nt  :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>=
 
+"FERN GIT
+" Disable listing ignored files/directories
+let g:fern_git_status#disable_ignored = 1
+
+" Disable listing untracked files
+let g:fern_git_status#disable_untracked = 1
+
+" Disable listing status of submodules
+let g:fern_git_status#disable_submodules = 1
+
+" Disable listing status of directories
+let g:fern_git_status#disable_directories = 1
 
