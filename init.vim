@@ -1,9 +1,11 @@
-"---------------------------------vim config----------------------------
+"---------------------------------VIM CONFIGURATION----------------------------
 syntax enable
 set number
 set mouse=a
 set relativenumber
-set clipboard=unnamed
+set clipboard=unnamedplus
+set background=dark
+set fileencoding=utf-8
 set showcmd
 set ruler
 set showmatch
@@ -25,7 +27,12 @@ xnoremap J :move '>+1<CR>gv-gv
 "" Mejor Indentación
 vnoremap < <gv
 vnoremap > >gv
-
+"Remaping Splits
+nmap <silent> <C-left> :wincmd h<CR>
+nmap <silent> <C-right> :wincmd l<CR>
+nmap <silent> <C-up> :wincmd k<CR>
+nmap <silent> <C-down> :wincmd j<CR>
+"------------------------------------------PLUGINS VIM
 call plug#begin()
 " Temas
  Plug 'morhetz/gruvbox'
@@ -64,10 +71,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter' 
 "Bracket Coloraizer
 Plug 'luochen1990/rainbow'
-"NEOFORMAT
-Plug 'sbdchd/neoformat'
 call plug#end()
 
+"--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
 "ENCODING DEV ICONS
 set encoding=UTF-8
@@ -88,48 +94,58 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "cerrar buffer
 nmap <leader>bd :bdelete<CR>
 
-"Config Colores
+"---------------------------------------------THEME CONFIG
+
 if has('termguicolors')
       set termguicolors
 endif
-let ayucolor="dark"
-colorscheme ayu
-let g:airline_theme = "sol"
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_italic=1
+set background=dark
+let g:gruvbox_italicize_strings=1
+colorscheme gruvbox
+let g:gruvbox_italicize_strings=1
 
+"--------------------------------------------------AIRLINE CONFIG
 
-"TAB airline 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#right_alt_sep = ''
-set showtabline=2
-
-"POWER LINE FONTS
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_theme = 'gruvbox'
+set showtabline=2
+set noshowmode
 
-"Cerrar tags automaticamente
+"------------------------------------------------CLOSETAGS
+
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.js'
-"Indent
+
+"------------------------------------------------INDENTLINE CONFIG
+
 let g:indentLine_enabled = 1
 let g:indentLine_char = '|'
 let g:indentLine_faster = 1
-"VIML
+
+"------------------------------------------------VIML CONFIG
+
 let g:markdown_fenced_languages = [
       \ 'vim',
       \ 'help'
       \]
 
-"New Terminal
-nmap <Leader>tm :FloatermNew<CR>
-"RAINBOW
-let g:rainbow_active = 1
-"NEOFORMAT
-autocmd BufWritePre *.js Neoformat
+"------------------------------------------------RAINBOW PARENTHESES
 
-"FERN CONFIG
+let g:rainbow_active = 1
+
+"------------------------------------------------COC-PRETTIER
+
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+"------------------------------------------------FERN CONFIG
 " Disable netrw.
 let g:loaded_netrw  = 1
 let g:loaded_netrwPlugin = 1

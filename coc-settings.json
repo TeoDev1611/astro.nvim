@@ -1,3 +1,19 @@
-{
-"coc.preferences.diagnostic.enable": false
+{ 
+  "languageserver" : { 
+    "ccls" : { 
+      "command" : "ccls" , 
+      "filetypes" : [ "c" ,  "cpp" ,  "cuda" ,  "objc" ,  "objcpp" ] , 
+      "rootPatterns" : [ ".ccls-root" ,  "compile_commands.json" ] , 
+      "initializationOptions" : { 
+        "cache" : { 
+          "directorio" : ".ccls-cache " 
+        } , 
+        " cliente " : {
+          "snippetSupport" : true 
+        } 
+      } 
+    } 
+  },
+  "clangd.path": "C:\\Users\\Usuario1\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\11.0.0\\clangd_11.0.0\\bin\\clangd.exe",
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "python", "javascript","c++"]
 }
