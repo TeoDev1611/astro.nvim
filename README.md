@@ -11,7 +11,6 @@ Esta configuración para que se apliquen los Ajustes debe estar Instalado **Powe
 ## Plugins Instalados
 
 ```
-​```
 " Temas
  Plug 'morhetz/gruvbox'
 Plug 'sainnhe/sonokai'
@@ -49,7 +48,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter' 
 "Bracket Coloraizer
 Plug 'luochen1990/rainbow'
-​```
 ```
 
 ### Explicación de los Plugins
