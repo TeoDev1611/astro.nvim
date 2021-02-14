@@ -36,7 +36,6 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 " Temas
  Plug 'morhetz/gruvbox'
-Plug 'sainnhe/sonokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
  " Fern
@@ -55,22 +54,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Cerrar los pares () [] {} '' 
 Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
 "       "PYTHON
 Plug 'hdima/python-syntax'
-"Auto Cambio de pares
-Plug 'tpope/vim-surround'
 "       "Git Fugitive
 Plug 'tpope/vim-fugitive'
-"       "Indent 
-Plug 'yggdroot/indentline'
-"       "FUZZY FINDER
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
-"Bracket Coloraizer
-Plug 'luochen1990/rainbow'
+"DISCORD RICH PRESENCE
+Plug 'hugolgst/vimsence'
 call plug#end()
 
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
@@ -120,26 +111,12 @@ let g:airline_theme = 'gruvbox'
 set showtabline=2
 set noshowmode
 
-"------------------------------------------------CLOSETAGS
-
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.js'
-
-"------------------------------------------------INDENTLINE CONFIG
-
-let g:indentLine_enabled = 1
-let g:indentLine_char = '|'
-let g:indentLine_faster = 1
-
 "------------------------------------------------VIML CONFIG
 
 let g:markdown_fenced_languages = [
       \ 'vim',
       \ 'help'
       \]
-
-"------------------------------------------------RAINBOW PARENTHESES
-
-let g:rainbow_active = 1
 
 "------------------------------------------------COC-PRETTIER
 
@@ -235,4 +212,12 @@ let g:fern_git_status#disable_submodules = 1
 let g:fern_git_status#disable_directories = 1
 
 "-------------------------------------TERMINAL CONFIG-------------------
+
 nnoremap <C-t> :vs<bar>term<cr><c-w>H<cr>
+
+"------------------------------------DISCORD PRESENCE"
+
+let g:vimsence_small_text = 'NeoVim'
+let g:vimsence_small_image = 'neovim'
+let g:vimsence_editing_details = 'Editing: {}'
+let g:vimsence_editing_state = 'Working on: {}'
