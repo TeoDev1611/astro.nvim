@@ -211,5 +211,5 @@ let g:fern_git_status#disable_submodules = 1
 let g:fern_git_status#disable_directories = 1
 
 "-------------------------------------TERMINAL CONFIG-------------------
-"nnoremap <C-t> :vs<bar>term<cr><c-w>H<cr>
+nnoremap <leader>tm :vs<bar>term<cr><c-w>H<cr>
 nmap <leader>ft :FloatermNew<CR>
