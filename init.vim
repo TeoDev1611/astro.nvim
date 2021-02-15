@@ -1,5 +1,6 @@
 "---------------------------------VIM CONFIGURATION----------------------------
 syntax enable
+filetype on
 set number
 set mouse=a
 set relativenumber
@@ -37,7 +38,6 @@ call plug#begin()
 " Temas
  Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
-Plug 'sheerun/vim-polyglot'
  " Fern
 Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -60,8 +60,7 @@ Plug 'hdima/python-syntax'
 Plug 'tpope/vim-fugitive'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
-"DISCORD RICH PRESENCE
-Plug 'hugolgst/vimsence'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
@@ -212,12 +211,5 @@ let g:fern_git_status#disable_submodules = 1
 let g:fern_git_status#disable_directories = 1
 
 "-------------------------------------TERMINAL CONFIG-------------------
-
-nnoremap <C-t> :vs<bar>term<cr><c-w>H<cr>
-
-"------------------------------------DISCORD PRESENCE"
-
-let g:vimsence_small_text = 'NeoVim'
-let g:vimsence_small_image = 'neovim'
-let g:vimsence_editing_details = 'Editing: {}'
-let g:vimsence_editing_state = 'Working on: {}'
+"nnoremap <C-t> :vs<bar>term<cr><c-w>H<cr>
+nmap <leader>ft :FloatermNew<CR>
