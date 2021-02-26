@@ -4,7 +4,7 @@ filetype on
 set number
 set mouse=a
 set relativenumber
-set clipboard=unnamedplus
+set clipboard=unnamed
 set background=dark
 set fileencoding=utf-8
 set showcmd
@@ -16,7 +16,6 @@ set laststatus=2
 set backspace=2
 set guioptions-=T
 set guioptions-=L
-set cursorline
 "
 ""Salir de modo insertar
 imap jk <Esc>
@@ -37,7 +36,6 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 " Temas
  Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
  " Fern
 Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -52,17 +50,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " VERSION ESTABLE DE COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Cerrar los pares () [] {} '' 
-Plug 'jiangmiao/auto-pairs'
 "       "PYTHON
 Plug 'hdima/python-syntax'
-"       "Git Fugitive
-Plug 'tpope/vim-fugitive'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
+"Float Term
 Plug 'voldikss/vim-floaterm'
 call plug#end()
-
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
 "ENCODING DEV ICONS
@@ -73,9 +67,6 @@ nmap <leader>w :w <CR>
 nmap <C-w> :q <CR>
 nmap <leader>q :q <CR>
 nmap <leader>so :so%<CR>
-"comandos de busqueda
-nmap <leader>gs  :CocSearch<CR>
-nmap <leader>fz  :FZF<CR>
 
 " TAB en modo normal se moverá al siguiente buffer
 nnoremap <silent> <TAB> :bnext<CR>
@@ -88,7 +79,8 @@ nmap <leader>bd :bdelete<CR>
 
 if has('termguicolors')
       set termguicolors
-endif
+endi"f
+""---------------------GRUVBOX 
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italic=1
 set background=dark
@@ -211,5 +203,4 @@ let g:fern_git_status#disable_submodules = 1
 let g:fern_git_status#disable_directories = 1
 
 "-------------------------------------TERMINAL CONFIG-------------------
-nnoremap <leader>tm :vs<bar>term<cr><c-w>H<cr>
 nmap <leader>ft :FloatermNew<CR>
