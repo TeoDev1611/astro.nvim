@@ -35,7 +35,10 @@ nmap <silent> <C-down> :wincmd j<CR>
 "------------------------------------------PLUGINS VIM
 call plug#begin()
 " Temas
- Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+"Vim rainbow
+Plug 'luochen1990/rainbow'
  " Fern
 Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -75,18 +78,30 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "cerrar buffer
 nmap <leader>bd :bdelete<CR>
 
+"Install Command
+nmap <leader>pi :PlugInstall<CR>
 "---------------------------------------------THEME CONFIG
 
 if has('termguicolors')
       set termguicolors
 endi"f
-""---------------------GRUVBOX 
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_italic=1
-set background=dark
-let g:gruvbox_italicize_strings=1
-colorscheme gruvbox
-let g:gruvbox_italicize_strings=1
+"---------------------GRUVBOX" 
+
+"let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_italic=1
+"set background=dark
+"let g:gruvbox_italicize_strings=1
+"colorscheme gruvbox
+"let g:gruvbox_italicize_strings=1
+
+"--------------------SPACE DUCK
+    if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+    endif
+
+   colorscheme spaceduck
 
 "--------------------------------------------------AIRLINE CONFIG
 
@@ -98,7 +113,7 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'spaceduck'
 set showtabline=2
 set noshowmode
 
@@ -204,3 +219,13 @@ let g:fern_git_status#disable_directories = 1
 
 "-------------------------------------TERMINAL CONFIG-------------------
 nmap <leader>ft :FloatermNew<CR>
+"-----------------------------------------VIM RAINBOW CONFIG
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'guis': [''],
+\	'cterms': [''],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\}

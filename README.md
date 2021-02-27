@@ -94,5 +94,7 @@ Plug 'luochen1990/rainbow'
 ## Agradecimientos
 
 Solo te quiero decir Gracias por ver esta configuración
+**Nota** falta actualizar
 
 #### Saludos desde Ecuador :thumbsup: :star:
+
