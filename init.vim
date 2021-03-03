@@ -38,16 +38,15 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'ayu-theme/ayu-vim' 
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
 Plug 'ryanoasis/vim-devicons'
-"Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" VERSION ESTABLE DE COC
+"Light Line
+ Plug 'itchyny/lightline.vim'
+ Plug 'itchyny/vim-gitbranch'
+ "VERSION ESTABLE DE COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "      SYTAXIS EXTRA
 Plug 'sheerun/vim-polyglot'
@@ -103,17 +102,27 @@ colorscheme gruvbox
 let g:gruvbox_italicize_strings=1
 
 "--------------------------------------------------AIRLINE CONFIG
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'tab_component_function': {
+      \   'tabnum': 'LightlineWebDevIcons',
+      \ },
+      \ }
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_theme = 'gruvbox'
+function! LightlineWebDevIcons(n)
+  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
+  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
+endfunction
 set showtabline=2
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#enable_nerdfont = 1
 set noshowmode
 
 "------------------------------------------------VIML CONFIG
