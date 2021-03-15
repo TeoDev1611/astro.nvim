@@ -1,10 +1,9 @@
 "---------------------------------VIM CONFIGURATION----------------------------
-syntax enable
-filetype on
+syntax on
 set nocompatible
 set number
 set mouse=a
-set relativenumber
+set number
 set clipboard=unnamed
 set background=dark
 set fileencoding=utf-8
@@ -20,7 +19,7 @@ set guioptions-=L
 set cursorline
 "
 ""Salir de modo insertar
-imap jj <Esc>
+imap jk <Esc>
 imap <C-c> <Esc>l
 "mueve bloques de codigo en modo visual o V-Line
 xnoremap K :move '<-2<CR>gv-gv
@@ -38,7 +37,7 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim' 
+Plug 'tekannor/ayu-vim'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
@@ -50,8 +49,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "      SYTAXIS EXTRA
 Plug 'sheerun/vim-polyglot'
-"       "PYTHON
-Plug 'hdima/python-syntax'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
 "Float Term
@@ -64,6 +61,8 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
+"RUST
+Plug 'rust-lang/rust.vim'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -88,22 +87,12 @@ nmap <leader>pi :PlugInstall<CR>
 "Uninstall Command
 nmap <leader>pc :PlugClean<CR>
 "---------------------------------------------THEME CONFIG
-
-if has('termguicolors')
-      set termguicolors
-endi"f
-"---------------------GRUVBOX" 
-
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_italic=1
-set background=dark
-let g:gruvbox_italicize_strings=1
-colorscheme gruvbox
-let g:gruvbox_italicize_strings=1
-
+set termguicolors
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 "--------------------------------------------------AIRLINE CONFIG
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'ayu',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -223,8 +212,13 @@ let g:fern_git_status#disable_submodules = 1
 " Disable listing status of directories
 let g:fern_git_status#disable_directories = 1
 
-
+"FERN REMAP
 noremap <silent> <C-m> :Fern . -reveal=%<CR>
 nmap <leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
+
 "INDENT LINE CONFIGURATION
 let g:indentLine_char_list = ['|', '¦']
+
+"FLOATERM REMAP
+nmap<leader>m :FloatermToggle<CR>
+

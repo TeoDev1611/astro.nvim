@@ -6,78 +6,17 @@ Esta configuración para que se apliquen los Ajustes debe estar Instalado **Powe
 
 ## Aquí una Captura de como se verá
 
-![Captura de los Plugins](./docs/plugins1.png)
+![Captura de los Plugins](./docs/plugins.png)
 
-## Plugins Instalados
+## Plugins
 
-```
-" Temas
- Plug 'morhetz/gruvbox'
-Plug 'sainnhe/sonokai'
-Plug 'ayu-theme/ayu-vim'
-Plug 'sheerun/vim-polyglot'
- " Fern
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-"FERN ICONS
-Plug 'ryanoasis/vim-devicons'
-"Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" VERSION ESTABLE DE COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"       "PYTHON
-Plug 'hdima/python-syntax'
-"       "NERD COMMENTER
-Plug 'preservim/nerdcommenter' 
-"Bracket Coloraizer
-Plug 'luochen1990/rainbow'
-```
+COC PLUGINS:
 
-### Explicación de los Plugins
+![Captura de Plugins de COC](./docs/coc.png)
 
-**TEMAS**
+VIM PLUG PLUGINS:
 
-> Gruvbox (Tema Actual)
->
-> Sonokai
->
-> Ayu
-
-**EXPLORADOR DE ARCHIVOS**
-
-> **FERN PLUGINS**
->
-> 1. fern-renderer-nerdfont.vim `(Añadir iconos a Fern con NerdFont)`
-> 2. FixCursorHold.nvim `(Arregla el cursor de Fern )`
-> 3. nerdfont.vim `(Adapta las fuentes NerdFont a Vim)`
-> 4. glyph-palette.vim`(Adapta el tema actual a Fern)`
-> 5. fern-git-status.vim`(Soporte para los iconos en general)`
-> 6. vim-devicons`(Iconos para Fern y Airline)`
-
-**UTILIDADES**
-
-> **BARRA DE ESTADO**
->
-> 1. vim-airline/vim-airline
-> 2. vim-airline/vim-airline-themes
-
-> **AUTOCOMPLETADO**
->
-> 1. neoclide/coc.nvim
-> 2. jiangmiao/auto-pairs
-> 3. alvan/vim-closetag
-> 4. hdima/python-syntax
-> 5. tpope/vim-surround
-> 6. tpope/vim-fugitive
-> 7. junegunn/fzf
-> 8. junegunn/fzf.vim
-> 9. preservim/nerdcommenter
-> 10. luochen1990/rainbow
+![Captura de Vim PLUG](./docs/vimplugg.png)
 
 ## Agradecimientos
 
