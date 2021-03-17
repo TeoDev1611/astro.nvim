@@ -54,15 +54,17 @@ Plug 'preservim/nerdcommenter'
 "Float Term
 Plug 'voldikss/vim-floaterm'
 "TREE EXPLORER
- " Fern
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
+"NERD TREE
+Plug 'preservim/nerdtree'|
+       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
 "RUST
 Plug 'rust-lang/rust.vim'
+"VIM VUE
+Plug 'posva/vim-vue'
+"VIM PAIRS
+Plug 'jiangmiao/auto-pairs'
+"Bracket Coloraizer
+Plug 'luochen1990/rainbow'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -125,100 +127,29 @@ let g:markdown_fenced_languages = [
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-"-----------------------------------------------Floaterm
+"------------------------------------------------NERD TREE
+"Abrir Nerdtree
+nmap <Leader>n :NERDTreeFind<CR>
+"MINIMAL UI
+let NERDTreeMinimalUI = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \}
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0"
+let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0"
 
-nnoremap <leader>t :FloatermNew <CR>
-
-"------------------------------------------FERN FILE EXPLORER
-let g:loaded_netrw  = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_netrwSettings = 1
-let g:loaded_netrwFileHandlers = 1
-
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
-endfunction
-
-" Custom settings and mappings.
-let g:fern#disable_default_mappings = 1
-
-" not-hidden
-let g:fern#default_hidden= 1
-
-" exclude
-let g:fern#default_exclude='node_modules'
-
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> t <Plug>(fern-action-trash)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> s <Plug>(fern-action-mark:set)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> y <Plug>(fern-action-yank)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> u <Plug>(fern-action-leave)
-  nmap <buffer><nowait> c <Plug>(fern-action-enter)
-endfunction
-
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
-augroup END
-
-" Fixer
-let g:cursorhold_updatetime = 100
-
-" Devicoins
-let g:fern#renderer = "nerdfont"
-
-" Palette
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
-" Disable listing ignored files/directories
-let g:fern_git_status#disable_ignored = 1
-
-" Disable listing untracked files
-let g:fern_git_status#disable_untracked = 1
-
-" Disable listing status of submodules
-let g:fern_git_status#disable_submodules = 1
-
-" Disable listing status of directories
-let g:fern_git_status#disable_directories = 1
-
-"FERN REMAP
-noremap <silent> <C-m> :Fern . -reveal=%<CR>
-nmap <leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
-
-"INDENT LINE CONFIGURATION
+"---------------------------------------------INDENT LINE CONFIGURATION
 let g:indentLine_char_list = ['|', '¦']
 
-"FLOATERM REMAP
+"-----------------------------------------------FLOATERM REMAP
 nmap<leader>m :FloatermToggle<CR>
 
