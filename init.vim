@@ -51,8 +51,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
-"Float Term
-Plug 'voldikss/vim-floaterm'
 "TREE EXPLORER
 "NERD TREE
 Plug 'preservim/nerdtree'|
@@ -63,8 +61,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'posva/vim-vue'
 "VIM PAIRS
 Plug 'jiangmiao/auto-pairs'
-"Bracket Coloraizer
-Plug 'luochen1990/rainbow'
+"JAVASCRIPT AND TYPESCRIPT
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+"CTRL P
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -77,22 +78,19 @@ nmap <C-w> :q <CR>
 nmap <leader>q :q <CR>
 nmap <leader>so :so%<CR>
 
-" TAB en modo normal se moverá al siguiente buffer
-nnoremap <silent> <TAB> :bnext<CR>
-" SHIFT-TAB para ir a atras 
-nnoremap <silent> <S-TAB> :bprevious<CR>
-"cerrar buffer
-nmap <leader>bd :bdelete<CR>
-
 "Install Command
 nmap <leader>pi :PlugInstall<CR>
 "Uninstall Command
 nmap <leader>pc :PlugClean<CR>
+
 "---------------------------------------------THEME CONFIG
+
 set termguicolors
 let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
+
 "--------------------------------------------------AIRLINE CONFIG
+
 let g:lightline = {
       \ 'colorscheme': 'ayu',
       \ 'active': {
@@ -128,28 +126,56 @@ let g:markdown_fenced_languages = [
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "------------------------------------------------NERD TREE
-"Abrir Nerdtree
-nmap <Leader>n :NERDTreeFind<CR>
+
 "MINIMAL UI
-let NERDTreeMinimalUI = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
+                \ 'Modified'  :'M',
+                \ 'Staged'    :'S',
+                \ 'Untracked' :'U',
+                \ 'Renamed'   :'R',
                 \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
+                \ 'Deleted'   :'D',
+                \ 'Dirty'     :'DD',
+                \ 'Ignored'   :'I',
+                \ 'Clean'     :'C',
                 \ 'Unknown'   :'?',
                 \}
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0"
 let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0"
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <Leader>n :NERDTreeFind<CR>
 
 "---------------------------------------------INDENT LINE CONFIGURATION
+
 let g:indentLine_char_list = ['|', '¦']
 
-"-----------------------------------------------FLOATERM REMAP
-nmap<leader>m :FloatermToggle<CR>
+"---------------------------------------------TERMINAL
+
+" open new split panes to right and below
+set splitright
+set splitbelow
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
+
+"-------------------------------------COC GLOBAL EXTENSIONS
+
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright']
+
+"-------------------------------------CTRL P
+
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+nmap <leader>c :CtrlP<CR>
 
