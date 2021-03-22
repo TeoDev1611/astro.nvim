@@ -21,7 +21,9 @@ VIM PLUG PLUGINS:
 ## Agradecimientos
 
 Solo te quiero decir Gracias por ver esta configuración
-**Nota** falta actualizar
 
 #### Saludos desde Ecuador :thumbsup: :star:
+
+### DOCUMENTACIÓN DESACTUALIZADA
+
 

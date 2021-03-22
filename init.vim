@@ -38,14 +38,16 @@ call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
 Plug 'tekannor/ayu-vim'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'dikiaap/minimalist'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
 Plug 'ryanoasis/vim-devicons'
-"Light Line
- Plug 'itchyny/lightline.vim'
- Plug 'itchyny/vim-gitbranch'
- "VERSION ESTABLE DE COC
+"Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"VERSION ESTABLE DE COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "      SYTAXIS EXTRA
 Plug 'sheerun/vim-polyglot'
@@ -66,6 +68,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 "CTRL P
 Plug 'ctrlpvim/ctrlp.vim'
+"VIM GO
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" VIM RUST
+Plug 'rust-lang/rust.vim'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -83,37 +89,36 @@ nmap <leader>pi :PlugInstall<CR>
 "Uninstall Command
 nmap <leader>pc :PlugClean<CR>
 
+"BUFFERS
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
+nmap <leader>bd :bdelete<CR>
+
 "---------------------------------------------THEME CONFIG
+if exists('+termguicolors')
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      set termguicolors
+endif
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_italic=1
+set background=dark
+let g:gruvbox_italicize_strings=1
+colorscheme gruvbox
+let g:gruvbox_italicize_strings=1
+"-------------------------------------------------AIRLINE CONFIG
 
-set termguicolors
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
-
-"--------------------------------------------------AIRLINE CONFIG
-
-let g:lightline = {
-      \ 'colorscheme': 'ayu',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ 'tab_component_function': {
-      \   'tabnum': 'LightlineWebDevIcons',
-      \ },
-      \ }
-
-function! LightlineWebDevIcons(n)
-  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
-endfunction
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_theme = 'gruvbox'
 set showtabline=2
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
 set noshowmode
-
 "------------------------------------------------VIML CONFIG
 
 let g:markdown_fenced_languages = [
@@ -136,7 +141,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unmerged'  :'═',
                 \ 'Deleted'   :'D',
                 \ 'Dirty'     :'DD',
-                \ 'Ignored'   :'I',
+                \ 'Ignored'    :'I',
                 \ 'Clean'     :'C',
                 \ 'Unknown'   :'?',
                 \}
@@ -164,8 +169,8 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-  split term
-  resize 10
+  split && :terminal
+  resize 5
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 
