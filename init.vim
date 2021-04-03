@@ -16,18 +16,18 @@ set laststatus=2
 set backspace=2
 set guioptions-=T
 set guioptions-=L
+set termguicolors
 "
-""Salir de modo insertar
+"Salir de modo insertar
 imap jk <Esc>
 imap <C-c> <Esc>l
 "mueve bloques de codigo en modo visual o V-Line
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv 
-"
 "" Mejor Indentación
 vnoremap < <gv
 vnoremap > >gv
-"Remaping Splits
+"Cambiando
 nmap <silent> <C-left> :wincmd h<CR>
 nmap <silent> <C-right> :wincmd l<CR>
 nmap <silent> <C-up> :wincmd k<CR>
@@ -36,7 +36,6 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
-Plug 'tekannor/ayu-vim'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 "Indent Line
 Plug 'Yggdroot/indentLine'
@@ -51,28 +50,25 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
-"TREE EXPLORER
- " Fern
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-"VIM VUE
-Plug 'posva/vim-vue'
+"FILE SEARCHER
+Plug 'Yggdroot/LeaderF'
+Plug 'tamago324/LeaderF-filer'
+"DEFX FILE TREE
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
+else
+  Plug 'Shougo/defx.nvim' | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 "VIM PAIRS
 Plug 'jiangmiao/auto-pairs'
-"JAVASCRIPT AND TYPESCRIPT
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-"CTRL P
-Plug 'ctrlpvim/ctrlp.vim'
-" VIM RUST
+" RUST 
 Plug 'rust-lang/rust.vim'
 "PYTHON ADD SINTAX
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"vim go
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -96,9 +92,9 @@ nmap <leader>bd :bdelete<CR>
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-
-colorscheme spaceduck
-
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+colorscheme gruvbox
 "-------------------------------------------------AIRLINE CONFIG
 
 let g:airline#extensions#tabline#enabled = 1
@@ -109,7 +105,7 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'spaceduck'
+let g:airline_theme = 'gruvbox'
 set showtabline=2
 set noshowmode
 "------------------------------------------------VIML CONFIG
@@ -123,111 +119,136 @@ let g:markdown_fenced_languages = [
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-"------------------------------------------------NERD TREE
-" Disable netrw.
-let g:loaded_netrw  = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_netrwSettings = 1
-let g:loaded_netrwFileHandlers = 1
+"------------------------------------------------DEFX FILE EXPLORER
 
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
+function! s:setcolum() abort
+ return 'mark:indent:git:icons:filename'
 endfunction
 
-" Custom settings and mappings.
-let g:fern#disable_default_mappings = 1
+call defx#custom#option('_', {
+      \ 'columns': s:setcolum(),
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'leftabove',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
 
-" not-hidden
-let g:fern#default_hidden= 1
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '',
+      \ 'selected_icon': '',
+      \ })
 
-" exclude
-let g:fern#default_exclude='node_modules'
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▶',
+      \ 'opened_icon': '▼',
+      \ 'root_icon': ' ',
+      \ })
 
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> t <Plug>(fern-action-trash)
+call defx#custom#column('filename', {
+      \ 'max_width': -90,
+      \ })
 
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> s <Plug>(fern-action-mark:set)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> y <Plug>(fern-action-yank)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> u <Plug>(fern-action-leave)
-  nmap <buffer><nowait> c <Plug>(fern-action-enter)
-endfunction
-
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
+augroup vfinit
+  au!
+  autocmd FileType defx call s:defx_init()
+  " auto close last defx windows
+  autocmd BufEnter * nested if
+        \ (!has('vim_starting') && winnr('$') == 1 
+        \ && &filetype ==# 'defx') |
+        \ call s:close_last_vimfiler_windows() | endif
 augroup END
 
-" Fixer
-let g:cursorhold_updatetime = 100
-
-" Devicoins
-let g:fern#renderer = "nerdfont"
-
-" Palette
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
-
-"REMAPING KEYS
-noremap <silent> <C-m> :Fern . -reveal=%<CR>
-nmap <leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
-
-"---------------------------------------------INDENT LINE CONFIGURATION
-
-let g:indentLine_char_list = ['|', '¦']
-
-"---------------------------------------------TERMINAL
-
-" open new split panes to right and below
-set splitright
-set splitbelow
-" turn terminal to normal mode with escape
-tnoremap <Esc> <C-\><C-n>
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+n
-function! OpenTerminal()
-  split && :terminal
-  resize 5
+function! s:close_last_vimfiler_windows() abort
+  exe 'silent bd!'
+  q
 endfunction
-nnoremap <c-n> :call OpenTerminal()<CR>
 
-"-------------------------------------COC GLOBAL EXTENSIONS
+function! s:defx_init()
+  setl nonumber
+  setl norelativenumber
+  setl listchars=
+  setl nofoldenable
+  setl foldmethod=manual
 
+  nnoremap <silent><buffer><expr> <space>
+        \ defx#do_action('toggle_select') . 'j'
+  " Define mappings
+  nnoremap <silent><buffer><expr> gx
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> P
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> <Cr>
+        \ defx#is_directory() ?
+        \ defx#do_action('open_or_close_tree') : defx#do_action('drop')
+  nnoremap <silent><buffer><expr> sg
+        \ defx#do_action('drop', 'vsplit')
+  nnoremap <silent><buffer><expr> sv
+        \ defx#do_action('drop', 'split')
+  nnoremap <silent><buffer><expr> st
+        \ defx#do_action('drop', 'tabedit')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> yy defx#do_action('call', 'DefxYarkPath')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-r>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> > defx#do_action('resize',
+	  \ defx#get_context().winwidth + 10)
+  nnoremap <silent><buffer><expr> < defx#do_action('resize',
+	  \ defx#get_context().winwidth - 10)
+endfunction
+
+
+function! DefxYarkPath(_) abort
+  let candidate = defx#get_candidate()
+  let @+ = candidate['action__path']
+  echo 'yanked: ' . @+
+endfunction
+
+let g:defx_git#indicators = {
+	\ 'Modified'  : '•',
+	\ 'Staged'    : '✚',
+	\ 'Untracked' : 'ᵁ',
+	\ 'Renamed'   : '≫',
+	\ 'Unmerged'  : '≠',
+	\ 'Ignored'   : 'ⁱ',
+	\ 'Deleted'   : '✖',
+	\ 'Unknown'   : '⁇'
+	\ }
+
+"REMAP DEFX
+nmap <Leader>n :Defx<CR>
+
+"-------------------------------------------GLOBAL COC EXPLORER EXTENSIONS
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright']
 
-"-------------------------------------CTRL P
-
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-nmap <leader>c :CtrlP<CR>
-
+"-------------------------------------------------------LEADERF
+"
+nmap <Leader>c :Leaderf filer<CR>
+nmap <Leader>v :Leaderf filer --popup<CR>
