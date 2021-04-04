@@ -17,7 +17,7 @@ set backspace=2
 set guioptions-=T
 set guioptions-=L
 set termguicolors
-"
+
 "Salir de modo insertar
 imap jk <Esc>
 imap <C-c> <Esc>l
@@ -37,13 +37,15 @@ call plug#begin()
 " Temas
 Plug 'morhetz/gruvbox'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'ntk148v/vim-horizon'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
 Plug 'ryanoasis/vim-devicons'
-"Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Light Line
+ Plug 'itchyny/lightline.vim'
+ Plug 'itchyny/vim-gitbranch'
+Plug 'josa42/vim-lightline-coc'
 "VERSION ESTABLE DE COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "      SYTAXIS EXTRA
@@ -51,8 +53,8 @@ Plug 'sheerun/vim-polyglot'
 "       "NERD COMMENTER
 Plug 'preservim/nerdcommenter' 
 "FILE SEARCHER
-Plug 'Yggdroot/LeaderF'
-Plug 'tamago324/LeaderF-filer'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "DEFX FILE TREE
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
@@ -69,6 +71,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 "vim go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -92,22 +95,35 @@ nmap <leader>bd :bdelete<CR>
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-let g:gruvbox_contrast_dark='hard'
-set background=dark
-colorscheme gruvbox
+"let g:gruvbox_contrast_dark='hard'
+"set background=dark
+colorscheme spaceduck
 "-------------------------------------------------AIRLINE CONFIG
+let g:lightline = {
+      \ 'colorscheme': 'spaceduck',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [[  'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status'  ]]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'tab_component_function': {
+      \   'tabnum': 'LightlineWebDevIcons',
+      \ },
+      \ }
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_theme = 'gruvbox'
+function! LightlineWebDevIcons(n)
+  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
+  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
+endfunction
 set showtabline=2
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#enable_nerdfont = 1
 set noshowmode
+" register compoments:
+call lightline#coc#register()
 "------------------------------------------------VIML CONFIG
 
 let g:markdown_fenced_languages = [
@@ -231,6 +247,7 @@ function! DefxYarkPath(_) abort
   echo 'yanked: ' . @+
 endfunction
 
+"DEFX GIT
 let g:defx_git#indicators = {
 	\ 'Modified'  : '•',
 	\ 'Staged'    : '✚',
@@ -246,9 +263,13 @@ let g:defx_git#indicators = {
 nmap <Leader>n :Defx<CR>
 
 "-------------------------------------------GLOBAL COC EXPLORER EXTENSIONS
+
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright']
 
-"-------------------------------------------------------LEADERF
+"-------------------------------------------------------FUZZY FINDER
 "
-nmap <Leader>c :Leaderf filer<CR>
-nmap <Leader>v :Leaderf filer --popup<CR>
+"Normal open
+nmap <Leader>m :FZF<CR>
+"Ignoring files from gitignore
+nmap <Leader>c :GFiles<CR>
+
