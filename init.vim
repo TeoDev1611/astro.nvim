@@ -1,5 +1,6 @@
 "---------------------------------VIM CONFIGURATION----------------------------
 syntax on
+filetype plugin indent on
 set nocompatible
 set number
 set mouse=a
@@ -57,11 +58,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rust-lang/rust.vim'
 "PYTHON SINTAX
 Plug 'jeetsukumaran/vim-pythonsense'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 "vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Clap Filer
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+"SEMSHI PYTHON
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
+"RUBY
+Plug 'vim-ruby/vim-ruby'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -86,11 +90,11 @@ nmap <leader>bd :bdelete<CR>
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-let g:tokyonight_disable_italic_comment = 1
-colorscheme tokyonight
+let g:gruvbox_contrast_dark = "hard"
+colorscheme gruvbox
 "-------------------------------------------------LIGHTLINE CONFIG
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -128,72 +132,23 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "-------------------------------------------GLOBAL COC EXPLORER EXTENSIONS
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright', 'coc-explorer']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright']
 
 "----------------------------------------------------- VIM CLAP
 
-let g:clap_popup_border = 'sharp'
-let g:clap_project_root_markers = ['autoload/', '.git/', 'node_modules/', '.vim/', 'plugged/'] 
-nmap <leader>c :Clap filer<CR>
-nmap <leader>g :Clap gfiles<CR>
+let g:clap_layout                   = { 'relative': 'editor', 'width': '65%', 'height': '45%',  'row': '15%', 'col': '15%' }
+let g:clap_popup_cursor_shape       = ''
+let g:clap_preview_direction        = 'UD'
+let g:clap_search_box_border_style  = 'nil'
+let g:clap_enable_background_shadow = v:false
+let g:clap_current_selection_sign   = { 'text': '» ', 'texthl': 'ClapCurrentSelectionSign', 'linehl': 'ClapCurrentSelection' }
+let g:clap_selected_sign            = { 'text': ' »', 'texthl': 'ClapSelectedSign', 'linehl': 'ClapSelected' }
+let g:clap_prompt_format            = ' %spinner%%forerunner_status%%provider_id%:'
+
+let g:clap_insert_mode_only   = v:true
+let g:clap_disable_run_rooter = v:true
+    let g:clap_spinner_winid = 1011
+
+nmap <leader>n :Clap filer<CR>
+nmap <leader>c :Clap gfiles<CR>
 nmap <leader>m :Clap commits<CR>
-
-
-"------------------------------------------------------COC-EXPLORER--------------------------------------------
-
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '%USERPROFILE%/coc-settings.json',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
-
-
-" Disable netrw.
-let g:loaded_netrw  = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_netrwSettings = 1
-let g:loaded_netrwFileHandlers = 1
-
-function! AuCocNvimInit()
-    if @% == '' || @% == '.'
-      exe ':CocCommand explorer'
-    endif
-endfunction
-
-nmap <leader>n :CocCommand explorer<CR>
-
-"-------------------------------------------------------------------END
