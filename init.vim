@@ -34,14 +34,14 @@ nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 "Themes
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
 Plug 'ryanoasis/vim-devicons'
-"Light Line
-Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
-Plug 'josa42/vim-lightline-coc'
+"Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "      SYTAXYS 
@@ -78,6 +78,9 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'APZelos/blamer.nvim'
 "MARKDOWN PREVIEW
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"UTILITIES
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 "ENCODING DEV ICONS
@@ -101,36 +104,24 @@ nmap <leader>bd :bdelete<CR>
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_italicize_strings = 1
-let g:gruvbox_improved_warnings = 1
-colorscheme gruvbox
+let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_cursor = 'orange'
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 "-------------------------------------------------AIRLINE CONFIG
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [[  'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ], [ 'coc_status'  ]]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ 'tab_component_function': {
-      \   'tabnum': 'LightlineWebDevIcons',
-      \ },
-      \ }
-
-function! LightlineWebDevIcons(n)
-  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
-endfunction
+" enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#coc#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_theme = 'gruvbox_material'
 set showtabline=2
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
 set noshowmode
-" register compoments:
-call lightline#coc#register()
 
 "------------------------------------------------VIML CONFIG
 
@@ -145,7 +136,7 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "-------------------------------------------GLOBAL COC EXPLORER EXTENSIONS
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright', 'coc-git' ]
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright']
 
 "----------------------------------------------------- VIM CLAP
 
@@ -344,9 +335,6 @@ let g:blamer_enabled = 1
 let g:multi_cursor_use_default_mapping=1
 
 "----------------------------------MARKDOWN PREVIEW
-<Plug>MarkdownPreview
-<Plug>MarkdownPreviewStop
-<Plug>MarkdownPreviewToggle
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
