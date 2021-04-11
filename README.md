@@ -1,29 +1,30 @@
-# Teo Dev Configuración NeoVim
+# My Portable Neovim Config
 
 ![Logo NeoVim](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Neovim-logo.svg/1280px-Neovim-logo.svg.png)
 
-Esta configuración para que se apliquen los Ajustes debe estar Instalado **PowerLine Fonts** y **Vim** Plug
+For install this configuration you need a NerdFont and Vim-Plug
 
-## Aquí una Captura de como se verá
 
-![Captura de los Plugins](./docs/plugins.png)
+## An example Screen Shot 
 
-## Plugins
+![Captura de los Plugins](docs/plugins1.png)
 
-COC PLUGINS:
+![Captura 2](docs/plugins2.png)
 
-![Captura de Plugins de COC](./docs/coc.png)
+## How install
 
-VIM PLUG PLUGINS:
+1. Clone my repository
 
-![Captura de Vim PLUG](./docs/vimplugg.png)
+2. Paste in your folder
 
-## Agradecimientos
+3. Install Vim Plug
 
-Solo te quiero decir Gracias por ver esta configuración
+4. Run the command PlugInstall
 
-#### Saludos desde Ecuador :thumbsup: :star:
+5. Exit of vim or neovim and all is installed
 
-### DOCUMENTACIÓN DESACTUALIZADA
+
+#### Hi from Ecuador :thumbsup: :star:
+
 
 

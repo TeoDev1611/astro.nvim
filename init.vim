@@ -32,7 +32,7 @@ nmap <silent> <C-right> :wincmd l<CR>
 nmap <silent> <C-up> :wincmd k<CR>
 nmap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
-"Temas
+"Themes
 Plug 'morhetz/gruvbox'
 "Indent Line
 Plug 'Yggdroot/indentLine'
@@ -64,6 +64,7 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'vim-ruby/vim-ruby'
 "RAINBOW PARENTHESIS
 Plug 'kien/rainbow_parentheses.vim'
+"DEFX
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'kristijanhusak/defx-icons' | Plug 'kristijanhusak/defx-git'
 else
@@ -71,8 +72,13 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+"MULTIPLY CURSORS
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+"VIM GITLENS
+Plug 'APZelos/blamer.nvim'
+"MARKDOWN PREVIEW
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
-
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 "ENCODING DEV ICONS
 set encoding=UTF-8
@@ -328,3 +334,19 @@ let g:defx_git#indicators = {
  
 "REMAP DEFX
 nmap <Leader>n :Defx<CR>
+
+"------------------------------------VIM - GITLENS
+
+let g:blamer_enabled = 1
+
+"-----------------------------------VIM MULTIPLY CURSORS
+
+let g:multi_cursor_use_default_mapping=1
+
+"----------------------------------MARKDOWN PREVIEW
+<Plug>MarkdownPreview
+<Plug>MarkdownPreviewStop
+<Plug>MarkdownPreviewToggle
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
