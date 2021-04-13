@@ -27,10 +27,10 @@ xnoremap J :move '>+1<CR>gv-gv
 vnoremap < <gv
 vnoremap > >gv
 "MOVE IN BUFFERS
-nmap <silent> <C-left> :wincmd h<CR>
-nmap <silent> <C-right> :wincmd l<CR>
-nmap <silent> <C-up> :wincmd k<CR>
-nmap <silent> <C-down> :wincmd j<CR>
+nnoremap <silent> <C-left> :wincmd h<CR>
+nnoremap <silent> <C-right> :wincmd l<CR>
+nnoremap <silent> <C-up> :wincmd k<CR>
+nnoremap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 "Themes
 Plug 'morhetz/gruvbox'
@@ -88,17 +88,17 @@ Plug 'voldikss/vim-floaterm'
 "ENCODING DEV ICONS
 set encoding=UTF-8
 "SAVE FILE
-nmap <leader>w :w <CR>
+nnoremap <leader>w :w <CR>
 "CLOSE WINDOWS
-nmap <C-w> :q <CR>
-nmap <leader>q :q <CR>
+nnoremap <C-w> :q <CR>
+nnoremap <leader>q :q <CR>
 "UPDATE
-nmap <leader>so :so%<CR>
+nnoremap <leader>so :so%<CR>
 
 "BUFFERS
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
-nmap <leader>bd :bdelete<CR>
+nnoremap <leader>bd :bdelete<CR>
 
 "---------------------------------------------THEME CONFIG
     if exists('+termguicolors')
@@ -153,9 +153,9 @@ let g:clap_insert_mode_only   = v:true
 let g:clap_disable_run_rooter = v:true
 let g:clap_spinner_winid = 1011
 
-nmap <leader>b :Clap filer<CR>
-nmap <leader>c :Clap gfiles<CR>
-nmap <leader>m :Clap commits<CR>
+nnoremap <leader>b :Clap filer<CR>
+nnoremap <leader>c :Clap gfiles<CR>
+nnoremap <leader>m :Clap commits<CR>
 
 "-------------------------------------------------RAINBOW PARENTHESIS
 
@@ -218,28 +218,28 @@ let g:fern#default_hidden= 1
 let g:fern#default_exclude='node_modules'
 
 function! FernInit() abort
-  nmap <buffer><expr>
+  nnoremap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
         \ fern#smart#leaf(
         \   "\<Plug>(fern-action-open:select)",
         \   "\<Plug>(fern-action-expand)",
         \   "\<Plug>(fern-action-collapse)",
         \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> t <Plug>(fern-action-trash)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> s <Plug>(fern-action-mark:set)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> y <Plug>(fern-action-yank)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> u <Plug>(fern-action-leave)
-  nmap <buffer><nowait> c <Plug>(fern-action-enter)
+  nnoremap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nnoremap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nnoremap <buffer> n <Plug>(fern-action-new-path)
+  nnoremap <buffer> d <Plug>(fern-action-remove)
+  nnoremap <buffer> t <Plug>(fern-action-trash)
+  nnoremap <buffer> m <Plug>(fern-action-move)
+  nnoremap <buffer> s <Plug>(fern-action-mark:set)
+  nnoremap <buffer> r <Plug>(fern-action-rename)
+  nnoremap <buffer> h <Plug>(fern-action-hidden-toggle)
+  nnoremap <buffer> R <Plug>(fern-action-reload)
+  nnoremap <buffer> y <Plug>(fern-action-yank)
+  nnoremap <buffer> b <Plug>(fern-action-open:split)
+  nnoremap <buffer> v <Plug>(fern-action-open:vsplit)
+  nnoremap <buffer><nowait> u <Plug>(fern-action-leave)
+  nnoremap <buffer><nowait> c <Plug>(fern-action-enter)
 endfunction
 
 augroup FernGroup
@@ -283,6 +283,6 @@ let g:blamer_enabled = 1
 let g:multi_cursor_use_default_mapping=1
 
 "----------------------------------MARKDOWN PREVIEW
-nmap <C-s> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
+nnoremap <C-s> <Plug>MarkdownPreview
+nnoremap <M-s> <Plug>MarkdownPreviewStop
+nnoremap <C-p> <Plug>MarkdownPreviewToggle
