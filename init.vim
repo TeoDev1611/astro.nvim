@@ -38,7 +38,7 @@ Plug 'sainnhe/gruvbox-material'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 "Light Line
  Plug 'itchyny/lightline.vim'
  Plug 'itchyny/vim-gitbranch'
@@ -121,20 +121,10 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'gitbranch#name'
       \ },
-      \ 'tab_component_function': {
-      \   'tabnum': 'LightlineWebDevIcons',
-      \ },
       \ }
-
-function! LightlineWebDevIcons(n)
-  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
-  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
-endfunction
 set showtabline=2
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
 set noshowmode
-" register compoments:
+"register compoments:
 call lightline#coc#register()
 
 "------------------------------------------------VIML CONFIG
@@ -261,7 +251,7 @@ augroup END
 let g:cursorhold_updatetime = 100
 
 " Devicoins
-let g:fern#renderer = "nerdfont"
+"let g:fern#renderer = "nerdfont"
 
 " Palette
 augroup my-glyph-palette
