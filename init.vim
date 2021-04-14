@@ -33,12 +33,13 @@ nnoremap <silent> <C-up> :wincmd k<CR>
 nnoremap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 "Themes
+Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 "Light Line
  Plug 'itchyny/lightline.vim'
  Plug 'itchyny/vim-gitbranch'
@@ -109,6 +110,7 @@ nnoremap <leader>bd :bdelete<CR>
 let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
+"let ayucolor="dark" 
 colorscheme gruvbox-material
 "-------------------------------------------------AIRLINE CONFIG
 let g:lightline = {
@@ -218,28 +220,28 @@ let g:fern#default_hidden= 1
 let g:fern#default_exclude='node_modules'
 
 function! FernInit() abort
-  nnoremap <buffer><expr>
+  nmap <buffer><expr>
         \ <Plug>(fern-my-open-expand-collapse)
         \ fern#smart#leaf(
         \   "\<Plug>(fern-action-open:select)",
         \   "\<Plug>(fern-action-expand)",
         \   "\<Plug>(fern-action-collapse)",
         \ )
-  nnoremap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nnoremap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nnoremap <buffer> n <Plug>(fern-action-new-path)
-  nnoremap <buffer> d <Plug>(fern-action-remove)
-  nnoremap <buffer> t <Plug>(fern-action-trash)
-  nnoremap <buffer> m <Plug>(fern-action-move)
-  nnoremap <buffer> s <Plug>(fern-action-mark:set)
-  nnoremap <buffer> r <Plug>(fern-action-rename)
-  nnoremap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nnoremap <buffer> R <Plug>(fern-action-reload)
-  nnoremap <buffer> y <Plug>(fern-action-yank)
-  nnoremap <buffer> b <Plug>(fern-action-open:split)
-  nnoremap <buffer> v <Plug>(fern-action-open:vsplit)
-  nnoremap <buffer><nowait> u <Plug>(fern-action-leave)
-  nnoremap <buffer><nowait> c <Plug>(fern-action-enter)
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> t <Plug>(fern-action-trash)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> s <Plug>(fern-action-mark:set)
+  nmap <buffer> r <Plug>(fern-action-rename)
+  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
+  nmap <buffer> R <Plug>(fern-action-reload)
+  nmap <buffer> y <Plug>(fern-action-yank)
+  nmap <buffer> b <Plug>(fern-action-open:split)
+  nmap <buffer> v <Plug>(fern-action-open:vsplit)
+  nmap <buffer><nowait> u <Plug>(fern-action-leave)
+  nmap <buffer><nowait> c <Plug>(fern-action-enter)
 endfunction
 
 augroup FernGroup
@@ -251,7 +253,7 @@ augroup END
 let g:cursorhold_updatetime = 100
 
 " Devicoins
-"let g:fern#renderer = "nerdfont"
+let g:fern#renderer = "nerdfont"
 
 " Palette
 augroup my-glyph-palette
@@ -283,6 +285,14 @@ let g:blamer_enabled = 1
 let g:multi_cursor_use_default_mapping=1
 
 "----------------------------------MARKDOWN PREVIEW
-nnoremap <C-s> <Plug>MarkdownPreview
+
+nmap <C-s> <Plug>MarkdownPreview
 nnoremap <M-s> <Plug>MarkdownPreviewStop
 nnoremap <C-p> <Plug>MarkdownPreviewToggle
+
+"---------------------------------FLOATERM
+
+nnoremap <leader>t :FloatermToggle<CR>
+nnoremap <leader>tt :FloatermKill<CR>
+
+"---------------------------------------------END FILE
