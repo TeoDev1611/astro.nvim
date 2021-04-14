@@ -81,10 +81,9 @@ Plug 'APZelos/blamer.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "UTILITIES
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 "TERMINAL
 Plug 'voldikss/vim-floaterm'
- call plug#end()
+call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 "ENCODING DEV ICONS
 set encoding=UTF-8
