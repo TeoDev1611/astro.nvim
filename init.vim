@@ -31,6 +31,7 @@ call plug#begin()
 
 "Themes
 Plug 'ayu-theme/ayu-vim'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 "Indent Line
@@ -98,11 +99,11 @@ let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
  let g:gruvbox_material_disable_italic_comment = 1
 "let ayucolor="dark" 
-colorscheme gruvbox-material
+colorscheme spaceduck
 
 "-------------------------------------------------LIGHTLINE CONFIG
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
+      \ 'colorscheme': 'spaceduck',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
