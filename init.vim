@@ -16,22 +16,19 @@ set laststatus=2
 set backspace=2
 set guioptions-=T
 set guioptions-=L
-
-"Exit insert Mode
 imap jk <Esc>
 imap <C-c> <Esc>l
-"Move Code Blocks in V mode and V-LINE
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv 
-"INDENTATION
 vnoremap < <gv
 vnoremap > >gv
-"MOVE IN BUFFERS
 nnoremap <silent> <C-left> :wincmd h<CR>
 nnoremap <silent> <C-right> :wincmd l<CR>
 nnoremap <silent> <C-up> :wincmd k<CR>
 nnoremap <silent> <C-down> :wincmd j<CR>
+
 call plug#begin()
+
 "Themes
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
@@ -66,13 +63,6 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'vim-ruby/vim-ruby'
 "RAINBOW PARENTHESIS
 Plug 'kien/rainbow_parentheses.vim'
- " Fern
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
 "MULTIPLY CURSORS
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "VIM GITLENS
@@ -83,24 +73,21 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'tpope/vim-fugitive'
 "TERMINAL
 Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
-"ENCODING DEV ICONS
+
 set encoding=UTF-8
-"SAVE FILE
 nnoremap <leader>w :w <CR>
-"CLOSE WINDOWS
 nnoremap <C-w> :q <CR>
 nnoremap <leader>q :q <CR>
-"UPDATE
 nnoremap <leader>so :so%<CR>
-
-"BUFFERS
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <leader>bd :bdelete<CR>
 
 "---------------------------------------------THEME CONFIG
+
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -109,9 +96,11 @@ nnoremap <leader>bd :bdelete<CR>
 let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
+ let g:gruvbox_material_disable_italic_comment = 1
 "let ayucolor="dark" 
 colorscheme gruvbox-material
-"-------------------------------------------------AIRLINE CONFIG
+
+"-------------------------------------------------LIGHTLINE CONFIG
 let g:lightline = {
       \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
@@ -122,12 +111,20 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'gitbranch#name'
       \ },
+      \ 'tab_component_function': {
+      \   'tabnum': 'LightlineWebDevIcons',
+      \ },
       \ }
-set showtabline=2
-set noshowmode
-"register compoments:
-call lightline#coc#register()
 
+function! LightlineWebDevIcons(n)
+  let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
+  return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr))
+endfunction
+set showtabline=2
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#enable_nerdfont = 1
+set noshowmode
+call lightline#coc#register()
 "------------------------------------------------VIML CONFIG
 
 let g:markdown_fenced_languages = [
@@ -188,93 +185,72 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:indentLine_char_list = ['|', '¦']
 
-"------------------------------------------------FERN CONFIG
-" Disable netrw.
+"------------------------------------------------COC EXPLORER CONFIG
+let g:coc_global_extensions = [
+ \ "coc-explorer",
+ \]
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '%USERPROFILE%\AppData\Local\nvim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '%USERPROFILE%\AppData\Local\nvim\coc-settings.json',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
+
 let g:loaded_netrw  = 1
 let g:loaded_netrwPlugin = 1
 let g:loaded_netrwSettings = 1
 let g:loaded_netrwFileHandlers = 1
 
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
+function! AuCocNvimInit()
+    if @% == '' || @% == '.'
+      exe ':CocCommand explorer'
+    endif
 endfunction
 
-" Custom settings and mappings.
-let g:fern#disable_default_mappings = 1
-
-" not-hidden
-let g:fern#default_hidden= 1
-
-" exclude
-let g:fern#default_exclude='node_modules'
-
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> t <Plug>(fern-action-trash)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> s <Plug>(fern-action-mark:set)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> y <Plug>(fern-action-yank)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> u <Plug>(fern-action-leave)
-  nmap <buffer><nowait> c <Plug>(fern-action-enter)
-endfunction
-
-augroup FernGroup
+augroup MyCocExplorer
   autocmd!
-  autocmd FileType fern call FernInit()
+  autocmd FileType coc-explorer setl statusline=File-Explorer
+  autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+  autocmd BufEnter * if bufname('#') =~# "\[coc-explorer\]-." && winnr('$') > 1 | b# | endif
+  autocmd User CocNvimInit call AuCocNvimInit()
+  autocmd User CocExplorerOpenPost let dir = getcwd() | call CocActionAsync("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
 augroup END
 
-" Fixer
-let g:cursorhold_updatetime = 100
-
-" Devicoins
-let g:fern#renderer = "nerdfont"
-
-" Palette
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
-
-" Disable listing ignored files/directories
-let g:fern_git_status#disable_ignored = 1
-
-" Disable listing untracked files
-let g:fern_git_status#disable_untracked = 1
-
-" Disable listing status of submodules
-let g:fern_git_status#disable_submodules = 1
-
-" Disable listing status of directories
-let g:fern_git_status#disable_directories = 1
-
-map <silent><C-m> :Fern . -reveal=%<CR>
-noremap <leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>=
+nnoremap <leader>n :CocCommand explorer<CR>
 "------------------------------------VIM - GITLENS
 
 let g:blamer_enabled = 1
@@ -294,4 +270,3 @@ nnoremap <C-p> <Plug>MarkdownPreviewToggle
 nnoremap <leader>t :FloatermToggle<CR>
 nnoremap <leader>tt :FloatermKill<CR>
 
-"---------------------------------------------END FILE
