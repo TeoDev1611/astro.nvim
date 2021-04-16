@@ -1,23 +1,30 @@
 { 
  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "python", "javascript","c++"],
- // coc-explorer
+  // coc-explorer
+  "explorer.openAction.for.directory": "expandOrCollapse",
+  "explorer.git.icon.status.added": "✚",
+  "explorer.git.icon.status.deleted": "✖",
+  "explorer.git.icon.status.renamed": "➜",
+  "explorer.git.icon.status.unmerged": "≠",
+  "explorer.git.icon.status.untracked": "?",
+  "explorer.git.icon.status.modified": "✹",
+  "explorer.git.icon.status.ignored": "☒",
+  "explorer.git.icon.status.mixed": "*",
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": true,
   "explorer.file.showHiddenFiles": false,
   "explorer.file.column.clip.copy": "",
   "explorer.file.column.clip.cut": "",
-  "explorer.width": 30,
+  "explorer.width": 25,
   "explorer.file.hiddenRules": {
     "extensions": ["o", "a", "obj", "pyc"],
     "filenames": ["\\.byebug+", "\\.DS_Store|"],
     "patternMatches": ["^\\.git$", "^\\node_modules$", "^\\plugged$"]
   },
   "explorer.keyMappings.global": {
-    //"i": false, // cancel default mapkey
-
+    // "i": false, // cancel default mapkey
     "s": "toggleSelection",
     "<tab>": "actionMenu",
-
     "gk": ["wait", "expandablePrev"],
     "gj": ["wait", "expandableNext"],
     "h": ["wait", "collapse"],
@@ -46,7 +53,6 @@
     //"Ic": "previewOnHover:toggle:content",
     "Ic": false,
     "II": "previewOnHover:disable",
-
     "yp": "copyFilepath",
     "yn": "copyFilename",
     "yy": "copyFile",
@@ -54,41 +60,31 @@
     "p": "pasteFile",
     "t": "delete",
     "d": "deleteForever",
-
     "n": "addFile",
     "N": "addDirectory",
     "r": "rename",
     "m": "rename",
-
     "<dot>": "toggleHidden",
     "R": "refresh",
-
     "?": "help",
     "q": "quit",
     "<esc>": "esc",
     "X": "systemExecute",
     "gd": "listDrive",
-
     "f": "search",
     "F": "searchRecursive",
-
     "gf": "gotoSource:file",
     "gb": "gotoSource:buffer",
-
     "[[": ["wait", "sourcePrev"],
     "]]": ["wait", "sourceNext"],
-
     "[i": ["wait", "indentPrev"],
     "]i": ["wait", "indentNext"],
-
     "[m": ["wait", "markPrev:modified"],
     "]m": ["wait", "markNext:modified"],
-
     "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
     "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
     "[D": ["wait", "markPrev:diagnosticError"],
     "]D": ["wait", "markNext:diagnosticError"],
-
     "gp": ["wait", "markPrev:git"],
     "gn": ["wait", "markNext:git"],
     "ga": "gitStage",
@@ -96,7 +92,41 @@
   },
   "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
   "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
-  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]"
+  "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+
+  // suggest
+  "suggest.completionItemKindLabels": {
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": " פּ ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  "
+  },
+
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "●",
+  "diagnostic.hintSign": "○"
 }
 
 
