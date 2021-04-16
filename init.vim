@@ -187,15 +187,12 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:indentLine_char_list = ['|', '¦']
 
 "------------------------------------------------COC EXPLORER CONFIG
-let g:coc_global_extensions = [
- \ "coc-explorer",
- \]
 let g:coc_explorer_global_presets = {
 \   '.vim': {
-\     'root-uri': '%USERPROFILE%\AppData\Local\nvim',
+\     'root-uri': '~/.vim',
 \   },
 \   'cocConfig': {
-\      'root-uri': '%USERPROFILE%\AppData\Local\nvim\coc-settings.json',
+\      'root-uri': '~/.config/coc',
 \   },
 \   'tab': {
 \     'position': 'tab',
@@ -231,6 +228,7 @@ let g:coc_explorer_global_presets = {
 \ }
 
 
+" Disable netrw.
 let g:loaded_netrw  = 1
 let g:loaded_netrwPlugin = 1
 let g:loaded_netrwSettings = 1
@@ -244,14 +242,22 @@ endfunction
 
 augroup MyCocExplorer
   autocmd!
+  " set window status line
   autocmd FileType coc-explorer setl statusline=File-Explorer
+ " quit explorer whein it's the last
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+  " Make sure nothing opened in coc-explorer buffer
   autocmd BufEnter * if bufname('#') =~# "\[coc-explorer\]-." && winnr('$') > 1 | b# | endif
+ " open if directory specified or if buffer empty
   autocmd User CocNvimInit call AuCocNvimInit()
+  " cd after open
   autocmd User CocExplorerOpenPost let dir = getcwd() | call CocActionAsync("runCommand", "explorer.doAction", "closest", {"name": "cd", "args": [dir]})
 augroup END
 
+nmap <space>f :CocCommand explorer --preset floating<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 nnoremap <leader>n :CocCommand explorer<CR>
+au VimEnter * :if bufname()=='' | call execute('CocCommand explorer') | endif
 "------------------------------------VIM - GITLENS
 
 let g:blamer_enabled = 1
