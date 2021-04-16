@@ -99,11 +99,11 @@ let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
  let g:gruvbox_material_disable_italic_comment = 1
 "let ayucolor="dark" 
-colorscheme spaceduck
+colorscheme gruvbox-material
 
 "-------------------------------------------------LIGHTLINE CONFIG
 let g:lightline = {
-      \ 'colorscheme': 'spaceduck',
+      \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -196,10 +196,10 @@ let g:loaded_matchit = 1
 
 let g:coc_explorer_global_presets = {
 \   '.vim': {
-\     'root-uri': '~/.vim',
+\     'root-uri': '%APPDATA%\Local\nvim',
 \   },
 \   'cocConfig': {
-\      'root-uri': '~/.config/coc',
+\      'root-uri': '%APPDATA%\Local\nvim\coc-settings.json',
 \   },
 \   'tab': {
 \     'position': 'tab',
