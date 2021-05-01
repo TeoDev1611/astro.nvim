@@ -8,6 +8,7 @@ set clipboard=unnamed
 set background=dark
 set fileencoding=utf-8
 set showcmd
+set autowrite
 set ruler
 set showmatch
 set sw=2
@@ -24,20 +25,21 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap <silent> <C-left> :wincmd h<CR>
 nnoremap <silent> <C-right> :wincmd l<CR>
-nnoremap <silent> <C-up> :wincmd k<CR>
+nnoremap <silent> <C-up> :wincmd k<CR> 
 nnoremap <silent> <C-down> :wincmd j<CR>
 call plug#begin()
 
 "Themes
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 "Indent Line
 Plug 'Yggdroot/indentLine'
 "ICONS
 Plug 'ryanoasis/vim-devicons'
-"Light Line
- Plug 'itchyny/lightline.vim'
- Plug 'itchyny/vim-gitbranch'
+"Lightline
+Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 Plug 'josa42/vim-lightline-coc'
 "COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -53,31 +55,21 @@ Plug 'rust-lang/rust.vim'
 Plug 'jeetsukumaran/vim-pythonsense'
 "vim go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"SEMSHI PYTHON
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
-"RUBY
-Plug 'vim-ruby/vim-ruby'
 "RAINBOW PARENTHESIS
 Plug 'kien/rainbow_parentheses.vim'
 "MULTIPLY CURSORS
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-"VIM GITLENS
-Plug 'APZelos/blamer.nvim'
 "UTILITIES
 Plug 'tpope/vim-fugitive'
 "TERMINAL
 Plug 'voldikss/vim-floaterm'
- " Fern
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-" FZF
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"Clap Filer
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } }
+"NIM LANG
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 "--------------------------------------------SHORTCUTS PLUGINS AND VIM
 
@@ -92,15 +84,16 @@ nnoremap <leader>bd :bdelete<CR>
 
 "---------------------------------------------THEME CONFIG
 
-    if exists('+termguicolors')
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-      set termguicolors
-    endif
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
- let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox-material
 
 "-------------------------------------------------LIGHTLINE CONFIG
@@ -145,7 +138,7 @@ let g:lightline = {
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 let g:lightline#hunks#hunk_symbols = [ '+', '~', '-' ]
 let g:lightline#hunks#only_branch = 1
-let g:lightline#hunks#exclude_filetypes = [ 'fern' , 'startify', 'nerdtree', 'vista_kind', 'tagbar'  ]
+let g:lightline#hunks#exclude_filetypes = [ 'fern' ]
 function! LightlineReadonly()
     return &readonly && &filetype !=# 'help' ? '' : ''
 endfunction
@@ -180,7 +173,7 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "-------------------------------------------GLOBAL COC EXPLORER EXTENSIONS
 
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright', 'coc-git']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-pyright', 'coc-explorer']
 
 "-------------------------------------------------RAINBOW PARENTHESIS
 
@@ -208,136 +201,87 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-"------------------------------------------------INDENT LINE
-
-let g:indentLine_char_list = ['|', '¦']
-
-"------------------------------------------------FERN EXPLORER CONFIG
-
+"------------------------------------------------COC EXPLORER CONFIG
+" Disable netrw.
 let g:loaded_netrw  = 1
 let g:loaded_netrwPlugin = 1
 let g:loaded_netrwSettings = 1
 let g:loaded_netrwFileHandlers = 1
+let g:loaded_matchit = 1
 
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '%APPDATA%\Local\nvim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '%APPDATA%\Local\nvim\coc-settings.json',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\   'git': {
+\     'sources': [{'name': 'git', 'expand': v:true}]
+\   },
+\ }
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+augroup coc-explorer
+  if @% == '' || @% == '.'
+    autocmd User CocNvimInit bd
+    autocmd User CocNvimInit CocCommand explorer
   endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
-endfunction
-
-" Custom settings and mappings.
-let g:fern#disable_default_mappings = 1
-
-" not-hidden
-let g:fern#default_hidden= 1
-
-" exclude
-let g:fern#default_exclude='node_modules'
-
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> t <Plug>(fern-action-trash)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> s <Plug>(fern-action-mark:set)
-  nmap <buffer> r <Plug>(fern-action-rename)
-  nmap <buffer> h <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> R <Plug>(fern-action-reload)
-  nmap <buffer> y <Plug>(fern-action-yank)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> u <Plug>(fern-action-leave)
-  nmap <buffer><nowait> c <Plug>(fern-action-enter)
-endfunction
-
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
 augroup END
-
-" Fixer
-let g:cursorhold_updatetime = 100
-
-" Devicoins
-let g:fern#renderer = "nerdfont"
-
-" Palette
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
-augroup END
-" Disable listing ignored files/directories
-let g:fern_git_status#disable_ignored = 1
-
-" Disable listing untracked files
-let g:fern_git_status#disable_untracked = 1
-
-" Disable listing status of submodules
-let g:fern_git_status#disable_submodules = 1
-
-" Disable listing status of directories
-let g:fern_git_status#disable_directories = 1
-
-noremap <silent> <C-m> :Fern . -reveal=%<CR>
-nmap <leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
-
-
-
-"------------------------------------INDENT LINE
-
-let g:indentLine_char_list = ['|', '¦']
-
-"------------------------------------VIM - GITLENS
-
-let g:blamer_enabled = 1
-
-"-----------------------------------VIM MULTIPLY CURSORS
-
+if exists('#User#CocGitStatusChange')
+  doautocmd <nomodeline> User CocGitStatusChange
+endif
+nnoremap <leader>n :CocCommand explorer<CR>
+nnoremap <leader>p :CocCommand explorer --preset floating<CR> 
+"----------config
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:multi_cursor_use_default_mapping=1
-
-"---------------------------------FLOATERM
 
 nnoremap <leader>t :FloatermToggle<CR>
 
 "------------------------------VIM GOLANG
 
-filetype plugin indent on
-
-set autowrite
-
-"Go syntax highlighting
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 
-" Auto formatting and importing
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 
-" Status line types/signatures
 let g:go_auto_type_info = 1
 
-" Run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
@@ -347,23 +291,31 @@ function! s:build_go_files()
   endif
 endfunction
 
-" Map keys for most used commands.
-" Ex: `\b` for building, `\r` for running and `\b` for running test.
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
+"----------------------------------------------------- VIM CLAP
 
+let g:clap_popup_cursor_shape       = ''
+let g:clap_enable_background_shadow = v:true
+let g:clap_current_selection_sign   = { 'text': '» ', 'texthl': 'ClapCurrentSelectionSign', 'linehl': 'ClapCurrentSelection' }
+let g:clap_selected_sign            = { 'text': ' »', 'texthl': 'ClapSelectedSign', 'linehl': 'ClapSelected' }
+let g:clap_prompt_format            = ' %spinner%%forerunner_status%%provider_id%:'
+let g:clap_insert_mode_only   = v:true
+let g:clap_disable_run_rooter = v:true
+let g:clap_spinner_winid = 1011
 
-"---------------------------------------- TELESCOPE
+nnoremap <leader>f :Clap filer<CR>
+nnoremap <leader>c :Clap gfiles<CR>
+nnoremap <leader>m :Clap commits<CR>
 
-lua << EOF
+"-------------------------------------------------- NIM
 
-local cmd = vim.cmd
+set hidden
 
-cmd("nnoremap <leader>f :Telescope file_browser<CR>")
-cmd("nnoremap <leader>fb :Telescope git_branches<CR>")
-cmd("nnoremap <leader>fc :Telescope git_commits<CR>")
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
-EOF
-
+let g:LanguageClient_serverCommands = {
+\   'nim': ['~/.nimble/bin/nimlsp'],
+\ }
