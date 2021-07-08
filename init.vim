@@ -1,4 +1,9 @@
-" MANAGER CONFIGS
+
+"------------------------------------------------------------------------------"
+"                                    NEOTEO                                    "
+"------------------------------------------------------------------------------"
+
+"MANAGER CONFIGS
 source ~/AppData/Local/nvim/manager.vim
 " CORE SETTINGS
 source ~/AppData/Local/nvim/core/sets.vim
