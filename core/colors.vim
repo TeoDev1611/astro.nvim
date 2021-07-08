@@ -4,7 +4,14 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-"Gruvbox
+autocmd ColorScheme * highlight CocErrorFloat guifg=#ffffff
+autocmd ColorScheme * highlight CocInfoFloat guifg=#ffffff
+autocmd ColorScheme * highlight CocWarningFloat guifg=#ffffff
+autocmd ColorScheme * highlight SignColumn guibg=#adadad
+
+let g:gruvbox_contrast_dark = 'hard'
+
+"Gruvbox Material
 let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_cursor = 'orange'
 let g:gruvbox_material_background = 'hard'
@@ -14,4 +21,4 @@ let g:material_style = "deep ocean"
 let g:material_italic_comments = v:true
 let g:material_italic_keywords = v:true
 let g:material_italic_functions = v:true
-colorscheme material
+colorscheme gruvbox 

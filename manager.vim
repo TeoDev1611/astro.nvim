@@ -13,7 +13,6 @@ call dein#begin('~\.cache\dein')
 call dein#add('Shougo/dein.vim')
 call dein#add('wsdjeg/dein-ui.vim') " Dein UI
 call dein#add('sainnhe/gruvbox-material') " Theme
-call dein#add('hoob3rt/lualine.nvim') " Status Bar
 call dein#add('jiangmiao/auto-pairs') " Close Brackets
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('tpope/vim-fugitive')
@@ -22,6 +21,18 @@ call dein#add('preservim/nerdcommenter')
 call dein#add('marko-cerovac/material.nvim')
 call dein#add('folke/which-key.nvim')
 call dein#add('editorconfig/editorconfig-vim')
+call dein#add('fatih/vim-go')
+call dein#add('rust-lang/rust.vim')
+call dein#add('elixir-editors/vim-elixir')
+call dein#add('mhinz/vim-mix-format')
+call dein#add('junegunn/goyo.vim')
+call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+call dein#add('kyazdani42/nvim-web-devicons')
+call dein#add('hoob3rt/lualine.nvim')
+call dein#add('rktjmp/lush.nvim')
+call dein#add('npxbr/gruvbox.nvim')
+call dein#add('cometsong/CommentFrame.vim')
+call dein#add('liuchengxu/vim-clap',  {'hook_post_update': 'Clap install-binary!'})
 
 call dein#end()
 "END LOAD PLUGIN FUNCTION
