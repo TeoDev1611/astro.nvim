@@ -94,9 +94,6 @@ call dein#add('cometsong/CommentFrame.vim', {
         \'on_cmd': s:prefix('Comment', ['FrameSlashes','FrameSlashStar', 'FrameHashDash', 'FrameHashEqual',  'FrameQuoteDash', 'FrameQuoteTilde'])
 	\}) " Beautifull Comment sections
 call dein#add('RRethy/vim-illuminate') " Let the light be made highlight the words
-call dein#add('airblade/vim-gitgutter', {
-    \ 'if': has('signs') && s:has_exec('git'),
-\ }) " Git Information
 call dein#add('ambv/black', {
     \ 'if': v:version >= 704 && has('python3') && s:has_exec('black'),
     \ 'on_cmd': 'Black',
@@ -129,5 +126,8 @@ call dein#add('tweekmonster/startuptime.vim', {
 call dein#add('kyazdani42/nvim-tree.lua', {
     \ 'on_cmd': ['NvimTreeToggle', 'NvimTreeFindFile']
 \}) " For the aesthetics tree toggle with the lua power
+call dein#add('mg979/vim-visual-multi', {
+    \ 'on_map': '<C-n>',
+\ }) " Multiple cursors your a octoman
 
 call dein#end()
