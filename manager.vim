@@ -7,14 +7,17 @@
 "                               Utils for manager                              "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
+" Prefix your commands
 function! s:prefix(str, args) abort
     return map(a:args, {_, s -> a:str . s})
 endfunction
 
+" Same as prefix but after :)
 function! s:suffix(str, args) abort
     return map(a:args, {_, s -> s . a:str})
 endfunction
 
+" Caching the executable function
 let s:has_exec_cache = {}
 function! s:has_exec(command) abort
     if !has_key(s:has_exec_cache, a:command)
