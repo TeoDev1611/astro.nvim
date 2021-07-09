@@ -125,5 +125,8 @@ call dein#add('glepnir/dashboard-nvim')
 call dein#add('tweekmonster/startuptime.vim', {
     \ 'on_cmd': 'StartupTime',
 \ })
+call dein#add('kyazdani42/nvim-tree.lua', {
+    \ 'on_cmd': ['NvimTreeToggle', 'NvimTreeFindFile']
+\})
 
 call dein#end()

@@ -19,3 +19,4 @@ source ~/AppData/Local/nvim/oldschool/langs/go.vim
 "NEW WORLD SETTINGS
 source ~/Appdata/local/nvim/newWorld/statusline.lua
 source ~/Appdata/local/nvim/newWorld/treesitter.lua
+source ~/Appdata/local/nvim/newWorld/tree.lua
