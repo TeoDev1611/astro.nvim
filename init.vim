@@ -13,6 +13,7 @@ source ~/AppData/Local/nvim/core/maps.vim
 source ~/AppData/Local/nvim/oldschool/dein.vim
 source ~/AppData/Local/nvim/oldschool/coc.vim
 source ~/AppData/Local/nvim/oldschool/fzf.vim
+source ~/AppData/Local/nvim/oldschool/dashboard.vim
 "Langs
 source ~/AppData/Local/nvim/oldschool/langs/go.vim
 "NEW WORLD SETTINGS

@@ -43,13 +43,11 @@ call dein#add('wsdjeg/dein-ui.vim', {
       \ 'on_cmd': 'DeinUpdate'
       \}) " Dein UI
 call dein#add('sainnhe/gruvbox-material') " Theme
-call dein#add('jiangmiao/auto-pairs', {
-  \ 'on_event': 'InsertEnter',
-  \}) " Close Brackets
+call dein#add('jiangmiao/auto-pairs') " Close Brackets
 call dein#add('tpope/vim-fugitive', {
     \ 'if': s:has_exec('git'),
 \ })
-call dein#add('neoclide/coc.nvim', { 
+call dein#add('neoclide/coc.nvim', {
       \'merged': 0,
       \  'if':  s:has_exec('node') && s:has_exec('git'),
       \})
@@ -114,10 +112,18 @@ call dein#add('junegunn/fzf', {
 call dein#add('junegunn/fzf.vim', {
     \ 'depends': 'fzf',
     \ 'if': s:has_exec('fzf'),
-    \ 'on_cmd': s:prefix(
-    \   'FZF',
-    \   ['Ag', 'Buffers', 'Colors', 'Commands', 'Files', 'GFiles',
-    \    'History', 'Lines', 'Maps', 'Marks', 'Snippets', 'Windows']),
+\ })
+call dein#add('chengzeyi/fzf-preview.vim')
+call dein#add('mbbill/undotree', {
+    \ 'if': v:version >= 700,
+    \ 'on_cmd': 'UndotreeToggle',
+\ })
+call dein#add('rbtnn/vim-vimscript_indentexpr', {
+      \'on_ft':'vim'
+      \})
+call dein#add('glepnir/dashboard-nvim')
+call dein#add('tweekmonster/startuptime.vim', {
+    \ 'on_cmd': 'StartupTime',
 \ })
 
 call dein#end()
