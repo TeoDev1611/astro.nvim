@@ -106,6 +106,18 @@ call dein#add('bitc/vim-bad-whitespace', {
     \ 'on_cmd': s:suffix('BadWhitespace', ['Erase', 'Hide', 'Toggle']),
     \ 'on_event': 'InsertEnter',
 \ })
-
+call dein#add('junegunn/fzf', {
+    \ 'if': s:has_exec('fzf'),
+    \ 'on_cmd': 'FZF',
+    \ 'on_func': 'fzf#run',
+\ })
+call dein#add('junegunn/fzf.vim', {
+    \ 'depends': 'fzf',
+    \ 'if': s:has_exec('fzf'),
+    \ 'on_cmd': s:prefix(
+    \   'FZF',
+    \   ['Ag', 'Buffers', 'Colors', 'Commands', 'Files', 'GFiles',
+    \    'History', 'Lines', 'Maps', 'Marks', 'Snippets', 'Windows']),
+\ })
 
 call dein#end()

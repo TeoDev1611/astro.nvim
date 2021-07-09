@@ -12,9 +12,9 @@ source ~/AppData/Local/nvim/core/maps.vim
 "OLD SCHOOL SETTINGS
 source ~/AppData/Local/nvim/oldschool/dein.vim
 source ~/AppData/Local/nvim/oldschool/coc.vim
+source ~/AppData/Local/nvim/oldschool/fzf.vim
 "Langs
 source ~/AppData/Local/nvim/oldschool/langs/go.vim
 "NEW WORLD SETTINGS
 source ~/Appdata/local/nvim/newWorld/statusline.lua
-source ~/Appdata/local/nvim/newWorld/wichkey.lua
 source ~/Appdata/local/nvim/newWorld/treesitter.lua
