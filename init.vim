@@ -3,7 +3,7 @@
 "                                    NEOTEO                                    "
 "------------------------------------------------------------------------------"
 
-"MANAGER CONFIGS
+"Load the Plugis you not are a crazy man or yes?
 source ~/AppData/Local/nvim/manager.vim
 " CORE SETTINGS
 source ~/AppData/Local/nvim/core/sets.vim
