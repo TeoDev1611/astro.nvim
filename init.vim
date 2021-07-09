@@ -10,7 +10,6 @@ source ~/AppData/Local/nvim/core/sets.vim
 source ~/AppData/Local/nvim/core/colors.vim
 source ~/AppData/Local/nvim/core/maps.vim
 "OLD SCHOOL SETTINGS
-source ~/AppData/Local/nvim/oldschool/ctrlp.vim
 source ~/AppData/Local/nvim/oldschool/dein.vim
 source ~/AppData/Local/nvim/oldschool/coc.vim
 "Langs

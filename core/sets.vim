@@ -1,5 +1,6 @@
 " Syntax and plugin config
 syntax on
+syntax enable
 filetype plugin indent on
 "Sets
 set encoding=UTF-8
