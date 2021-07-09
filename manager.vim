@@ -129,5 +129,6 @@ call dein#add('kyazdani42/nvim-tree.lua', {
 call dein#add('mg979/vim-visual-multi', {
     \ 'on_map': '<C-n>',
 \ }) " Multiple cursors your a octoman
+call dein#add('tpope/vim-vinegrar') " Delicious Salad with vinegrar
 
 call dein#end()
