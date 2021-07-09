@@ -130,5 +130,6 @@ call dein#add('mg979/vim-visual-multi', {
     \ 'on_map': '<C-n>',
 \ }) " Multiple cursors your a octoman
 call dein#add('tpope/vim-vinegrar') " Delicious Salad with vinegrar
+call dein#add('psliwka/vim-smoothie') " Beautifull scroll for the aesthetics
 
 call dein#end()
