@@ -25,6 +25,6 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "Close a buffer
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>n :Lexplore<CR>
-nnoremap <silent> <C-n> :Explore<CR>
+nnoremap <silent> <C-Mx> :Explore<CR>
 nnoremap <leader>m :NvimTreeToggle<CR>
 nnoremap <C-m> :NvimTreeFindFile<CR>

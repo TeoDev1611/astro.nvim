@@ -46,12 +46,9 @@ call dein#add('wsdjeg/dein-ui.vim', {
       \ 'on_cmd': 'DeinUpdate'
       \}) " Dein Update UI
 call dein#add('jiangmiao/auto-pairs') " Close Brackets
-call dein#add('tpope/vim-fugitive', {
-    \ 'if': s:has_exec('git'),
-\ }) " Git integration
+call dein#add('tpope/vim-fugitive') " Git integration
 call dein#add('neoclide/coc.nvim', {
       \'merged': 0,
-      \  'if':  s:has_exec('node') && s:has_exec('git'),
       \}) " Intellj Sense
 call dein#add('tpope/vim-commentary', {
     \ 'on_cmd': 'Commentary',
@@ -62,25 +59,20 @@ call dein#add('folke/which-key.nvim', {
       \ 'on_cmd':'WhichKey',
       \}) " Help panel for the commands
 call dein#add('editorconfig/editorconfig-vim', {
-    \ 'if': has('pythonx'),
     \ 'on_event': 'InsertEnter',
     \ 'on_path': '.editorconfig',
 \ }) " Editor Config Files
 call dein#add('fatih/vim-go', {
       \  'on_ft': 'go',
-      \  'if': s:has_exec('go') && s:has_exec('git'),
       \}) " Golang setup
 call dein#add('rust-lang/rust.vim', {
       \  'on_ft': 'rust',
-      \  'if': s:has_exec('rustc') &&  s:has_exec('cargo') && s:has_exec('git'),
       \}) " RustLang setup
 call dein#add('elixir-editors/vim-elixir', {
       \  'on_ft': 'elixir',
-      \   'if': s:has_exec('mix') && s:has_exec('elixir') && s:has_exec('git'),
       \}) " Elixir Setup
 call dein#add('mhinz/vim-mix-format', {
       \  'on_ft': 'elixir',
-      \   'if': s:has_exec('mix') && s:has_exec('elixir') && s:has_exec('git'),
       \}) " Mix Elixir Formatter
 call dein#add('junegunn/goyo.vim', {
       \ 'on_cmd':  'Goyo',
@@ -95,7 +87,6 @@ call dein#add('cometsong/CommentFrame.vim', {
 	\}) " Beautifull Comment sections
 call dein#add('RRethy/vim-illuminate') " Let the light be made highlight the words
 call dein#add('ambv/black', {
-    \ 'if': v:version >= 704 && has('python3') && s:has_exec('black'),
     \ 'on_cmd': 'Black',
     \ 'on_ft': 'python',
 \ }) " Python Formmatter black for everyone
@@ -104,16 +95,13 @@ call dein#add('bitc/vim-bad-whitespace', {
     \ 'on_event': 'InsertEnter',
 \ }) " Show the bad whitespace good boy
 call dein#add('junegunn/fzf', {
-    \ 'if': s:has_exec('fzf'),
     \ 'on_cmd': 'FZF',
     \ 'on_func': 'fzf#run',
 \ }) " Fuzzy search yeah the clasic FZF
 call dein#add('junegunn/fzf.vim', {
     \ 'depends': 'fzf',
-    \ 'if': s:has_exec('fzf'),
 \ }) " More FZF with turbo vim power epic!
 call dein#add('mbbill/undotree', {
-    \ 'if': v:version >= 700,
     \ 'on_cmd': 'UndotreeToggle',
 \ }) " Undo tree be improved for the history
 call dein#add('rbtnn/vim-vimscript_indentexpr', {
