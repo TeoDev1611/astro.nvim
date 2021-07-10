@@ -1,4 +1,4 @@
-# NEOTEO DEIN VERSION
+# **UNSTABLE** NEOTEO DEIN VERSION
 
 The neovim configuration based on dein install the manager [here](https://github.com/Shougo/dein.vim)
 
