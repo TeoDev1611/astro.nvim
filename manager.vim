@@ -37,7 +37,7 @@ call plug#begin('~/.cache/plugs')
 Plug 'jiangmiao/auto-pairs' " Close Brackets
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellj Sense
-Plug 'tpope/vim-commentary', {'on': 'Commentary'}
+Plug 'tpope/vim-commentary'
 Plug 'marko-cerovac/material.nvim' " For the not Gruvbox Lovers
 Plug 'folke/which-key.nvim', {'on': 'WhichCase'} " Help panel for the commands
 Plug 'editorconfig/editorconfig-vim'
@@ -76,7 +76,6 @@ Plug 'mbbill/undotree', {
 Plug 'rbtnn/vim-vimscript_indentexpr', {
       \'for':'vim'
       \} " Correct indent of the beautifull vim script
-Plug 'glepnir/dashboard-nvim' " A beautiful welcome fit for kings
 Plug 'tweekmonster/startuptime.vim', {
     \ 'on': 'StartupTime',
 \ } " A ms is the live !
@@ -85,5 +84,6 @@ Plug 'kyazdani42/nvim-tree.lua', {
 \} " For the aesthetics tree toggle with the lua power
 Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
 Plug 'psliwka/vim-smoothie' " Beautifull scroll for the aesthetics
-
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'mhinz/vim-startify'
 call plug#end()
