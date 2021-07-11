@@ -5,7 +5,7 @@ source ~/appdata/local/nvim/core/sets.vim
 source ~/appdata/local/nvim/core/colors.vim
 source ~/appdata/local/nvim/core/maps.vim
 "od school settings
-source ~/appdata/local/nvim/oldschool/dein.vim
+" source ~/appdata/local/nvim/oldschool/dein.vim
 source ~/appdata/local/nvim/oldschool/coc.vim
 source ~/appdata/local/nvim/oldschool/fzf.vim
 source ~/appdata/local/nvim/oldschool/dashboard.vim

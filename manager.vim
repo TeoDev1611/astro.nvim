@@ -31,93 +31,59 @@ endfunction
 "                             Plugin Manager start                             "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-" RUNTIMEPATH FOR THE MANAGER
-set runtimepath+=~\.cache\dein\repos\github.com\Shougo\dein.vim
-
 "START LOAD PLUGIN FUNCTION
-call dein#begin('~\.cache\dein')
+call plug#begin('~/.cache/plugs')
 
-call dein#add('Shougo/dein.vim')
-call dein#add('wsdjeg/dein-ui.vim', {
-      \ 'on_cmd': 'DeinUpdate'
-      \}) " Dein Update UI
-call dein#add('jiangmiao/auto-pairs') " Close Brackets
-call dein#add('tpope/vim-fugitive') " Git integration
-call dein#add('neoclide/coc.nvim', {
-      \'merged': 0,
-      \}) " Intellj Sense
-call dein#add('tpope/vim-commentary', {
-    \ 'on_cmd': 'Commentary',
-    \ 'on_map': 'gc',
-\ }) " Comments Easy
-call dein#add('marko-cerovac/material.nvim') " For the not Gruvbox Lovers
-call dein#add('folke/which-key.nvim', {
-      \ 'on_cmd':'WhichKey',
-      \}) " Help panel for the commands
-call dein#add('editorconfig/editorconfig-vim', {
-    \ 'on_event': 'InsertEnter',
-    \ 'on_path': '.editorconfig',
-\ }) " Editor Config Files
-call dein#add('fatih/vim-go', {
-      \  'on_ft': 'go',
-      \}) " Golang setup
-call dein#add('rust-lang/rust.vim', {
-      \  'on_ft': 'rust',
-      \}) " RustLang setup
-call dein#add('elixir-editors/vim-elixir', {
-      \  'on_ft': 'elixir',
-      \}) " Elixir Setup
-call dein#add('mhinz/vim-mix-format', {
-      \  'on_ft': 'elixir',
-      \}) " Mix Elixir Formatter
-call dein#add('junegunn/goyo.vim', {
-      \ 'on_cmd':  'Goyo',
-      \}) " Zen Mode Peace in your heart
-call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'}) " Syntax no more bad themes
-call dein#add('kyazdani42/nvim-web-devicons') " Icons with the Lua Power
-call dein#add('hoob3rt/lualine.nvim') " Status Line Lua Faster
-call dein#add('rktjmp/lush.nvim') " Theme Maker required by Gruvbox
-call dein#add('npxbr/gruvbox.nvim') " Gruvbox theme with lua power
-call dein#add('cometsong/CommentFrame.vim', {
-        \'on_cmd': s:prefix('Comment', ['FrameSlashes','FrameSlashStar', 'FrameHashDash', 'FrameHashEqual',  'FrameQuoteDash', 'FrameQuoteTilde'])
-	\}) " Beautifull Comment sections
-call dein#add('RRethy/vim-illuminate') " Let the light be made highlight the words
-call dein#add('ambv/black', {
-    \ 'on_cmd': 'Black',
-    \ 'on_ft': 'python',
-\ }) " Python Formmatter black for everyone
-call dein#add('bitc/vim-bad-whitespace', {
-    \ 'on_cmd': s:suffix('BadWhitespace', ['Erase', 'Hide', 'Toggle']),
-    \ 'on_event': 'InsertEnter',
-\ }) " Show the bad whitespace good boy
-call dein#add('junegunn/fzf', {
-    \ 'on_cmd': 'FZF',
-    \ 'on_func': 'fzf#run',
-\ }) " Fuzzy search yeah the clasic FZF
-call dein#add('junegunn/fzf.vim', {
-    \ 'depends': 'fzf',
-\ }) " More FZF with turbo vim power epic!
-call dein#add('mbbill/undotree', {
-    \ 'on_cmd': 'UndotreeToggle',
-\ }) " Undo tree be improved for the history
-call dein#add('rbtnn/vim-vimscript_indentexpr', {
-      \'on_ft':'vim'
-      \}) " Correct indent of the beautifull vim script
-call dein#add('glepnir/dashboard-nvim') " A beautiful welcome fit for kings
-call dein#add('tweekmonster/startuptime.vim', {
-    \ 'on_cmd': 'StartupTime',
-\ }) " A ms is the live !
-call dein#add('kyazdani42/nvim-tree.lua', {
-    \ 'on_cmd': ['NvimTreeToggle', 'NvimTreeFindFile']
-\}) " For the aesthetics tree toggle with the lua power
-call dein#add('mg979/vim-visual-multi', {
-    \ 'on_map': '<C-n>',
-\ }) " Multiple cursors your a octoman
-call dein#add('tpope/vim-vinegrar') " Delicious Salad with vinegrar
-call dein#add('psliwka/vim-smoothie') " Beautifull scroll for the aesthetics
+Plug 'jiangmiao/auto-pairs' " Close Brackets
+Plug 'tpope/vim-fugitive' " Git integration
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellj Sense
+Plug 'tpope/vim-commentary', {'on': 'Commentary'}
+Plug 'marko-cerovac/material.nvim' " For the not Gruvbox Lovers
+Plug 'folke/which-key.nvim', {'on': 'WhichCase'} " Help panel for the commands
+Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go', {'for':'go'} " Golang setup
+Plug 'rust-lang/rust.vim', {
+      \  'for': 'rust',
+      \} " RustLang setup
+Plug 'elixir-editors/vim-elixir', {
+      \  'for': 'elixir',
+      \} " Elixir Setup
+Plug 'mhinz/vim-mix-format', {
+      \  'for': 'elixir',
+      \} " Mix Elixir Formatter
+Plug 'junegunn/goyo.vim', {
+      \ 'on':  'Goyo',
+      \} " Zen Mode Peace in your heart
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'} " Syntax no more bad themes
+Plug 'kyazdani42/nvim-web-devicons' " Icons with the Lua Power
+Plug 'hoob3rt/lualine.nvim' " Status Line Lua Faster
+Plug 'rktjmp/lush.nvim' " Theme Maker required by Gruvbox
+Plug 'npxbr/gruvbox.nvim' " Gruvbox theme with lua power
+Plug 'cometsong/CommentFrame.vim' 
+Plug 'RRethy/vim-illuminate' " Let the light be made highlight the words
+Plug 'ambv/black', {
+    \ 'on': 'Black',
+    \ 'for': 'python',
+\ } " Python Formmatter black for everyone
+Plug 'bitc/vim-bad-whitespace' " Show the bad whitespace good boy
+Plug 'junegunn/fzf', {
+    \ 'on': 'FZF',
+\ } " Fuzzy search yeah the clasic FZF
+Plug 'junegunn/fzf.vim' " More FZF with turbo vim power epic!
+Plug 'mbbill/undotree', {
+    \ 'on': 'UndotreeToggle',
+\ } " Undo tree be improved for the history
+Plug 'rbtnn/vim-vimscript_indentexpr', {
+      \'for':'vim'
+      \} " Correct indent of the beautifull vim script
+Plug 'glepnir/dashboard-nvim' " A beautiful welcome fit for kings
+Plug 'tweekmonster/startuptime.vim', {
+    \ 'on': 'StartupTime',
+\ } " A ms is the live !
+Plug 'kyazdani42/nvim-tree.lua', {
+    \ 'on': ['NvimTreeToggle', 'NvimTreeFindFile']
+\} " For the aesthetics tree toggle with the lua power
+Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
+Plug 'psliwka/vim-smoothie' " Beautifull scroll for the aesthetics
 
-call dein#end()
+call plug#end()
