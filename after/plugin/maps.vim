@@ -28,3 +28,5 @@ nnoremap <leader>n :Lexplore<CR>
 nnoremap <silent> <C-Mx> :Explore<CR>
 nnoremap <leader>m :NvimTreeToggle<CR>
 nnoremap <C-m> :NvimTreeFindFile<CR>
+nnoremap <leader>b <Cmd>Telescope find_files<CR>
+nnoremap <leader>bg <Cmd>Telescope git_commits<CR>
