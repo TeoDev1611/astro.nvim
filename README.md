@@ -2,7 +2,7 @@
 
   # :rocket: RocketVim
   
-  <iframe src="https://player.vimeo.com/video/575025709" width="640" height="334" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <iframe title="vimeo-player" src="https://player.vimeo.com/video/575025709" width="640" height="334" frameborder="0" allowfullscreen></iframe>
   
   <q>Blazing faster neovim configuration made for a IDE use with Vim</q>
 
