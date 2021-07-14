@@ -16,4 +16,4 @@ let g:material_style = "deep ocean"
 let g:material_italic_comments = v:true
 let g:material_italic_keywords = v:true
 let g:material_italic_functions = v:true
-colorscheme material
+colorscheme gruvbox
