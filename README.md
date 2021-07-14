@@ -1,6 +1,6 @@
 <div align="center">
 
-  ![image](https://user-images.githubusercontent.com/73144037/125670910-de57af83-707c-4381-a005-6b19f5bd38b9.png)
+  ![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
   
   # :rocket: RocketVim
   
