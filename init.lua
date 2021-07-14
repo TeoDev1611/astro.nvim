@@ -12,12 +12,6 @@ vim.g.mapleader = ' '
 -- ============================================================================== --
 -- ----------------------      Completion plugin config     --------------------- --
 -- ============================================================================== --
-
-require('lsp/lsp-servers')
-require('lsp/compe')
-require('lsp/icons')
-require('lsp/saga')
-
 require('ui/tree')
 require('ui/statusline')
 require('ui/whichkey')

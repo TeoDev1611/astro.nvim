@@ -3,8 +3,8 @@
 "                              Vim Plug Plugin Manager                         "
 "------------------------------------------------------------------------------"
 
-let g:coc_load = 0
-let g:native_lsp = 1
+let g:coc_load = 1
+let g:native_lsp = 0
 let g:elixir_lang = 1
 let g:rust_lang = 1
 let g:python_lang = 1
@@ -14,6 +14,21 @@ let g:ide_tools = 1
 let g:usefull_ide = 1
 let g:colors_tools = 1
 let g:fuzzy_find = 1
+
+if g:native_lsp
+  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga')
+endif
+
+if g:coc_load
+  if has('win32') || has('win64')
+    source ~/appdata/local/nvim/coc.vim
+  elseif has('linux') || has('osxdarwin')
+    source ~/.config/nvim/coc.vim'
+  else
+    echoerr "Platform Unsupported"
+  endif
+endif
+
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Utils for manager                              "

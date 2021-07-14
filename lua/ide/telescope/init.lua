@@ -1,5 +1,6 @@
 require('telescope').setup{
   defaults = {
+    file_ignore_patterns = {"node_modules", ".git"},
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -9,7 +10,7 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_prefix = "> ",
+    prompt_prefix = ">> ",
     selection_caret = "> ",
     entry_prefix = "  ",
     initial_mode = "insert",
@@ -25,7 +26,6 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
