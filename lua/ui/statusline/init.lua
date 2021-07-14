@@ -10,9 +10,9 @@ require('lualine').setup{
     lualine_a = { {'mode', upper = true} },
     lualine_b = { {'branch', icon = ''} },
     lualine_c = { {'filename', file_status = true} },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location'  },
+    lualine_x = {'g:coc_status', 'bo:filetype'},
+    lualine_y = { 'encoding', 'fileformat', 'filetype' },
+    lualine_z = { 'progress' },
   },
     inactive_sections = {
     lualine_a = {  },
@@ -22,5 +22,14 @@ require('lualine').setup{
     lualine_y = {  },
     lualine_z = {   }
   },
+  tabline = {
+  lualine_a = {},
+  lualine_b = {'branch'},
+  lualine_c = {'filename'},
+  lualine_x = {},
+  lualine_y = {},
+  lualine_z = {}
+}
+
 }
 

@@ -49,5 +49,6 @@
     "constructor": "  ",
     "value": "  ",
     "enumMember": "  "
-  }
+  },
+  "python.formatting.provider": "black"
 }
