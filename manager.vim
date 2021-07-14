@@ -169,6 +169,7 @@ if exists('g:usefull_ide')
     Plug 'tweekmonster/startuptime.vim', {
 	\ 'on': 'StartupTime',
     \ } " A ms is the live !
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} 
   endif
 endif
 
