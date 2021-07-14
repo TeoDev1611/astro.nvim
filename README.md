@@ -1,6 +1,6 @@
 <div align="center">
 
-  ![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
+
   
   # :rocket: RocketVim
   
@@ -83,6 +83,12 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 ````
 nvim +PlugInstall
 ````
+
+## ScreenShots
+
+![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
+
+> Add your screenshots [here](https://github.com/TeoDev1611/RocketVim/issues/4)
 
 ---
 Made with ❤ in Ecuador
