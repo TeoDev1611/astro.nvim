@@ -27,7 +27,7 @@
   - Python
   - Java
   - JavaScript
-  - EditorConfig **This not a language only a tool :smiley:
+  - EditorConfig **This not a language only a tool :smiley:**
   - Json, Toml, Yaml
   - Lua
 
