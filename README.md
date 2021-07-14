@@ -1,8 +1,8 @@
 <div align="center">
 
   # :rocket: RocketVim
-  
-  <iframe title="vimeo-player" src="https://player.vimeo.com/video/575025709" width="640" height="334" frameborder="0" allowfullscreen></iframe>
+
+  ![RocketVimDemo](https://user-images.githubusercontent.com/73144037/125670543-454d6d7e-9b78-4ab7-bd3c-dfde59de3d6d.mp4)
   
   <q>Blazing faster neovim configuration made for a IDE use with Vim</q>
 
