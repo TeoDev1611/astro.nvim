@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![RocketVimDemo](https://res.cloudinary.com/marcomontalbano/image/upload/v1626285845/video_to_markdown/images/vimeo--575025709-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://vimeo.com/575025709 "RocketVimDemo")
+  ![image](https://user-images.githubusercontent.com/73144037/125670910-de57af83-707c-4381-a005-6b19f5bd38b9.png)
   
   # :rocket: RocketVim
   
