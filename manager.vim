@@ -22,9 +22,11 @@ endif
 
 if g:coc_load
   if has('win32') || has('win64')
+    source ~/appdata/local/nvim/lightline.vim
     source ~/appdata/local/nvim/coc.vim
   elseif has('linux') || has('osxdarwin')
-    source ~/.config/nvim/coc.vim'
+    source ~/.config/nvim/coc.vim
+    source ~/.config/nvim/lightline.vim
   else
     echoerr "Platform Unsupported"
   endif
@@ -149,11 +151,13 @@ endif
 if exists('g:colors_tools')
   if g:colors_tools
     Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'} " Syntax no more bad themes
-    Plug 'kyazdani42/nvim-web-devicons' " Icons with the Lua Power
+    Plug 'ryanoasis/vim-devicons'
     Plug 'marko-cerovac/material.nvim' " For the not Gruvbox Lovers
-    Plug 'hoob3rt/lualine.nvim' " Status Line Lua Faster
+    Plug 'itchyny/lightline.vim'
     Plug 'rktjmp/lush.nvim' " Theme Maker required by Gruvbox
     Plug 'npxbr/gruvbox.nvim' " Gruvbox theme with lua power
+    Plug 'sainnhe/gruvbox-material'
+    Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
     Plug 'RRethy/vim-illuminate' " Let the light be made highlight the words
     Plug 'rbtnn/vim-vimscript_indentexpr', {
 	  \'for':'vim'
@@ -176,7 +180,7 @@ if exists('g:usefull_ide')
     Plug 'tweekmonster/startuptime.vim', {
 	\ 'on': 'StartupTime',
     \ } " A ms is the live !
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} 
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   endif
 endif
 
