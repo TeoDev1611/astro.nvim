@@ -158,9 +158,9 @@ if exists('g:colors_tools')
     Plug 'rbtnn/vim-vimscript_indentexpr', {
 	  \'for':'vim'
 	  \} " Correct indent of the beautifull vim script
-    Plug 'kyazdani42/nvim-tree.lua', {
-	\ 'on': ['NvimTreeToggle', 'NvimTreeFindFile']
-    \} " For the aesthetics tree toggle with the lua power
+    Plug 'preservim/nerdtree' |
+		\ Plug 'Xuyuanp/nerdtree-git-plugin' |
+		\ Plug 'ryanoasis/vim-devicons'
   endif
 endif
 
@@ -190,7 +190,6 @@ if exists('g:rocket_aparience')
     Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
     Plug 'psliwka/vim-smoothie' " Beautifull scroll for the aesthetics
     Plug 'mhinz/vim-startify'
-    " Plug 'romgrk/barbar.nvim'
     Plug 'andweeb/presence.nvim'
   endif
 endif
