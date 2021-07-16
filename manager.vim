@@ -8,6 +8,7 @@ let g:native_lsp = 0
 let g:elixir_lang = 1
 let g:rust_lang = 1
 let g:python_lang = 1
+let g:powershell_lang = 1
 let g:editor_config = 1
 let g:rocket_aparience = 1
 let g:ide_tools = 1
@@ -135,6 +136,12 @@ if exists('g:editor_config')
   endif
 endif
 
+if exists('g:powershell_lang')
+  if g:powershell_lang
+    Plug 'pprovost/vim-ps1'
+  endif
+endif
+
 "------------------------------------------------------------------------------"
 "                             Colors and Aparience                             "
 "------------------------------------------------------------------------------"
@@ -183,7 +190,7 @@ if exists('g:rocket_aparience')
     Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
     Plug 'psliwka/vim-smoothie' " Beautifull scroll for the aesthetics
     Plug 'mhinz/vim-startify'
-    Plug 'romgrk/barbar.nvim'
+    " Plug 'romgrk/barbar.nvim'
     Plug 'andweeb/presence.nvim'
   endif
 endif
