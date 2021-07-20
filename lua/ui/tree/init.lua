@@ -1,6 +1,6 @@
 local g = vim.g
 
-g.NERDTreeGitStatusUseNerdFonts = 1
+-- g.NERDTreeGitStatusUseNerdFonts = 1
 g.NERDTreeGitStatusConcealBrackets = 1
 g.NERDTreeQuitOnOpen = 1
 g.NERDTreeStatusline = 1

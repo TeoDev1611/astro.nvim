@@ -162,9 +162,9 @@ if exists('g:colors_tools')
     Plug 'rbtnn/vim-vimscript_indentexpr', {
 	  \'for':'vim'
 	  \} " Correct indent of the beautifull vim script
-    Plug 'preservim/nerdtree' |
-		\ Plug 'Xuyuanp/nerdtree-git-plugin' |
-		\ Plug 'ryanoasis/vim-devicons'
+   " Plug 'preservim/nerdtree' |
+		" \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+		" \ Plug 'ryanoasis/vim-devicons'
   endif
 endif
 
