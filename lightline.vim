@@ -1,7 +1,7 @@
 let g:lightline = {
       \ 'colorscheme': 'ayu',
       \'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'filename' ] ],
+      \   'left': [ [ 'mode','gitbranch', 'paste' ], [ 'gitbranch', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'binary', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'inactive': {

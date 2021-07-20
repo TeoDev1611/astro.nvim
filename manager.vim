@@ -212,6 +212,9 @@ if exists('g:fuzzy_find')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'tacahiroy/ctrlp-funky'
+    Plug 'imkmf/ctrlp-branches'
   endif
 endif
 
