@@ -5,6 +5,7 @@ if exists('+termguicolors')
 endif
 
 let g:gruvbox_contrast_dark = 'hard'
+let ayucolor="dark"
 
 "Gruvbox Material
 let g:gruvbox_material_palette = 'mix'
@@ -18,4 +19,4 @@ let g:material_style = "deep ocean"
 let g:material_italic_comments = v:true
 let g:material_italic_keywords = v:true
 let g:material_italic_functions = v:true
-colorscheme gruvbox-material
+colorscheme ayu

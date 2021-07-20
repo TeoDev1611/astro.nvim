@@ -24,9 +24,7 @@ nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 "Close a buffer
 nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>n :Lexplore<CR>
-nnoremap <silent> <C-Mx> :Explore<CR>
-nnoremap <leader>m :NERDTreeToggle<CR>
-nnoremap <C-m> <Cmd>NERDTreeToggle<CR>
+map <Leader>n :Fern . -reveal=%<CR>
+noremap <silent> <C-m> :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>
 nnoremap <leader>b <Cmd>Telescope find_files<CR>
 nnoremap <leader>bg <Cmd>Telescope git_commits<CR>

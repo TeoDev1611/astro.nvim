@@ -156,15 +156,19 @@ if exists('g:colors_tools')
     Plug 'itchyny/lightline.vim'
     Plug 'rktjmp/lush.nvim' " Theme Maker required by Gruvbox
     Plug 'npxbr/gruvbox.nvim' " Gruvbox theme with lua power
+    Plug 'ayu-theme/ayu-vim'
     Plug 'sainnhe/gruvbox-material'
     Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
     Plug 'RRethy/vim-illuminate' " Let the light be made highlight the words
     Plug 'rbtnn/vim-vimscript_indentexpr', {
 	  \'for':'vim'
 	  \} " Correct indent of the beautifull vim script
-   " Plug 'preservim/nerdtree' |
-		" \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-		" \ Plug 'ryanoasis/vim-devicons'
+    "Fern
+    Plug 'lambdalisue/fern.vim'
+    Plug 'antoinemadec/FixCursorHold.nvim'
+    Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+    " Plug 'lambdalisue/nerdfont.vim'
+    Plug 'lambdalisue/glyph-palette.vim'
   endif
 endif
 
