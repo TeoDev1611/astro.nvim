@@ -180,7 +180,7 @@ if exists('g:colors_tools')
 	  \'on_ft':'vim'
 	  \}) " Correct indent of the beautifull vim script
     "Fern
-    call dein#add('lambdalisue/fern.vim', {'on_cmd': 'Fern'})
+    call dein#add('lambdalisue/fern.vim')
     call dein#add('antoinemadec/FixCursorHold.nvim')
     call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
     call dein#add('lambdalisue/nerdfont.vim')
