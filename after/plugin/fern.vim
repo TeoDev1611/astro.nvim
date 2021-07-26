@@ -61,7 +61,7 @@ augroup END
 let g:cursorhold_updatetime = 100
 
 " Devicoins
-let g:fern#renderer = "nerdfont"
+" let g:fern#renderer = "nerdfont"
 
 " Palette
 augroup my-glyph-palette

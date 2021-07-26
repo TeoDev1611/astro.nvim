@@ -182,8 +182,8 @@ if exists('g:colors_tools')
     "Fern
     call dein#add('lambdalisue/fern.vim')
     call dein#add('antoinemadec/FixCursorHold.nvim')
-    call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
-    call dein#add('lambdalisue/nerdfont.vim')
+    " call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
+    " call dein#add('lambdalisue/nerdfont.vim')
     call dein#add('lambdalisue/glyph-palette.vim')
   endif
 endif
