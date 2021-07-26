@@ -30,6 +30,4 @@ nnoremap <Leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
 "CtrlP Utils
 nnoremap <Leader>fk :CtrlPFunky<CR>
 nnoremap <Leader>fb :CtrlPBranches<CR>
-"Telescope
-nnoremap <leader>b <Cmd>Telescope find_files<CR>
-nnoremap <leader>bg <Cmd>Telescope git_commits<CR>
+nnoremap <leader>b <Cmd>CtrlP<CR>

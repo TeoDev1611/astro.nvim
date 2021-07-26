@@ -2,7 +2,6 @@
 "------------------------------------------------------------------------------"
 "                              Vim Plug Plugin Manager                         "
 "------------------------------------------------------------------------------"
-
 let g:coc_load = 1
 let g:native_lsp = 0
 let g:elixir_lang = 1
@@ -17,15 +16,15 @@ let g:colors_tools = 1
 let g:fuzzy_find = 1
 
 if g:native_lsp
-  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga')
+  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga') require('ui/tree') require('ui/whichkey') require('ui/statusline')
 endif
 
 if g:coc_load
   if has('win32') || has('win64')
     source ~/appdata/local/nvim/lightline.vim
-    source ~/appdata/local/nvim/coc.vim
+    " source ~/appdata/local/nvim/coc.vim
   elseif has('linux') || has('osxdarwin')
-    source ~/.config/nvim/coc.vim
+    " source ~/.config/nvim/coc.vim
     source ~/.config/nvim/lightline.vim
   else
     echoerr "Platform Unsupported"
@@ -36,6 +35,12 @@ endif
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Utils for manager                              "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+if &compatible
+  set nocompatible
+endif
+
+set runtimepath+=~/.cache/rocket/repos/github.com/Shougo/dein.vim
 
 " Prefix your commands
 function! s:prefix(str, args) abort
@@ -62,23 +67,30 @@ endfunction
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 "START LOAD PLUGIN FUNCTION
-call plug#begin('~/.cache/plugs')
+call dein#begin('~/.cache/rocket')
+
+call dein#add('haya14busa/dein-command.vim', {'on_cmd':'Dein'})
 
 "------------------------------------------------------------------------------"
 "                                 LSP Settings                                 "
 "------------------------------------------------------------------------------"
 
 if exists('g:coc_load')
-  if  g:coc_load
-   Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellj Sense
-  endif
+  if g:coc_load
+  call dein#add('prabirshrestha/asyncomplete.vim')
+  call dein#add('prabirshrestha/asyncomplete-file.vim')
+  call dein#add('prabirshrestha/asyncomplete-emmet.vim')
+  call dein#add('prabirshrestha/vim-lsp')
+  call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+  call dein#add('mattn/vim-lsp-icons')
+ endif
 endif
 if exists('g:native_lsp')
   if g:native_lsp
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/nvim-compe'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'folke/lsp-colors.nvim'
+    call dein#add('neovim/nvim-lspconfig')
+    call dein#add('hrsh7th/nvim-compe')
+    call dein#add('glepnir/lspsaga.nvim')
+    call dein#add('folke/lsp-colors.nvim')
   endif
 endif
 
@@ -88,15 +100,15 @@ endif
 
 if exists('g:ide_tools')
   if g:ide_tools
-    Plug 'tpope/vim-commentary'
-    Plug 'jiangmiao/auto-pairs' " Close Brackets
-    Plug 'tpope/vim-fugitive' " Git integration
-    Plug 'folke/which-key.nvim'  " Help panel for the commands
-    Plug 'cometsong/CommentFrame.vim'
-    Plug 'bitc/vim-bad-whitespace' " Show the bad whitespace good boy
-    Plug 'mbbill/undotree', {
-	\ 'on': 'UndotreeToggle',
-    \ } " Undo tree be improved for the history
+    call dein#add('tpope/vim-commentary')
+    call dein#add('jiangmiao/auto-pairs') " Close Brackets
+    call dein#add('tpope/vim-fugitive',{
+    \ 'on_cmd':'G'
+    \}) " Git integration
+    call dein#add('cometsong/CommentFrame.vim')
+    call dein#add('mbbill/undotree', {
+	\ 'on_cmd': 'UndotreeToggle',
+    \ }) " Undo tree be improved for the history
   endif
 endif
 
@@ -106,41 +118,51 @@ endif
 
 if exists('g:rust_lang')
   if g:rust_lang
-    Plug 'rust-lang/rust.vim', {
-	  \  'for': 'rust',
-	  \} " RustLang setup
+    call dein#add('rust-lang/rust.vim', {
+	  \  'on_ft': 'rust',
+	  \}) " RustLang setup
   endif
 endif
 
 if exists('g:elixir_lang')
   if g:elixir_lang
-    Plug 'elixir-editors/vim-elixir', {
-	  \  'for': 'elixir',
-	  \} " Elixir Setup
-    Plug 'mhinz/vim-mix-format', {
-	  \  'for': 'elixir',
-	  \} " Mix Elixir Formatter
+    call dein#add('elixir-editors/vim-elixir', {
+	  \  'on_ft': 'elixir',
+	  \}) " Elixir Setup
+    call dein#add('mhinz/vim-mix-format', {
+	  \  'on_ft': 'elixir',
+	  \}) "Mix Elixir Formatter
   endif
 endif
 
 if exists('g:python_lang')
   if g:python_lang
-    Plug 'ambv/black', {
-	\ 'on': 'Black',
-	\ 'for': 'python',
-    \ } " Python Formmatter black for everyone
+    call dein#add('ambv/black', {
+	\ 'on_cmd': 'Black',
+	\ 'on_ft': 'python',
+    \ }) " Python Formmatter black for everyone
   endif
 endif
 
 if exists('g:editor_config')
   if g:editor_config
-    Plug 'editorconfig/editorconfig-vim'
+    call dein#add('editorconfig/editorconfig-vim')
   endif
 endif
 
 if exists('g:powershell_lang')
   if g:powershell_lang
-    Plug 'pprovost/vim-ps1'
+    call dein#add('pprovost/vim-ps1',{
+    \ 'on_ft':'powershell'
+    \})
+  endif
+endif
+
+if exists('g:golang_lang')
+  if g:golang_lang
+    call dein#add('fatih/vim-go', {
+    \'on_ft':'go'
+    \})
   endif
 endif
 
@@ -150,25 +172,19 @@ endif
 
 if exists('g:colors_tools')
   if g:colors_tools
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'} " Syntax no more bad themes
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'marko-cerovac/material.nvim' " For the not Gruvbox Lovers
-    Plug 'itchyny/lightline.vim'
-    Plug 'rktjmp/lush.nvim' " Theme Maker required by Gruvbox
-    Plug 'npxbr/gruvbox.nvim' " Gruvbox theme with lua power
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'sainnhe/gruvbox-material'
-    Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
-    Plug 'RRethy/vim-illuminate' " Let the light be made highlight the words
-    Plug 'rbtnn/vim-vimscript_indentexpr', {
-	  \'for':'vim'
-	  \} " Correct indent of the beautifull vim script
+    call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'}) " Syntax no more bad themes
+    call dein#add('ryanoasis/vim-devicons')
+    call dein#add('rafi/awesome-vim-colorschemes')
+    call dein#add('itchyny/lightline.vim')
+    call dein#add('rbtnn/vim-vimscript_indentexpr', {
+	  \'on_ft':'vim'
+	  \}) " Correct indent of the beautifull vim script
     "Fern
-    Plug 'lambdalisue/fern.vim'
-    Plug 'antoinemadec/FixCursorHold.nvim'
-    Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-    " Plug 'lambdalisue/nerdfont.vim'
-    Plug 'lambdalisue/glyph-palette.vim'
+    call dein#add('lambdalisue/fern.vim', {'on_cmd': 'Fern'})
+    call dein#add('antoinemadec/FixCursorHold.nvim')
+    call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
+    call dein#add('lambdalisue/nerdfont.vim')
+    call dein#add('lambdalisue/glyph-palette.vim')
   endif
 endif
 
@@ -178,13 +194,13 @@ endif
 
 if exists('g:usefull_ide')
   if g:usefull_ide
-    Plug 'junegunn/goyo.vim', {
-	  \ 'on':  'Goyo',
-	  \} " Zen Mode Peace in your heart
-    Plug 'tweekmonster/startuptime.vim', {
-	\ 'on': 'StartupTime',
-    \ } " A ms is the live !
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    call dein#add('junegunn/goyo.vim', {
+	  \ 'on_cmd':  'Goyo',
+	  \}) " Zen Mode Peace in your heart
+    call dein#add('tweekmonster/startuptime.vim', {
+	\ 'on_cmd': 'StartupTime',
+    \ }) " A ms is the live !
+  call dein#add('iamcco/markdown-preview.nvim', { 'hook_post_update': { -> mkdp#util#install() }, 'on_ft': ['markdown', 'vim-plug']})
   endif
 endif
 
@@ -195,10 +211,10 @@ endif
 
 if exists('g:rocket_aparience')
   if g:rocket_aparience
-    Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
-    Plug 'psliwka/vim-smoothie' " Beautifull scroll for the aesthetics
-    Plug 'mhinz/vim-startify'
-    Plug 'andweeb/presence.nvim'
+    " Plug 'mg979/vim-visual-multi' " Multiple cursors your a octoman
+    call dein#add('psliwka/vim-smoothie') " Beautifull scroll for the aesthetics
+    call dein#add('mhinz/vim-startify', {'on_cmd':'Startify'})
+    call dein#add('andweeb/presence.nvim')
   endif
 endif
 
@@ -209,12 +225,9 @@ endif
 
 if exists('g:fuzzy_find')
   if g:fuzzy_find
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'tacahiroy/ctrlp-funky'
-    Plug 'imkmf/ctrlp-branches'
+    call dein#add('ctrlpvim/ctrlp.vim',{'on_cmd':'CtrlP'})
+    call dein#add('tacahiroy/ctrlp-funky',{'on_cmd':'CtrlPFunky'})
+    call dein#add('imkmf/ctrlp-branches', {'on_cmd':'CtrlPBranches'})
   endif
 endif
 
@@ -222,4 +235,4 @@ endif
 "                             End Plugin Managment                             "
 "------------------------------------------------------------------------------"
 
-call plug#end()
+call dein#end()

@@ -16,9 +16,4 @@ vim.g.mapleader = ' '
 -- ============================================================================== --
 -- ----------------------      Completion plugin config     --------------------- --
 -- ============================================================================== --
--- require('ui/tree')
-require('ui/statusline')
-require('ui/whichkey')
-
 require('ide/tree-sitter')
-require('ide/telescope')

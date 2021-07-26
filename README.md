@@ -1,6 +1,4 @@
 <div align="center">
-
-
   
   # :rocket: RocketVim
   
@@ -54,15 +52,17 @@ Steps for install this awesome neovim configuration:
 2. Install the manager:
 
 > Windows
-````ps1
-iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
-    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-````
+```ps1
+Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+./installer.ps1 ~/.cache/rocket
+```
 > Linux MacOS
-````shell
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-````
+```shell
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+# For example, we just use `~/.cache/dein` as installation directory
+sh ./installer.sh ~/.cache/rocket
+```
 
 3. Go to your neovim configuration directory
 
@@ -79,11 +79,6 @@ cd $HOME/.config/nvim
 ```
 git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 ```
-5. Enter into nvim with this command
-````
-nvim +PlugInstall
-````
-
 ## ScreenShots
 
 ![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
