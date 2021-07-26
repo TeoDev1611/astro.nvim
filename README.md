@@ -85,5 +85,9 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 > Add your screenshots [here](https://github.com/TeoDev1611/RocketVim/issues/4)
 
+## Lsp Setup
+
+This configuration dont use the classic CoC.nvim is very slow however i use **asyncomplete.vim** with **vim-lsp** for install your servers check [here](https://github.com/prabirshrestha/vim-lsp/wiki/Servers) and add the configuration file for the servers are [here]()
+
 ---
 Made with ❤ in Ecuador
