@@ -1,33 +1,48 @@
 vim.o.completeopt = "menuone,noselect"
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-    emoji  = true;
-  };
-}
+  require "compe".setup {
+    enabled = true,
+    autocomplete = true,
+    debug = true,
+    min_length = 1,
+    preselect = "enable",
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    max_abbr_width = 30,
+    max_kin_width = 4,
+    max_menu_width = 4,
+    documentation = true,
+    source = {
+      path = {
+        menu = "率"
+      },
+      buffer = {
+        menu = "﬘"
+      },
+      calc = {
+        menu = ""
+      },
+      vsnip = {
+        menu = ""
+      },
+      nvim_lsp = {
+        menu = ""
+      },
+      nvim_lua = true,
+      tabnine = false,
+      -- tabnine = {
+      --   max_line = 100;
+      --   max_num_results = 10;
+      --   priority = 20;
+      --   menu = "";
+      -- };
+      spell = {menu = "暈"},
+      tags = {menu = ""},
+      snippets_nvim = false,
+      treesitter = {menu = ""}
+    }
+  }
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

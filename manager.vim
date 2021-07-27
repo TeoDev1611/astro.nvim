@@ -2,8 +2,8 @@
 "------------------------------------------------------------------------------"
 "                              Vim Plug Plugin Manager                         "
 "------------------------------------------------------------------------------"
-let g:coc_load = 1
-let g:native_lsp = 0
+let g:coc_load = 0
+let g:native_lsp = 1
 let g:elixir_lang = 1
 let g:rust_lang = 1
 let g:python_lang = 1
@@ -15,10 +15,6 @@ let g:usefull_ide = 1
 let g:colors_tools = 1
 let g:fuzzy_find = 1
 let g:golang_lang = 1
-
-if g:native_lsp
-  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga') require('ui/tree') require('ui/whichkey') require('ui/statusline')
-endif
 
 if g:coc_load
   if has('win32') || has('win64')
@@ -91,6 +87,8 @@ if exists('g:native_lsp')
     call dein#add('neovim/nvim-lspconfig')
     call dein#add('hrsh7th/nvim-compe')
     call dein#add('glepnir/lspsaga.nvim')
+    call dein#add('hrsh7th/vim-vsnip')
+    call dein#add('hrsh7th/vim-vsnip-integ')
     call dein#add('folke/lsp-colors.nvim')
   endif
 endif
@@ -237,3 +235,15 @@ endif
 "------------------------------------------------------------------------------"
 
 call dein#end()
+
+if g:native_lsp
+  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga')
+
+  if has('win32') || has('win64')
+    source ~/appdata/local/nvim/lightline.vim
+  elseif has('linux') || has('osxdarwin')
+    source ~/.config/nvim/lightline.vim
+  else
+   echoerr "Platform Unsupported"
+  endif
+endif
