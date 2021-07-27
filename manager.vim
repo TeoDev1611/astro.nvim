@@ -14,6 +14,7 @@ let g:ide_tools = 1
 let g:usefull_ide = 1
 let g:colors_tools = 1
 let g:fuzzy_find = 1
+let g:golang_lang = 1
 
 if g:native_lsp
   lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga') require('ui/tree') require('ui/whichkey') require('ui/statusline')

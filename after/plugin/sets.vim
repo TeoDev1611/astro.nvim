@@ -8,6 +8,8 @@ set showtabline=2
 set noshowmode
 set nocompatible
 set mouse=a
+set wrap
+set linebreak
 set relativenumber
 set clipboard=unnamed
 set background=dark
