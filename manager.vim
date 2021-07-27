@@ -99,7 +99,7 @@ endif
 
 if exists('g:ide_tools')
   if g:ide_tools
-    call dein#add('tpope/vim-commentary')
+    call dein#add('tpope/vim-commentary', { 'on_cmd':'Commentary', 'on_map': 'gc' })
     call dein#add('jiangmiao/auto-pairs') " Close Brackets
     call dein#add('tpope/vim-fugitive',{
     \ 'on_cmd':'G'
@@ -172,7 +172,9 @@ endif
 if exists('g:colors_tools')
   if g:colors_tools
     call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'}) " Syntax no more bad themes
+    call dein#add('p00f/nvim-ts-rainbow')
     call dein#add('ryanoasis/vim-devicons')
+    call dein#add('kyazdani42/nvim-web-devicons')
     call dein#add('rafi/awesome-vim-colorschemes')
     call dein#add('itchyny/lightline.vim')
     call dein#add('rbtnn/vim-vimscript_indentexpr', {
@@ -181,8 +183,8 @@ if exists('g:colors_tools')
     "Fern
     call dein#add('lambdalisue/fern.vim')
     call dein#add('antoinemadec/FixCursorHold.nvim')
-    " call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
-    " call dein#add('lambdalisue/nerdfont.vim')
+    call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
+    call dein#add('lambdalisue/nerdfont.vim')
     call dein#add('lambdalisue/glyph-palette.vim')
   endif
 endif
@@ -224,9 +226,9 @@ endif
 
 if exists('g:fuzzy_find')
   if g:fuzzy_find
-    call dein#add('ctrlpvim/ctrlp.vim',{'on_cmd':'CtrlP'})
-    call dein#add('tacahiroy/ctrlp-funky',{'on_cmd':'CtrlPFunky'})
-    call dein#add('imkmf/ctrlp-branches', {'on_cmd':'CtrlPBranches'})
+    call dein#add('nvim-lua/popup.nvim')
+    call dein#add('nvim-lua/plenary.nvim')
+    call dein#add('nvim-telescope/telescope.nvim', { 'on_cmd':'Telescope' })
   endif
 endif
 
@@ -237,7 +239,7 @@ endif
 call dein#end()
 
 if g:native_lsp
-  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga')
+  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga') require('ide/telescope')
 
   if has('win32') || has('win64')
     source ~/appdata/local/nvim/lightline.vim

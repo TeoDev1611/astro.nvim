@@ -28,6 +28,7 @@ nnoremap <leader>bd :bdelete<CR>
 noremap <silent><C-m> :Fern . -reveal=%<CR>
 nnoremap <Leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
 "CtrlP Utils
-nnoremap <Leader>fk :CtrlPFunky<CR>
-nnoremap <Leader>fb :CtrlPBranches<CR>
-nnoremap <leader>b <Cmd>CtrlP<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
