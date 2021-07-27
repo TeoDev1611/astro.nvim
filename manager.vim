@@ -14,7 +14,7 @@ let g:ide_tools = 1
 let g:usefull_ide = 1
 let g:colors_tools = 1
 let g:fuzzy_find = 1
-let g:golang_lang = 1
+let g:golang_lang = 0
 
 if g:coc_load
   if has('win32') || has('win64')
@@ -99,7 +99,7 @@ endif
 
 if exists('g:ide_tools')
   if g:ide_tools
-    call dein#add('tpope/vim-commentary', { 'on_cmd':'Commentary', 'on_map': 'gc' })
+    call dein#add('tpope/vim-commentary', { 'on_cmd':'Commentary'})
     call dein#add('jiangmiao/auto-pairs') " Close Brackets
     call dein#add('tpope/vim-fugitive',{
     \ 'on_cmd':'G'
@@ -228,7 +228,7 @@ if exists('g:fuzzy_find')
   if g:fuzzy_find
     call dein#add('nvim-lua/popup.nvim')
     call dein#add('nvim-lua/plenary.nvim')
-    call dein#add('nvim-telescope/telescope.nvim', { 'on_cmd':'Telescope' })
+    call dein#add('nvim-telescope/telescope.nvim' , {'on_lua': 'ide/telescope' ,'on_cmd': 'Telescope'})
   endif
 endif
 
@@ -239,7 +239,7 @@ endif
 call dein#end()
 
 if g:native_lsp
-  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga') require('ide/telescope')
+  lua require('lsp/lsp-servers') require('lsp/compe') require('lsp/icons') require('lsp/saga')
 
   if has('win32') || has('win64')
     source ~/appdata/local/nvim/lightline.vim

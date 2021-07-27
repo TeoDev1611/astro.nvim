@@ -17,4 +17,4 @@ vim.g.mapleader = ' '
 -- ----------------------      Completion plugin config     --------------------- --
 -- ============================================================================== --
 require('ide/tree-sitter')
-
+-- require('ide/telescope')
