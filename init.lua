@@ -9,7 +9,6 @@ elseif vim.fn.has('unix') or vim.fn.has('linux') then
 else
   print "Unsupported platform"
 end
-
 -- Leader key
 vim.g.mapleader = ' '
 

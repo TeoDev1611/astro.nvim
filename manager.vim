@@ -176,6 +176,8 @@ if exists('g:colors_tools')
     call dein#add('ryanoasis/vim-devicons')
     call dein#add('kyazdani42/nvim-web-devicons')
     call dein#add('rafi/awesome-vim-colorschemes')
+    call dein#add('owozsh/amora')
+    call dein#add('embark-theme/vim')
     call dein#add('itchyny/lightline.vim')
     call dein#add('mengelbrecht/lightline-bufferline')
     call dein#add('rbtnn/vim-vimscript_indentexpr', {

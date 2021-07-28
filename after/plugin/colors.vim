@@ -19,4 +19,9 @@ let g:material_style = "deep ocean"
 let g:material_italic_comments = v:true
 let g:material_italic_keywords = v:true
 let g:material_italic_functions = v:true
+" Embark
+let g:embark_terminal_italics = 1
+" Amora
+let g:mode='mirtilo'
+
 colorscheme ayu
