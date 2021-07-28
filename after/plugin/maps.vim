@@ -26,9 +26,9 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <leader>bd :bdelete<CR>
 "Tree maps
 noremap <silent><C-m> :Fern . -reveal=%<CR>
-nnoremap <Leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
+nnoremap <silent><Leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
 "CtrlP Utils
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent><leader>ff <cmd>Telescope find_files<cr>
+nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
+nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>

@@ -99,7 +99,7 @@ endif
 
 if exists('g:ide_tools')
   if g:ide_tools
-    call dein#add('tpope/vim-commentary', { 'on_cmd':'Commentary'})
+    call dein#add('tpope/vim-commentary')
     call dein#add('jiangmiao/auto-pairs') " Close Brackets
     call dein#add('tpope/vim-fugitive',{
     \ 'on_cmd':'G'
@@ -177,6 +177,7 @@ if exists('g:colors_tools')
     call dein#add('kyazdani42/nvim-web-devicons')
     call dein#add('rafi/awesome-vim-colorschemes')
     call dein#add('itchyny/lightline.vim')
+    call dein#add('mengelbrecht/lightline-bufferline')
     call dein#add('rbtnn/vim-vimscript_indentexpr', {
 	  \'on_ft':'vim'
 	  \}) " Correct indent of the beautifull vim script
