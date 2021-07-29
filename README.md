@@ -8,7 +8,7 @@
 
 ## Commands, Maps and Plugins
 
-- **Intelljsense** This have 2 options the [NativeLSP](https://github.com/neovim/nvim-lspconfig) and the [CoC.nvim](https://github.com/neoclide/coc.nvim) support you can select this in the manager settings in the [settings section](# Settings) you can check this :sunglasses:
+- **Intelljsense** This have 2 options the [NativeLSP](https://github.com/neovim/nvim-lspconfig) and the [vim-lsp](https://github.com/prabirshrestha/vim-lsp) support you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua) and the vim-lsp servers [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/after/plugin/servers.vim.example) rename if you use this 😄 you can check this :sunglasses:
 
 - **Comments** The comment tool what use is [vim-commentary](https://github.com/tpope/vim-commentary) this can be activate with gcc and gc can you see the documentation for this amazing tool in the repository all settings are the default.
 
@@ -87,7 +87,7 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 ## Lsp Setup
 
-This configuration dont use the classic CoC.nvim is very slow however i use **asyncomplete.vim** with **vim-lsp** for install your servers check [here](https://github.com/prabirshrestha/vim-lsp/wiki/Servers) and add the configuration file for the servers are [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/after/plugin/servers.vim)
+This configuration dont use the classic CoC.nvim is very slow however i use **asyncomplete.vim** with **vim-lsp** for install your servers check [here](https://github.com/prabirshrestha/vim-lsp/wiki/Servers) and add the configuration file for the servers are [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/after/plugin/servers.vim.example) and by default use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
 
 ---
 Made with ❤ in Ecuador
