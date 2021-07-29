@@ -3,9 +3,9 @@
 "                                Dein Functions                                "
 "------------------------------------------------------------------------------"
 
-if dein#check_install()
-  call dein#install()
-endif
+" if dein#check_install()
+"   call dein#install()
+" endif
 
 if !empty(dein#check_clean())
   call dein#recache_runtimepath()
