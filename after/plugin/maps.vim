@@ -32,3 +32,9 @@ nnoremap <silent><leader>ff <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>
+ "LSPSaga
+ nnoremap <silent>sd :Lspsaga hover_doc<CR>
+ nnoremap <silent>sh :Lspsaga signature_help<CR>
+ nnoremap <silent>sr :Lspsaga rename<CR>
+ nnoremap <silent>st :Lspsaga open_floaterm<CR>
+ tnoremap <silent> <A-d> <C-a><C-n>:Lspsaga close_floaterm<CR>
