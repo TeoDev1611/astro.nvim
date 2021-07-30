@@ -83,17 +83,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\amora"
   },
-  ["auto-pairs"] = {
-    loaded = true,
-    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-pairs"
-  },
   ["awesome-vim-colorschemes"] = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\awesome-vim-colorschemes"
   },
   ["editorconfig-vim"] = {
-    loaded = true,
-    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\editorconfig-vim"
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\editorconfig-vim"
   },
   ["fern-renderer-nerdfont.vim"] = {
     loaded = true,
@@ -102,6 +99,11 @@ _G.packer_plugins = {
   ["fern.vim"] = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fern.vim"
+  },
+  ["friendly-snippets"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\friendly-snippets"
   },
   ["glyph-palette.vim"] = {
     loaded = true,
@@ -112,10 +114,6 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\goyo.vim"
-  },
-  ["lsp-colors.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-colors.nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
@@ -158,6 +156,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim"
   },
+  ["pears.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\pears.nvim"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim"
@@ -183,6 +185,7 @@ _G.packer_plugins = {
   },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18ide/telescope\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\telescope.nvim"
@@ -198,8 +201,9 @@ _G.packer_plugins = {
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim"
   },
   ["vim-commentary"] = {
-    loaded = true,
-    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-commentary"
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vim-commentary"
   },
   ["vim-devicons"] = {
     loaded = true,
@@ -229,10 +233,6 @@ _G.packer_plugins = {
   ["vim-vsnip"] = {
     loaded = true,
     path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-vsnip"
-  },
-  ["vim-vsnip-integ"] = {
-    loaded = true,
-    path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-vsnip-integ"
   }
 }
 
@@ -240,8 +240,6 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file G lua require("packer.load")({'vim-fugitive'}, { cmd = "G", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CommentFrameSlashes lua require("packer.load")({'CommentFrame.vim'}, { cmd = "CommentFrameSlashes", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
@@ -249,28 +247,32 @@ pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CommentFrameSlashS
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CommentFrameHashDash lua require("packer.load")({'CommentFrame.vim'}, { cmd = "CommentFrameHashDash", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CommentFrameQuoteDash lua require("packer.load")({'CommentFrame.vim'}, { cmd = "CommentFrameQuoteDash", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file UndotreeToggle lua require("packer.load")({'undotree'}, { cmd = "UndotreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType go ++once lua require("packer.load")({'vim-go'}, { ft = "go" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-commentary'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'vim-smoothie', 'vim-startify'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]], true)
-vim.cmd [[source C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]]
-time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]], false)
 time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]], true)
 vim.cmd [[source C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]]
 time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]], false)
+time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]], true)
+vim.cmd [[source C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]]
+time([[Sourcing ftdetect script at: C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\vim-go\ftdetect\gofiletype.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
