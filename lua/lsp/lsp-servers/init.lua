@@ -10,21 +10,19 @@ lspconfig.denols.setup({})
 lspconfig.bashls.setup({})
 
 lspconfig.rls.setup({})
-lspconfig.pyright.setup{}
+lspconfig.pyright.setup({})
 
-
-lspconfig.efm.setup {
-    init_options = {documentFormatting = true},
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            lua = {
-                {formatCommand = "stylua .", formatStdin = true}
-            }
-        }
-    }
-}
-
+lspconfig.efm.setup({
+  init_options = { documentFormatting = true },
+  settings = {
+    rootMarkers = { ".git/" },
+    languages = {
+      lua = {
+        { formatCommand = "stylua .", formatStdin = true },
+      },
+    },
+  },
+})
 
 lspconfig.jsonls.setup({
   commands = {

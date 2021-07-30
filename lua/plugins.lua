@@ -70,13 +70,12 @@ return require("packer").startup(function()
   })
 
   -- Jump Motions
-  use {
-    'phaazon/hop.nvim',
-    as = 'hop',
+  use({
+    "phaazon/hop.nvim",
+    as = "hop",
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
-  }
-
+      require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+    end,
+  })
 end)

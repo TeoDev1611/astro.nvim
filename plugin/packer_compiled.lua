@@ -94,6 +94,10 @@ local no_errors, error_msg = pcall(function()
       loaded = true,
       path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\awesome-vim-colorschemes",
     },
+    ["compe-tabnine"] = {
+      loaded = true,
+      path = "C:\\Users\\Usuario1\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\compe-tabnine",
+    },
     ["editorconfig-vim"] = {
       loaded = false,
       needs_bufread = false,
@@ -249,6 +253,10 @@ local no_errors, error_msg = pcall(function()
   time([[Defining lazy-load commands]], true)
   pcall(
     vim.cmd,
+    [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+  )
+  pcall(
+    vim.cmd,
     [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
   )
   pcall(
@@ -279,10 +287,6 @@ local no_errors, error_msg = pcall(function()
     vim.cmd,
     [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
   )
-  pcall(
-    vim.cmd,
-    [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
-  )
   time([[Defining lazy-load commands]], false)
 
   vim.cmd([[augroup packer_load_aucmds]])
@@ -290,14 +294,22 @@ local no_errors, error_msg = pcall(function()
   -- Filetype lazy-loads
   time([[Defining lazy-load filetype autocommands]], true)
   vim.cmd([[au FileType go ++once lua require("packer.load")({'vim-go'}, { ft = "go" }, _G.packer_plugins)]])
-  vim.cmd([[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]])
   vim.cmd([[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]])
+  vim.cmd(
+    [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+  )
   time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
   time([[Defining lazy-load event autocommands]], true)
-  vim.cmd([[au BufRead * ++once lua require("packer.load")({'vim-commentary'}, { event = "BufRead *" }, _G.packer_plugins)]])
-  vim.cmd([[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]])
-  vim.cmd([[au BufWinEnter * ++once lua require("packer.load")({'vim-smoothie', 'vim-startify'}, { event = "BufWinEnter *" }, _G.packer_plugins)]])
+  vim.cmd(
+    [[au BufWinEnter * ++once lua require("packer.load")({'vim-startify', 'vim-smoothie'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+  )
+  vim.cmd(
+    [[au BufRead * ++once lua require("packer.load")({'vim-commentary'}, { event = "BufRead *" }, _G.packer_plugins)]]
+  )
+  vim.cmd(
+    [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
+  )
   time([[Defining lazy-load event autocommands]], false)
   vim.cmd("augroup END")
   vim.cmd([[augroup filetypedetect]])

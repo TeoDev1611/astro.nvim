@@ -1,5 +1,5 @@
-local builtin = require('telescope.builtin')
-local themes = require('telescope.themes')
+local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
 
 require("telescope").setup({
   defaults = {
