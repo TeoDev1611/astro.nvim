@@ -76,7 +76,7 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 5. Finally enter into neovim for install and compile packer with this:
 ``
-nvim +PackerInstall
+nvim +PackerSync
 ``
 
 ## ScreenShots
