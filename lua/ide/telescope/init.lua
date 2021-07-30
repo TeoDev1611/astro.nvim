@@ -1,3 +1,6 @@
+local builtin = require('telescope.builtin')
+local themes = require('telescope.themes')
+
 require("telescope").setup({
   defaults = {
     file_ignore_patterns = { "node_modules", ".git" },
@@ -42,3 +45,4 @@ require("telescope").setup({
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
 })
+builtin.find_files(themes.get_dropdown())
