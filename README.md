@@ -8,13 +8,11 @@
 
 ## Commands, Maps and Plugins
 
-- **Intelljsense** This have 2 options the [NativeLSP](https://github.com/neovim/nvim-lspconfig) and the [vim-lsp](https://github.com/prabirshrestha/vim-lsp) support you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua) and the vim-lsp servers [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/after/plugin/servers.vim.example) rename if you use this 😄 you can check this :sunglasses:
+- **Intelljsense** [NativeLSP](https://github.com/neovim/nvim-lspconfig) you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua) 
 
 - **Comments** The comment tool what use is [vim-commentary](https://github.com/tpope/vim-commentary) this can be activate with gcc and gc can you see the documentation for this amazing tool in the repository all settings are the default.
 
-- **Pairs** For the pairs in the brackets i use [autopairs](https://github.com/jiangmiao/auto-pairs)
-
-- **Which Key** for help you with some commands I use [wichKey](https://github.com/folke/which-key.nvim)
+- **Pairs** For the pairs in the brackets i use [autopairs](https://github.com/steelsojka/pears.nvim)
 
 - **Languages Supported** Any question how setup a language can you open a issue for help you :v:
   - Rust
@@ -29,9 +27,7 @@
   - Json, Toml, Yaml
   - Lua
 
-- **Tree file explorer** I use netrw the native tree explorer or the External file explorer called [Nvim Tree](https://github.com/kyazdani42/nvim-tree.lua)
-  - **Nvim Tree** for open this you can use ```<leader>m``` in this case leader is space
-  - **Netrw** for open this you can use ```<leader>n``` in this case leader is space
+- **File Explorer** I use the awesome asynchronus file explorer [Fern](https://github.com/lambdalisue/fern.vim) you can open this with ``<leader>n`` into the left side and ``<C-m>`` into the full screen
 
 - **Fuzzy Search** I dont use the clasic *FZF* in this case i use **Telescope** for open this  you can use ````<leader>b```` for find files and ```<leader>bg``` for show the commits
 
@@ -53,15 +49,13 @@ Steps for install this awesome neovim configuration:
 
 > Windows
 ```ps1
-Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-./installer.ps1 ~/.cache/rocket
+git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
+
 > Linux MacOS
 ```shell
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-# For example, we just use `~/.cache/dein` as installation directory
-sh ./installer.sh ~/.cache/rocket
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 3. Go to your neovim configuration directory
@@ -79,6 +73,12 @@ cd $HOME/.config/nvim
 ```
 git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 ```
+
+5. Finally enter into neovim for install and compile packer with this:
+``
+nvim +PackerInstall
+``
+
 ## ScreenShots
 
 ![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
@@ -87,7 +87,7 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 ## Lsp Setup
 
-This configuration dont use the classic CoC.nvim is very slow however i use **asyncomplete.vim** with **vim-lsp** for install your servers check [here](https://github.com/prabirshrestha/vim-lsp/wiki/Servers) and add the configuration file for the servers are [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/after/plugin/servers.vim.example) and by default use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
+This configuration dont use the classic CoC.nvim is very slow however i use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
 
 ---
 Made with ❤ in Ecuador
