@@ -1,3 +1,5 @@
+let mapleader=' '
+
 " Custom scape chars
 imap jk <Esc>
 imap <C-c> <Esc>l
@@ -25,16 +27,19 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "Close a buffer
 nnoremap <leader>bd :bdelete<CR>
 "Tree maps
-noremap <silent><C-m> :Fern . -reveal=%<CR>
-nnoremap <silent><Leader>n :Fern . -drawer -reveal=% -toggle -width=30<CR>
+noremap <silent><C-m> :E<CR>
+nnoremap <silent><Leader>n :Le<CR>
 "CtrlP Utils
 nnoremap <silent><leader>ff <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>
  "LSPSaga
- nnoremap <silent>sd :Lspsaga hover_doc<CR>
- nnoremap <silent>sh :Lspsaga signature_help<CR>
- nnoremap <silent>sr :Lspsaga rename<CR>
- nnoremap <silent>st :Lspsaga open_floaterm<CR>
- tnoremap <silent> <A-d> <C-a><C-n>:Lspsaga close_floaterm<CR>
+nnoremap <silent>sd :Lspsaga hover_doc<CR>
+nnoremap <silent>sh :Lspsaga signature_help<CR>
+nnoremap <silent>sr :Lspsaga rename<CR>
+nnoremap <silent>st :Lspsaga open_floaterm<CR>
+tnoremap <silent> <A-d> <C-a><C-n>:Lspsaga close_floaterm<CR>
+" Fast Movements
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)

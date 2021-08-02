@@ -1,4 +1,7 @@
+-- TODO: Add the new instructions for install the language servers
+
 local lspconfig = require("lspconfig")
+
 lspconfig.vimls.setup({})
 
 lspconfig.gopls.setup({})
@@ -12,18 +15,6 @@ lspconfig.bashls.setup({})
 lspconfig.rls.setup({})
 lspconfig.pyright.setup({})
 
-lspconfig.efm.setup({
-  init_options = { documentFormatting = true },
-  settings = {
-    rootMarkers = { ".git/" },
-    languages = {
-      lua = {
-        { formatCommand = "stylua .", formatStdin = true },
-      },
-    },
-  },
-})
-
 lspconfig.jsonls.setup({
   commands = {
     Format = {
@@ -34,9 +25,6 @@ lspconfig.jsonls.setup({
   },
 })
 
--- Temporaly commented spect support for windows scapes
-
---[[
 system_name = "Windows"
 local nvim_config_path = vim.fn.stdpath('config')
 
@@ -50,16 +38,12 @@ elseif system_name == "Linux" then
   sumneko_binary = nvim_config_path .. "/servers/extension/server/bin/Linux/lua-language-server"
   sumneko_root_path = nvim_config_path .. "/servers/extension/server/main.lua"
 elseif system_name == "Windows" then
-  sumneko_binary = nvim_config_path .. "\servers\extension\server\Windows\bin\lua-language-server.exe"
-  sumneko_root_path = nvim_config_path .. "\servers\extension\server\main.lua"
+  sumneko_binary = vim.fn.expand('~/AppData/Local/nvim/extension/server/bin/Windows/lua-language-server.exe')
+  sumneko_root_path = vim.fn.expand('~/AppData/Local/nvim/extension/server/main.lua')
 else
   print("Unsupported binary for sumneko")
 end
   
-
-print(sumneko_binary)
-print(sumneko_root_path)
-
 lspconfig.sumneko_lua.setup {
   cmd = {sumneko_binary, "-E", sumneko_root_path };
   settings = {
@@ -85,4 +69,3 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
---]]
