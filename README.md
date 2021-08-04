@@ -89,5 +89,9 @@ nvim +PackerSync
 
 This configuration dont use the classic CoC.nvim is very slow however i use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
 
+## Install the language server for lua
+
+
+
 ---
 Made with ❤ in Ecuador

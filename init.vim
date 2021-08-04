@@ -6,6 +6,11 @@ Pack 'nvim-lua/popup.nvim'
 Pack 'nvim-lua/plenary.nvim'
 " Colors and aparience
 Pack 'morhetz/gruvbox'
+Pack 'blackbirdtheme/vim'
+Pack 'rafi/awesome-vim-colorschemes'
+Pack 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Pack 'hoob3rt/lualine.nvim'
+Pack 'cocopon/iceberg.vim' 
 Pack 'folke/todo-comments.nvim'
 Pack 'folke/lsp-colors.nvim'
 Pack 'kyazdani42/nvim-web-devicons'
@@ -35,5 +40,5 @@ Pack 'nvim-treesitter/nvim-treesitter', { 'do':':TSUpdate' }
 Pack 'p00f/nvim-ts-rainbow'
 call plugpac#end()
 
-lua require('lsp/compe') require('lsp/lsp-servers') require('lsp/saga') require('ui/statusline') require('ide/hop') require('ide/tree-sitter')
+lua require('lsp/compe') require('lsp/lsp-servers') require('lsp/saga') require('ide/hop') require('ide/tree-sitter') require('ui/galaxy')
 

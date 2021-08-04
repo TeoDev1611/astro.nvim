@@ -25,7 +25,7 @@ lspconfig.jsonls.setup({
   },
 })
 
-system_name = 'Windows'
+local system_name = 'Windows'
 local nvim_config_path = vim.fn.stdpath('config')
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
@@ -69,3 +69,4 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+
