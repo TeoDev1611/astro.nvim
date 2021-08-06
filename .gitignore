@@ -2,3 +2,6 @@ test/
 extension/
 lspm/
 pack/
+ins/
+vim-lsp-settings/
+*.py

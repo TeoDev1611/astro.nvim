@@ -24,4 +24,4 @@ let g:embark_terminal_italics = 1
 " Amora
 let g:mode='mirtilo'
 
-colorscheme blackbird
+" colorscheme blackbird

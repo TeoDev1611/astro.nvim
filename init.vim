@@ -1,44 +1,52 @@
-call plugpac#begin()
-" Plugin Manager
-Pack 'k-takata/minpac', {'type': 'opt'}
+" Import toml vital :p
+let s:Toml = vital#_rocket#Text#TOML#import()
+" Get the toml content in the dictionary
+let s:TOMLContent = s:Toml.parse_file('./rocket.toml')
+
+call pug#begin()
+Pug 'kristijanhusak/vim-packager', { 'type': 'opt' }
 " UTILS
-Pack 'nvim-lua/popup.nvim'
-Pack 'nvim-lua/plenary.nvim'
+Pug 'nvim-lua/popup.nvim'
+Pug 'nvim-lua/plenary.nvim'
 " Colors and aparience
-Pack 'morhetz/gruvbox'
-Pack 'blackbirdtheme/vim'
-Pack 'rafi/awesome-vim-colorschemes'
-Pack 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-Pack 'hoob3rt/lualine.nvim'
-Pack 'cocopon/iceberg.vim' 
-Pack 'folke/todo-comments.nvim'
-Pack 'folke/lsp-colors.nvim'
-Pack 'kyazdani42/nvim-web-devicons'
+Pug 'morhetz/gruvbox'
+Pug 'blackbirdtheme/vim'
+Pug 'rafi/awesome-vim-colorschemes'
+" Pug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+" Pug 'hoob3rt/lualine.nvim'
+Pug 'cocopon/iceberg.vim' 
+Pug 'Yagua/nebulous.nvim'
+Pug 'folke/todo-comments.nvim'
+Pug 'folke/lsp-colors.nvim'
+Pug 'kyazdani42/nvim-web-devicons'
 " Native LSP 
-Pack 'neovim/nvim-lspconfig'
-Pack 'hrsh7th/nvim-compe'
-Pack 'glepnir/lspsaga.nvim'
-Pack 'hrsh7th/vim-vsnip'
-Pack 'rafamadriz/friendly-snippets'
+Pug 'neovim/nvim-lspconfig'
+Pug 'hrsh7th/nvim-compe'
+Pug 'glepnir/lspsaga.nvim'
+Pug 'hrsh7th/vim-vsnip'
+Pug 'hrsh7th/vim-vsnip-integ'
+Pug 'rafamadriz/friendly-snippets'
 " IDE
-Pack 'jiangmiao/auto-pairs'
-Pack 'lambdalisue/gina.vim', { 'on':'Gina' }
-Pack 'tpope/vim-commentary'
+Pug 'jiangmiao/auto-pairs'
+Pug 'lambdalisue/gina.vim', { 'on':'Gina' }
+Pug 'tpope/vim-commentary'
 " FT
-Pack 'vim-jp/syntax-vim-ex', {'for': 'vim'}
+Pug 'vim-jp/syntax-vim-ex', {'for': 'vim'}
 " Development
-Pack 'vim-jp/vital.vim', { 'on':'Vitalize' }
+Pug 'vim-jp/vital.vim', { 'on':'Vitalize' }
+Pug 'vim-jp/vital-complete', { 'for':'vim' }
 " Telescope
-Pack 'nvim-telescope/telescope.nvim', { 'on':'Telescope' }
+Pug 'nvim-telescope/telescope.nvim', { 'type':'opt' }
 " Status Line
-Pack 'hoob3rt/lualine.nvim'
+Pug 'tjdevries/express_line.nvim'
 " Fast Movements
-Pack 'phaazon/hop.nvim'
-Pack 'rhysd/accelerated-jk'
+Pug 'phaazon/hop.nvim'
+Pug 'rhysd/accelerated-jk'
 " Syntax
-Pack 'nvim-treesitter/nvim-treesitter', { 'do':':TSUpdate' }
-Pack 'p00f/nvim-ts-rainbow'
-call plugpac#end()
+Pug 'nvim-treesitter/nvim-treesitter', { 'do':':TSUpdate' }
+Pug 'p00f/nvim-ts-rainbow'
+" Pug 'sheerun/vim-polyglot'
+" Pug 'euclidianAce/BetterLua.vim'
+call pug#end()
 
-lua require('lsp/compe') require('lsp/lsp-servers') require('lsp/saga') require('ide/hop') require('ide/tree-sitter') require('ui/galaxy')
-
+lua require('lsp/compe') require('lsp/lsp-servers') require('lsp/saga') require('ide/hop') require('ui/colors') require('ui/express') require('ide/telescope') require('ide/telescope')

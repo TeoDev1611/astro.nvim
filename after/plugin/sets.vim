@@ -10,6 +10,7 @@ set nocompatible
 set mouse=a
 set wrap
 set linebreak
+set cursorline
 set relativenumber
 set clipboard=unnamed
 set background=dark

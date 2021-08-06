@@ -1,6 +1,8 @@
+vim.cmd('packadd telescope.nvim')
+
 require('telescope').setup({
   defaults = {
-    file_ignore_patterns = { 'node_modules', '.git', 'pack' },
+    file_ignore_patterns = { 'node_modules', '.git', 'pack', 'extension', 'ins' },
     vimgrep_arguments = {
       'rg',
       '--color=never',
