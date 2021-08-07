@@ -7,7 +7,7 @@ end
 
 function M.has_width_gt(cols)
   -- Check if the windows width is greater than a given number of columns
- return vim.fn.winwidth(0) / 2 > cols
+  return vim.fn.winwidth(0) / 2 > cols
 end
 
-return M 
+return M
