@@ -91,7 +91,7 @@ endif
 if !empty(s:check_key('telescope'))
   Pug 'nvim-telescope/telescope.nvim', { 'type':'opt' }
   " HACK: Comment if not use
-  " lua require('ide/telescope')
+  lua require('ide/telescope')
 endif
 
 if !empty(s:check_key('fast_movements'))

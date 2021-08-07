@@ -8,6 +8,8 @@
 
 ## Commands, Maps and Plugins
 
+> Note is current not updated 
+
 - **Intelljsense** [NativeLSP](https://github.com/neovim/nvim-lspconfig) you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua) 
 
 - **Comments** The comment tool what use is [vim-commentary](https://github.com/tpope/vim-commentary) this can be activate with gcc and gc can you see the documentation for this amazing tool in the repository all settings are the default.
@@ -45,24 +47,27 @@
 Steps for install this awesome neovim configuration:
 
 1. Install Neovim [here](https://github.com/neovim/neovim)
-2. Install the manager:
+2. Install the manager [pug.nvim](https://github.com/TeoDev1611/pug.nvim):
 
 > Windows
 ```ps1
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
+git clone https://github.com/kristijanhusak/vim-packager ~/AppData/Local/nvim/pack/packager/opt/vim-packager
+iwr -useb https://raw.githubusercontent.com/TeoDev1611/pug.nvim/main/pug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/pug.vim" -Force
 ```
 
 > Linux MacOS
 ```shell
-git clone https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/pug.vim --create-dirs \
+       https://raw.githubusercontent.com/TeoDev1611/pug.nvim/main/pug.vim'
 ```
 
 3. Go to your neovim configuration directory
 
 >Windows
 ````
-cd AppData\Local\nvim
+cd $HOME\AppData\Local\nvim
 ````
 > Linux MacOS
 `````
@@ -76,7 +81,7 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 5. Finally enter into neovim for install and compile packer with this:
 ``
-nvim +PackerSync
+nvim +PugInstall
 ``
 
 ## ScreenShots
