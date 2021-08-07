@@ -4,6 +4,8 @@
   
   <q>Blazing faster neovim configuration made for a IDE use with Vim</q>
 
+  [![Powered by vital.vim](https://img.shields.io/badge/powered%20by-vital.vim-80273f.svg)](https://github.com/vim-jp/vital.vim)
+
 </div>
 
 ## Commands, Maps and Plugins
@@ -83,6 +85,8 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 ``
 nvim +PugInstall
 ``
+
+6. Check the [rocket.toml](https://github.com/TeoDev1611/RocketVim/blob/rocket/rocket.toml) for the custom aparience and options and uncomment and load the lua modules [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/init.vim)
 
 ## ScreenShots
 
