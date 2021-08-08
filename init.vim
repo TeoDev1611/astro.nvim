@@ -14,6 +14,7 @@ let s:TOMLContent = s:Toml.parse_file(s:path)
 
 " ------------------------------- UTILS 
 
+
 " Get the conf key
 let s:conf_data = s:TOMLContent.conf
 
@@ -49,21 +50,10 @@ if !empty(s:check_key('colorschemes'))
   Pug 'Yagua/nebulous.nvim'
   lua require('ui/colors')
 endif
-if !empty(s:check_key('galaxyline'))
-  " HACK: Uncomment if use galaxyline
-  Pug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-  " lua require('ui/galaxy')
-endif
-if !empty(s:check_key('lualine'))
-  Pug 'hoob3rt/lualine.nvim'
-  " HACK: Uncomment if use
-  " lua require('ui/statusline')
-endif
-if !empty(s:check_key('express'))
-  Pug 'tjdevries/express_line.nvim'
-  " HACK: Comment if not use
-  lua require('ui/express')
-endif
+" Status Line not lazy Loading for best work 
+" TODO: Fix the bug into the load
+Pug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+lua require('ui/galaxy')
 if !empty(s:check_key('lsp'))
   Pug 'folke/todo-comments.nvim'
   Pug 'folke/lsp-colors.nvim'
@@ -73,7 +63,6 @@ if !empty(s:check_key('lsp'))
   Pug 'hrsh7th/vim-vsnip'
   Pug 'hrsh7th/vim-vsnip-integ'
   Pug 'rafamadriz/friendly-snippets'
-  " HACK: Comment if not use
   lua require('lsp/compe') require('lsp/lsp-servers') require('lsp/saga')
 endif
 
@@ -90,13 +79,11 @@ endif
 
 if !empty(s:check_key('telescope'))
   Pug 'nvim-telescope/telescope.nvim', { 'type':'opt' }
-  " HACK: Comment if not use
   lua require('ide/telescope')
 endif
 
 if !empty(s:check_key('fast_movements'))
     Pug 'phaazon/hop.nvim'
-    " HACK: Comment if not use
     lua require('ide/hop')
     Pug 'rhysd/accelerated-jk'
 endif

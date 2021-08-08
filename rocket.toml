@@ -4,8 +4,7 @@ utils = true # Need for Telescope and Icons :p
 # Colors
 colorschemes = true
 # Status Lines
-galaxy = false
-lualine = false
+galaxy = true
 express = true
 # Completion
 lsp = true
