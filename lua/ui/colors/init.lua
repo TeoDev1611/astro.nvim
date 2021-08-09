@@ -1,5 +1,39 @@
--- Put this lines inside your vimrc to set the colorscheme
-require('nebulous').setup()
-vim.g.nb_style = 'night'
---or
-vim.cmd('colorscheme nebulous')
+local g = vim.g
+local cmd = vim.cmd
+local nebulous = require "nebulous"
+
+if vim.fn.exists "+termguicolors" then
+  vim.cmd [[
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+  ]]
+end
+
+-- Setup the lua colorshemes
+nebulous.setup()
+
+-- Options of the colorschemes
+g.nb_style = "night"
+-- Gruvbox
+g.gruvbox_contrast_dark = "hard"
+g.gruvbox_material_pate = "mix"
+g.gruvbox_material_cursor = "orange"
+g.gruvbox_material_background = "hard"
+g.gruvbox_contrast_dark = "hard"
+g.gruvbox_material_diagnostic_text_highlight = 1
+g.gruvbox_material_better_performance = 1
+-- Material
+g.material_style = "deep ocean"
+g.material_italic_comments = true
+g.material_italic_keywords = true
+g.material_italic_functions = true
+-- Embark
+g.embark_terminal_italics = 1
+--  Amora
+g.mode = "mirtilo"
+-- Ayu
+g.ayucolor = "dark"
+
+-- Set the colorscheme
+cmd "colorscheme nebulous"

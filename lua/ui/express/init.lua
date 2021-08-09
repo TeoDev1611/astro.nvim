@@ -1,10 +1,10 @@
 local generator = function()
   local el_segments = {}
 
-  local extensions = require('el.extensions')
+  local extensions = require "el.extensions"
   table.insert(el_segments, extensions.mode) -- mode returns the current mode.
 
-  table.insert(el_segments, '   ')
+  table.insert(el_segments, "   ")
 
   local file_namer = function(_window, buffer)
     return buffer.name
@@ -13,9 +13,9 @@ local generator = function()
 
   local file_type = function()
     local ft = vim.bo.filetype
-    return '                                                                                             [ '
+    return "                                                                                             [ "
       .. ft
-      .. ' ]   '
+      .. " ]   "
   end
 
   table.insert(el_segments, file_type)
@@ -24,4 +24,4 @@ local generator = function()
 end
 
 -- And then when you're all done, just call
-require('el').setup({ generator = generator })
+require("el").setup { generator = generator }

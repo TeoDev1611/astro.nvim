@@ -1,11 +1,11 @@
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
-require('compe').setup({
+require("compe").setup {
   enabled = true,
   autocomplete = true,
   debug = true,
   min_length = 1,
-  preselect = 'enable',
+  preselect = "enable",
   throttle_time = 80,
   source_timeout = 200,
   incomplete_delay = 400,
@@ -15,19 +15,19 @@ require('compe').setup({
   documentation = true,
   source = {
     path = {
-      menu = '率',
+      menu = "率",
     },
     buffer = {
-      menu = '﬘',
+      menu = "﬘",
     },
     calc = {
-      menu = '',
+      menu = "",
     },
     vsnip = {
-      menu = '',
+      menu = "",
     },
     nvim_lsp = {
-      menu = '',
+      menu = "",
     },
     nvim_lua = true,
     tabnine = false,
@@ -37,31 +37,31 @@ require('compe').setup({
     --   priority = 20;
     --   menu = "";
     -- };
-    spell = { menu = '暈' },
-    tags = { menu = '' },
-    treesitter = { menu = '' },
+    spell = { menu = "暈" },
+    tags = { menu = "" },
+    treesitter = { menu = "" },
   },
-})
+}
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
-    return t('<C-p>')
-  elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
-    return t('<Plug>(vsnip-jump-prev)')
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
   else
-    return t('<S-Tab>')
+    return t "<S-Tab>"
   end
 end
 
-vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
-vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 
 -- LSP Enable diagnostics
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
   underline = false,
   signs = true,
@@ -69,10 +69,10 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
 })
 
 -- LSP COLORS
-require('lsp-colors').setup({
-  Error = '#db4b4b',
-  Warning = '#e0af68',
-  Information = '#0db9d7',
-  Hint = '#10B981',
-})
-require('todo-comments').setup({})
+require("lsp-colors").setup {
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981",
+}
+require("todo-comments").setup {}

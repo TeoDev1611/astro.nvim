@@ -48,21 +48,18 @@
 
 Steps for install this awesome neovim configuration:
 
-1. Install Neovim [here](https://github.com/neovim/neovim)
-2. Install the manager [pug.nvim](https://github.com/TeoDev1611/pug.nvim):
+1. Install Neovim [here](https://github.com/neovim/neovim) 0.5+
+2. Install the manager 
 
 > Windows
 ```ps1
-git clone https://github.com/kristijanhusak/vim-packager ~/AppData/Local/nvim/pack/packager/opt/vim-packager
-iwr -useb https://raw.githubusercontent.com/TeoDev1611/pug.nvim/main/pug.vim |`
-    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/pug.vim" -Force
+git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
 
 > Linux MacOS
 ```shell
-git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/pug.vim --create-dirs \
-       https://raw.githubusercontent.com/TeoDev1611/pug.nvim/main/pug.vim'
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
 3. Go to your neovim configuration directory
@@ -83,10 +80,10 @@ git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
 
 5. Finally enter into neovim for install and compile packer with this:
 ``
-nvim +PugInstall
+nvim +PackerSync
 ``
 
-6. Check the [rocket.toml](https://github.com/TeoDev1611/RocketVim/blob/rocket/rocket.toml) for the custom aparience and options and uncomment and load the lua modules [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/init.vim)
+<!-- 6. Check the [rocket.toml](https://github.com/TeoDev1611/RocketVim/blob/rocket/rocket.toml) for the custom aparience and options and uncomment and load the lua modules [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/init.vim) -->
 
 ## ScreenShots
 
@@ -98,9 +95,6 @@ nvim +PugInstall
 
 This configuration dont use the classic CoC.nvim is very slow however i use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
 
-## Install the language server for lua
-
-
-
+<!-- ## Install the language server for lua -->
 ---
 Made with ❤ in Ecuador
