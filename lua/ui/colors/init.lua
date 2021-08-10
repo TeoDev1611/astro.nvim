@@ -10,11 +10,15 @@ if vim.fn.exists "+termguicolors" then
   ]]
 end
 
+-- Options of the colorschemes
+g.nb_disable_background = false
+g.nb_italic_comments = true
+g.nb_italic_keywords = true
+g.nb_italic_functions = true
+g.nb_italic_variables = false
+g.nb_style = "night"
 -- Setup the lua colorshemes
 nebulous.setup()
-
--- Options of the colorschemes
-g.nb_style = "night"
 -- Gruvbox
 g.gruvbox_contrast_dark = "hard"
 g.gruvbox_material_pate = "mix"
