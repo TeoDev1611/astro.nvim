@@ -94,11 +94,9 @@ use {
 use {
   "glepnir/galaxyline.nvim",
   branch = "main",
-  -- your statusline
   config = function()
     require "ui/galaxy"
   end,
-  -- some optional icons
   requires = { "kyazdani42/nvim-web-devicons", opt = true },
   event = "BufWinEnter",
 }
@@ -146,4 +144,14 @@ use {
     vim.opt.termguicolors = true
     require("bufferline").setup {}
   end,
+}
+use {
+  "lewis6991/gitsigns.nvim",
+  requires = {
+    "nvim-lua/plenary.nvim",
+  },
+  config = function()
+    require("gitsigns").setup()
+  end,
+  event = "BufRead",
 }
