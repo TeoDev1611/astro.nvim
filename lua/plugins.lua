@@ -103,11 +103,14 @@ use {
   event = "BufWinEnter",
 }
 -- File Explorer
-use "lambdalisue/fern.vim"
-use "antoinemadec/FixCursorHold.nvim"
-use "lambdalisue/fern-renderer-nerdfont.vim"
-use "lambdalisue/nerdfont.vim"
-use "lambdalisue/glyph-palette.vim"
+use {
+  "kyazdani42/nvim-tree.lua",
+  requires = "kyazdani42/nvim-web-devicons",
+  event = "BufWinEnter",
+  config = function()
+    require "ui/tree"
+  end,
+}
 
 -- IDE Tools
 use { "junegunn/goyo.vim", opt = true, cmd = "Goyo" }
@@ -133,4 +136,14 @@ use {
 
 use {
   "rhysd/accelerated-jk",
+}
+
+use {
+  "akinsho/nvim-bufferline.lua",
+  requires = "kyazdani42/nvim-web-devicons",
+  event = "BufWinEnter",
+  config = function()
+    vim.opt.termguicolors = true
+    require("bufferline").setup {}
+  end,
 }

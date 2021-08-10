@@ -27,8 +27,8 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 "Close a buffer
 nnoremap <leader>bd :bdelete<CR>
 "Tree maps
-map <Leader>n :Fern . -reveal=%<CR>
-noremap <silent> <C-m> :Fern . -drawer -reveal=% -toggle -width=30<CR><C-w>
+nnoremap <silent><leader>n <cmd>NvimTreeToggle<CR>
+nnoremap <silent><leader>nr <cmd>NvimTreeRefresh<CR>
 " Fuzzy find
 nnoremap <silent><leader>ff <cmd>Telescope find_files<cr>
 nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
