@@ -153,5 +153,4 @@ use {
   config = function()
     require("gitsigns").setup()
   end,
-  event = "BufRead",
 }

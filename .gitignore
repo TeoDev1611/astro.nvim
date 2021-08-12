@@ -3,5 +3,6 @@ extension/
 lspm/
 pack/
 ins/
+plugin/packer_compiled.lua
 vim-lsp-settings/
 *.py
