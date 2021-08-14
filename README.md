@@ -1,10 +1,18 @@
 <div align="center">
-  
-  # :rocket: RocketVim
-  
+
+  ```
+   _______  _______  _______  ______    _______  __   __  ___   __   __ 
+  |   _   ||       ||       ||    _ |  |       ||  | |  ||   | |  |_|  |
+  |  |_|  ||  _____||_     _||   | ||  |   _   ||  |_|  ||   | |       |
+  |       || |_____   |   |  |   |_||_|  | |  ||       ||   | |       |
+  |       ||_____  |  |   |  |    __  ||  |_|  ||       ||   | |       |
+  |   _   | _____| |  |   |  |   |  | ||       | |     | |   | | ||_|| |
+  |__| |__||_______|  |___|  |___|  |_||_______|  |___|  |___| |_|   |_|
+
+  ```
+
   <q>Blazing faster neovim configuration made for a IDE use with Vim</q>
 
-  [![Powered by vital.vim](https://img.shields.io/badge/powered%20by-vital.vim-80273f.svg)](https://github.com/vim-jp/vital.vim)
 
 </div>
 
