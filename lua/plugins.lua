@@ -154,3 +154,5 @@ use {
     require("gitsigns").setup()
   end,
 }
+
+use "sheerun/vim-polyglot"

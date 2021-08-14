@@ -22,3 +22,10 @@ opt.showcmd = true
 opt.ruler = true
 opt.hidden = true
 cmd "set nowritebackup"
+
+cmd [[
+augroup vimrc_help
+  autocmd!
+  autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+augroup END
+]]
