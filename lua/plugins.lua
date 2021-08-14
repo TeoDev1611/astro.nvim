@@ -116,9 +116,14 @@ use { "iamcco/markdown-preview.nvim", opt = true, run = "-> mkdp#util#install()"
 
 --Fuzzy Find
 use {
+  "glepnir/dashboard-nvim",
+  config = function()
+    vim.cmd [[let g:dashboard_default_executive = 'telescope']]
+  end,
+}
+use {
   "nvim-telescope/telescope.nvim",
   requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-  cmd = "Telescope",
   config = function()
     require "ide/telescope"
   end,

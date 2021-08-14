@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
 let mapleader=' '
 
 " Custom scape chars
