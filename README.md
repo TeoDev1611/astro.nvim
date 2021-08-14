@@ -20,7 +20,7 @@
 
 > Note is current not updated 
 
-- **Intelljsense** [NativeLSP](https://github.com/neovim/nvim-lspconfig) you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua) 
+- **Intelljsense** [NativeLSP](https://github.com/neovim/nvim-lspconfig) you can select this in the manager settings for lua native lsp [here](https://github.com/TeoDev1611/AstroVim/blob/rocket/lua/lsp/lsp-servers/init.lua) 
 
 - **Comments** The comment tool what use is [vim-commentary](https://github.com/tpope/vim-commentary) this can be activate with gcc and gc can you see the documentation for this amazing tool in the repository all settings are the default.
 
@@ -83,7 +83,7 @@ cd $HOME/.config/nvim
 
 4. Clone the configuration into the folder **You need git**
 ```
-git clone -b rocket https://github.com/TeoDev1611/RocketVim.git .
+git clone -b astro https://github.com/TeoDev1611/AstroVim.git .
 ```
 
 5. Finally enter into neovim for install and compile packer with this:
