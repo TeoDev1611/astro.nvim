@@ -49,3 +49,12 @@ telescope.setup {
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
 }
+
+telescope.load_extension "ghq"
+telescope.load_extension "project"
+
+vim.cmd[[
+command! -nargs=0 ListPlugins :lua require('telescope').extensions.packer.plugins(opts)
+command! -nargs=0 Project :lua require'telescope'.extensions.project.project{}
+]]
+

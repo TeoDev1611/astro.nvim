@@ -141,7 +141,13 @@ use {
 }
 use {
   "nvim-telescope/telescope.nvim",
-  requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+  requires = {
+    { "nvim-lua/popup.nvim" },
+    { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope-ghq.nvim" },
+    { "nvim-telescope/telescope-packer.nvim" },
+    { "nvim-telescope/telescope-project.nvim" },
+  },
   config = function()
     require "ide.telescope"
   end,
@@ -181,3 +187,4 @@ use {
 use "sheerun/vim-polyglot"
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }
+
