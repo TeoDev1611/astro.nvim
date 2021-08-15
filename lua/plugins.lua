@@ -7,27 +7,37 @@ local use = packer.use
 packer.reset()
 
 -- Package Managment
-use "wbthomason/packer.nvim"
+use { "wbthomason/packer.nvim", opt = true }
 
 -- NativeLSP
-use "folke/todo-comments.nvim"
-use "folke/lsp-colors.nvim"
+use {
+  "folke/todo-comments.nvim",
+  config = function()
+    require "lsp.todo-comments"
+  end,
+}
+use {
+  "folke/lsp-colors.nvim",
+  config = function()
+    require "lsp.lsp-colors"
+  end,
+}
 use {
   "neovim/nvim-lspconfig",
   config = function()
-    require "lsp/lsp-servers"
+    require "lsp.lsp-servers"
   end,
 }
 use {
   "hrsh7th/nvim-compe",
   config = function()
-    require "lsp/compe"
+    require "lsp.compe"
   end,
 }
 use {
   "glepnir/lspsaga.nvim",
   config = function()
-    require "lsp/saga"
+    require "lsp.saga"
   end,
 }
 use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
@@ -73,7 +83,7 @@ use {
   "nvim-treesitter/nvim-treesitter",
   run = ":TSUpdate",
   config = function()
-    require "ide/tree-sitter"
+    require "ide.tree-sitter"
   end,
 }
 use "p00f/nvim-ts-rainbow"
@@ -81,21 +91,29 @@ use "p00f/nvim-ts-rainbow"
 use {
   "rafi/awesome-vim-colorschemes",
   config = function()
-    require "ui/colors"
+    require "ui.colors"
   end,
 }
 use {
   "Yagua/nebulous.nvim",
   config = function()
-    require "ui/colors"
+    require "ui.colors"
   end,
 }
+
+use {
+  "LunarVim/Colorschemes",
+  config = function()
+    require "ui.colors"
+  end,
+}
+
 -- StatusLine
 use {
   "glepnir/galaxyline.nvim",
   branch = "main",
   config = function()
-    require "ui/galaxy"
+    require "ui.galaxy"
   end,
   requires = { "kyazdani42/nvim-web-devicons", opt = true },
   event = "BufWinEnter",
@@ -106,13 +124,13 @@ use {
   requires = "kyazdani42/nvim-web-devicons",
   event = "BufWinEnter",
   config = function()
-    require "ui/tree"
+    require "ui.tree"
   end,
 }
 
 -- IDE Tools
 use { "junegunn/goyo.vim", opt = true, cmd = "Goyo" }
-use { "iamcco/markdown-preview.nvim", opt = true, run = "-> mkdp#util#install()", ft = "markdown" }
+use { "iamcco/markdown-preview.nvim", opt = true, run = "call mkdp#util#install()", ft = "markdown" }
 
 --Fuzzy Find
 use {
@@ -125,7 +143,7 @@ use {
   "nvim-telescope/telescope.nvim",
   requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
   config = function()
-    require "ide/telescope"
+    require "ide.telescope"
   end,
 }
 -- Jump Motions
@@ -133,7 +151,7 @@ use {
   "phaazon/hop.nvim",
   as = "hop",
   config = function()
-    require "ide/hop"
+    require "ide.hop"
   end,
 }
 
@@ -161,3 +179,5 @@ use {
 }
 
 use "sheerun/vim-polyglot"
+
+use { "euclidianAce/BetterLua.vim", ft = "lua" }
