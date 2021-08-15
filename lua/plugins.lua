@@ -187,4 +187,3 @@ use {
 use "sheerun/vim-polyglot"
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }
-
