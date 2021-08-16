@@ -1,13 +1,28 @@
-vim.cmd [[packadd packer.nvim]]
-local packer = require "packer"
+vim.cmd [[packadd packer.nvim]] local packer = require "packer"
 
-packer.init { max_jobs = 10, display = { open_fn = require("packer.util").float } }
+packer.init {
+   display = {
+      open_fn = function()
+         return require("packer.util").float { border = "single" }
+      end,
+      prompt_border = "single",
+   },
+   git = {
+      clone_timeout = 600, -- Timeout, in seconds, for git clones
+   },
+   auto_clean = true,
+   compile_on_sync = true,
+   profile = {
+      enable = true,
+      threshold = 5 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  }
+}
 
 local use = packer.use
 packer.reset()
 
 -- Package Managment
-use { "wbthomason/packer.nvim", opt = true }
+use { "wbthomason/packer.nvim", opt = true, event = "VimEnter" }
 
 -- NativeLSP
 use {
@@ -15,12 +30,14 @@ use {
   config = function()
     require "lsp.todo-comments"
   end,
+  event = "BufWinEnter"
 }
 use {
   "folke/lsp-colors.nvim",
   config = function()
     require "lsp.lsp-colors"
   end,
+  event = "BufWinEnter"
 }
 use {
   "neovim/nvim-lspconfig",
@@ -39,6 +56,7 @@ use {
   config = function()
     require "lsp.saga"
   end,
+  cmd = "Lspsaga"
 }
 use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
 use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
@@ -68,11 +86,6 @@ use {
 }
 
 use { "tpope/vim-fugitive", cmd = { "G" }, opt = true }
-use {
-  "cometsong/CommentFrame.vim",
-  cmd = { "CommentFrameSlashes", "CommentFrameSlashStar", "CommentFrameHashDash", "CommentFrameQuoteDash" },
-  opt = true,
-}
 use { "mbbill/undotree", cmd = "UndotreeToggle", opt = true }
 
 -- Lang Configs
@@ -81,12 +94,12 @@ use { "editorconfig/editorconfig-vim", opt = true }
 --Colors Config
 use {
   "nvim-treesitter/nvim-treesitter",
+  requires = "p00f/nvim-ts-rainbow",
   run = ":TSUpdate",
   config = function()
     require "ide.tree-sitter"
   end,
 }
-use "p00f/nvim-ts-rainbow"
 -- Colorschemes
 use {
   "rafi/awesome-vim-colorschemes",
@@ -126,6 +139,7 @@ use {
   config = function()
     require "ui.tree"
   end,
+  cmd = "NvimTreeToggle"
 }
 
 -- IDE Tools
@@ -144,13 +158,13 @@ use {
   requires = {
     { "nvim-lua/popup.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-ghq.nvim" },
     { "nvim-telescope/telescope-packer.nvim" },
     { "nvim-telescope/telescope-project.nvim" },
   },
   config = function()
     require "ide.telescope"
   end,
+  cmd = "Telescope"
 }
 -- Jump Motions
 use {
@@ -159,10 +173,12 @@ use {
   config = function()
     require "ide.hop"
   end,
+  event = "BufWinEnter"
 }
 
 use {
   "rhysd/accelerated-jk",
+  event = "VimEnter"
 }
 
 use {
@@ -182,8 +198,9 @@ use {
   config = function()
     require("gitsigns").setup()
   end,
+  event = "BufWinEnter"
 }
 
-use "sheerun/vim-polyglot"
+use {"sheerun/vim-polyglot", disable = true }
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }

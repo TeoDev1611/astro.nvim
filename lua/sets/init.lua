@@ -21,6 +21,7 @@ opt.fileencoding = "utf-8"
 opt.showcmd = true
 opt.ruler = true
 opt.hidden = true
+opt.ignorecase = true
 cmd "set nowritebackup"
 
 cmd [[

@@ -1,6 +1,7 @@
-vim.cmd [[
-let mapleader=' '
 
+vim.g.mapleader = ' '
+
+vim.cmd [[
 " Custom scape chars
 imap jk <Esc>
 imap <C-c> <Esc>l
