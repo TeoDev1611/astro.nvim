@@ -1,5 +1,4 @@
-
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 vim.cmd [[
 " Custom scape chars

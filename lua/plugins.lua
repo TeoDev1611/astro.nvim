@@ -1,21 +1,22 @@
-vim.cmd [[packadd packer.nvim]] local packer = require "packer"
+vim.cmd [[packadd packer.nvim]]
+local packer = require "packer"
 
 packer.init {
-   display = {
-      open_fn = function()
-         return require("packer.util").float { border = "single" }
-      end,
-      prompt_border = "single",
-   },
-   git = {
-      clone_timeout = 600, -- Timeout, in seconds, for git clones
-   },
-   auto_clean = true,
-   compile_on_sync = true,
-   profile = {
-      enable = true,
-      threshold = 5 -- the amount in ms that a plugins load time must be over for it to be included in the profile
-  }
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "single" }
+    end,
+    prompt_border = "single",
+  },
+  git = {
+    clone_timeout = 600, -- Timeout, in seconds, for git clones
+  },
+  auto_clean = true,
+  compile_on_sync = true,
+  profile = {
+    enable = true,
+    threshold = 5, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  },
 }
 
 local use = packer.use
@@ -30,14 +31,14 @@ use {
   config = function()
     require "lsp.todo-comments"
   end,
-  event = "BufWinEnter"
+  event = "BufWinEnter",
 }
 use {
   "folke/lsp-colors.nvim",
   config = function()
     require "lsp.lsp-colors"
   end,
-  event = "BufWinEnter"
+  event = "BufWinEnter",
 }
 use {
   "neovim/nvim-lspconfig",
@@ -56,7 +57,7 @@ use {
   config = function()
     require "lsp.saga"
   end,
-  cmd = "Lspsaga"
+  cmd = "Lspsaga",
 }
 use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
 use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
@@ -139,7 +140,7 @@ use {
   config = function()
     require "ui.tree"
   end,
-  cmd = "NvimTreeToggle"
+  cmd = "NvimTreeToggle",
 }
 
 -- IDE Tools
@@ -164,7 +165,7 @@ use {
   config = function()
     require "ide.telescope"
   end,
-  cmd = "Telescope"
+  cmd = "Telescope",
 }
 -- Jump Motions
 use {
@@ -173,12 +174,12 @@ use {
   config = function()
     require "ide.hop"
   end,
-  event = "BufWinEnter"
+  event = "BufWinEnter",
 }
 
 use {
   "rhysd/accelerated-jk",
-  event = "VimEnter"
+  event = "VimEnter",
 }
 
 use {
@@ -198,9 +199,9 @@ use {
   config = function()
     require("gitsigns").setup()
   end,
-  event = "BufWinEnter"
+  event = "BufWinEnter",
 }
 
-use {"sheerun/vim-polyglot", disable = true }
+use { "sheerun/vim-polyglot", disable = true }
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }
