@@ -50,7 +50,6 @@ telescope.setup {
   },
 }
 
-telescope.load_extension "ghq"
 telescope.load_extension "project"
 
 vim.cmd [[
