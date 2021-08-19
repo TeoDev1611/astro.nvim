@@ -1,11 +1,14 @@
 vim.cmd "packadd telescope.nvim"
+vim.cmd "packadd telescope-packer.nvim"
+vim.cmd "packadd telescope-project.nvim"
+vim.cmd "packadd telescope-fzy-native.nvim"
 
 local telescope = require "telescope"
 telescope.setup {
   defaults = {
     vimgrep_arguments = {
       "rg",
-      "--color=never",
+      "--color=always",
       "--no-heading",
       "--with-filename",
       "--line-number",
@@ -32,25 +35,18 @@ telescope.setup {
       height = 0.80,
       preview_cutoff = 120,
     },
-    file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-    path_display = { "absolute" },
-    winblend = 0,
-    border = {},
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-    color_devicons = true,
-    use_less = true,
-    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+
   },
+      extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
 }
 
 telescope.load_extension "project"
+telescope.load_extension('fzy_native')
 
 vim.cmd [[
 command! -nargs=0 ListPlugins :lua require('telescope').extensions.packer.plugins(opts)

@@ -18,7 +18,6 @@ nnoremap <silent> <C-right> :wincmd l<CR>
 nnoremap <silent> <C-up> :wincmd k<CR>
 nnoremap <silent> <C-down> :wincmd j<CR>
 " Utils of maps for faster usage
-nnoremap <leader>w :w <CR>
 nnoremap <C-w> :q <CR>
 nnoremap <leader>q :q <CR>
 nnoremap <leader>so :so%<CR>
@@ -36,10 +35,10 @@ nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>
  "LSPSaga
-nnoremap <silent>sd :Lspsaga hover_doc<CR>
-nnoremap <silent>sh :Lspsaga signature_help<CR>
-nnoremap <silent>sr :Lspsaga rename<CR>
-nnoremap <silent>st :Lspsaga open_floaterm<CR>
+nnoremap <silent><leader>sd :Lspsaga hover_doc<CR>
+nnoremap <silent><leader>sh :Lspsaga signature_help<CR>
+nnoremap <silent><leader>sr :Lspsaga rename<CR>
+nnoremap <silent><leader>st :Lspsaga open_floaterm<CR>
 tnoremap <silent> <A-d> <C-a><C-n>:Lspsaga close_floaterm<CR>
 " Fast Movements
 nmap j <Plug>(accelerated_jk_gj)

@@ -45,13 +45,16 @@ use {
   config = function()
     require "lsp.lsp-servers"
   end,
+  event = 'BufReadPre',
 }
 use {
   "hrsh7th/nvim-compe",
   config = function()
     require "lsp.compe"
   end,
+  event = 'InsertEnter',
 }
+
 use {
   "glepnir/lspsaga.nvim",
   config = function()
@@ -62,20 +65,22 @@ use {
 use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
 use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
+use {
+	"onsails/lspkind-nvim",
+	config = function()
+		require('lsp.icons')
+	end,
+}
+
+
 -- IDE Tools
 use {
   "windwp/nvim-autopairs",
   config = function()
-    require("nvim-autopairs").setup {
-      disable_filetype = { "TelescopePrompt" },
-    }
-
-    require("nvim-autopairs.completion.compe").setup {
-      map_cr = true, --  map <CR> on insert mode
-      map_complete = true, -- it will auto insert `(` after select function or method item
-      auto_select = false, -- auto select first item
-    }
+	  require('ide.autopairs')
   end,
+  event = "InsertEnter",
+  after = "nvim-compe"
 }
 
 use {
@@ -87,10 +92,9 @@ use {
 }
 
 use { "tpope/vim-fugitive", cmd = { "G" }, opt = true }
-use { "mbbill/undotree", cmd = "UndotreeToggle", opt = true }
 
 -- Lang Configs
-use { "editorconfig/editorconfig-vim", opt = true }
+use { "editorconfig/editorconfig-vim", }
 
 --Colors Config
 use {
@@ -115,11 +119,12 @@ use {
   end,
 }
 
+
 use {
-  "LunarVim/Colorschemes",
-  config = function()
-    require "ui.colors"
-  end,
+ "JavaCafe01/javacafe.vim",
+ config = function()
+	 require "ui.colors"
+end,
 }
 
 -- StatusLine
@@ -140,7 +145,6 @@ use {
   config = function()
     require "ui.tree"
   end,
-  cmd = "NvimTreeToggle",
 }
 
 -- IDE Tools
@@ -157,10 +161,11 @@ use {
 use {
   "nvim-telescope/telescope.nvim",
   requires = {
-    { "nvim-lua/popup.nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-packer.nvim" },
-    { "nvim-telescope/telescope-project.nvim" },
+    { "nvim-lua/popup.nvim"},
+    { "nvim-lua/plenary.nvim"},
+    { "nvim-telescope/telescope-packer.nvim", opt = true },
+    { "nvim-telescope/telescope-project.nvim", opt = true },
+    {'nvim-telescope/telescope-fzy-native.nvim',opt = true},
   },
   config = function()
     require "ide.telescope"
@@ -202,6 +207,7 @@ use {
   event = "BufWinEnter",
 }
 
-use { "sheerun/vim-polyglot", disable = true }
+use { "sheerun/vim-polyglot", disable = false }
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }
+

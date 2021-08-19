@@ -5,7 +5,7 @@ require("compe").setup {
   autocomplete = true,
   debug = true,
   min_length = 1,
-  preselect = "enable",
+  preselect = "always",
   throttle_time = 80,
   source_timeout = 200,
   incomplete_delay = 400,
@@ -14,25 +14,16 @@ require("compe").setup {
   max_menu_width = 4,
   documentation = true,
   source = {
-    path = {
-      menu = "率",
-    },
-    buffer = {
-      menu = "﬘",
-    },
-    calc = {
-      menu = "",
-    },
-    vsnip = {
-      menu = "",
-    },
-    nvim_lsp = {
-      menu = "",
-    },
-    nvim_lua = true,
-    spell = { menu = "暈" },
-    tags = { menu = "" },
-    treesitter = { menu = "" },
+    path = true;
+    buffer = true;
+    tags = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    emoji = true;
+    omni = true;
+    treesitter = true;
   },
 }
 
@@ -60,3 +51,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   signs = true,
   update_in_insert = false,
 })
+
+
