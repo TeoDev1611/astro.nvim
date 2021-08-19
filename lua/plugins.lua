@@ -84,7 +84,7 @@ use {
 use {
   'terrortylor/nvim-comment',
   config = function()
-    require('ide.comment')
+    require 'ide.comment'
   end,
   event = 'BufRead',
 }

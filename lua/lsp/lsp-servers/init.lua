@@ -14,7 +14,7 @@ lspconfig.bashls.setup {}
 
 lspconfig.rls.setup {}
 
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup {}
 
 lspconfig.jsonls.setup {
   commands = {
