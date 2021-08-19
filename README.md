@@ -11,7 +11,7 @@
 
   ```
 
-  <q>Blazing faster neovim configuration made for a IDE use with Vim</q>
+  <q>Blazing faster neovim configuration made for a IDE use with Neovim</q>
 
 
 </div>
