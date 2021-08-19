@@ -1,12 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
-local packer = require "packer"
+local packer = require 'packer'
 
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "single" }
+      return require('packer.util').float { border = 'single' }
     end,
-    prompt_border = "single",
+    prompt_border = 'single',
   },
   git = {
     clone_timeout = 600, -- Timeout, in seconds, for git clones
@@ -23,188 +23,188 @@ local use = packer.use
 packer.reset()
 
 -- Package Managment
-use { "wbthomason/packer.nvim", opt = true, event = "VimEnter" }
+use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
 -- NativeLSP
 use {
-  "folke/todo-comments.nvim",
+  'folke/todo-comments.nvim',
   config = function()
-    require "lsp.todo-comments"
+    require 'lsp.todo-comments'
   end,
-  event = "BufWinEnter",
+  event = 'BufWinEnter',
 }
 use {
-  "folke/lsp-colors.nvim",
+  'folke/lsp-colors.nvim',
   config = function()
-    require "lsp.lsp-colors"
+    require 'lsp.lsp-colors'
   end,
-  event = "BufWinEnter",
+  event = 'BufWinEnter',
 }
 use {
-  "neovim/nvim-lspconfig",
+  'neovim/nvim-lspconfig',
   config = function()
-    require "lsp.lsp-servers"
+    require 'lsp.lsp-servers'
   end,
-  event = "BufReadPre",
+  event = 'BufReadPre',
 }
 use {
-  "hrsh7th/nvim-compe",
+  'hrsh7th/nvim-compe',
   config = function()
-    require "lsp.compe"
+    require 'lsp.compe'
   end,
-  event = "InsertEnter",
+  event = 'InsertEnter',
 }
 
 use {
-  "glepnir/lspsaga.nvim",
+  'glepnir/lspsaga.nvim',
   config = function()
-    require "lsp.saga"
+    require 'lsp.saga'
   end,
-  cmd = "Lspsaga",
+  cmd = 'Lspsaga',
 }
-use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
-use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
+use { 'hrsh7th/vim-vsnip', event = 'InsertEnter' }
+use { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' }
 
 use {
-  "onsails/lspkind-nvim",
+  'onsails/lspkind-nvim',
   config = function()
-    require "lsp.icons"
+    require 'lsp.icons'
   end,
 }
 
 -- IDE Tools
 use {
-  "windwp/nvim-autopairs",
+  'windwp/nvim-autopairs',
   config = function()
-    require "ide.autopairs"
+    require 'ide.autopairs'
   end,
-  event = "InsertEnter",
-  after = "nvim-compe",
+  event = 'InsertEnter',
+  after = 'nvim-compe',
 }
 
 use {
-  "terrortylor/nvim-comment",
+  'terrortylor/nvim-comment',
   config = function()
-    require("nvim_comment").setup()
+    require('nvim_comment').setup()
   end,
-  event = "BufRead",
+  event = 'BufRead',
 }
 
-use { "tpope/vim-fugitive", cmd = { "G" }, opt = true }
+use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
 
 -- Lang Configs
-use { "editorconfig/editorconfig-vim" }
+use { 'editorconfig/editorconfig-vim' }
 
 --Colors Config
 use {
-  "nvim-treesitter/nvim-treesitter",
-  requires = "p00f/nvim-ts-rainbow",
-  run = ":TSUpdate",
+  'nvim-treesitter/nvim-treesitter',
+  requires = 'p00f/nvim-ts-rainbow',
+  run = ':TSUpdate',
   config = function()
-    require "ide.tree-sitter"
+    require 'ide.tree-sitter'
   end,
 }
 -- Colorschemes
 use {
-  "rafi/awesome-vim-colorschemes",
+  'rafi/awesome-vim-colorschemes',
   config = function()
-    require "ui.colors"
+    require 'ui.colors'
   end,
 }
 use {
-  "Yagua/nebulous.nvim",
+  'Yagua/nebulous.nvim',
   config = function()
-    require "ui.colors"
+    require 'ui.colors'
   end,
 }
 
 use {
-  "JavaCafe01/javacafe.vim",
+  'JavaCafe01/javacafe.vim',
   config = function()
-    require "ui.colors"
+    require 'ui.colors'
   end,
 }
 
 -- StatusLine
 use {
-  "glepnir/galaxyline.nvim",
-  branch = "main",
+  'glepnir/galaxyline.nvim',
+  branch = 'main',
   config = function()
-    require "ui.galaxy"
+    require 'ui.galaxy'
   end,
-  requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  event = "BufWinEnter",
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  event = 'BufWinEnter',
 }
 -- File Explorer
 use {
-  "kyazdani42/nvim-tree.lua",
-  requires = "kyazdani42/nvim-web-devicons",
-  event = "BufWinEnter",
+  'kyazdani42/nvim-tree.lua',
+  requires = 'kyazdani42/nvim-web-devicons',
+  event = 'BufWinEnter',
   config = function()
-    require "ui.tree"
+    require 'ui.tree'
   end,
 }
 
 -- IDE Tools
-use { "junegunn/goyo.vim", opt = true, cmd = "Goyo" }
-use { "iamcco/markdown-preview.nvim", opt = true, run = "call mkdp#util#install()", ft = "markdown" }
+use { 'junegunn/goyo.vim', opt = true, cmd = 'Goyo' }
+use { 'iamcco/markdown-preview.nvim', opt = true, run = 'call mkdp#util#install()', ft = 'markdown' }
 
 --Fuzzy Find
 use {
-  "glepnir/dashboard-nvim",
+  'glepnir/dashboard-nvim',
   config = function()
     vim.cmd [[let g:dashboard_default_executive = 'telescope']]
   end,
 }
 use {
-  "nvim-telescope/telescope.nvim",
+  'nvim-telescope/telescope.nvim',
   requires = {
-    { "nvim-lua/popup.nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope-packer.nvim", opt = true },
-    { "nvim-telescope/telescope-project.nvim", opt = true },
-    { "nvim-telescope/telescope-fzy-native.nvim", opt = true },
+    { 'nvim-lua/popup.nvim' },
+    { 'nvim-lua/plenary.nvim' },
+    { 'nvim-telescope/telescope-packer.nvim', opt = true },
+    { 'nvim-telescope/telescope-project.nvim', opt = true },
+    { 'nvim-telescope/telescope-fzy-native.nvim', opt = true },
   },
   config = function()
-    require "ide.telescope"
+    require 'ide.telescope'
   end,
-  cmd = "Telescope",
+  cmd = 'Telescope',
 }
 -- Jump Motions
 use {
-  "phaazon/hop.nvim",
-  as = "hop",
+  'phaazon/hop.nvim',
+  as = 'hop',
   config = function()
-    require "ide.hop"
+    require 'ide.hop'
   end,
-  event = "BufWinEnter",
+  event = 'BufWinEnter',
 }
 
 use {
-  "rhysd/accelerated-jk",
-  event = "VimEnter",
+  'rhysd/accelerated-jk',
+  event = 'VimEnter',
 }
 
 use {
-  "akinsho/nvim-bufferline.lua",
-  requires = "kyazdani42/nvim-web-devicons",
-  event = "BufWinEnter",
+  'akinsho/nvim-bufferline.lua',
+  requires = 'kyazdani42/nvim-web-devicons',
+  event = 'BufWinEnter',
   config = function()
     vim.opt.termguicolors = true
-    require("bufferline").setup {}
+    require('bufferline').setup {}
   end,
 }
 use {
-  "lewis6991/gitsigns.nvim",
+  'lewis6991/gitsigns.nvim',
   requires = {
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
   },
   config = function()
-    require("gitsigns").setup()
+    require('gitsigns').setup()
   end,
-  event = "BufWinEnter",
+  event = 'BufWinEnter',
 }
 
-use { "sheerun/vim-polyglot", disable = false }
+use { 'sheerun/vim-polyglot', disable = false }
 
-use { "euclidianAce/BetterLua.vim", ft = "lua" }
+use { 'euclidianAce/BetterLua.vim', ft = 'lua' }

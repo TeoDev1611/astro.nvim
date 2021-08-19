@@ -1,30 +1,30 @@
-vim.cmd "packadd telescope.nvim"
-vim.cmd "packadd telescope-packer.nvim"
-vim.cmd "packadd telescope-project.nvim"
-vim.cmd "packadd telescope-fzy-native.nvim"
+vim.cmd 'packadd telescope.nvim'
+vim.cmd 'packadd telescope-packer.nvim'
+vim.cmd 'packadd telescope-project.nvim'
+vim.cmd 'packadd telescope-fzy-native.nvim'
 
-local telescope = require "telescope"
+local telescope = require 'telescope'
 telescope.setup {
   defaults = {
     vimgrep_arguments = {
-      "rg",
-      "--color=always",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
+      'rg',
+      '--color=always',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
     },
-    prompt_prefix = "   ",
-    selection_caret = "  ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    prompt_prefix = '   ',
+    selection_caret = '  ',
+    entry_prefix = '  ',
+    initial_mode = 'insert',
+    selection_strategy = 'reset',
+    sorting_strategy = 'descending',
+    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
-        prompt_position = "top",
+        prompt_position = 'top',
         preview_width = 0.55,
         results_width = 0.8,
       },
@@ -44,8 +44,8 @@ telescope.setup {
   },
 }
 
-telescope.load_extension "project"
-telescope.load_extension "fzy_native"
+telescope.load_extension 'project'
+telescope.load_extension 'fzy_native'
 
 vim.cmd [[
 command! -nargs=0 ListPlugins :lua require('telescope').extensions.packer.plugins(opts)

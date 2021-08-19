@@ -7,24 +7,24 @@
  |___/                    |___/
 --]]
 local vim = vim
-local gl = require "galaxyline"
-local utils = require "utils"
+local gl = require 'galaxyline'
+local utils = require 'utils'
 
 local gls = gl.section
-gl.short_line_list = { "defx", "packager", "vista" }
+gl.short_line_list = { 'defx', 'packager', 'vista' }
 
 -- Colors
 local colors = {
-  bg = "#00000",
-  fg = "#FDF7CD",
-  section_bg = "#00000",
-  yellow = "#f1fa8c",
-  cyan = "#00ECD8",
-  green = "#3EC841",
-  orange = "#ffb86c",
-  magenta = "#FF00CC",
-  blue = "#418EDD",
-  red = "#E92741",
+  bg = '#00000',
+  fg = '#FDF7CD',
+  section_bg = '#00000',
+  yellow = '#f1fa8c',
+  cyan = '#00ECD8',
+  green = '#3EC841',
+  orange = '#ffb86c',
+  magenta = '#FF00CC',
+  blue = '#418EDD',
+  red = '#E92741',
 }
 
 -- Local helper functions
@@ -33,7 +33,7 @@ local buffer_not_empty = function()
 end
 
 local in_git_repo = function()
-  local vcs = require "galaxyline.provider_vcs"
+  local vcs = require 'galaxyline.provider_vcs'
   local branch_name = vcs.get_git_branch()
 
   return branch_name ~= nil
@@ -49,7 +49,7 @@ local mode_color = function()
     i = colors.green,
     c = colors.orange,
     V = colors.magenta,
-    [""] = colors.magenta,
+    [''] = colors.magenta,
     v = colors.magenta,
     R = colors.red,
   }
@@ -67,7 +67,7 @@ end
 gls.left[1] = {
   FirstElement = {
     provider = function()
-      return " "
+      return ' '
     end,
     -- highlight = {, colors.bg}
   },
@@ -76,46 +76,46 @@ gls.left[2] = {
   ViMode = {
     provider = function()
       local alias = {
-        n = "NORMAL",
-        i = "INSERT",
-        c = "COMMAND",
-        V = "VISUAL",
-        [""] = "VISUAL",
-        v = "VISUAL",
-        R = "REPLACE",
+        n = 'NORMAL',
+        i = 'INSERT',
+        c = 'COMMAND',
+        V = 'VISUAL',
+        [''] = 'VISUAL',
+        v = 'VISUAL',
+        R = 'REPLACE',
       }
-      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color())
+      vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color())
       local alias_mode = alias[vim.fn.mode()]
       if alias_mode == nil then
         alias_mode = vim.fn.mode()
       end
-      return alias_mode .. " "
+      return alias_mode .. ' '
     end,
     highlight = { colors.bg, colors.bg },
-    separator = "  ",
+    separator = '  ',
     separator_highlight = { colors.bg, colors.bg },
   },
 }
 gls.left[3] = {
   FileIcon = {
-    provider = "FileIcon",
+    provider = 'FileIcon',
     condition = buffer_not_empty,
-    highlight = { require("galaxyline.provider_fileinfo").get_file_icon_color, colors.bg },
+    highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.bg },
   },
 }
 gls.left[4] = {
   FileName = {
-    provider = "FileName",
+    provider = 'FileName',
     condition = buffer_not_empty,
     highlight = { colors.fg, colors.bg },
-    separator = " ",
+    separator = ' ',
     separator_highlight = { colors.bg },
   },
 }
 gls.left[5] = {
   GitIcon = {
     provider = function()
-      return "  "
+      return '  '
     end,
     condition = in_git_repo,
     highlight = { colors.red, colors.bg },
@@ -124,12 +124,12 @@ gls.left[5] = {
 gls.left[6] = {
   GitBranch = {
     provider = function()
-      local vcs = require "galaxyline.provider_vcs"
+      local vcs = require 'galaxyline.provider_vcs'
       local branch_name = vcs.get_git_branch()
       if string.len(branch_name) > 28 then
-        return string.sub(branch_name, 1, 25) .. "..."
+        return string.sub(branch_name, 1, 25) .. '...'
       end
-      return branch_name .. " "
+      return branch_name .. ' '
     end,
     condition = in_git_repo,
     highlight = { colors.fg, colors.bg },
@@ -137,32 +137,32 @@ gls.left[6] = {
 }
 gls.left[7] = {
   DiffAdd = {
-    provider = "DiffAdd",
+    provider = 'DiffAdd',
     condition = checkwidth,
-    icon = " ",
+    icon = ' ',
     highlight = { colors.green, colors.bg },
   },
 }
 gls.left[8] = {
   DiffModified = {
-    provider = "DiffModified",
+    provider = 'DiffModified',
     condition = checkwidth,
-    icon = " ",
+    icon = ' ',
     highlight = { colors.orange, colors.bg },
   },
 }
 gls.left[9] = {
   DiffRemove = {
-    provider = "DiffRemove",
+    provider = 'DiffRemove',
     condition = checkwidth,
-    icon = " ",
+    icon = ' ',
     highlight = { colors.red, colors.bg },
   },
 }
 gls.left[10] = {
   LeftEnd = {
     provider = function()
-      return " "
+      return ' '
     end,
     condition = buffer_not_empty,
     highlight = { colors.section_bg, colors.bg },
@@ -170,40 +170,40 @@ gls.left[10] = {
 }
 gls.left[11] = {
   DiagnosticError = {
-    provider = "DiagnosticError",
-    icon = "  ",
+    provider = 'DiagnosticError',
+    icon = '  ',
     highlight = { colors.red, colors.bg },
   },
 }
 gls.left[12] = {
   Space = {
     provider = function()
-      return " "
+      return ' '
     end,
     highlight = { colors.bg, colors.section_bg },
   },
 }
 gls.left[13] = {
   DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "  ",
+    provider = 'DiagnosticWarn',
+    icon = '  ',
     highlight = { colors.bg, colors.section_bg },
   },
 }
 gls.left[14] = {
   Space = {
     provider = function()
-      return " "
+      return ' '
     end,
     highlight = { colors.bg, colors.section_bg },
   },
 }
 gls.left[15] = {
   DiagnosticInfo = {
-    provider = "DiagnosticInfo",
-    icon = "  ",
+    provider = 'DiagnosticInfo',
+    icon = '  ',
     highlight = { colors.blue, colors.section_bg },
-    separator = " ",
+    separator = ' ',
     separator_highlight = { colors.section_bg, colors.bg },
   },
 }
@@ -215,25 +215,25 @@ gls.right[1] = {
       return vim.bo.filetype
     end,
     highlight = { colors.fg, colors.section_bg },
-    separator = " ",
+    separator = ' ',
     separator_highlight = { colors.section_bg, colors.bg },
   },
 }
 gls.right[2] = {
   LineInfo = {
-    provider = "LineColumn",
+    provider = 'LineColumn',
     highlight = { colors.fg, colors.section_bg },
-    separator = " | ",
+    separator = ' | ',
     separator_highlight = { colors.bg, colors.section_bg },
   },
 }
 gls.right[3] = {
   Rocket = {
     provider = function()
-      return " 異  "
+      return ' 異  '
     end,
     highlight = { colors.red, colors.section_bg },
-    separator = " | ",
+    separator = ' | ',
     separator_highlight = { colors.bg, colors.section_bg },
   },
 }
@@ -241,18 +241,18 @@ gls.right[3] = {
 -- Short status line
 gls.short_line_left[1] = {
   BufferType = {
-    provider = "FileTypeName",
+    provider = 'FileTypeName',
     highlight = { colors.fg, colors.section_bg },
-    separator = " ",
+    separator = ' ',
     separator_highlight = { colors.section_bg, colors.bg },
   },
 }
 
 gls.short_line_right[1] = {
   BufferIcon = {
-    provider = "BufferIcon",
+    provider = 'BufferIcon',
     highlight = { colors.yellow, colors.section_bg },
-    separator = " ",
+    separator = ' ',
     separator_highlight = { colors.section_bg, colors.bg },
   },
 }

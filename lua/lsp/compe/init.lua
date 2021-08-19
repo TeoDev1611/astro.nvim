@@ -1,11 +1,11 @@
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = 'menuone,noselect'
 
-require("compe").setup {
+require('compe').setup {
   enabled = true,
   autocomplete = true,
   debug = true,
   min_length = 1,
-  preselect = "always",
+  preselect = 'always',
   throttle_time = 80,
   source_timeout = 200,
   incomplete_delay = 400,
@@ -32,20 +32,20 @@ local t = function(str)
 end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
+    return t '<C-p>'
+  elseif vim.fn.call('vsnip#jumpable', { -1 }) == 1 then
+    return t '<Plug>(vsnip-jump-prev)'
   else
-    return t "<S-Tab>"
+    return t '<S-Tab>'
   end
 end
 
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
 
 -- LSP Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
   underline = false,
   signs = true,
