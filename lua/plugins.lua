@@ -52,7 +52,6 @@ use {
   config = function()
     require 'lsp.compe'
   end,
-  event = 'InsertEnter',
 }
 
 use {
@@ -85,7 +84,7 @@ use {
 use {
   'terrortylor/nvim-comment',
   config = function()
-    require('nvim_comment').setup()
+    require('ide.comment')
   end,
   event = 'BufRead',
 }

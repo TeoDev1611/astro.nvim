@@ -13,8 +13,8 @@ lspconfig.denols.setup {}
 lspconfig.bashls.setup {}
 
 lspconfig.rls.setup {}
--- lspconfig.pyright.setup({})
-lspconfig.pylsp.setup {}
+
+lspconfig.pyright.setup({})
 
 lspconfig.jsonls.setup {
   commands = {
