@@ -14,16 +14,16 @@ require("compe").setup {
   max_menu_width = 4,
   documentation = true,
   source = {
-    path = true;
-    buffer = true;
-    tags = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    emoji = true;
-    omni = true;
-    treesitter = true;
+    path = true,
+    buffer = true,
+    tags = true,
+    calc = true,
+    nvim_lsp = true,
+    nvim_lua = true,
+    vsnip = true,
+    emoji = true,
+    omni = true,
+    treesitter = true,
   },
 }
 
@@ -51,5 +51,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   signs = true,
   update_in_insert = false,
 })
-
-

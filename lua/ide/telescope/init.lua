@@ -35,18 +35,17 @@ telescope.setup {
       height = 0.80,
       preview_cutoff = 120,
     },
-
   },
-      extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    }
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    },
+  },
 }
 
 telescope.load_extension "project"
-telescope.load_extension('fzy_native')
+telescope.load_extension "fzy_native"
 
 vim.cmd [[
 command! -nargs=0 ListPlugins :lua require('telescope').extensions.packer.plugins(opts)

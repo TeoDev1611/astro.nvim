@@ -45,14 +45,14 @@ use {
   config = function()
     require "lsp.lsp-servers"
   end,
-  event = 'BufReadPre',
+  event = "BufReadPre",
 }
 use {
   "hrsh7th/nvim-compe",
   config = function()
     require "lsp.compe"
   end,
-  event = 'InsertEnter',
+  event = "InsertEnter",
 }
 
 use {
@@ -66,21 +66,20 @@ use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
 use { "rafamadriz/friendly-snippets", event = "InsertCharPre" }
 
 use {
-	"onsails/lspkind-nvim",
-	config = function()
-		require('lsp.icons')
-	end,
+  "onsails/lspkind-nvim",
+  config = function()
+    require "lsp.icons"
+  end,
 }
-
 
 -- IDE Tools
 use {
   "windwp/nvim-autopairs",
   config = function()
-	  require('ide.autopairs')
+    require "ide.autopairs"
   end,
   event = "InsertEnter",
-  after = "nvim-compe"
+  after = "nvim-compe",
 }
 
 use {
@@ -94,7 +93,7 @@ use {
 use { "tpope/vim-fugitive", cmd = { "G" }, opt = true }
 
 -- Lang Configs
-use { "editorconfig/editorconfig-vim", }
+use { "editorconfig/editorconfig-vim" }
 
 --Colors Config
 use {
@@ -119,12 +118,11 @@ use {
   end,
 }
 
-
 use {
- "JavaCafe01/javacafe.vim",
- config = function()
-	 require "ui.colors"
-end,
+  "JavaCafe01/javacafe.vim",
+  config = function()
+    require "ui.colors"
+  end,
 }
 
 -- StatusLine
@@ -161,11 +159,11 @@ use {
 use {
   "nvim-telescope/telescope.nvim",
   requires = {
-    { "nvim-lua/popup.nvim"},
-    { "nvim-lua/plenary.nvim"},
+    { "nvim-lua/popup.nvim" },
+    { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope-packer.nvim", opt = true },
     { "nvim-telescope/telescope-project.nvim", opt = true },
-    {'nvim-telescope/telescope-fzy-native.nvim',opt = true},
+    { "nvim-telescope/telescope-fzy-native.nvim", opt = true },
   },
   config = function()
     require "ide.telescope"
@@ -210,4 +208,3 @@ use {
 use { "sheerun/vim-polyglot", disable = false }
 
 use { "euclidianAce/BetterLua.vim", ft = "lua" }
-
