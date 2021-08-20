@@ -35,6 +35,10 @@ nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent><leader>fc <cmd>Telescope colorschemes<cr>
+"Hop
+nnoremap <silent><leader>hw <cmd>HopWord<cr>
+nnoremap <silent><leader>hp <cmd>HopPattern<cr>
+nnoremap <silent><leader>hl <cmd>HopLine<cr>
  "LSPSaga
 nnoremap <silent><leader>sd :Lspsaga hover_doc<CR>
 nnoremap <silent><leader>sh :Lspsaga signature_help<CR>
