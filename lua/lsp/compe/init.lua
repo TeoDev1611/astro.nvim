@@ -23,6 +23,7 @@ require('compe').setup {
     vsnip = true,
     emoji = true,
     omni = true,
+    spell = true,
     treesitter = true,
   },
 }

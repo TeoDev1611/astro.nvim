@@ -2,28 +2,32 @@
 
 local lspconfig = require 'lspconfig'
 
-lspconfig.vimls.setup {}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
-lspconfig.gopls.setup {}
+lspconfig.vimls.setup {capabilities = capabilities}
 
-lspconfig.tsserver.setup {}
+lspconfig.gopls.setup {capabilities = capabilities}
 
-lspconfig.denols.setup {}
+lspconfig.tsserver.setup {capabilities = capabilities}
 
-lspconfig.bashls.setup {}
+lspconfig.denols.setup {capabilities = capabilities}
 
-lspconfig.rls.setup {}
+lspconfig.bashls.setup {capabilities = capabilities}
 
-lspconfig.pyright.setup {}
+lspconfig.rls.setup {capabilities = capabilities}
+
+lspconfig.pyright.setup {capabilities = capabilities}
 
 lspconfig.jsonls.setup {
-  commands = {
-    Format = {
-      function()
-        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line '$', 0 })
-      end,
-    },
-  },
+  capabilities = capabilities,
 }
 
 local system_name = 'Windows'
@@ -47,6 +51,7 @@ end
 
 lspconfig.sumneko_lua.setup {
   cmd = { sumneko_binary, '-E', sumneko_root_path },
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
