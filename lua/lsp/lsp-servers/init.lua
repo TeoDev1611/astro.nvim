@@ -9,22 +9,29 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     'documentation',
     'detail',
     'additionalTextEdits',
-  }
+  },
 }
 
-lspconfig.vimls.setup {capabilities = capabilities}
+lspconfig.vimls.setup { capabilities = capabilities }
 
-lspconfig.gopls.setup {capabilities = capabilities}
+lspconfig.gopls.setup { capabilities = capabilities }
 
-lspconfig.tsserver.setup {capabilities = capabilities}
+lspconfig.tsserver.setup { capabilities = capabilities }
 
-lspconfig.denols.setup {capabilities = capabilities}
+lspconfig.denols.setup {
+  capabilities = capabilities,
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = true,
+  },
+}
 
-lspconfig.bashls.setup {capabilities = capabilities}
+lspconfig.bashls.setup { capabilities = capabilities }
 
-lspconfig.rls.setup {capabilities = capabilities}
+lspconfig.rls.setup { capabilities = capabilities }
 
-lspconfig.pyright.setup {capabilities = capabilities}
+lspconfig.pyright.setup { capabilities = capabilities }
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
