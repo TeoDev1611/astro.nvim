@@ -19,6 +19,7 @@ packer.init {
   },
 }
 
+
 local use = packer.use
 packer.reset()
 
@@ -52,6 +53,7 @@ use {
   config = function()
     require 'lsp.compe'
   end,
+  event = "BufReadPre"
 }
 
 use {
@@ -69,6 +71,7 @@ use {
   config = function()
     require 'lsp.icons'
   end,
+  event = "BufReadPre"
 }
 
 -- IDE Tools
@@ -193,17 +196,27 @@ use {
     require('bufferline').setup {}
   end,
 }
+
+use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
+
 use {
   'lewis6991/gitsigns.nvim',
   requires = {
-    'nvim-lua/plenary.nvim',
+    'nvim-lua/plenary.nvim'
   },
   config = function()
     require('gitsigns').setup()
   end,
-  event = 'BufWinEnter',
+  event = "BufWinEnter"
 }
 
-use { 'sheerun/vim-polyglot', disable = false }
 
-use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
+use {
+ "f-person/git-blame.nvim",
+ config = function ()
+   vim.g.gitblame_message_template = "<summary> • <date> • <author>"
+ end,
+ event = "BufWinEnter"
+}
+
+
