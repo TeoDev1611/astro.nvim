@@ -236,3 +236,13 @@ use {
     vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
   end,
 }
+
+use {
+  'akinsho/nvim-toggleterm.lua',
+  config = function()
+    require('toggleterm').setup {
+      shade_terminals = false,
+    }
+    vim.g.toggleterm_terminal_mapping = '<C-t>'
+  end,
+}
