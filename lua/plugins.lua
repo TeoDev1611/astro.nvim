@@ -52,14 +52,15 @@ use {
   config = function()
     require 'lsp.compe'
   end,
-  requires = {
-    {
-      'windwp/nvim-autopairs',
-      config = function()
-        require 'ide.autopairs'
-      end,
-    },
-  },
+  event = 'InsertEnter',
+}
+
+use {
+  'windwp/nvim-autopairs',
+  config = function()
+    require 'ide.autopairs'
+  end,
+  after = 'nvim-compe',
 }
 
 use {
