@@ -22,7 +22,6 @@ require('compe').setup {
     nvim_lua = true,
     vsnip = true,
     emoji = true,
-    omni = true,
     spell = true,
     treesitter = true,
   },
