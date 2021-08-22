@@ -88,7 +88,7 @@ git clone -b astro https://github.com/TeoDev1611/AstroVim.git .
 
 5. Finally enter into neovim for install and compile packer with this:
 ``
-nvim +PackerSync
+nvim +PackerSync 
 ``
 
 <!-- 6. Check the [rocket.toml](https://github.com/TeoDev1611/RocketVim/blob/rocket/rocket.toml) for the custom aparience and options and uncomment and load the lua modules [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/init.vim) -->
@@ -103,6 +103,5 @@ nvim +PackerSync
 
 This configuration dont use the classic CoC.nvim is very slow however i use native lsp [here](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) can you install the servers and after add to [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/lua/lsp/lsp-servers/init.lua)
 
-<!-- ## Install the language server for lua -->
 ---
 Made with ❤ in Ecuador

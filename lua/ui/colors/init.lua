@@ -38,6 +38,8 @@ g.embark_terminal_italics = 1
 g.mode = 'mirtilo'
 -- Ayu
 g.ayucolor = 'dark'
+-- Seoul
+g.seoul256_background = 233
 
 -- Set the colorscheme
 cmd 'colorscheme nebulous'

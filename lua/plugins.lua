@@ -34,13 +34,6 @@ use {
   event = 'BufWinEnter',
 }
 use {
-  'folke/lsp-colors.nvim',
-  config = function()
-    require 'lsp.lsp-colors'
-  end,
-  event = 'BufWinEnter',
-}
-use {
   'neovim/nvim-lspconfig',
   config = function()
     require 'lsp.lsp-servers'
@@ -147,8 +140,7 @@ use {
 }
 
 -- IDE Tools
-use { 'junegunn/goyo.vim', opt = true, cmd = 'Goyo' }
-use { 'iamcco/markdown-preview.nvim', opt = true, run = 'call mkdp#util#install()', ft = 'markdown' }
+use { 'iamcco/markdown-preview.nvim', opt = true, run = 'cd app && yarn install', ft = 'markdown' }
 
 --Fuzzy Find
 use {
@@ -197,17 +189,6 @@ use {
 }
 
 use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
-
-use {
-  'lewis6991/gitsigns.nvim',
-  requires = {
-    'nvim-lua/plenary.nvim',
-  },
-  config = function()
-    require('gitsigns').setup()
-  end,
-  event = 'BufWinEnter',
-}
 
 use {
   'f-person/git-blame.nvim',
