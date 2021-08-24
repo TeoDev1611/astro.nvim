@@ -4,7 +4,6 @@ require('nvim-treesitter.configs').setup {
   },
   ensure_installed = {
     'lua',
-    'markdown',
   },
   rainbow = {
     enable = true,

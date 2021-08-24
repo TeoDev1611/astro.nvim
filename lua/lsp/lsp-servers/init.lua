@@ -4,6 +4,12 @@ local lspconfig = require 'lspconfig'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     'documentation',
@@ -11,8 +17,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     'additionalTextEdits',
   },
 }
-
-lspconfig.vimls.setup { capabilities = capabilities }
 
 lspconfig.gopls.setup { capabilities = capabilities }
 
@@ -32,6 +36,8 @@ lspconfig.bashls.setup { capabilities = capabilities }
 lspconfig.rls.setup { capabilities = capabilities }
 
 lspconfig.pyright.setup { capabilities = capabilities }
+
+lspconfig.solargraph.setup { capabilities = capabilities }
 
 lspconfig.jsonls.setup {
   capabilities = capabilities,
