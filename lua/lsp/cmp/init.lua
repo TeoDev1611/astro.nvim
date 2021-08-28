@@ -1,10 +1,17 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-local lspkind = require 'lspkind'
 cmp.setup {
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind]
+      -- load lspkind icons
+      vim_item.kind = string.format('%s %s', require('lsp.icons').icons[vim_item.kind], vim_item.kind)
+
+      vim_item.menu = ({
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        buffer = '[BUF]',
+      })[entry.source.name]
+
       return vim_item
     end,
   },
@@ -52,5 +59,6 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer' },
     { name = 'nvim_lua' },
+    { name = 'path' },
   },
 }

@@ -48,4 +48,6 @@ tnoremap <silent> <A-d> <C-a><C-n>:Lspsaga close_floaterm<CR>
 " Fast Movements
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
+" Utils
+nnoremap <silent><leader>fml :lua require('ide.fmt').format_sty()<cr>
 ]]

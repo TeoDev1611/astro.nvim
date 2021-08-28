@@ -1,9 +1,10 @@
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-  },
   ensure_installed = {
     'lua',
+  },
+  highlight = {
+    enable = true,
+    use_languagetree = true,
   },
   rainbow = {
     enable = true,
