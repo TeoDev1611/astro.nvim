@@ -94,6 +94,7 @@ use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
 
 -- Lang Configs
 use { 'editorconfig/editorconfig-vim' }
+use { 'kyazdani42/nvim-web-devicons' }
 
 --Colors Config
 use {
@@ -134,7 +135,18 @@ use {
   end,
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   event = 'BufWinEnter',
+  disable = true,
 }
+
+use {
+  'shadmansaleh/lualine.nvim',
+  config = function()
+    require 'ui.lualine'
+  end,
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  event = 'BufWinEnter',
+}
+
 -- File Explorer
 use {
   'kyazdani42/nvim-tree.lua',
@@ -234,3 +246,5 @@ use {
     vim.g.toggleterm_terminal_mapping = '<C-t>'
   end,
 }
+
+use { 'rose-pine/neovim', as = 'rose-pine' }

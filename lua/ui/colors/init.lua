@@ -40,6 +40,8 @@ g.mode = 'mirtilo'
 g.ayucolor = 'dark'
 -- Seoul
 g.seoul256_background = 233
+-- Rose Pine
+g.rose_pine_variant = 'moon'
 
 -- Set the colorscheme
-cmd 'colorscheme nebulous'
+cmd 'colorscheme rose-pine'

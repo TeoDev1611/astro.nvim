@@ -5,7 +5,7 @@
 | (_| | (_| | | (_| |>  <| |_| | | | | | |  __/_| | | \ V /| | | | | | |
  \__, |\__,_|_|\__,_/_/\_\\__, |_|_|_| |_|\___(_)_| |_|\_/ |_|_| |_| |_|
  |___/                    |___/
---]]
+
 local vim = vim
 local gl = require 'galaxyline'
 local utils = require 'utils'
@@ -259,3 +259,4 @@ gls.short_line_right[1] = {
 
 -- Force manual load so that nvim boots with a status line
 gl.load_galaxyline()
+--]]
