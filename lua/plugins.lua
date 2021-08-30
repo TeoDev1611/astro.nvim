@@ -15,7 +15,7 @@ packer.init {
   compile_on_sync = true,
   profile = {
     enable = true,
-    threshold = 5, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    threshold = 1,
   },
 }
 
@@ -25,14 +25,24 @@ packer.reset()
 -- Package Managment
 use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
--- NativeLSP
+use {
+  'lewis6991/impatient.nvim',
+  rocks = 'mpack',
+  opt = true,
+  config = function()
+    require 'impatient'
+  end,
+}
+
 use {
   'folke/todo-comments.nvim',
   config = function()
     require 'lsp.todo-comments'
   end,
   event = 'BufWinEnter',
+  after = 'impatient.nvim',
 }
+
 use {
   'neovim/nvim-lspconfig',
   config = function()
@@ -101,35 +111,17 @@ use {
 }
 -- Colorschemes
 use {
-  'rafi/awesome-vim-colorschemes',
+  'gruvbox-community/gruvbox',
+  requires = {
+    { 'Yagua/nebulous.nvim' },
+    { 'ayu-theme/ayu-vim' },
+    { 'folke/tokyonight.nvim' },
+    { 'Pocco81/Catppuccino.nvim' },
+    { 'pineapplegiant/spaceduck' },
+  },
   config = function()
     require 'ui.colors'
   end,
-}
-use {
-  'Yagua/nebulous.nvim',
-  config = function()
-    require 'ui.colors'
-  end,
-}
-
-use {
-  'JavaCafe01/javacafe.vim',
-  config = function()
-    require 'ui.colors'
-  end,
-}
-
--- StatusLine
-use {
-  'glepnir/galaxyline.nvim',
-  branch = 'main',
-  config = function()
-    require 'ui.galaxy'
-  end,
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  event = 'BufWinEnter',
-  disable = true,
 }
 
 use {
@@ -200,8 +192,6 @@ use {
   end,
 }
 
-use { 'euclidianAce/BetterLua.vim', ft = 'lua' }
-
 use {
   'f-person/git-blame.nvim',
   config = function()
@@ -240,5 +230,3 @@ use {
     vim.g.toggleterm_terminal_mapping = '<C-t>'
   end,
 }
-
-use { 'rose-pine/neovim', as = 'rose-pine' }

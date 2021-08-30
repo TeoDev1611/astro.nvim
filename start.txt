@@ -1,0 +1,129 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.053  000.053: --- NVIM STARTING ---
+031.262  031.209: locale set
+032.651  001.389: inits 1
+032.800  000.149: window checked
+032.813  000.014: parsing arguments
+033.007  000.194: expanding arguments
+033.143  000.136: inits 2
+037.229  004.086: init highlight
+037.238  000.009: waiting for UI
+040.471  003.233: done waiting for UI
+040.533  000.062: initialized screen early for UI
+075.577  032.518  032.518: sourcing C:\Users\Usuario1\AppData\Local\nvim\init.lua
+075.685  002.635: sourcing vimrc file(s)
+108.609  000.235  000.235: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\elixir.vim
+109.038  000.139  000.139: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\fish.vim
+109.465  000.151  000.151: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gdresource.vim
+109.861  000.126  000.126: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gdscript.vim
+110.256  000.128  000.128: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gomod.vim
+110.667  000.142  000.142: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\graphql.vim
+111.088  000.155  000.155: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\hcl.vim
+111.490  000.133  000.133: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\heex.vim
+111.902  000.140  000.140: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\json5.vim
+112.316  000.144  000.144: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\julia.vim
+112.733  000.152  000.152: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\ledger.vim
+113.144  000.143  000.143: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\nix.vim
+113.555  000.145  000.145: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\ql.vim
+113.982  000.163  000.163: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\query.vim
+114.396  000.144  000.144: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\surface.vim
+114.807  000.145  000.145: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\teal.vim
+115.227  000.153  000.153: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\tlaplus.vim
+115.640  000.148  000.148: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\yang.vim
+116.063  000.153  000.153: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\zig.vim
+120.099  043.711  040.872: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\filetype.vim
+123.282  000.239  000.239: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\ftplugin.vim
+126.371  000.217  000.217: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\indent.vim
+131.878  001.142  001.142: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+134.582  004.692  003.550: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\synload.vim
+142.405  013.378  008.686: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syntax.vim
+170.692  001.243  001.243: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\gzip.vim
+171.618  000.264  000.264: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\health.vim
+173.146  000.473  000.473: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\man.vim
+187.577  001.210  001.210: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\pack\dist\opt\matchit\plugin\matchit.vim
+189.358  015.773  014.563: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\matchit.vim
+190.978  000.774  000.774: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\matchparen.vim
+193.479  001.890  001.890: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\netrwPlugin.vim
+195.511  000.172  000.172: sourcing C:\Users\Usuario1\AppData\Local\nvim-data/rplugin.vim
+195.577  001.449  001.277: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\rplugin.vim
+196.593  000.514  000.514: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\shada.vim
+197.386  000.259  000.259: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\spellfile.vim
+198.429  000.622  000.622: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\tarPlugin.vim
+199.417  000.468  000.468: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\tohtml.vim
+200.078  000.229  000.229: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\tutor.vim
+201.096  000.612  000.612: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\plugin\zipPlugin.vim
+230.353  000.982  000.982: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+235.924  000.559  000.559: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+259.772  001.011  001.011: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+265.331  000.569  000.569: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+277.631  038.012  036.432: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nebulous.nvim\colors\nebulous.vim
+291.099  001.131  001.131: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+297.555  000.699  000.699: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\syntax\syncolor.vim
+318.692  034.331  032.501: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\gruvbox\colors\gruvbox.vim
+418.176  005.184  005.184: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\nvim-autopairs\plugin\nvim-autopairs.vim
+425.338  223.171  144.103: sourcing C:\Users\Usuario1\AppData\Local\nvim\plugin\packer_compiled.lua
+431.516  050.545: loading plugins
+436.943  000.266  000.266: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\Catppuccino.nvim\plugin\cpcmds.vim
+441.538  000.841  000.841: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\plugin\dashboard.vim
+443.957  000.934  000.934: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\editorconfig-vim\plugin\editorconfig.vim
+446.788  000.900  000.900: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\LuaSnip\plugin\luasnip.vim
+449.596  000.521  000.521: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-cmp\plugin\cmp.lua
+451.075  000.327  000.327: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-toggleterm.lua\plugin\toggleterm.vim
+454.878  002.349  002.349: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\plugin\nvim-treesitter.vim
+459.349  000.227  000.227: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\elixir.vim
+459.843  000.190  000.190: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\fish.vim
+460.366  000.189  000.189: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gdresource.vim
+460.940  000.161  000.161: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gdscript.vim
+461.400  000.164  000.164: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\gomod.vim
+461.884  000.175  000.175: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\graphql.vim
+462.368  000.184  000.184: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\hcl.vim
+462.824  000.156  000.156: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\heex.vim
+463.274  000.157  000.157: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\json5.vim
+463.719  000.153  000.153: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\julia.vim
+464.174  000.163  000.163: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\ledger.vim
+464.622  000.145  000.145: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\nix.vim
+465.072  000.149  000.149: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\ql.vim
+465.534  000.163  000.163: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\query.vim
+465.974  000.140  000.140: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\surface.vim
+466.409  000.137  000.137: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\teal.vim
+466.843  000.136  000.136: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\tlaplus.vim
+467.276  000.134  000.134: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\yang.vim
+467.705  000.138  000.138: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-treesitter\ftdetect\zig.vim
+469.808  000.954  000.954: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-ts-rainbow\plugin\rainbow.vim
+471.764  000.262  000.262: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\nvim-web-devicons\plugin\nvim-web-devicons.vim
+473.536  000.319  000.319: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\plenary.nvim\plugin\plenary.vim
+476.289  034.043: loading packages
+479.531  000.184  000.184: sourcing C:\Users\Usuario1\AppData\Local\nvim\after\plugin\dashboard.vim
+480.030  000.207  000.207: sourcing C:\Users\Usuario1\AppData\Local\nvim\after\plugin\netrw.vim
+496.287  015.069  015.069: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\cmp_luasnip\after\plugin\cmp_luasnip.lua
+502.599  005.369  005.369: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\cmp-path\after\plugin\cmp_path.lua
+509.089  005.472  005.472: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\cmp-nvim-lua\after\plugin\cmp_nvim_lua.lua
+516.739  006.733  006.733: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\cmp-nvim-lsp\after\plugin\cmp_nvim_lsp.lua
+524.693  007.036  007.036: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\cmp-buffer\after\plugin\cmp_buffer.lua
+525.550  009.191: loading after plugins
+525.631  000.081: inits 3
+536.610  010.979: reading ShaDa
+556.260  000.559  000.559: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\nvim-tree.lua\plugin\tree.vim
+573.767  010.117  010.117: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\git-blame.nvim\plugin\gitblame.vim
+577.542  000.856  000.856: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\hop\plugin\hop.vim
+591.709  000.299  000.299: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\todo-comments.nvim\plugin\todo.vim
+602.779  054.337: opening buffers
+716.084  113.305: BufEnter autocommands
+716.105  000.021: editing files in windows
+719.050  000.589  000.589: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\opt\accelerated-jk\plugin\accelerated-jk.vim
+723.772  000.480  000.480: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\autoload\dashboard.vim
+725.894  000.230  000.230: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\autoload\dashboard\utils.vim
+728.114  000.420  000.420: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\autoload\dashboard\section.vim
+771.858  040.390  040.390: sourcing C:\Users\Usuario1\scoop\apps\neovim\current\share\nvim\runtime\autoload\provider\clipboard.vim
+807.977  000.448  000.448: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\syntax\dashboard.vim
+812.065  000.099  000.099: sourcing C:\Users\Usuario1\AppData\Local\nvim-data\site\pack\packer\start\dashboard-nvim\syntax\dashboard.vim
+828.202  069.442: VimEnter autocommands
+828.221  000.019: UIEnter autocommands
+828.233  000.012: before starting main loop
+855.401  027.168: first screen update
+855.418  000.018: --- NVIM STARTED ---

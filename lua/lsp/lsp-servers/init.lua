@@ -22,6 +22,15 @@ lspconfig.gopls.setup { capabilities = capabilities }
 
 lspconfig.tsserver.setup { capabilities = capabilities }
 
+--[[
+local power_path = vim.fn.expand '~/bins/PowerShellEditorServices'
+lspconfig.powershell_es.setup{
+  capabilities = capabilities,
+  bundle_path = power_path,
+  cmd = {'pwsh', '-NoLogo', '-NoProfile', '-Command',}
+}
+--]]
+
 lspconfig.denols.setup {
   capabilities = capabilities,
   init_options = {
