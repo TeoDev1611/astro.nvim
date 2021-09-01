@@ -44,4 +44,4 @@ g.seoul256_background = 233
 g.rose_pine_variant = 'moon'
 
 -- Set the colorscheme
-cmd 'colo gruvbox'
+cmd 'colo dark_catppuccino'

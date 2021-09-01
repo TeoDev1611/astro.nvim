@@ -45,10 +45,8 @@ use {
 
 use {
   'neovim/nvim-lspconfig',
-  config = function()
-    require 'lsp.lsp-servers'
-  end,
-  event = 'BufReadPre',
+  'williamboman/nvim-lsp-installer'
+  --'~/ghq/github.com/TeoDev1611/nvim-lsp-installer'
 }
 
 use {
