@@ -1,13 +1,11 @@
 local M = {}
-local lsp_installer = require "nvim-lsp-installer"
+local lsp_installer = require 'nvim-lsp-installer'
 local nvim_lsp = require 'lspconfig'
 
 function M.dw_sumneko()
-  local base_dir = vim.fn.fnamemodify(vim.fn.expand('<sfile>'), ':h')
+  local base_dir = vim.fn.fnamemodify(vim.fn.expand '<sfile>', ':h')
   print(base_dir)
 end
-
-
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -49,37 +47,37 @@ local on_attach = function(client, bufnr)
 end
 
 local function setup_handlers()
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = {
-            spacing = 5,
-            prefix = "",
-        },
-        signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
-    })
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      spacing = 5,
+      prefix = '',
+    },
+    signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
+  })
 end
 
 function M.setup()
-    setup_handlers()
-    vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
-    vim.cmd [[ command! DwSumneko  lua require('lsp.installer').dw_sumneko()]]
+  setup_handlers()
+  vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
+  vim.cmd [[ command! DwSumneko  lua require('lsp.installer').dw_sumneko()]]
 
-    require('lsp.lsp-servers').sumneko_lua()
+  require('lsp.lsp-servers').sumneko_lua()
 
-    lsp_installer.on_server_ready(function(server)
-        local opts = {
-            on_attach = on_attach,
-            capabilities = capabilities,
-        }
+  lsp_installer.on_server_ready(function(server)
+    local opts = {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
 
-        if server.name == "eslintls" then
-            opts.settings = {
-                format = { enable = true },
-            }
-        end
+    if server.name == 'eslintls' then
+      opts.settings = {
+        format = { enable = true },
+      }
+    end
 
-        server:setup(opts)
-        vim.cmd [[ do User LspAttachBuffers ]]
-    end)
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+  end)
 end
 
 return M

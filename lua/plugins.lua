@@ -257,7 +257,7 @@ use {
     require('indent_blankline').setup {
       show_end_of_line = true,
       space_char_blankline = ' ',
-      buftype_exclude = { 'dashboard' }
+      buftype_exclude = { 'dashboard' },
     }
   end,
 }
