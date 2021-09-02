@@ -45,8 +45,7 @@ use {
 
 use {
   'neovim/nvim-lspconfig',
-  'williamboman/nvim-lsp-installer'
-  --'~/ghq/github.com/TeoDev1611/nvim-lsp-installer'
+  'williamboman/nvim-lsp-installer',
 }
 
 use {
@@ -90,6 +89,7 @@ use {
     require 'ide.comment'
   end,
   event = 'BufRead',
+  keys = { { 'n', 'gc' }, { 'n', 'gcc' } },
 }
 
 use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
@@ -139,10 +139,25 @@ use {
   config = function()
     require 'ui.tree'
   end,
+  cmd = {
+    'NvimTreeOpen',
+    'NvimTreeClose',
+    'NvimTreeToggle',
+    'NvimTreeFocus',
+    'NvimTreeRefresh',
+    'NvimTreeClipboard',
+    'NvimTreeFindFile',
+    'NvimTreeResize',
+  },
 }
-
 -- IDE Tools
-use { 'iamcco/markdown-preview.nvim', opt = true, run = 'cd app && yarn install', ft = 'markdown' }
+use {
+  'iamcco/markdown-preview.nvim',
+  opt = true,
+  run = 'cd app && yarn install',
+  ft = 'markdown',
+  cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle', 'MarkdownPreviewStop' },
+}
 
 --Fuzzy Find
 use {
@@ -164,6 +179,7 @@ use {
     require 'ide.telescope'
   end,
   cmd = 'Telescope',
+  event = 'BufWinEnter',
 }
 -- Jump Motions
 use {
@@ -172,7 +188,7 @@ use {
   config = function()
     require 'ide.hop'
   end,
-  event = 'BufWinEnter',
+  cmd = { 'HopWord', 'HopLine', 'HopChar1', 'HopChar2', 'HopPattern', '' },
 }
 
 use {
@@ -226,5 +242,22 @@ use {
       shade_terminals = false,
     }
     vim.g.toggleterm_terminal_mapping = '<C-t>'
+  end,
+  cmd = { 'ToggleTerm', 'ToggleTermCloseAll', 'ToggleTermOpenAll' },
+}
+
+use {
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    vim.opt.listchars = {
+      space = '|',
+      eol = '↴',
+    }
+
+    require('indent_blankline').setup {
+      show_end_of_line = true,
+      space_char_blankline = ' ',
+      buftype_exclude = { 'dashboard' }
+    }
   end,
 }
