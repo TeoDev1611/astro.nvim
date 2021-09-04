@@ -4,7 +4,7 @@
    _______  _______  _______  ______    _______  __   __  ___   __   __ 
   |   _   ||       ||       ||    _ |  |       ||  | |  ||   | |  |_|  |
   |  |_|  ||  _____||_     _||   | ||  |   _   ||  |_|  ||   | |       |
-  |       || |_____   |   |  |   |_||_|  | |  ||       ||   | |       |
+  |       || |_____   |   |  |   |_||_ |  | |  ||       ||   | |       |
   |       ||_____  |  |   |  |    __  ||  |_|  ||       ||   | |       |
   |   _   | _____| |  |   |  |   |  | ||       | |     | |   | | ||_|| |
   |__| |__||_______|  |___|  |___|  |_||_______|  |___|  |___| |_|   |_|
@@ -91,11 +91,24 @@ git clone -b astro https://github.com/TeoDev1611/AstroVim.git .
 nvim +PackerSync 
 ``
 
+## Markdown preview support
+
+Yeah exist a preview tool but you need make this steps
+
+1. Go to a any markdown file example:
+```
+nvim README.md
+```
+2. Run this into Neovim:
+```vim
+call mkdp#util#install()
+```
+
 <!-- 6. Check the [rocket.toml](https://github.com/TeoDev1611/RocketVim/blob/rocket/rocket.toml) for the custom aparience and options and uncomment and load the lua modules [here](https://github.com/TeoDev1611/RocketVim/blob/rocket/init.vim) -->
 
 ## ScreenShots
 
-![image](https://user-images.githubusercontent.com/73144037/125671016-98731b4d-4fa2-4fe3-b412-aef0b3f02a22.png)
+![image](./docs/image.PNG)
 
 > Add your screenshots [here](https://github.com/TeoDev1611/RocketVim/issues/4)
 
