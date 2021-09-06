@@ -4,7 +4,7 @@
 # changelog header
 header = """
 # Changelog
-All notable changes to this project will be documented in this file.\n
+All notable changes to AstroVim will be documented in this file.\n
 """
 # template for the changelog body
 # https://tera.netlify.app/docs/#introduction
@@ -49,7 +49,7 @@ commit_parsers = [
     { body = ".*security", group = "Security"},
 ]
 # filter out the commits that are not matched by commit parsers
-filter_commits = false
+filter_commits = true
 # glob pattern for matching git tags
 tag_pattern = "v[0-9]*"
 # regex for skipping tags
