@@ -45,7 +45,7 @@ use {
 
 use {
   'neovim/nvim-lspconfig',
-  'williamboman/nvim-lsp-installer',
+  {'williamboman/nvim-lsp-installer', branch = 'UI'},
 }
 
 use {
@@ -116,6 +116,7 @@ use {
     { 'folke/tokyonight.nvim' },
     { 'Pocco81/Catppuccino.nvim' },
     { 'pineapplegiant/spaceduck' },
+    { 'Avimitin/neovim-deus' }
   },
   config = function()
     require 'ui.colors'
@@ -226,7 +227,7 @@ use {
   'akinsho/nvim-toggleterm.lua',
   config = function()
     require('toggleterm').setup {
-      shade_terminals = false,
+      shade_terminals = true,
     }
     vim.g.toggleterm_terminal_mapping = '<C-t>'
   end,
