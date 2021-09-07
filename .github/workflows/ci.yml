@@ -1,0 +1,20 @@
+name: FmtAstro 
+
+on:
+  push:
+    branches: [astro]
+  pull_request:
+    branches: [astro]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup FMT
+        uses: JohnnyMorganz/stylua-action@1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # CLI arguments
+          args: --check ./lua/ ./init.lua
