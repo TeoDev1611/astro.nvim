@@ -8,7 +8,7 @@ require('staline').setup {
     cool_symbol = ' 異 ', -- Change this to override defult OS icon.
     full_path = false,
     font_active = 'none', -- "bold", "italic", "bold,italic", etc
-    true_colors = false,       -- true lsp colors.
+    true_colors = false, -- true lsp colors.
   },
   mode_colors = {
     n = '#2bbb4f',
