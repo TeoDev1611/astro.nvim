@@ -45,7 +45,7 @@ use {
 
 use {
   'neovim/nvim-lspconfig',
-  {'williamboman/nvim-lsp-installer', branch = 'UI'},
+  { 'williamboman/nvim-lsp-installer', branch = 'UI' },
 }
 
 use {
@@ -116,7 +116,7 @@ use {
     { 'folke/tokyonight.nvim' },
     { 'Pocco81/Catppuccino.nvim' },
     { 'pineapplegiant/spaceduck' },
-    { 'Avimitin/neovim-deus' }
+    { 'Mofiqul/vscode.nvim' },
   },
   config = function()
     require 'ui.colors'
@@ -202,7 +202,6 @@ use {
   requires = 'kyazdani42/nvim-web-devicons',
   event = 'BufWinEnter',
   config = function()
-    vim.opt.termguicolors = true
     require('bufferline').setup {}
   end,
 }
@@ -219,7 +218,7 @@ use {
   'ray-x/go.nvim',
   ft = { 'go', 'gomod' },
   config = function()
-    require('langs.go')
+    require 'langs.go'
   end,
 }
 

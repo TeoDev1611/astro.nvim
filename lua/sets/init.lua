@@ -22,6 +22,7 @@ opt.showcmd = true
 opt.ruler = true
 opt.hidden = true
 opt.ignorecase = true
+opt.termguicolors = true
 cmd 'set nowritebackup'
 
 cmd [[

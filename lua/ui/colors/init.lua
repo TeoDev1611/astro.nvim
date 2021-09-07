@@ -42,6 +42,8 @@ g.ayucolor = 'dark'
 g.seoul256_background = 233
 -- Rose Pine
 g.rose_pine_variant = 'moon'
+-- Vscode
+g.vscode_style = 'dark'
 
 -- Set the colorscheme
 cmd 'colo dark_catppuccino'
