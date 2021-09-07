@@ -8,6 +8,7 @@ opt.filetype = 'indent'
 opt.filetype = 'on'
 opt.encoding = 'UTF-8'
 opt.showtabline = 2
+opt.laststatus = 2
 cmd 'set noshowmode'
 opt.mouse = 'a'
 opt.wrap = true

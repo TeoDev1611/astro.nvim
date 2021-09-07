@@ -130,6 +130,15 @@ use {
   end,
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   event = 'BufWinEnter',
+  disable = true,
+}
+
+use {
+  'tamton-aquib/staline.nvim',
+  config = function()
+    require 'ui.staline'
+  end,
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 }
 
 -- File Explorer
