@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to AstroVim will be documented in this file.
 
-## [unreleased]
+## [0.1.1] - 2021-09-07
 
 ### Bug Fixes
 
@@ -18,6 +18,7 @@ All notable changes to AstroVim will be documented in this file.
 - Update installation
 - Change to neovim
 - Fix the cliff commits and add the header
+- Update the changelog
 
 ### Features
 
@@ -81,6 +82,7 @@ All notable changes to AstroVim will be documented in this file.
 - Add the go into a new file and add the stepts to the preview
 - Add the changelog the the new version
 - Remove the unused theme and add vscode theme :)
+- Move to staline more faster and very cool
 
 ### Miscellaneous Tasks
 
