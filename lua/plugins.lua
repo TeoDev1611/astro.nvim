@@ -26,26 +26,8 @@ packer.reset()
 use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
 use {
-  'lewis6991/impatient.nvim',
-  rocks = 'mpack',
-  opt = true,
-  config = function()
-    require 'impatient'
-  end,
-}
-
-use {
-  'folke/todo-comments.nvim',
-  config = function()
-    require 'lsp.todo-comments'
-  end,
-  event = 'BufWinEnter',
-  after = 'impatient.nvim',
-}
-
-use {
   'neovim/nvim-lspconfig',
-  { 'williamboman/nvim-lsp-installer', branch = 'UI' },
+  { 'williamboman/nvim-lsp-installer', config = function() require 'lsp.installer'.setup() end },
 }
 
 use {
@@ -68,7 +50,7 @@ use {
   config = function()
     require 'ide.autopairs'
   end,
-  after = 'nvim-cmp',
+  event = 'InsertCharPre'
 }
 
 use {
@@ -89,7 +71,6 @@ use {
     require 'ide.comment'
   end,
   event = 'BufRead',
-  keys = { { 'n', 'gc' }, { 'n', 'gcc' } },
 }
 
 use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
@@ -101,36 +82,22 @@ use { 'kyazdani42/nvim-web-devicons' }
 --Colors Config
 use {
   'nvim-treesitter/nvim-treesitter',
-  requires = 'p00f/nvim-ts-rainbow',
-  run = ':TSUpdate',
+  requires = 'p00f/nvim-ts-rainbow', run = ':TSUpdate',
   config = function()
     require 'ide.tree-sitter'
   end,
 }
 -- Colorschemes
 use {
-  'gruvbox-community/gruvbox',
-  requires = {
-    { 'Yagua/nebulous.nvim' },
-    { 'ayu-theme/ayu-vim' },
-    { 'folke/tokyonight.nvim' },
-    { 'Pocco81/Catppuccino.nvim' },
-    { 'pineapplegiant/spaceduck' },
-    { 'Mofiqul/vscode.nvim' },
-  },
-  config = function()
-    require 'ui.colors'
-  end,
+  'Yagua/nebulous.nvim'
+}
+
+use{
+  'pineapplegiant/spaceduck'
 }
 
 use {
-  'shadmansaleh/lualine.nvim',
-  config = function()
-    require 'ui.lualine'
-  end,
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  event = 'BufWinEnter',
-  disable = true,
+  'Pocco81/Catppuccino.nvim'
 }
 
 use {
@@ -164,18 +131,21 @@ use {
 use {
   'iamcco/markdown-preview.nvim',
   opt = true,
-  run = 'packloadall! | call mkdp#util#install()',
   ft = 'markdown',
   cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle', 'MarkdownPreviewStop' },
 }
 
 --Fuzzy Find
+
 use {
-  'glepnir/dashboard-nvim',
-  config = function()
-    vim.cmd [[let g:dashboard_default_executive = 'telescope']]
-  end,
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+      require('ui.alpha')
+    end
 }
+
+
 use {
   'nvim-telescope/telescope.nvim',
   requires = {
@@ -183,7 +153,6 @@ use {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-telescope/telescope-packer.nvim', opt = true },
     { 'nvim-telescope/telescope-project.nvim', opt = true },
-    { 'nvim-telescope/telescope-fzy-native.nvim', opt = true },
   },
   config = function()
     require 'ide.telescope'
@@ -253,7 +222,8 @@ use {
     require('indent_blankline').setup {
       show_end_of_line = true,
       space_char_blankline = ' ',
-      buftype_exclude = { 'dashboard' },
+      buftype_exclude = { 'alpha' },
     }
   end,
+  event = 'BufWinEnter'
 }

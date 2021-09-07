@@ -18,7 +18,7 @@ g.nb_italic_functions = true
 g.nb_italic_variables = false
 g.nb_style = 'night'
 -- Setup the lua colorshemes
-nebulous.setup()
+--nebulous.setup()
 -- Gruvbox
 g.gruvbox_contrast_dark = 'hard'
 g.gruvbox_material_pate = 'mix'
