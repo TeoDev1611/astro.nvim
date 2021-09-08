@@ -50,4 +50,7 @@ nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 " Utils
 nnoremap <silent><leader>fml :lua require('ide.fmt').format_sty()<cr>
+
+"Set cmd
+command! HelpAstro :lua require('sets').help_lua()
 ]]

@@ -1,5 +1,7 @@
 local opt = vim.opt
 local cmd = vim.cmd
+local M = {}
+vim.notify = require 'notify'
 
 opt.syntax = 'on'
 opt.syntax = 'enabled'
@@ -32,3 +34,20 @@ augroup vimrc_help
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 augroup END
 ]]
+
+-- Help :)
+
+vim.notify.setup {
+  stages = 'slide',
+  timeout = 3000,
+}
+
+function M.help_lua()
+  local plugin = 'AstroVim Help'
+
+  vim.notify('For check help how use or install check the readme\n github.com/TeoDev1611/AstroVim', 'info', {
+    title = plugin,
+  })
+end
+
+return M

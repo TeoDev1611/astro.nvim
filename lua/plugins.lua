@@ -232,3 +232,7 @@ use {
   end,
   event = 'BufWinEnter',
 }
+
+use {
+  'rcarriga/nvim-notify',
+}
