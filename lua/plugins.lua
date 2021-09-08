@@ -27,7 +27,12 @@ use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
 use {
   'neovim/nvim-lspconfig',
-  { 'williamboman/nvim-lsp-installer', config = function() require 'lsp.installer'.setup() end },
+  {
+    'williamboman/nvim-lsp-installer',
+    config = function()
+      require('lsp.installer').setup()
+    end,
+  },
 }
 
 use {
@@ -50,7 +55,7 @@ use {
   config = function()
     require 'ide.autopairs'
   end,
-  event = 'InsertCharPre'
+  event = 'InsertCharPre',
 }
 
 use {
@@ -82,22 +87,23 @@ use { 'kyazdani42/nvim-web-devicons' }
 --Colors Config
 use {
   'nvim-treesitter/nvim-treesitter',
-  requires = 'p00f/nvim-ts-rainbow', run = ':TSUpdate',
+  requires = 'p00f/nvim-ts-rainbow',
+  run = ':TSUpdate',
   config = function()
     require 'ide.tree-sitter'
   end,
 }
 -- Colorschemes
 use {
-  'Yagua/nebulous.nvim'
-}
-
-use{
-  'pineapplegiant/spaceduck'
+  'Yagua/nebulous.nvim',
 }
 
 use {
-  'Pocco81/Catppuccino.nvim'
+  'pineapplegiant/spaceduck',
+}
+
+use {
+  'Pocco81/Catppuccino.nvim',
 }
 
 use {
@@ -138,13 +144,12 @@ use {
 --Fuzzy Find
 
 use {
-    'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
-      require('ui.alpha')
-    end
+  'goolord/alpha-nvim',
+  requires = { 'kyazdani42/nvim-web-devicons' },
+  config = function()
+    require 'ui.alpha'
+  end,
 }
-
 
 use {
   'nvim-telescope/telescope.nvim',
@@ -225,5 +230,5 @@ use {
       buftype_exclude = { 'alpha' },
     }
   end,
-  event = 'BufWinEnter'
+  event = 'BufWinEnter',
 }

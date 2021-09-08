@@ -10,11 +10,11 @@ local header = [[
 
 ]]
 
-local alpha = require'alpha'
-local startify = require'alpha.themes.startify'
+local alpha = require 'alpha'
+local startify = require 'alpha.themes.startify'
 startify.section.header.val = header
 alpha.setup(startify.opts)
 
-vim.cmd[[
+vim.cmd [[
   autocmd FileType alpha set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
 ]]
