@@ -1,7 +1,6 @@
 local opt = vim.opt
 local cmd = vim.cmd
 local M = {}
-vim.notify = require 'notify'
 
 opt.syntax = 'on'
 opt.syntax = 'enabled'
@@ -36,6 +35,12 @@ augroup END
 ]]
 
 -- Help :)
+
+Err, vim.notify = pcall(require, 'notify')
+
+if not Err then
+  return
+end
 
 vim.notify.setup {
   stages = 'slide',

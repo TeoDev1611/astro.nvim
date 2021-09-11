@@ -26,28 +26,61 @@ packer.reset()
 use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
 use {
-  'neovim/nvim-lspconfig',
-  {
-    'williamboman/nvim-lsp-installer',
-    config = function()
-      require('lsp.installer').setup()
-    end,
-  },
+  'nvim-treesitter/nvim-treesitter',
+  after = 'packer.nvim',
+  run = ':TSUpdate',
+  branch = '0.5-compat',
+  event = 'BufRead',
+  config = function()
+    require 'ide.tree-sitter'
+  end,
+}
+
+use {
+  'p00f/nvim-ts-rainbow',
+  after = 'nvim-treesitter',
+}
+
+use {
+  'rafamadriz/friendly-snippets',
+  event = 'InsertEnter',
+}
+
+use {
+  'L3MON4D3/LuaSnip',
 }
 
 use {
   'hrsh7th/nvim-cmp',
+  --after = 'friendly-snippets',
   config = function()
     require 'lsp.cmp'
   end,
-  requires = {
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-path' },
-  },
+}
+
+use {
+  'saadparwaiz1/cmp_luasnip',
+  after = 'LuaSnip',
+}
+
+use {
+  'hrsh7th/cmp-nvim-lua',
+  after = 'cmp_luasnip',
+}
+
+use {
+  'hrsh7th/cmp-nvim-lsp',
+  after = 'cmp-nvim-lua',
+}
+
+use {
+  'hrsh7th/cmp-buffer',
+  after = 'cmp-nvim-lsp',
+}
+
+use {
+  'hrsh7th/cmp-path',
+  after = 'cmp-nvim-lsp',
 }
 
 use {
@@ -56,6 +89,19 @@ use {
     require 'ide.autopairs'
   end,
   event = 'InsertCharPre',
+  after = 'nvim-cmp',
+}
+
+use {
+  'neovim/nvim-lspconfig',
+  after = 'cmp-nvim-lsp',
+}
+use {
+  'williamboman/nvim-lsp-installer',
+  config = function()
+    require('lsp.installer').setup()
+  end,
+  after = 'nvim-lspconfig',
 }
 
 use {
@@ -64,9 +110,8 @@ use {
     require 'lsp.saga'
   end,
   cmd = 'Lspsaga',
+  after = 'nvim-lsp-installer',
 }
-use { 'L3MON4D3/LuaSnip' }
-use { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' }
 
 -- IDE Tools
 
@@ -76,6 +121,7 @@ use {
     require 'ide.comment'
   end,
   event = 'BufRead',
+  after = 'lspsaga.nvim',
 }
 
 use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
@@ -86,16 +132,12 @@ use { 'kyazdani42/nvim-web-devicons' }
 
 --Colors Config
 use {
-  'nvim-treesitter/nvim-treesitter',
-  requires = 'p00f/nvim-ts-rainbow',
-  run = ':TSUpdate',
-  config = function()
-    require 'ide.tree-sitter'
-  end,
-}
--- Colorschemes
-use {
   'Yagua/nebulous.nvim',
+}
+
+use {
+  'tjdevries/colorbuddy.vim',
+  'tjdevries/gruvbuddy.nvim',
 }
 
 use {
@@ -149,6 +191,7 @@ use {
   config = function()
     require 'ui.alpha'
   end,
+  event = 'VimEnter',
 }
 
 use {
@@ -183,7 +226,6 @@ use {
 use {
   'akinsho/nvim-bufferline.lua',
   requires = 'kyazdani42/nvim-web-devicons',
-  event = 'BufWinEnter',
   config = function()
     require('bufferline').setup {}
   end,
@@ -194,7 +236,7 @@ use {
   config = function()
     vim.g.gitblame_message_template = '<summary> • <date> • <author>'
   end,
-  event = 'BufWinEnter',
+  event = 'BufRead',
 }
 
 use {
@@ -230,7 +272,7 @@ use {
       buftype_exclude = { 'alpha' },
     }
   end,
-  event = 'BufWinEnter',
+  event = 'BufRead',
 }
 
 use {

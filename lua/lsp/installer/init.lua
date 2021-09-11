@@ -1,12 +1,6 @@
-local M = {}
 local lsp_installer = require 'nvim-lsp-installer'
-local nvim_lsp = require 'lspconfig'
-
-function M.dw_sumneko()
-  local base_dir = vim.fn.fnamemodify(vim.fn.expand '<sfile>', ':h')
-  print(base_dir)
-end
-
+local lsp_servers = require 'nvim-lsp-installer.servers'
+local M = {}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -59,9 +53,13 @@ end
 function M.setup()
   setup_handlers()
   vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
-  vim.cmd [[ command! DwSumneko  lua require('lsp.installer').dw_sumneko()]]
 
-  require('lsp.lsp-servers').sumneko_lua()
+  local ok, sumneko_lua = lsp_servers.get_server 'sumneko_lua'
+  if ok then
+    if not sumneko_lua:is_installed() then
+      sumneko_lua:install()
+    end
+  end
 
   lsp_installer.on_server_ready(function(server)
     local opts = {
