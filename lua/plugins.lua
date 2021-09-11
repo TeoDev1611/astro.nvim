@@ -48,7 +48,7 @@ use {
 
 use {
   'hrsh7th/vim-vsnip',
-  after = 'friendly-snippets'
+  after = 'friendly-snippets',
 }
 
 use {
@@ -282,5 +282,5 @@ use {
 
 use {
   'tweekmonster/startuptime.vim',
-  cmd = 'StartupTime'
+  cmd = 'StartupTime',
 }
