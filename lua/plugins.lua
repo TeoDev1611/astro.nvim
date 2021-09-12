@@ -154,6 +154,7 @@ use {
     require 'ui.staline'
   end,
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  event = 'VimEnter'
 }
 
 -- File Explorer
