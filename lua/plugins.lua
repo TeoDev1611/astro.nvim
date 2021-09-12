@@ -47,25 +47,26 @@ use {
 }
 
 use {
-  'L3MON4D3/LuaSnip',
+  'hrsh7th/vim-vsnip',
+  after = 'friendly-snippets',
 }
 
 use {
   'hrsh7th/nvim-cmp',
-  --after = 'friendly-snippets',
+  after = 'vim-vsnip',
   config = function()
     require 'lsp.cmp'
   end,
 }
 
 use {
-  'saadparwaiz1/cmp_luasnip',
-  after = 'LuaSnip',
+  'hrsh7th/cmp-vsnip',
+  after = 'vim-vsnip',
 }
 
 use {
   'hrsh7th/cmp-nvim-lua',
-  after = 'cmp_luasnip',
+  after = 'cmp-vsnip',
 }
 
 use {
@@ -278,4 +279,9 @@ use {
 
 use {
   'rcarriga/nvim-notify',
+}
+
+use {
+  'tweekmonster/startuptime.vim',
+  cmd = 'StartupTime',
 }

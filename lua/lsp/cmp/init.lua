@@ -1,5 +1,4 @@
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
 cmp.setup {
   formatting = {
     format = function(entry, vim_item)
@@ -17,7 +16,7 @@ cmp.setup {
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      vim.fn['vsnip#anonymous'](args.body)
     end,
   },
   documentation = {
@@ -36,18 +35,15 @@ cmp.setup {
     },
     ['<Tab>'] = function(fallback)
       if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n', true)
+      elseif check_back_space() then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
+      elseif vim.fn['vsnip#available']() == 1 then
+        vim.api.nvim_feedkeys(
+          vim.api.nvim_replace_termcodes('<Plug>(vsnip-expand-or-jump)', true, true, true),
+          '',
+          true
+        )
       else
         fallback()
       end
@@ -55,7 +51,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'vsnip' },
     { name = 'path' },
     { name = 'buffer' },
     { name = 'nvim_lua' },
