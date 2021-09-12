@@ -47,26 +47,27 @@ use {
 }
 
 use {
-  'hrsh7th/vim-vsnip',
+  'L3MON4D3/LuaSnip',
   after = 'friendly-snippets',
 }
 
 use {
   'hrsh7th/nvim-cmp',
-  after = 'vim-vsnip',
+  after = 'LuaSnip',
   config = function()
     require 'lsp.cmp'
   end,
+  event = 'InsertEnter',
 }
 
 use {
-  'hrsh7th/cmp-vsnip',
-  after = 'vim-vsnip',
+  'saadparwaiz1/cmp_luasnip',
+  after = 'LuaSnip',
 }
 
 use {
   'hrsh7th/cmp-nvim-lua',
-  after = 'cmp-vsnip',
+  after = 'cmp_luasnip',
 }
 
 use {
@@ -89,8 +90,8 @@ use {
   config = function()
     require 'ide.autopairs'
   end,
-  event = 'InsertCharPre',
   after = 'nvim-cmp',
+  event = 'InsertCharPre',
 }
 
 use {
@@ -146,6 +147,10 @@ use {
 }
 
 use {
+  'Mangeshrex/uwu.vim',
+}
+
+use {
   'Pocco81/Catppuccino.nvim',
 }
 
@@ -155,7 +160,7 @@ use {
     require 'ui.staline'
   end,
   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  event = 'VimEnter'
+  event = 'BufWinEnter',
 }
 
 -- File Explorer
@@ -231,6 +236,7 @@ use {
   config = function()
     require('bufferline').setup {}
   end,
+  event = 'BufWinEnter',
 }
 
 use {

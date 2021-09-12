@@ -1,17 +1,14 @@
 vim.g.mapleader = ' '
-
 vim.cmd [[
 " Custom scape chars
 imap jk <Esc>
 imap <C-c> <Esc>l
-
 " Move the line selected up or down
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 " Indent the line to right or left
 vnoremap < <gv
 vnoremap > >gv
-
 " Navigate into the buffers with the arrow keys
 nnoremap <silent> <C-left> :wincmd h<CR>
 nnoremap <silent> <C-right> :wincmd l<CR>
@@ -50,7 +47,6 @@ nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 " Utils
 nnoremap <silent><leader>fml :lua require('ide.fmt').format_sty()<cr>
-
 "Set cmd
 command! HelpAstro :lua require('sets').help_lua()
 ]]

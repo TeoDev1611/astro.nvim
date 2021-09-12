@@ -15,6 +15,6 @@ local startify = require 'alpha.themes.startify'
 startify.section.header.val = header
 alpha.setup(startify.opts)
 
-vim.cmd [[
-  autocmd FileType alpha set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
-]]
+--vim.cmd [[
+--  autocmd FileType alpha set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
+--]]

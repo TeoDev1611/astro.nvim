@@ -1,6 +1,5 @@
 local g = vim.g
 local cmd = vim.cmd
-local nebulous = require 'nebulous'
 
 if vim.fn.exists '+termguicolors' then
   vim.cmd [[
@@ -45,5 +44,4 @@ g.rose_pine_variant = 'moon'
 -- Vscode
 g.vscode_style = 'dark'
 
--- Set the colorscheme
-cmd 'colo dark_catppuccino'
+cmd [[colo uwu]]
