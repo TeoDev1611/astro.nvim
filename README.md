@@ -12,6 +12,7 @@
   ```
 
   <q>Blazing faster neovim configuration made for a IDE use with Neovim</q>
+  [![](https://tokei.rs/b1/github/TeoDev161/AstroVim)](https://github.com/TeoDev1611/AstroVim).
 
 
 </div>
