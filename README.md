@@ -19,7 +19,7 @@
 
 ## Commands, Maps and Plugins
 
-[![](https://tokei.rs/b1/github/TeoDev161/AstroVim)](https://github.com/TeoDev1611/AstroVim).
+[![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/TeoDev1611/AstroVim).
 
 > Note is current not updated 
 
