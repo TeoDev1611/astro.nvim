@@ -15,13 +15,9 @@
   
 </div>
 
-  <p align = "center" > 
-    [![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/XAMPPRocky/tokei).
-  </p>
-
 ## Commands, Maps and Plugins
 
-
+[![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/XAMPPRocky/tokei).
 
 > Note is current not updated 
 
