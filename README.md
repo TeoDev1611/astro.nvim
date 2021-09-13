@@ -16,7 +16,7 @@
 </div>
 
   <p align = "center" > 
-    [![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/TeoDev1611/AstroVim) 
+    ![ Lines of code ](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)
   </p>
 
 ## Commands, Maps and Plugins
