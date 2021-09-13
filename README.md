@@ -13,13 +13,15 @@
 
   <q>Blazing faster neovim configuration made for a IDE use with Neovim</q>
   
+  <p align = "center" > [![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/TeoDev1611/AstroVim) </p>
+  
 
 
 </div>
 
 ## Commands, Maps and Plugins
 
-[![](https://tokei.rs/b1/github/TeoDev1611/AstroVim?category=lines)](https://github.com/TeoDev1611/AstroVim).
+
 
 > Note is current not updated 
 
