@@ -121,7 +121,7 @@ return packer.startup(function()
       require 'ide.comment'
     end,
     event = 'BufRead',
-    after = 'nvim-lsp-installer'
+    after = 'nvim-lsp-installer',
   }
 
   use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }

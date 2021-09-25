@@ -1,9 +1,9 @@
 local g = vim.g
-local tree = require('nvim-tree')
+local tree = require 'nvim-tree'
 
-tree.setup{
+tree.setup {
   auto_close = true,
-  update_cwd          = false,
+  update_cwd = false,
 }
 
 g.nvim_tree_side = 'left'

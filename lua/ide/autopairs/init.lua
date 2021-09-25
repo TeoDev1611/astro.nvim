@@ -2,7 +2,6 @@ require('nvim-autopairs').setup {
   disable_filetype = { 'TelescopePrompt' },
 }
 
-
 vim.cmd 'packadd nvim-cmp'
 require('nvim-autopairs.completion.cmp').setup {
   map_cr = true, --  map <CR> on insert mode
