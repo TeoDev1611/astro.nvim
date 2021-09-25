@@ -44,4 +44,4 @@ g.rose_pine_variant = 'moon'
 -- Vscode
 g.vscode_style = 'dark'
 
-cmd [[colo uwu]]
+cmd [[colo soft_manilo]]

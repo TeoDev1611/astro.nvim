@@ -52,7 +52,7 @@ end
 
 function M.setup()
   setup_handlers()
-  vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e'..vim.lsp.get_log_path()) ]]
+  vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e '..vim.lsp.get_log_path()) ]]
 
   local ok, sumneko_lua = lsp_servers.get_server 'sumneko_lua'
   if ok then

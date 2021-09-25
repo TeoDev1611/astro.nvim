@@ -24,277 +24,256 @@ packer.init {
     enable = true,
     threshold = 1,
   },
+  luarocks = {
+    python_cmd = 'python -m',
+  },
 }
 
 local use = packer.use
-packer.reset()
 
--- Package Managment
-use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
+return packer.startup(function()
+  -- Package Managment
+  use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
 
-use {
-  'nvim-treesitter/nvim-treesitter',
-  after = 'packer.nvim',
-  run = ':TSUpdate',
-  branch = '0.5-compat',
-  event = 'BufRead',
-  config = function()
-    require 'ide.tree-sitter'
-  end,
-}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    after = 'packer.nvim',
+    run = ':TSUpdate',
+    branch = '0.5-compat',
+    event = 'BufRead',
+    config = function()
+      require 'ide.tree-sitter'
+    end,
+  }
 
-use {
-  'p00f/nvim-ts-rainbow',
-  after = 'nvim-treesitter',
-}
+  use {
+    'p00f/nvim-ts-rainbow',
+    after = 'nvim-treesitter',
+  }
 
-use {
-  'rafamadriz/friendly-snippets',
-  event = 'InsertEnter',
-}
+  use {
+    'rafamadriz/friendly-snippets',
+    event = 'InsertEnter',
+  }
 
-use {
-  'L3MON4D3/LuaSnip',
-  after = 'friendly-snippets',
-}
+  use {
+    'L3MON4D3/LuaSnip',
+    after = 'friendly-snippets',
+  }
 
-use {
-  'hrsh7th/nvim-cmp',
-  after = 'LuaSnip',
-  config = function()
-    require 'lsp.cmp'
-  end,
-  event = 'InsertEnter',
-}
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require 'lsp.cmp'
+    end,
+  }
 
-use {
-  'saadparwaiz1/cmp_luasnip',
-  after = 'LuaSnip',
-}
+  use {
+    'saadparwaiz1/cmp_luasnip',
+    after = 'LuaSnip',
+  }
 
-use {
-  'hrsh7th/cmp-nvim-lua',
-  after = 'cmp_luasnip',
-}
+  use {
+    'hrsh7th/cmp-nvim-lua',
+    after = 'cmp_luasnip',
+  }
 
-use {
-  'hrsh7th/cmp-nvim-lsp',
-  after = 'cmp-nvim-lua',
-}
+  use {
+    'hrsh7th/cmp-nvim-lsp',
+    after = 'cmp-nvim-lua',
+  }
 
-use {
-  'hrsh7th/cmp-buffer',
-  after = 'cmp-nvim-lsp',
-}
+  use {
+    'hrsh7th/cmp-buffer',
+    after = 'cmp-nvim-lsp',
+  }
 
-use {
-  'hrsh7th/cmp-path',
-  after = 'cmp-nvim-lsp',
-}
+  use {
+    'hrsh7th/cmp-path',
+    after = 'cmp-nvim-lsp',
+  }
 
-use {
-  'windwp/nvim-autopairs',
-  config = function()
-    require 'ide.autopairs'
-  end,
-  after = 'nvim-cmp',
-  event = 'InsertCharPre',
-}
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require 'ide.autopairs'
+    end,
+    after = 'nvim-cmp',
+    event = 'InsertCharPre',
+  }
 
-use {
-  'neovim/nvim-lspconfig',
-  after = 'cmp-nvim-lsp',
-}
-use {
-  'williamboman/nvim-lsp-installer',
-  config = function()
-    require('lsp.installer').setup()
-  end,
-  after = 'nvim-lspconfig',
-}
+  use {
+    'neovim/nvim-lspconfig',
+    after = 'cmp-nvim-lsp',
+  }
+  use {
+    'williamboman/nvim-lsp-installer',
+    config = function()
+      require('lsp.installer').setup()
+    end,
+    after = 'nvim-lspconfig',
+  }
+  -- IDE Tools
 
-use {
-  'glepnir/lspsaga.nvim',
-  config = function()
-    require 'lsp.saga'
-  end,
-  cmd = 'Lspsaga',
-  after = 'nvim-lsp-installer',
-}
+  use {
+    'terrortylor/nvim-comment',
+    config = function()
+      require 'ide.comment'
+    end,
+    event = 'BufRead',
+    after = 'nvim-lsp-installer'
+  }
 
--- IDE Tools
+  use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
 
-use {
-  'terrortylor/nvim-comment',
-  config = function()
-    require 'ide.comment'
-  end,
-  event = 'BufRead',
-  after = 'lspsaga.nvim',
-}
+  ---- Lang Configs
+  use { 'editorconfig/editorconfig-vim' }
+  use { 'kyazdani42/nvim-web-devicons' }
 
-use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
+  --Colors Config
+  use {
+    'Yagua/nebulous.nvim',
+  }
 
----- Lang Configs
-use { 'editorconfig/editorconfig-vim' }
-use { 'kyazdani42/nvim-web-devicons' }
+  use {
+    'tjdevries/colorbuddy.vim',
+    'tjdevries/gruvbuddy.nvim',
+  }
 
---Colors Config
-use {
-  'Yagua/nebulous.nvim',
-}
+  use {
+    'pineapplegiant/spaceduck',
+  }
 
-use {
-  'tjdevries/colorbuddy.vim',
-  'tjdevries/gruvbuddy.nvim',
-}
+  use {
+    'Mangeshrex/uwu.vim',
+  }
 
-use {
-  'pineapplegiant/spaceduck',
-}
+  use {
+    'Pocco81/Catppuccino.nvim',
+  }
 
-use {
-  'Mangeshrex/uwu.vim',
-}
+  use {
+    'tamton-aquib/staline.nvim',
+    config = function()
+      require 'ui.staline'
+    end,
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    event = 'BufWinEnter',
+  }
 
-use {
-  'Pocco81/Catppuccino.nvim',
-}
+  -- File Explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    event = 'BufWinEnter',
+    config = function()
+      require 'ui.tree'
+    end,
+    cmd = {
+      'NvimTreeOpen',
+      'NvimTreeClose',
+      'NvimTreeToggle',
+      'NvimTreeFocus',
+      'NvimTreeRefresh',
+      'NvimTreeClipboard',
+      'NvimTreeFindFile',
+      'NvimTreeResize',
+    },
+  }
+  -- IDE Tools
+  use {
+    'iamcco/markdown-preview.nvim',
+    opt = true,
+    ft = 'markdown',
+    cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle', 'MarkdownPreviewStop' },
+  }
 
-use {
-  'tamton-aquib/staline.nvim',
-  config = function()
-    require 'ui.staline'
-  end,
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  event = 'BufWinEnter',
-}
+  --Fuzzy Find
 
--- File Explorer
-use {
-  'kyazdani42/nvim-tree.lua',
-  requires = 'kyazdani42/nvim-web-devicons',
-  event = 'BufWinEnter',
-  config = function()
-    require 'ui.tree'
-  end,
-  cmd = {
-    'NvimTreeOpen',
-    'NvimTreeClose',
-    'NvimTreeToggle',
-    'NvimTreeFocus',
-    'NvimTreeRefresh',
-    'NvimTreeClipboard',
-    'NvimTreeFindFile',
-    'NvimTreeResize',
-  },
-}
--- IDE Tools
-use {
-  'iamcco/markdown-preview.nvim',
-  opt = true,
-  ft = 'markdown',
-  cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle', 'MarkdownPreviewStop' },
-}
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require 'ui.alpha'
+    end,
+    event = 'VimEnter',
+  }
 
---Fuzzy Find
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-packer.nvim', opt = true },
+      { 'nvim-telescope/telescope-project.nvim', opt = true },
+    },
+    config = function()
+      require 'ide.telescope'
+    end,
+    cmd = 'Telescope',
+    event = 'BufWinEnter',
+  }
+  -- Jump Motions
 
-use {
-  'goolord/alpha-nvim',
-  requires = { 'kyazdani42/nvim-web-devicons' },
-  config = function()
-    require 'ui.alpha'
-  end,
-  event = 'VimEnter',
-}
+  use {
+    'rhysd/accelerated-jk',
+    event = 'VimEnter',
+  }
 
-use {
-  'nvim-telescope/telescope.nvim',
-  requires = {
-    { 'nvim-lua/popup.nvim' },
-    { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope-packer.nvim', opt = true },
-    { 'nvim-telescope/telescope-project.nvim', opt = true },
-  },
-  config = function()
-    require 'ide.telescope'
-  end,
-  cmd = 'Telescope',
-  event = 'BufWinEnter',
-}
--- Jump Motions
-use {
-  'phaazon/hop.nvim',
-  as = 'hop',
-  config = function()
-    require 'ide.hop'
-  end,
-  cmd = { 'HopWord', 'HopLine', 'HopChar1', 'HopChar2', 'HopPattern', '' },
-}
+  use {
+    'akinsho/nvim-bufferline.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('bufferline').setup {}
+    end,
+    event = 'BufWinEnter',
+  }
 
-use {
-  'rhysd/accelerated-jk',
-  event = 'VimEnter',
-}
+  use {
+    'f-person/git-blame.nvim',
+    config = function()
+      vim.g.gitblame_message_template = '<summary> • <date> • <author>'
+    end,
+    event = 'BufRead',
+  }
 
-use {
-  'akinsho/nvim-bufferline.lua',
-  requires = 'kyazdani42/nvim-web-devicons',
-  config = function()
-    require('bufferline').setup {}
-  end,
-  event = 'BufWinEnter',
-}
+  use {
+    'ray-x/go.nvim',
+    ft = { 'go', 'gomod' },
+    config = function()
+      require 'langs.go'
+    end,
+  }
 
-use {
-  'f-person/git-blame.nvim',
-  config = function()
-    vim.g.gitblame_message_template = '<summary> • <date> • <author>'
-  end,
-  event = 'BufRead',
-}
+  use {
+    'akinsho/nvim-toggleterm.lua',
+    config = function()
+      require('toggleterm').setup {
+        shade_terminals = true,
+      }
+      vim.g.toggleterm_terminal_mapping = '<C-t>'
+    end,
+    cmd = { 'ToggleTerm', 'ToggleTermCloseAll', 'ToggleTermOpenAll' },
+  }
 
-use {
-  'ray-x/go.nvim',
-  ft = { 'go', 'gomod' },
-  config = function()
-    require 'langs.go'
-  end,
-}
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      vim.opt.listchars = {
+        space = '|',
+        eol = '↴',
+      }
 
-use {
-  'akinsho/nvim-toggleterm.lua',
-  config = function()
-    require('toggleterm').setup {
-      shade_terminals = true,
-    }
-    vim.g.toggleterm_terminal_mapping = '<C-t>'
-  end,
-  cmd = { 'ToggleTerm', 'ToggleTermCloseAll', 'ToggleTermOpenAll' },
-}
+      require('indent_blankline').setup {
+        show_end_of_line = true,
+        space_char_blankline = ' ',
+        buftype_exclude = { 'alpha' },
+      }
+    end,
+    event = 'BufRead',
+  }
 
-use {
-  'lukas-reineke/indent-blankline.nvim',
-  config = function()
-    vim.opt.listchars = {
-      space = '|',
-      eol = '↴',
-    }
-
-    require('indent_blankline').setup {
-      show_end_of_line = true,
-      space_char_blankline = ' ',
-      buftype_exclude = { 'alpha' },
-    }
-  end,
-  event = 'BufRead',
-}
-
-use {
-  'rcarriga/nvim-notify',
-}
-
-use {
-  'tweekmonster/startuptime.vim',
-  cmd = 'StartupTime',
-}
+  use {
+    'rcarriga/nvim-notify',
+  }
+end)

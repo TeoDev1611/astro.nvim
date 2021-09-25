@@ -1,4 +1,10 @@
 local g = vim.g
+local tree = require('nvim-tree')
+
+tree.setup{
+  auto_close = true,
+  update_cwd          = false,
+}
 
 g.nvim_tree_side = 'left'
 g.nvim_tree_width = 30
