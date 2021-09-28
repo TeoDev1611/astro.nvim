@@ -2,6 +2,9 @@ local g = vim.g
 local tree = require 'nvim-tree'
 
 tree.setup {
+  disable_netrw = true,
+  hijack_netrw = true,
+  lsp_diagnostics = true,
   auto_close = true,
   update_cwd = false,
 }
@@ -19,8 +22,6 @@ g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ':t'
 g.nvim_tree_tab_open = 0
 g.nvim_tree_allow_resize = 1
-g.nvim_tree_lsp_diagnostics = 1
-g.nvim_tree_hijack_netrw = 0
 g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' }
 
 g.nvim_tree_show_icons = {
@@ -35,11 +36,11 @@ vim.g.nvim_tree_icons = {
   symlink = '',
   git = {
     unstaged = '',
-    staged = 'S',
+    staged = '',
     unmerged = '',
     renamed = '➜',
     deleted = '',
-    untracked = 'U',
+    untracked = '',
     ignored = '◌',
   },
   folder = {
@@ -50,9 +51,9 @@ vim.g.nvim_tree_icons = {
     symlink = '',
   },
   lsp = {
-    hint = '',
-    info = '',
-    warning = '',
+    hint = 'ﯦ',
+    info = '',
+    warning = '',
     error = '',
   },
 }
