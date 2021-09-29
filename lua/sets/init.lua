@@ -36,17 +36,6 @@ augroup END
 
 -- Help :)
 
-Err, vim.notify = pcall(require, 'notify')
-
-if not Err then
-  return
-end
-
-vim.notify.setup {
-  stages = 'slide',
-  timeout = 3000,
-}
-
 function M.help_lua()
   local plugin = 'AstroVim Help'
 

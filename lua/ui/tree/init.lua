@@ -7,12 +7,12 @@ tree.setup {
   lsp_diagnostics = true,
   auto_close = true,
   update_cwd = false,
-  ignore_ft_on_setup  = {'alpha'},
+  ignore_ft_on_setup = { 'alpha' },
   view = {
     width = 30,
     side = 'left',
-    auto_resize = true
-  }
+    auto_resize = true,
+  },
 }
 
 g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', 'pack', 'extension' }

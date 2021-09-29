@@ -66,6 +66,7 @@ return packer.startup(function()
     config = function()
       require 'lsp.cmp'
     end,
+    after = 'nvim-ts-rainbow',
   }
 
   use {
@@ -275,5 +276,13 @@ return packer.startup(function()
 
   use {
     'rcarriga/nvim-notify',
+    event = 'BufWinEnter',
+    config = function()
+      vim.notify = require 'notify'
+      vim.notify.setup {
+        stages = 'slide',
+        timeout = 3000,
+      }
+    end,
   }
 end)
