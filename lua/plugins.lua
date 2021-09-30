@@ -27,17 +27,23 @@ packer.init {
   luarocks = {
     python_cmd = 'python -m',
   },
+  config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua',
+  },
 }
 
 local use = packer.use
 
 return packer.startup(function()
   -- Package Managment
-  use { 'wbthomason/packer.nvim', opt = true, event = 'VimEnter' }
+  use { 'wbthomason/packer.nvim' }
+
+  use { 'lewis6991/impatient.nvim' }
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    after = 'packer.nvim',
+    after = 'impatient.nvim',
     run = ':TSUpdate',
     branch = '0.5-compat',
     event = 'BufRead',
@@ -125,10 +131,10 @@ return packer.startup(function()
     after = 'nvim-lsp-installer',
   }
 
-  use { 'tpope/vim-fugitive', cmd = { 'G' }, opt = true }
+  use { 'tpope/vim-fugitive', cmd = { 'G' }, after = 'nvim-comment' }
 
   ---- Lang Configs
-  use { 'editorconfig/editorconfig-vim' }
+  use { 'editorconfig/editorconfig-vim', after = 'vim-fugitive' }
   use { 'kyazdani42/nvim-web-devicons' }
 
   --Colors Config
@@ -137,16 +143,7 @@ return packer.startup(function()
   }
 
   use {
-    'tjdevries/colorbuddy.vim',
-    'tjdevries/gruvbuddy.nvim',
-  }
-
-  use {
     'pineapplegiant/spaceduck',
-  }
-
-  use {
-    'Mangeshrex/uwu.vim',
   }
 
   use {
@@ -159,6 +156,7 @@ return packer.startup(function()
       require 'ui.staline'
     end,
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    after = 'editorconfig-vim',
     event = 'BufWinEnter',
   }
 
@@ -167,6 +165,7 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     event = 'BufWinEnter',
+    after = 'staline.nvim',
     config = function()
       require 'ui.tree'
     end,
@@ -184,6 +183,7 @@ return packer.startup(function()
   -- IDE Tools
   use {
     'iamcco/markdown-preview.nvim',
+    after = 'nvim-tree.lua',
     opt = true,
     ft = 'markdown',
     cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle', 'MarkdownPreviewStop' },
@@ -198,6 +198,7 @@ return packer.startup(function()
       require 'ui.alpha'
     end,
     event = 'VimEnter',
+    after = 'markdown-preview.nvim',
   }
 
   use {
@@ -283,6 +284,14 @@ return packer.startup(function()
         stages = 'slide',
         timeout = 3000,
       }
+    end,
+  }
+
+  use {
+    'tjdevries/astronauta.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      -- nothing
     end,
   }
 end)

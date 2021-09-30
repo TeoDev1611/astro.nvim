@@ -27,11 +27,12 @@ nnoremap <leader>bd :bdelete<CR>
 nnoremap <silent><leader>n <cmd>NvimTreeToggle<CR>
 nnoremap <silent><leader>nr <cmd>NvimTreeRefresh<CR>
 " Fuzzy find
-nnoremap <silent><leader>ff <cmd>Telescope find_files<cr>
+nnoremap <silent><leader>ff <cmd>Telescope fd<cr>
 nnoremap <silent><leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent><leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent><leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <silent><leader>fc <cmd>Telescope colorschemes<cr>
+nnoremap <silent><leader>fk <cmd>Telescope keymaps<cr>
 "Hop
 nnoremap <silent><leader>hw <cmd>HopWord<cr>
 nnoremap <silent><leader>hp <cmd>HopPattern<cr>
