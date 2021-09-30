@@ -57,7 +57,7 @@
 
 Steps for install this awesome neovim configuration:
 
-1. Install Neovim [here](https://github.com/neovim/neovim) 0.5+
+1. Install Neovim [here](https://github.com/neovim/neovim) 0.6 (nightly)
 2. Install the manager 
 
 > Windows
