@@ -39,9 +39,8 @@ telescope.setup {
 }
 
 telescope.load_extension 'project'
---telescope.load_extension 'fzy_native'
 
 vim.cmd [[
-command! -nargs=0 ListPlugins :lua require('telescope').extensions.packer.plugins(opts)
-command! -nargs=0 Project :lua require'telescope'.extensions.project.project{}
+command! -nargs=0 AstroPlugins :lua require('telescope').extensions.packer.plugins(opts)
+command! -nargs=0 AstroProject :lua require'telescope'.extensions.project.project{}
 ]]

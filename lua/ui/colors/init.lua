@@ -9,15 +9,30 @@ if vim.fn.exists '+termguicolors' then
   ]]
 end
 
--- Options of the colorschemes
-g.nb_disable_background = false
-g.nb_italic_comments = true
-g.nb_italic_keywords = true
-g.nb_italic_functions = true
-g.nb_italic_variables = false
-g.nb_style = 'night'
--- Setup the lua colorshemes
---nebulous.setup()
+--Put this lines inside your vimrc to set the colorscheme
+require("nebulous").setup {
+  variant = "night",
+  disable = {
+    background = true,
+    endOfBuffer = false,
+  },
+  italic = {
+    comments   = true,
+    keywords   = true,
+    functions  = true,
+    variables  = false,
+  },
+  custom_colors = { -- this table can hold any group of colors with their respective values
+    LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
+    CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
+
+    -- it is possible to specify only the element to be changed
+    TelescopePreviewBorder = { fg = "#A13413" },
+    LspDiagnosticsDefaultError = { bg = "#E11313" },
+    TSTagDelimiter = { style = "bold,italic" },
+  }
+}
+
 -- Gruvbox
 g.gruvbox_contrast_dark = 'hard'
 g.gruvbox_material_pate = 'mix'
@@ -44,4 +59,4 @@ g.rose_pine_variant = 'moon'
 -- Vscode
 g.vscode_style = 'dark'
 
-cmd [[colo soft_manilo]]
+cmd [[colo nebulous]]

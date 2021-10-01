@@ -42,6 +42,14 @@ return packer.startup(function()
   use { 'lewis6991/impatient.nvim' }
 
   use {
+    'nathom/filetype.nvim',
+    after = 'impatient.nvim',
+    config = function ()
+      vim.g.did_load_filetypes = 1 
+    end
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
     after = 'impatient.nvim',
     run = ':TSUpdate',
@@ -284,14 +292,6 @@ return packer.startup(function()
         stages = 'slide',
         timeout = 3000,
       }
-    end,
-  }
-
-  use {
-    'tjdevries/astronauta.nvim',
-    event = 'BufWinEnter',
-    config = function()
-      -- nothing
     end,
   }
 end)
