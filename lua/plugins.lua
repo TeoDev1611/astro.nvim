@@ -44,9 +44,9 @@ return packer.startup(function()
   use {
     'nathom/filetype.nvim',
     after = 'impatient.nvim',
-    config = function ()
-      vim.g.did_load_filetypes = 1 
-    end
+    config = function()
+      vim.g.did_load_filetypes = 1
+    end,
   }
 
   use {
