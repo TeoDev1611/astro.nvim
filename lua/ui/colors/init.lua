@@ -1,5 +1,6 @@
 local g = vim.g
 local cmd = vim.cmd
+local present, nebulous = pcall(require, 'nebulous')
 
 if vim.fn.exists '+termguicolors' then
   vim.cmd [[
@@ -9,8 +10,13 @@ if vim.fn.exists '+termguicolors' then
   ]]
 end
 
+if not present then
+  cmd [[colo evening]]
+  return
+end
+
 --Put this lines inside your vimrc to set the colorscheme
-require('nebulous').setup {
+nebulous.setup {
   variant = 'night',
   disable = {
     background = true,
