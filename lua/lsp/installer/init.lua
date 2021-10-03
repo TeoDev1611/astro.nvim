@@ -1,11 +1,13 @@
+-- Improve the return
+local M = {}
+-- Load the modules
 local lsp_installer = require 'nvim-lsp-installer'
 local lsp_servers = require 'nvim-lsp-installer.servers'
-local M = {}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- Set the nvim-lsp capabilities
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+-- On on_attach function
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -42,11 +44,10 @@ end
 
 local function setup_handlers()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      spacing = 5,
-      prefix = '',
-    },
-    signs = false, -- rely on highlight styles instead, don't want to clobber signcolumn
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
   })
 end
 
@@ -54,24 +55,11 @@ function M.setup()
   setup_handlers()
   vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e '..vim.lsp.get_log_path()) ]]
 
-  local ok, sumneko_lua = lsp_servers.get_server 'sumneko_lua'
-  if ok then
-    if not sumneko_lua:is_installed() then
-      sumneko_lua:install()
-    end
-  end
-
   lsp_installer.on_server_ready(function(server)
     local opts = {
       on_attach = on_attach,
       capabilities = capabilities,
     }
-
-    if server.name == 'eslintls' then
-      opts.settings = {
-        format = { enable = true },
-      }
-    end
 
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]

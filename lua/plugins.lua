@@ -28,7 +28,6 @@ packer.init {
     python_cmd = 'python -m',
   },
   config = {
-    -- Move to lua dir so impatient.nvim can cache it
     compile_path = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua',
   },
 }
@@ -269,15 +268,13 @@ return packer.startup(function()
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      vim.opt.listchars = {
-        space = '|',
-        eol = '↴',
-      }
+      vim.opt.list = true
+      vim.opt.listchars:append 'space:⋅'
+      vim.opt.listchars:append 'eol:↴'
 
       require('indent_blankline').setup {
-        show_end_of_line = true,
         space_char_blankline = ' ',
-        buftype_exclude = { 'alpha' },
+        show_current_context = true,
       }
     end,
     event = 'BufRead',
