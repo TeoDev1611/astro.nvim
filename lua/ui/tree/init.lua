@@ -4,7 +4,15 @@ local tree = require 'nvim-tree'
 tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
-  lsp_diagnostics = true,
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = 'ﯦ',
+      info = '',
+      warning = '',
+      error = '',
+    },
+  },
   auto_close = true,
   update_cwd = false,
   ignore_ft_on_setup = { 'alpha' },
@@ -46,11 +54,5 @@ g.nvim_tree_icons = {
     empty = '',
     empty_open = '',
     symlink = '',
-  },
-  lsp = {
-    hint = 'ﯦ',
-    info = '',
-    warning = '',
-    error = '',
   },
 }
