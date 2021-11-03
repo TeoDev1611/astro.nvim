@@ -65,4 +65,4 @@ g.rose_pine_variant = 'moon'
 -- Vscode
 g.vscode_style = 'dark'
 
-cmd [[colo nebulous]]
+cmd [[colo gruvbox-material]]
