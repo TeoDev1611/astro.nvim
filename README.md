@@ -2,7 +2,7 @@
 
 ---
 
-![Made for Neovim][https://img.shields.io/badge/Made%20for%20Neovim-by%20Teo-blue?style=for-the-badge&logo=neovim]
+![Made for Neovim](https://img.shields.io/badge/Made%20for%20Neovim-by%20Teo-blue?style=for-the-badge&logo=neovim)
 
 Here you found me neovim config 
 
@@ -12,7 +12,7 @@ Here you found a neovim config based in lua for Neovim
 
 ## Screenshots
 
-![AstroVim][./docs/image.PNG]
+![AstroVim](./docs/image.PNG)
 
 ## Requirements for install this?
 
