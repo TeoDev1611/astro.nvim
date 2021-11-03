@@ -52,7 +52,7 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     after = 'impatient.nvim',
     run = ':TSUpdate',
-    branch = '0.5-compat',
+    --branch = '0.5-compat',
     event = 'BufRead',
     config = function()
       require 'ide.tree-sitter'
@@ -150,7 +150,7 @@ return packer.startup(function()
   }
 
   use {
-    'pineapplegiant/spaceduck',
+    'sainnhe/gruvbox-material',
   }
 
   use {
@@ -255,14 +255,10 @@ return packer.startup(function()
   }
 
   use {
-    'akinsho/nvim-toggleterm.lua',
+    'rust-lang/rust.vim',
     config = function()
-      require('toggleterm').setup {
-        shade_terminals = true,
-      }
-      vim.g.toggleterm_terminal_mapping = '<C-t>'
+      require 'langs.rust'
     end,
-    cmd = { 'ToggleTerm', 'ToggleTermCloseAll', 'ToggleTermOpenAll' },
   }
 
   use {
