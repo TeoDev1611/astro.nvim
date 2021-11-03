@@ -1,138 +1,142 @@
-# Changelog
+Changelog
+=========
+
 All notable changes to AstroVim will be documented in this file.
 
-## [unreleased]
+[unreleased]
+------------
 
 ### Bug Fixes
 
-- Delete temporaly the fern error
-- Telescope lazy loading
-- Ghq extension#
-- Compe lazy loading
-- Go support attach
-- Remove the omni completion
-- Deprecation message nvim tree.lua
-- Delete the utils and fix the arguments bug
+-	Delete temporaly the fern error
+-	Telescope lazy loading
+-	Ghq extension#
+-	Compe lazy loading
+-	Go support attach
+-	Remove the omni completion
+-	Deprecation message nvim tree.lua
+-	Delete the utils and fix the arguments bug
 
 ### Documentation
 
-- Add the new header
-- Update installation
-- Change to neovim
-- Fix the cliff commits and add the header
-- Update the changelog
-- Update the changelog
-- Update changelog
-- Update the image :=)
-- Improve the documentation 0.6
+-	Add the new header
+-	Update installation
+-	Change to neovim
+-	Fix the cliff commits and add the header
+-	Update the changelog
+-	Update the changelog
+-	Update changelog
+-	Update the image :=)
+-	Improve the documentation 0.6
 
 ### Features
 
-- Update the plugins and add the new tabline
-- Change the tree for nerdtree
-- Change the color scheme to gruvbox material
-- Change the status line
-- Delete nerdtree
-- Add ayu color and change to fern
-- Add the ctrlp search
-- Change to vim-lsp more lightweight and add the dein manager
-- Add the lsp configs
-- Add the link to the config file :p
-- Fix the fern config
-- Add the line break
-- Add the compe settings and fix the settings on lsp completion
-- Change to telescope and add support with icons and colors
-- Add the new lightline config and create the silents :p
-- Add more themes
-- Add the packer external config and comment the dein utils
-- Add the remove function for best usage
-- Add the load plugin init.lua more easy
-- Migrate finally to the packer.nvim
-- Delete the unused manager
-- Recompile packer
-- Add the stylua formatter and format the code
-- Add the jumpmotion and the future lua sumneko support
-- Add the new package manager more faster and new features
-- Add the galaxyline plugin and config for some themes :p
-- Add the new feature for the toml parse and the expressline ( tj awesome work )
-- Add the toml support
-- Add the new readme
-- Add the toml instructions
-- Fix the installation
-- Migrate to packer bug in Pug
-- Add the nvim tree and the bufferline
-- Add the gitsigns for best usage and git power
-- Change the colors options
-- Change the gitsigns event
-- Delete the packer_compiled
-- Add the maps in lua not completed
-- Add the dashboard and add the custom header
-- Add the new telescope aparience new colors and move the tools
-- Add the telescope tools
-- Add the new plugin packer config
-- Add the new lazy loading new lazy algoritm and clean
-- Add the hop mappings
-- Add the new capabilities
-- Add the new deno lsp configs
-- Add new lazy loading and add the new todo comments load and the new packer func
-- Add the go.nvim
-- Add the toggle term by sebas ty for the idea
-- Add lazy loading to compe and fix the load in autopairs
-- Remove unused plugins and add markdown to tree sitter
-- Migrate to compe
-- Add the rosepine and replace with lualine
-- Remove and clean
-- Remove unused themes and add the news with best preformance
-- Add lsp installer and setup then
-- Add the new lsp and new tools and lazy loading
-- Add the go into a new file and add the stepts to the preview
-- Add the changelog the the new version
-- Remove the unused theme and add vscode theme :)
-- Move to staline more faster and very cool
-- Remove the unused plugins and setup the new dashboard and use 100 lua :)
-- Add the notify and the help :)
-- Add the lazyloading
-- Remove luasnip and change to vsnip
-- Add the lazy to the staline
-- Add luasnip
-- Add boostrap
-- Add clean :)
-- Format the file
-- Add teh new icons and improve the lps and the netrw
-- Improve more the lazy loading and fix the notification
-- Improve more fast startup and clean
-- Clean the plugins unused
-- Improve the new colors and improve the filetype.nvim faster start
-- Fix the color require and put a new color with the default installation
-- Fix the auto install and add the new update for the indent-blankline.nvim
-- Improve the better signs and util for the keymaps
-- Fix the error on the load the buffmap keys
-- Add the rust and delete the unused plugins
-- Remove the readme old
+-	Update the plugins and add the new tabline
+-	Change the tree for nerdtree
+-	Change the color scheme to gruvbox material
+-	Change the status line
+-	Delete nerdtree
+-	Add ayu color and change to fern
+-	Add the ctrlp search
+-	Change to vim-lsp more lightweight and add the dein manager
+-	Add the lsp configs
+-	Add the link to the config file :p
+-	Fix the fern config
+-	Add the line break
+-	Add the compe settings and fix the settings on lsp completion
+-	Change to telescope and add support with icons and colors
+-	Add the new lightline config and create the silents :p
+-	Add more themes
+-	Add the packer external config and comment the dein utils
+-	Add the remove function for best usage
+-	Add the load plugin init.lua more easy
+-	Migrate finally to the packer.nvim
+-	Delete the unused manager
+-	Recompile packer
+-	Add the stylua formatter and format the code
+-	Add the jumpmotion and the future lua sumneko support
+-	Add the new package manager more faster and new features
+-	Add the galaxyline plugin and config for some themes :p
+-	Add the new feature for the toml parse and the expressline ( tj awesome work )
+-	Add the toml support
+-	Add the new readme
+-	Add the toml instructions
+-	Fix the installation
+-	Migrate to packer bug in Pug
+-	Add the nvim tree and the bufferline
+-	Add the gitsigns for best usage and git power
+-	Change the colors options
+-	Change the gitsigns event
+-	Delete the packer_compiled
+-	Add the maps in lua not completed
+-	Add the dashboard and add the custom header
+-	Add the new telescope aparience new colors and move the tools
+-	Add the telescope tools
+-	Add the new plugin packer config
+-	Add the new lazy loading new lazy algoritm and clean
+-	Add the hop mappings
+-	Add the new capabilities
+-	Add the new deno lsp configs
+-	Add new lazy loading and add the new todo comments load and the new packer func
+-	Add the go.nvim
+-	Add the toggle term by sebas ty for the idea
+-	Add lazy loading to compe and fix the load in autopairs
+-	Remove unused plugins and add markdown to tree sitter
+-	Migrate to compe
+-	Add the rosepine and replace with lualine
+-	Remove and clean
+-	Remove unused themes and add the news with best preformance
+-	Add lsp installer and setup then
+-	Add the new lsp and new tools and lazy loading
+-	Add the go into a new file and add the stepts to the preview
+-	Add the changelog the the new version
+-	Remove the unused theme and add vscode theme :)
+-	Move to staline more faster and very cool
+-	Remove the unused plugins and setup the new dashboard and use 100 lua :)
+-	Add the notify and the help :)
+-	Add the lazyloading
+-	Remove luasnip and change to vsnip
+-	Add the lazy to the staline
+-	Add luasnip
+-	Add boostrap
+-	Add clean :)
+-	Format the file
+-	Add teh new icons and improve the lps and the netrw
+-	Improve more the lazy loading and fix the notification
+-	Improve more fast startup and clean
+-	Clean the plugins unused
+-	Improve the new colors and improve the filetype.nvim faster start
+-	Fix the color require and put a new color with the default installation
+-	Fix the auto install and add the new update for the indent-blankline.nvim
+-	Improve the better signs and util for the keymaps
+-	Fix the error on the load the buffmap keys
+-	Add the rust and delete the unused plugins
+-	Remove the readme old
 
 ### Miscellaneous Tasks
 
-- Delete the unused vital commit
-- Remove the unused vim script files
-- Delete the comments and the unused propierty
+-	Delete the unused vital commit
+-	Remove the unused vim script files
+-	Delete the comments and the unused propierty
 
 ### Styling
 
-- Format the folder with the new sytles
-- Format the code with stylua
-- Format the code
-- Format the code
-- Format the file with stylua
-- Format with single quote :p
-- Format the code
-- Format the code
-- Format the file
-- Format the code for fix the ci
-- Format with the guides
-- Format the code
-- Fix the format style with stylua
+-	Format the folder with the new sytles
+-	Format the code with stylua
+-	Format the code
+-	Format the code
+-	Format the file with stylua
+-	Format with single quote :p
+-	Format the code
+-	Format the code
+-	Format the file
+-	Format the code for fix the ci
+-	Format with the guides
+-	Format the code
+-	Fix the format style with stylua
 
 <!-- generated by git-cliff -->
 
 ---
+
 Made with :heart: in Ecuador
