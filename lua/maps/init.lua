@@ -1,7 +1,16 @@
+local M = {}
 vim.g.mapleader = ' '
 
+M.setup_better_escape = function()
+  require('better_escape').setup {
+    mapping = { 'jk', 'jj' },
+    keys = '<Esc>',
+    timeout = 200,
+  }
+end
+
 vim.cmd [[
-imap jk <Esc>
+"imap jk <Esc>
 " Move the line selected up or down
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
@@ -50,3 +59,5 @@ nnoremap <silent><leader>fml :lua require('ide.fmt').format_sty()<cr>
 "Set cmd
 command! AstroHelp :lua require('sets').help_lua()
 ]]
+
+return M

@@ -41,7 +41,7 @@ nebulous.setup {
 
 -- Gruvbox
 g.gruvbox_contrast_dark = 'hard'
-g.gruvbox_material_pate = 'mix'
+g.gruvbox_material_pate = 'original'
 g.gruvbox_material_cursor = 'orange'
 g.gruvbox_material_background = 'hard'
 g.gruvbox_contrast_dark = 'hard'

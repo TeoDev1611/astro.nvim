@@ -11,9 +11,8 @@ local packer = require 'packer'
 packer.init {
   display = {
     open_fn = function()
-      return require('packer.util').float { border = 'single' }
+      return require('packer.util').float { border = require("util").border_thin_rounded }
     end,
-    prompt_border = 'single',
   },
   git = {
     clone_timeout = 600, -- Timeout, in seconds, for git clones
@@ -38,7 +37,15 @@ return packer.startup(function()
   -- Package Managment
   use { 'wbthomason/packer.nvim' }
 
-  use { 'lewis6991/impatient.nvim' }
+  use {
+    'lewis6991/impatient.nvim',
+    after = 'packer.nvim',
+    opt = true,
+    config = function()
+      require 'impatient'
+      require('impatient').enable_profile()
+    end,
+  }
 
   use {
     'nathom/filetype.nvim',
@@ -52,7 +59,6 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     after = 'impatient.nvim',
     run = ':TSUpdate',
-    --branch = '0.5-compat',
     event = 'BufRead',
     config = function()
       require 'ide.tree-sitter'
@@ -230,6 +236,14 @@ return packer.startup(function()
   }
 
   use {
+    'max397574/better-escape.nvim',
+    event = 'VimEnter',
+    config = function()
+      require('maps').setup_better_escape()
+    end,
+  }
+
+  use {
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
@@ -256,6 +270,7 @@ return packer.startup(function()
 
   use {
     'rust-lang/rust.vim',
+    ft = { 'rust', 'toml' },
     config = function()
       require 'langs.rust'
     end,
