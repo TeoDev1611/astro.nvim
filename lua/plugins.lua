@@ -126,12 +126,18 @@ return packer.startup(function()
     'neovim/nvim-lspconfig',
     after = 'cmp-nvim-lsp',
   }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    after = 'nvim-lspconfig',
+  }
+
   use {
     'williamboman/nvim-lsp-installer',
     config = function()
       require('lsp.installer').setup()
     end,
-    after = 'nvim-lspconfig',
+    after = 'null-ls.nvim',
   }
   -- IDE Tools
 
