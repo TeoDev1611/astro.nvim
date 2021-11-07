@@ -33,16 +33,15 @@ util.mapper = function(mode, key, action, Opts)
   vim.api.nvim_set_keymap(mode, key, action, Opts)
 end
 
-
 util.border_thin_rounded = {
-  "╭",
-  "─",
-  "╮",
-  "│",
-  "╯",
-  "─",
-  "╰",
-  "│",
+  '╭',
+  '─',
+  '╮',
+  '│',
+  '╯',
+  '─',
+  '╰',
+  '│',
 }
 
 return util

@@ -11,7 +11,7 @@ local packer = require 'packer'
 packer.init {
   display = {
     open_fn = function()
-      return require('packer.util').float { border = require("util").border_thin_rounded }
+      return require('packer.util').float { border = require('util').border_thin_rounded }
     end,
   },
   git = {
