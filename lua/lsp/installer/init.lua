@@ -2,9 +2,9 @@
 local M = {}
 -- Load the modules
 local lsp_installer = require 'nvim-lsp-installer'
-local fmt_utils = require 'ide.fmt'
-local null_ls = require 'null-ls'
-local utils = require 'util'
+--local fmt_utils = require 'ide.fmt'
+--local null_ls = require 'null-ls'
+--local utils = require 'util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Set the nvim-lsp capabilities
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -64,26 +64,33 @@ local function setup_icons_errors()
   end
 end
 
-local function setup_null_ls(on_attach_func, capabilities_data)
-  local sources = {
-    fmt_utils.setup_formatting,
-    fmt_utils.setup_diagnostics,
-  }
+--local function setup_null_ls(on_attach_func)
+--  local sources = {
+--    null_ls.builtins.formatting.stylua,
+--    null_ls.builtins.formatting.black,
+--    null_ls.builtins.formatting.fixjson,
+--    null_ls.builtins.formatting.prettier,
+--    null_ls.builtins.formatting.rustfmt,
+--    null_ls.builtins.diagnostics.vint,
+--    null_ls.builtins.diagnostics.flake8,
+--    null_ls.builtins.diagnostics.markdownlint,
+--    null_ls.builtins.diagnostics.luacheck,
+--  }
 
-  -- Setup the null ls config
-  null_ls.config {
-    sources = sources,
-  }
+--  -- Setup the null ls config
+--  null_ls.config {
+--    sources = sources,
+--    debug = true,
+--  }
 
-  require('lspconfig')['null-ls'].setup {
-    on_attach = on_attach_func,
-  }
-end
+--  require('lspconfig')['null-ls'].setup {
+--    on_attach = on_attach_func,
+--  }
+--end
 
 function M.setup()
   setup_handlers()
   setup_icons_errors()
-  setup_null_ls(on_attach, capabilities)
   vim.cmd [[ command! LspLog tabnew|lua vim.cmd('e '..vim.lsp.get_log_path()) ]]
 
   lsp_installer.on_server_ready(function(server)

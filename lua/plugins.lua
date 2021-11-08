@@ -129,6 +129,9 @@ return packer.startup(function()
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('ide.null-ls').setup()
+    end,
     after = 'nvim-lspconfig',
   }
 
@@ -307,5 +310,10 @@ return packer.startup(function()
         timeout = 3000,
       }
     end,
+  }
+
+  use {
+    'github/copilot.vim',
+    event = 'VimEnter',
   }
 end)
