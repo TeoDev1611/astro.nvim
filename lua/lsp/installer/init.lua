@@ -10,7 +10,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- On on_attach function
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -95,7 +95,7 @@ function M.setup()
 
   lsp_installer.on_server_ready(function(server)
     local opts = {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       capabilities = capabilities,
     }
 

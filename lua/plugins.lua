@@ -27,7 +27,7 @@ packer.init {
     python_cmd = 'python -m',
   },
   config = {
-    compile_path = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua',
+    compile_path = fn.stdpath 'config' .. '/lua/packer_compiled.lua',
   },
 }
 
@@ -128,20 +128,22 @@ return packer.startup(function()
   }
 
   use {
-    'jose-elias-alvarez/null-ls.nvim',
+    'williamboman/nvim-lsp-installer',
     config = function()
-      require('ide.null-ls').setup()
+      require('lsp.installer').setup()
     end,
     after = 'nvim-lspconfig',
   }
 
   use {
-    'williamboman/nvim-lsp-installer',
+    'jose-elias-alvarez/null-ls.nvim',
     config = function()
-      require('lsp.installer').setup()
+      require('ide.null-ls').setup(require('lsp.installer').on_attach())
     end,
-    after = 'null-ls.nvim',
+    after = 'nvim-lsp-installer',
+    disable = true,
   }
+
   -- IDE Tools
 
   use {
@@ -307,7 +309,7 @@ return packer.startup(function()
       vim.notify = require 'notify'
       vim.notify.setup {
         stages = 'slide',
-        timeout = 3000,
+        timeout = 7000,
       }
     end,
   }
