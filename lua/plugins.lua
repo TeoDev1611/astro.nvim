@@ -291,4 +291,13 @@ return packer.startup(function()
       }
     end,
   }
+
+  use {
+    'neoclide/coc.nvim',
+    ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
+    branch = 'release',
+    config = function()
+      vim.cmd 'call astro#cocstart()'
+    end,
+  }
 end)
