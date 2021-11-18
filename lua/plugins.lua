@@ -11,9 +11,8 @@ local packer = require 'packer'
 packer.init {
   display = {
     open_fn = function()
-      return require('packer.util').float { border = 'single' }
+      return require('packer.util').float { border = require('util').border_thin_rounded }
     end,
-    prompt_border = 'single',
   },
   git = {
     clone_timeout = 600, -- Timeout, in seconds, for git clones
@@ -28,7 +27,7 @@ packer.init {
     python_cmd = 'python -m',
   },
   config = {
-    compile_path = vim.fn.stdpath 'config' .. '/lua/packer_compiled.lua',
+    compile_path = fn.stdpath 'config' .. '/lua/packer_compiled.lua',
   },
 }
 
@@ -38,7 +37,15 @@ return packer.startup(function()
   -- Package Managment
   use { 'wbthomason/packer.nvim' }
 
-  use { 'lewis6991/impatient.nvim' }
+  use {
+    'lewis6991/impatient.nvim',
+    after = 'packer.nvim',
+    opt = true,
+    config = function()
+      require 'impatient'
+      require('impatient').enable_profile()
+    end,
+  }
 
   use {
     'nathom/filetype.nvim',
@@ -52,7 +59,6 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     after = 'impatient.nvim',
     run = ':TSUpdate',
-    branch = '0.5-compat',
     event = 'BufRead',
     config = function()
       require 'ide.tree-sitter'
@@ -120,6 +126,7 @@ return packer.startup(function()
     'neovim/nvim-lspconfig',
     after = 'cmp-nvim-lsp',
   }
+
   use {
     'williamboman/nvim-lsp-installer',
     config = function()
@@ -127,6 +134,16 @@ return packer.startup(function()
     end,
     after = 'nvim-lspconfig',
   }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('ide.null-ls').setup(require('lsp.installer').on_attach())
+    end,
+    after = 'nvim-lsp-installer',
+    disable = true,
+  }
+
   -- IDE Tools
 
   use {
@@ -150,7 +167,7 @@ return packer.startup(function()
   }
 
   use {
-    'pineapplegiant/spaceduck',
+    'sainnhe/gruvbox-material',
   }
 
   use {
@@ -230,6 +247,14 @@ return packer.startup(function()
   }
 
   use {
+    'max397574/better-escape.nvim',
+    event = 'VimEnter',
+    config = function()
+      require('maps').setup_better_escape()
+    end,
+  }
+
+  use {
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
@@ -255,14 +280,11 @@ return packer.startup(function()
   }
 
   use {
-    'akinsho/nvim-toggleterm.lua',
+    'rust-lang/rust.vim',
+    ft = { 'rust', 'toml' },
     config = function()
-      require('toggleterm').setup {
-        shade_terminals = true,
-      }
-      vim.g.toggleterm_terminal_mapping = '<C-t>'
+      require 'langs.rust'
     end,
-    cmd = { 'ToggleTerm', 'ToggleTermCloseAll', 'ToggleTermOpenAll' },
   }
 
   use {
@@ -287,17 +309,22 @@ return packer.startup(function()
       vim.notify = require 'notify'
       vim.notify.setup {
         stages = 'slide',
-        timeout = 3000,
+        timeout = 7000,
       }
     end,
   }
 
   use {
+<<<<<<< HEAD
     'neoclide/coc.nvim',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
     branch = 'release',
     config = function()
       vim.cmd 'call astro#cocstart()'
     end,
+=======
+    'github/copilot.vim',
+    event = 'VimEnter',
+>>>>>>> ee4317bc9d1aa02dc380b861c5b50914232bfc7b
   }
 end)
