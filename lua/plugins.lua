@@ -315,8 +315,17 @@ return packer.startup(function()
   }
 
   use {
+<<<<<<< HEAD
+    'neoclide/coc.nvim',
+    ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
+    branch = 'release',
+    config = function()
+      vim.cmd 'call astro#cocstart()'
+    end,
+=======
     'github/copilot.vim',
     event = 'VimEnter',
+>>>>>>> ee4317bc9d1aa02dc380b861c5b50914232bfc7b
   }
 
   use {
