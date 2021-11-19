@@ -318,4 +318,16 @@ return packer.startup(function()
     'github/copilot.vim',
     event = 'VimEnter',
   }
+
+  use {
+    'mhartington/formatter.nvim',
+    event = 'BufRead',
+    config = function()
+      require('ide.formatter').setup()
+    end,
+  }
+
+  use {
+    'posva/vim-vue',
+  }
 end)
