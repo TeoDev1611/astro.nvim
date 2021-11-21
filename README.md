@@ -24,6 +24,8 @@ Requirements for install this?
 -	Neovim 0.5+
 -	RipGrep
 -	Fd
+- Python3
+- Gcc ( Compiler )
 
 How can install this?
 ---------------------

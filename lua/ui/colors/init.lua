@@ -1,6 +1,7 @@
 local g = vim.g
 local cmd = vim.cmd
 local present, nebulous = pcall(require, 'nebulous')
+local present2, catppuccin = pcall(require, 'catppuccin')
 
 if vim.fn.exists '+termguicolors' then
   vim.cmd [[
@@ -8,6 +9,10 @@ if vim.fn.exists '+termguicolors' then
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
   ]]
+end
+
+if not present2 then
+  print 'Going to the default nvim theme'
 end
 
 if not present then
@@ -39,6 +44,48 @@ nebulous.setup {
   },
 }
 
+catppuccin.setup {
+  transparent_background = false,
+  term_colors = false,
+  styles = {
+    comments = 'italic',
+    functions = 'italic',
+    keywords = 'italic',
+    strings = 'NONE',
+    variables = 'NONE',
+  },
+  integrations = {
+    treesitter = true,
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = 'italic',
+        hints = 'italic',
+        warnings = 'italic',
+        information = 'italic',
+      },
+      underlines = {
+        errors = 'underline',
+        hints = 'underline',
+        warnings = 'underline',
+        information = 'underline',
+      },
+    },
+    lsp_saga = true,
+    telescope = true,
+    nvimtree = {
+      enabled = true,
+      show_root = false,
+    },
+    indent_blankline = {
+      enabled = true,
+      colored_indent_levels = true,
+    },
+    bufferline = true,
+    ts_rainbow = true,
+  },
+}
+
 -- Gruvbox
 g.gruvbox_contrast_dark = 'hard'
 g.gruvbox_material_pate = 'original'
@@ -52,17 +99,11 @@ g.material_style = 'deep ocean'
 g.material_italic_comments = true
 g.material_italic_keywords = true
 g.material_italic_functions = true
--- Embark
-g.embark_terminal_italics = 1
---  Amora
-g.mode = 'mirtilo'
 -- Ayu
 g.ayucolor = 'dark'
 -- Seoul
 g.seoul256_background = 233
--- Rose Pine
-g.rose_pine_variant = 'moon'
 -- Vscode
 g.vscode_style = 'dark'
 
-cmd [[colo gruvbox-material]]
+cmd [[colo nebulous]]

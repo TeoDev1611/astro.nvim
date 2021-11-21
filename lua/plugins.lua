@@ -171,7 +171,7 @@ return packer.startup(function()
   }
 
   use {
-    'Pocco81/Catppuccino.nvim',
+    'catppuccin/nvim',
   }
 
   use {
@@ -248,7 +248,6 @@ return packer.startup(function()
 
   use {
     'max397574/better-escape.nvim',
-    event = 'VimEnter',
     config = function()
       require('maps').setup_better_escape()
     end,
@@ -315,17 +314,16 @@ return packer.startup(function()
   }
 
   use {
-<<<<<<< HEAD
     'neoclide/coc.nvim',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
     branch = 'release',
     config = function()
       vim.cmd 'call astro#cocstart()'
     end,
-=======
+  }
+  use {
     'github/copilot.vim',
     event = 'VimEnter',
->>>>>>> ee4317bc9d1aa02dc380b861c5b50914232bfc7b
   }
 
   use {
@@ -333,6 +331,14 @@ return packer.startup(function()
     event = 'BufRead',
     config = function()
       require('ide.formatter').setup()
+    end,
+  }
+
+  use {
+    'tami5/lspsaga.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      require('ide.lspsaga').setup()
     end,
   }
 
