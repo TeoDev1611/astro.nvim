@@ -1,5 +1,6 @@
 local open = io.open
 local util = {}
+local levels = vim.log.levels
 
 if jit ~= nil then
   util.is_windows = jit.os == 'Windows'
@@ -107,6 +108,35 @@ util.keymap = function(t1, t2)
   else
     _keymap(t2, vim.tbl_deep_extend('force', keymap_defaults, t1))
   end
+end
+
+local function get_hl(group_name)
+  local ok, hl = pcall(vim.api.nvim_get_hl_by_name, group_name, true)
+  if ok then
+    hl.foreground = hl.foreground and '#' .. bit.tohex(hl.foreground, 6)
+    hl.background = hl.background and '#' .. bit.tohex(hl.background, 6)
+    hl[true] = nil -- BUG: API returns a true key which errors during the merge
+    return hl
+  end
+  return {}
+end
+
+util.get_hl = function(group, attribute, fallback)
+  if not group then
+    vim.notify('Cannot get a highlight without specifying a group', levels.ERROR)
+    return 'NONE'
+  end
+  local hl = get_hl(group)
+  attribute = ({ fg = 'foreground', bg = 'background' })[attribute] or attribute
+  local color = hl[attribute] or fallback
+  if not color then
+    vim.schedule(function()
+      vim.notify(fmt('%s %s does not exist', group, attribute), levels.INFO)
+    end)
+    return 'NONE'
+  end
+  -- convert the decimal RGBA value from the hl by name to a 6 character hex + padding if needed
+  return color
 end
 
 return util
