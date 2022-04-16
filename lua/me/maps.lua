@@ -60,7 +60,7 @@ keymap {
     vim.cmd [[q]]
   end,
   ['<leader>f'] = function()
-    vim.cmd [[Neoformat]]
+    vim.cmd [[LspFormat]]
   end,
 }
 
@@ -85,8 +85,3 @@ keymap({
 }, {
   mode = 'v',
 })
-
-vim.cmd [[
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-]]

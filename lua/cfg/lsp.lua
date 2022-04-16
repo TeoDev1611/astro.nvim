@@ -1,5 +1,6 @@
 -- Logger
 local logs = require 'me.logs'
+local util = require 'me.util'
 -- Modules
 local p, cmp = pcall(require, 'cmp')
 local p2, null_ls = pcall(require, 'null-ls')
@@ -28,16 +29,43 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
+local icons = {
+  Text = '',
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Field = 'ﰠ',
+  Variable = '',
+  Class = 'ﴯ',
+  Interface = '',
+  Module = '',
+  Property = 'ﰠ',
+  Unit = '塞',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Reference = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = 'פּ',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
+
 cmp.setup {
   preselect = cmp.PreselectMode.Item,
   formatting = {
     format = function(entry, vim_item)
+      vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
-        nvim_lua = '[API]',
+        nvim_lua = '[Lua]',
         buffer = '[BUF]',
-        snippy = '[SNIP]',
-        path = '[PATH]',
       })[entry.source.name]
 
       return vim_item
@@ -48,9 +76,6 @@ cmp.setup {
   },
   experimental = {
     ghost_text = true,
-    view = {
-      entries = 'native',
-    },
   },
   snippet = {
     expand = function(args)
@@ -148,6 +173,22 @@ logs:log('info', 'Loaded nlspsettings!')
 
 local global_capabilities = vim.lsp.protocol.make_client_capabilities()
 global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+global_capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
+global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+global_capabilities.textDocument.completion.completionItem.preselectSupport = true
+global_capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+global_capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+global_capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+global_capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+global_capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+global_capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  },
+}
+
 require('lspconfig').util.default_config = vim.tbl_extend('force', require('lspconfig').util.default_config, {
   capabilities = global_capabilities,
 })
@@ -166,4 +207,20 @@ null_ls.setup {
   debug = true,
 }
 
+util.command('LspFormat', vim.lsp.buf.formatting_sync)
+
 logs:log('info', 'Load the Null-LS!')
+
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = '●',
+  },
+}
+
+logs:log('info', 'Load the icons on vimlsp')

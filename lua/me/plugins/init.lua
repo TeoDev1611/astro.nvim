@@ -32,8 +32,58 @@ packer.startup(function(use)
   -- Plugins manager
   use 'wbthomason/packer.nvim'
 
+  -- Faster
+  use {
+    {
+      'lewis6991/impatient.nvim',
+      event = 'VimEnter',
+      config = function()
+        require 'impatient'
+        require('impatient').enable_profile()
+      end,
+      after = 'packer.nvim',
+    },
+    {
+      'nathom/filetype.nvim',
+      event = 'VimEnter',
+      config = function()
+        vim.g.did_load_filetypes = 1
+      end,
+      after = 'packer.nvim',
+    },
+  }
+
   -- Utils
-  use { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'milisims/nvim-luaref' }
+  use {
+    'nvim-lua/popup.nvim',
+    'nvim-lua/plenary.nvim',
+    'milisims/nvim-luaref',
+  }
+
+  -- Lsp
+  use {
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+    'tamago324/nlsp-settings.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    {
+      'dcampos/nvim-snippy',
+      requires = {
+        'honza/vim-snippets',
+      },
+    },
+    {
+      'hrsh7th/nvim-cmp',
+      branch = 'dev',
+      requires = {
+        { 'dcampos/cmp-snippy', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      },
+    },
+  }
 
   -- Colors
   use {
@@ -41,26 +91,24 @@ packer.startup(function(use)
     'projekt0n/github-nvim-theme',
     'ackyshake/Spacegray.vim',
     'Yagua/nebulous.nvim',
-    {
-      'tjdevries/gruvbuddy.nvim',
-      requires = 'tjdevries/colorbuddy.vim',
-    },
   }
 
   -- Syntax
   use {
     {
       'nvim-treesitter/nvim-treesitter',
+      event = 'BufRead',
       run = ':TSUpdate',
     },
     {
       'p00f/nvim-ts-rainbow',
+      after = 'nvim-treesitter',
       requires = 'nvim-treesitter/nvim-treesitter',
     },
   }
 
   -- Better Development
-  use { 'gpanders/editorconfig.nvim', 'kyazdani42/nvim-web-devicons', { 'sbdchd/neoformat', cmd = 'Neoformat' } }
+  use { 'gpanders/editorconfig.nvim', 'kyazdani42/nvim-web-devicons' }
 
   -- Typing
   use {
@@ -69,7 +117,6 @@ packer.startup(function(use)
     'max397574/better-escape.nvim',
     'windwp/nvim-autopairs',
     'tpope/vim-surround',
-    'junegunn/vim-easy-align',
     {
       'nacro90/numb.nvim',
       config = function()
@@ -91,6 +138,7 @@ packer.startup(function(use)
       config = function()
         require('gitsigns').setup()
       end,
+      event = 'BufWinEnter',
     },
     { 'lambdalisue/gina.vim', cmd = 'Gina' },
   }
@@ -116,7 +164,7 @@ packer.startup(function(use)
       requires = {
         'nvim-telescope/telescope-fzy-native.nvim',
         'chip/telescope-software-licenses.nvim',
-        'pwntester/octo.nvim',
+        { 'pwntester/octo.nvim', cmd = 'Octo' },
       },
     },
   }
@@ -124,17 +172,13 @@ packer.startup(function(use)
   -- UI
   use {
     {
-      'Pocco81/TrueZen.nvim',
-      event = 'BufWinEnter',
-    },
-    {
       'ray-x/lsp_signature.nvim',
       config = function()
         require('lsp_signature').setup {
           bind = true,
-          fix_pos = false,
-          auto_close_after = 15,
-          hint_enable = false,
+          fix_pos = true,
+          auto_close_after = 10,
+          hint_enable = true,
         }
       end,
     },
@@ -146,21 +190,21 @@ packer.startup(function(use)
       end,
     },
     {
-      'nvim-lualine/lualine.nvim',
+      'tamton-aquib/staline.nvim',
       event = 'BufWinEnter',
       config = function()
-        require('cfg.ui').lualine()
+        require('staline').setup {}
       end,
-    },
-    {
-      'mhinz/vim-startify',
-      event = 'VimEnter',
     },
     {
       'rcarriga/nvim-notify',
       event = 'BufWinEnter',
       config = function()
         vim.notify = require 'notify'
+        vim.notify.setup {
+          stages = 'slide',
+          timeout = 3000,
+        }
       end,
     },
     {
@@ -180,6 +224,7 @@ packer.startup(function(use)
     },
     {
       'itchyny/vim-highlighturl',
+      event = 'BufWinEnter',
       config = function()
         vim.g.highlighturl_guifg = require('me.util').get_hl('Keyword', 'fg')
         vim.g.loaded_highlighturl = 1
@@ -187,6 +232,7 @@ packer.startup(function(use)
     },
     {
       'lukas-reineke/indent-blankline.nvim',
+      event = 'BufWinEnter',
       config = function()
         vim.opt.list = true
         vim.opt.listchars:append 'eol:↴'
@@ -195,49 +241,6 @@ packer.startup(function(use)
           show_current_context_start = true,
         }
       end,
-    },
-  }
-
-  -- Faster
-  use {
-    {
-      'lewis6991/impatient.nvim',
-      event = 'VimEnter',
-      config = function()
-        require 'impatient'
-      end,
-    },
-    {
-      'nathom/filetype.nvim',
-      event = 'VimEnter',
-      config = function()
-        vim.g.did_load_filetypes = 1
-      end,
-    },
-  }
-
-  -- Lsp
-  use {
-    'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
-    'tamago324/nlsp-settings.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
-    {
-      'dcampos/nvim-snippy',
-      requires = {
-        'honza/vim-snippets',
-      },
-    },
-    {
-      'hrsh7th/nvim-cmp',
-      branch = 'dev',
-      requires = {
-        { 'dcampos/cmp-snippy' },
-        { 'hrsh7th/cmp-nvim-lua' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-      },
     },
   }
 end)
