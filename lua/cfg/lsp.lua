@@ -5,7 +5,7 @@ local util = require 'me.util'
 local p, cmp = pcall(require, 'cmp')
 local p2, null_ls = pcall(require, 'null-ls')
 local b = null_ls.builtins
-local p3, snippy = pcall(require, 'snippy')
+local p3, luasnip = pcall(require, 'luasnip')
 -- Valid
 if not p then
   logs:log('warn', 'Not found the CMP module!')
@@ -18,9 +18,11 @@ if not p2 then
 end
 
 if not p3 then
-  logs:log('warn', 'Not found the Snippy module!')
+  logs:log('warn', 'Not found the Luasnip module!')
   return
 end
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.cmd [[set completeopt=menu,menuone,noselect]]
 
@@ -66,6 +68,7 @@ cmp.setup {
         nvim_lsp = '[LSP]',
         nvim_lua = '[Lua]',
         buffer = '[BUF]',
+        dictionary = '[DIC]',
       })[entry.source.name]
 
       return vim_item
@@ -79,18 +82,18 @@ cmp.setup {
   },
   snippet = {
     expand = function(args)
-      require('snippy').expand_snippet(args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
-  documentation = {
-    border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+  view = {
+    entries = 'custom',
   },
   mapping = {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif snippy.can_expand_or_advance() then
-        snippy.expand_or_advance()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -104,8 +107,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif snippy.can_jump(-1) then
-        snippy.previous()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -123,10 +126,32 @@ cmp.setup {
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
-    { name = 'snippy', max_item_count = 20 },
+    { name = 'luasnip', max_item_count = 20 },
     { name = 'nvim_lua', max_item_count = 25 },
     { name = 'path', max_item_count = 20 },
     { name = 'buffer', keyword_length = 2 },
+    { name = 'dictionary', keyword_length = 3, max_item_count = 25 },
+  },
+}
+
+local dicwords = util.path_join(vim.fn.stdpath 'data', 'dictionary.txt')
+local url = 'https://raw.githubusercontent.com/eneko/data-repository/master/data/words.txt'
+local exists = util.file_exists(dicwords)
+
+if exists == false then
+  vim.fn.system {
+    'curl',
+    url,
+    '-o',
+    dicwords,
+    '-s',
+  }
+  logs:log('info', 'Downloaded the dictionary file!')
+end
+
+require('cmp_dictionary').setup {
+  dic = {
+    ['*'] = dicwords,
   },
 }
 

@@ -44,4 +44,4 @@ nebulous.setup {
   },
 }
 
-vim.cmd [[colo github_dark_default]]
+vim.cmd [[colo nebulous]]

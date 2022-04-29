@@ -8,6 +8,7 @@ and as reference for write a new config**
 - [Git](https://git-scm.com)
 - [Deno](https://deno.land)
 - Gcc
+- Curl
 
 ### Installation :package:
 

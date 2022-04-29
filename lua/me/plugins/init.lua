@@ -67,20 +67,20 @@ packer.startup(function(use)
     'tamago324/nlsp-settings.nvim',
     'jose-elias-alvarez/null-ls.nvim',
     {
-      'dcampos/nvim-snippy',
+      'L3MON4D3/LuaSnip',
       requires = {
-        'honza/vim-snippets',
+        'rafamadriz/friendly-snippets',
       },
     },
     {
       'hrsh7th/nvim-cmp',
-      branch = 'dev',
       requires = {
-        { 'dcampos/cmp-snippy', after = 'nvim-cmp' },
+        { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+        { 'uga-rosa/cmp-dictionary', after = 'nvim-cmp' },
       },
     },
   }
@@ -99,11 +99,18 @@ packer.startup(function(use)
       'nvim-treesitter/nvim-treesitter',
       event = 'BufRead',
       run = ':TSUpdate',
+      config = function()
+        require('cfg.ui').tree_sitter()
+      end,
     },
     {
       'p00f/nvim-ts-rainbow',
       after = 'nvim-treesitter',
       requires = 'nvim-treesitter/nvim-treesitter',
+    },
+    {
+      'sheerun/vim-polyglot',
+      after = 'nvim-ts-rainbow',
     },
   }
 
