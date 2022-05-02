@@ -252,10 +252,10 @@ packer.startup(function(use)
     },
     {
       'iamcco/markdown-preview.nvim',
-      run = function ()
-        vim.cmd[[call mkdp#util#install()]]
+      run = function()
+        vim.cmd [[call mkdp#util#install()]]
       end,
-      event = 'BufWinEnter'
-    }
+      event = 'BufWinEnter',
+    },
   }
 end)
