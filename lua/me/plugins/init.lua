@@ -91,6 +91,7 @@ packer.startup(function(use)
     'projekt0n/github-nvim-theme',
     'ackyshake/Spacegray.vim',
     'Yagua/nebulous.nvim',
+    'sainnhe/gruvbox-material',
   }
 
   -- Syntax
@@ -249,5 +250,12 @@ packer.startup(function(use)
         }
       end,
     },
+    {
+      'iamcco/markdown-preview.nvim',
+      run = function ()
+        vim.cmd[[call mkdp#util#install()]]
+      end,
+      event = 'BufWinEnter'
+    }
   }
 end)
