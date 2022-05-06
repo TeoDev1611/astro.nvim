@@ -109,10 +109,6 @@ packer.startup(function(use)
       after = 'nvim-treesitter',
       requires = 'nvim-treesitter/nvim-treesitter',
     },
-    {
-      'sheerun/vim-polyglot',
-      after = 'nvim-ts-rainbow',
-    },
   }
 
   -- Better Development
@@ -198,10 +194,14 @@ packer.startup(function(use)
       end,
     },
     {
-      'tamton-aquib/staline.nvim',
-      event = 'BufWinEnter',
+      'windwp/windline.nvim',
       config = function()
-        require('staline').setup {}
+        local windline = require 'windline'
+        windline.setup {
+          statuslines = {
+            require 'wlsample.evil_line'
+          },
+        }
       end,
     },
     {

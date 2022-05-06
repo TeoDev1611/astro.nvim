@@ -53,4 +53,4 @@ vim.g.gruvbox_material_cursor = 'orange'
 vim.g.gruvbox_material_ui_contrast = 'high'
 vim.g.gruvbox_material_palette = 'original'
 
-vim.cmd [[colo gruvbox-material]]
+vim.cmd [[colo nebulous]]
