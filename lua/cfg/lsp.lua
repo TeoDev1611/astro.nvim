@@ -3,8 +3,8 @@ local logs = require 'me.logs'
 local util = require 'me.util'
 -- Modules
 local p, cmp = pcall(require, 'cmp')
-local p2, null_ls = pcall(require, 'null-ls')
-local b = null_ls.builtins
+-- local p2, null_ls = pcall(require, 'null-ls')
+-- local b = null_ls.builtins
 local p3, luasnip = pcall(require, 'luasnip')
 -- Valid
 if not p then
@@ -12,10 +12,10 @@ if not p then
   return
 end
 
-if not p2 then
-  logs:log('warn', 'Not found the Null-LS module!')
-  return
-end
+-- if not p2 then
+--   logs:log('warn', 'Not found the Null-LS module!')
+--   return
+-- end
 
 if not p3 then
   logs:log('warn', 'Not found the Luasnip module!')
@@ -220,7 +220,7 @@ require('lspconfig').util.default_config = vim.tbl_extend('force', require('lspc
 
 logs:log('info', 'Loaded the capabilities!')
 
-local sources = {
+--[[ local sources = {
   b.formatting.stylua,
   b.formatting.black,
   b.formatting.rustfmt,
@@ -234,7 +234,7 @@ null_ls.setup {
 
 util.command('LspFormat', vim.lsp.buf.formatting_sync)
 
-logs:log('info', 'Load the Null-LS!')
+logs:log('info', 'Load the Null-LS!') ]]
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do

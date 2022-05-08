@@ -65,7 +65,7 @@ packer.startup(function(use)
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
     'tamago324/nlsp-settings.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    {'jose-elias-alvarez/null-ls.nvim',disable=true},
     {
       'L3MON4D3/LuaSnip',
       requires = {
@@ -194,14 +194,9 @@ packer.startup(function(use)
       end,
     },
     {
-      'windwp/windline.nvim',
+      'nvim-lualine/lualine.nvim',
       config = function()
-        local windline = require 'windline'
-        windline.setup {
-          statuslines = {
-            require 'wlsample.evil_line'
-          },
-        }
+        require 'cfg.eviline'
       end,
     },
     {
@@ -257,5 +252,12 @@ packer.startup(function(use)
       end,
       event = 'BufWinEnter',
     },
+    {
+      'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      config = function ()
+        require'alpha'.setup(require'alpha.themes.theta'.config)
+      end
+    }
   }
 end)
