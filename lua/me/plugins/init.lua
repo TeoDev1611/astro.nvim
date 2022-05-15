@@ -65,7 +65,7 @@ packer.startup(function(use)
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
     'tamago324/nlsp-settings.nvim',
-    {'jose-elias-alvarez/null-ls.nvim',disable=true},
+    { 'jose-elias-alvarez/null-ls.nvim', disable = true },
     {
       'L3MON4D3/LuaSnip',
       requires = {
@@ -255,9 +255,9 @@ packer.startup(function(use)
     {
       'goolord/alpha-nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
-      config = function ()
-        require'alpha'.setup(require'alpha.themes.theta'.config)
-      end
-    }
+      config = function()
+        require('alpha').setup(require('alpha.themes.theta').config)
+      end,
+    },
   }
 end)
