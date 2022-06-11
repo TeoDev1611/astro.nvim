@@ -3,3 +3,4 @@ require('cfg.typing').load()
 require 'cfg.colors'
 require 'cfg.telescope'
 require 'cfg.lsp'
+require 'cfg.go'

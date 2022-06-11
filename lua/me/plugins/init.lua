@@ -32,6 +32,12 @@ packer.startup(function(use)
   -- Plugins manager
   use 'wbthomason/packer.nvim'
 
+  --Lang
+  use {
+    'ray-x/go.nvim',
+    'ray-x/guihua.lua',
+  }
+
   -- Faster
   use {
     {
