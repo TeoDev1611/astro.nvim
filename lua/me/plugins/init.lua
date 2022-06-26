@@ -34,7 +34,10 @@ packer.startup(function(use)
 
   --Lang
   use {
-    'ray-x/go.nvim',
+    {
+      'ray-x/go.nvim',
+      ft = 'go',
+    },
     'ray-x/guihua.lua',
   }
 
