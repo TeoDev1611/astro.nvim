@@ -13,6 +13,11 @@ and as reference for write a new config**
 - Gcc
 - Curl
 
+> More detailed installation [here](#Markdown)
+
+- Pandoc
+- Npm Live Server
+
 ### Installation :package:
 
 - Install Windows :window:
@@ -25,7 +30,7 @@ nvim +JetpackInstall
 nvim +JetpackSync
 ```
 
-- Install Linux MacOS :apple:
+- Install Linux :penguin: MacOS :apple:
 
 ```
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/.config/nvim --depth 1
@@ -33,6 +38,37 @@ nvim +JetpackInstall
 # With this you install the Plugin Manager after that you 
 # need run JetpackSync in neovim or quit and run:
 nvim +JetpackSync
+```
+
+### Markdown
+
+For use the `MarkdownPreview` you need install this:
+
+- Pandoc:
+
+  - Install Windows :window:
+  ```ps1
+  scoop install pandoc
+  ## Or with chocolatey!
+  choco install pandoc
+  ```
+- Install MacOS :apple:
+  ```
+  brew install pandoc
+  ```
+- Install Linux :penguin:
+  ```sh
+  sudo apt install pandoc
+  # Or for fedora:
+  sudo dnf install pandoc
+  ## For the other distros check in pandoc.org
+  ```
+- Npm Live server
+
+> :warning: You need have installed [node](https://nodejs.org) and npm
+
+```
+npm install -g --force @compodoc/live-server
 ```
 
 ### Versions :mega:
