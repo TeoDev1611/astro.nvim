@@ -32,7 +32,7 @@ nvim +JetpackSync
 
 - Install Linux :penguin: MacOS :apple:
 
-```
+```sh
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/.config/nvim --depth 1
 nvim +JetpackInstall
 # With this you install the Plugin Manager after that you 
