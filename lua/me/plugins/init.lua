@@ -84,7 +84,6 @@ require('jetpack').setup {
   'folke/todo-comments.nvim',
   'itchyny/vim-highlighturl',
   'lukas-reineke/indent-blankline.nvim',
-  'vim-denops/denops.vim',
-  'tani/glance-vim',
+  'davidgranstrom/nvim-markdown-preview',
   'goolord/alpha-nvim',
 }

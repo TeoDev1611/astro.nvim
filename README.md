@@ -1,5 +1,9 @@
 ## astro.nvim :new_moon:
 
+<div align="center">
+<img src="./docs/dash.JPG" alt="Neovim Dashboard">
+</div>
+
 This is my personal version _not distro, not issues_ **only for my personal use
 and as reference for write a new config**
 
