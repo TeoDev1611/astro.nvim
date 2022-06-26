@@ -6,7 +6,6 @@ and as reference for write a new config**
 ### Requirements :books:
 
 - [Git](https://git-scm.com)
-- [Deno](https://deno.land)
 - Gcc
 - Curl
 
@@ -16,16 +15,20 @@ and as reference for write a new config**
 
 ```ps1
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/AppData/Local/nvim --depth 1
-deno install -qAn vr https://deno.land/x/velociraptor@1.4.0/cli.ts
-vr install
+nvim +JetpackInstall
+# With this you install the Plugin Manager after that you 
+# need run JetpackSync in neovim or quit and run:
+nvim +JetpackSync
 ```
 
 - Install Linux MacOS :apple:
 
 ```
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/.config/nvim --depth 1
-deno install -qAn vr https://deno.land/x/velociraptor@1.4.0/cli.ts
-vr install
+nvim +JetpackInstall
+# With this you install the Plugin Manager after that you 
+# need run JetpackSync in neovim or quit and run:
+nvim +JetpackSync
 ```
 
 ### Versions :mega:
