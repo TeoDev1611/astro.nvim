@@ -6,7 +6,7 @@ local p, builtin = pcall(require, 'telescope.builtin')
 
 -- Valid if not exists telescope
 if not p then
-  logger:log('warn', 'Not found the telescope module run PackerInstall')
+  logger:log('warn', 'Not found the telescope module run JetpackSync')
   return
 end
 

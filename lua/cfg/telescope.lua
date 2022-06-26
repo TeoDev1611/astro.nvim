@@ -1,11 +1,6 @@
 local p, telescope = pcall(require, 'telescope')
-local p2, octo = pcall(require, 'octo')
 
 if not p then
-  return
-end
-
-if not p2 then
   return
 end
 
@@ -69,4 +64,3 @@ telescope.setup {
 
 telescope.load_extension 'fzy_native'
 telescope.load_extension 'software-licenses'
-octo.setup()

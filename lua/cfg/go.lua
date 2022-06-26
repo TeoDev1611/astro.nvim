@@ -3,7 +3,7 @@ local logs = require 'me.logs'
 local p, go = pcall(require, 'go')
 
 if not p then
-  logs:log('warn', 'Not found the Golang Module run PackerInstall')
+  logs:log('warn', 'Not found the Golang Module run :JetpackSync')
   return
 end
 
