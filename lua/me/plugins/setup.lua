@@ -32,8 +32,8 @@ util.command('Cwd', function()
   logs:log('info', string.format('The current working directory is: %s', path))
 end)
 
-util.command('JetpackInstall', function()
-  M.install()
+util.command('DeinInstall', function()
+  require('me.plugins.dein').install()
 end)
 
 util.command('JetpackUpgrade', function()

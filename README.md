@@ -20,6 +20,8 @@ and as reference for write a new config**
 
 ### Installation :package:
 
+> :warning: Non updated correctly this could not work!
+
 - Install Windows :window:
 
 ```ps1

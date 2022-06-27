@@ -5,8 +5,6 @@ require('numb').setup {
   centered_peeking = true,
 }
 
-require('gitsigns').setup()
-
 require 'cfg.tree'
 
 require('lsp_signature').setup {
@@ -44,9 +42,5 @@ require('indent_blankline').setup {
   show_current_context = true,
   show_current_context_start = true,
 }
-
-vim.cmd [[
-       let g:glance#plugins = ['https://esm.sh/markdown-it-emoji']
-       ]]
 
 require('alpha').setup(require('alpha.themes.theta').config)

@@ -1,13 +1,25 @@
 require 'me.plugins.setup'
 -- Load the Runtime
-vim.cmd 'runtime */jetpack.vim'
-require('jetpack').setup {
+local dein = require 'me.plugins.dein'
+local util = require 'me.util'
+
+dein.settings()
+
+local deinPath = util.path_join(vim.g['dein#cache_directory'], 'repos', 'github.com', 'Shougo', 'dein.vim')
+
+local runtime = string.format('set runtimepath+=%s', deinPath)
+
+vim.cmd(runtime)
+
+dein.setup {
+  -- Manage Dein
+  deinPath,
   --Langs
-  { 'ray-x/go.nvim' },
+  { 'ray-x/go.nvim', ft = 'go' },
 
   -- Faster
-  'lewis6991/impatient.nvim',
-  'nathom/filetype.nvim',
+  { 'lewis6991/impatient.nvim', event = 'VimEnter' },
+  { 'nathom/filetype.nvim', event = 'VimEnter' },
 
   -- Utils
   'nvim-lua/popup.nvim',
@@ -84,6 +96,8 @@ require('jetpack').setup {
   'folke/todo-comments.nvim',
   'itchyny/vim-highlighturl',
   'lukas-reineke/indent-blankline.nvim',
-  'davidgranstrom/nvim-markdown-preview',
+  { 'davidgranstrom/nvim-markdown-preview', cond = 'has(\'pandoc\')' },
   'goolord/alpha-nvim',
 }
+
+dein.new_plugins()
