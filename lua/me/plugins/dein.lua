@@ -22,7 +22,7 @@ local defaults = {
     timeout = '120',
   },
   ui = {
-    progress = 'title',
+    progress = 'floating',
     log = '',
     icon = '',
   },
@@ -144,4 +144,6 @@ return {
   check_install = vim.fn['dein#check_install'],
   install = vim.fn['dein#install'],
   update = vim.fn['dein#update'],
+  reinstall = vim.fn['dein#reinstall'],
+  remote_plugins = vim.fn['dein#remote_plugins'],
 }

@@ -25,21 +25,29 @@ and as reference for write a new config**
 - Install Windows :window:
 
 ```ps1
+## Download the Config
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/AppData/Local/nvim --depth 1
-nvim +JetpackInstall
-# With this you install the Plugin Manager after that you 
-# need run JetpackSync in neovim or quit and run:
-nvim +JetpackSync
+## Download the Installer
+Invoke-WebRequest https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.ps1 -OutFile installer.ps1
+## Set the permissions
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+## Run the Installer 
+./installer.ps1 ~/.cache/dein
+## Install the plugins
+nvim +DeinInstall
 ```
 
 - Install Linux :penguin: MacOS :apple:
 
 ```sh
+# Download the Config
 git clone https://github.com/TeoDev1611/astro.nvim $HOME/.config/nvim --depth 1
-nvim +JetpackInstall
-# With this you install the Plugin Manager after that you 
-# need run JetpackSync in neovim or quit and run:
-nvim +JetpackSync
+## Download the Installer
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+## Run the installer
+sh ./installer.sh ~/.cache/dein
+## Install the Plugins
+nvim +DeinInstall
 ```
 
 ### Markdown
