@@ -22,7 +22,7 @@ local defaults = {
     timeout = '120',
   },
   ui = {
-    progress = 'floating',
+    progress = 'echo',
     log = '',
     icon = '',
   },

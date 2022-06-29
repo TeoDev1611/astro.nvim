@@ -14,12 +14,13 @@ vim.cmd(runtime)
 dein.setup {
   -- Manage Dein
   deinPath,
+  'wsdjeg/dein-ui.vim',
   --Langs
   { 'ray-x/go.nvim', ft = 'go' },
 
   -- Faster
-  { 'lewis6991/impatient.nvim', event = 'VimEnter' },
-  { 'nathom/filetype.nvim', event = 'VimEnter' },
+  { 'lewis6991/impatient.nvim' },
+  { 'nathom/filetype.nvim' },
 
   -- Utils
   'nvim-lua/popup.nvim',
