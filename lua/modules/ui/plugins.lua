@@ -20,10 +20,6 @@ plugin {
   requires = 'nvim-treesitter/nvim-treesitter',
 }
 
-plugin { 'ackyshake/Spacegray.vim', config = conf.spacegray }
-
-plugin { 'Yagua/nebulous.nvim', config = conf.nebulous }
-
 plugin { 'akinsho/bufferline.nvim', config = conf.bufferline, requires = 'kyazdani42/nvim-web-devicons' }
 
 plugin { 'rcarriga/nvim-notify', config = conf.notify }

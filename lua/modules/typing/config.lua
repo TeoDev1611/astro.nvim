@@ -37,6 +37,13 @@ M.autop = function()
     disable_filetype = { 'TelescopePrompt' },
     fast_wrap = {},
   }
+  local status, cmp = pcall(require, 'cmp')
+  if not status then
+    vim.cmd [[packadd nvim-cmp]]
+  end
+  cmp = require 'cmp'
+  local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 end
 
 M.accelerated = function()
@@ -44,15 +51,6 @@ M.accelerated = function()
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
   ]]
-end
-
-M.numb = function()
-  require('numb').setup {
-    show_numbers = true,
-    show_cursorline = true,
-    number_only = false,
-    centered_peeking = true,
-  }
 end
 
 return M
