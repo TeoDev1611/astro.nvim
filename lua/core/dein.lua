@@ -1,5 +1,5 @@
-local utils = require 'me.util'
-local logs = require 'me.logs'
+local utils = require 'core.util'
+local logs = require 'core.logs'
 local alias = {
   run = 'hook_source',
   ft = 'on_ft',
@@ -132,6 +132,28 @@ local function new_plugins()
     vim.fn['dein#install']()
   end
 end
+local function setup_commands()
+  utils.command('Cwd', function()
+    local path = vim.fn.getcwd()
+    logs:log('info', string.format('The current working directory is: %s', path))
+  end)
+
+  utils.command('DeinInstall', function()
+    install()
+  end)
+
+  utils.command('DeinUpdate', function()
+    update()
+  end)
+
+  utils.command('DeinReInstall', function()
+    reinstall()
+  end)
+
+  utils.command('DeinRemotePlugins', function()
+    remote_plugins()
+  end)
+end
 
 -- Send all Functions!!
 return {
@@ -141,6 +163,7 @@ return {
   configs = configs,
   new_plugins = new_plugins,
   load_toml = load_toml,
+  commands = setup_commands,
   check_install = vim.fn['dein#check_install'],
   install = vim.fn['dein#install'],
   update = vim.fn['dein#update'],

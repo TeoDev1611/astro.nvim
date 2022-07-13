@@ -1,5 +1,5 @@
 local M = {}
-local logs = require 'me.logs'
+local logs = require 'core.logs'
 
 M.comment = function()
   local present, c = pcall(require, 'Comment')

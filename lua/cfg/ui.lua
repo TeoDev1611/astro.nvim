@@ -28,37 +28,28 @@ M.tree_sitter = function()
   }
 end
 
-M.lualine = function()
-  require('lualine').setup {
-    options = {
-      icons_enabled = true,
-      theme = 'auto',
-      component_separators = '|',
-      section_separators = { left = '', right = '' },
-    },
-    sections = {
-      lualine_a = {
-        { 'mode', separator = { left = '' }, right_padding = 2 },
-      },
-      lualine_b = { 'filename', 'branch' },
-      lualine_c = { 'fileformat' },
-      lualine_x = { 'g:coc_status' },
-      lualine_y = { 'filetype', 'progress' },
-      lualine_z = {
-        { 'location', separator = { right = '' }, left_padding = 2 },
-      },
-    },
-    inactive_sections = {
-      lualine_a = { 'filename' },
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {},
-      lualine_y = {},
-      lualine_z = { 'location' },
-    },
-    tabline = {},
-    extensions = { 'nvim-tree' },
+M.notify = function()
+  vim.notify = require 'notify'
+  vim.notify.setup {
+    stages = 'slide',
+    timeout = 3000,
   }
+end
+
+M.indentline = function()
+  vim.opt.list = true
+  vim.opt.listchars:append 'eol:↴'
+  require('indent_blankline').setup {
+    show_current_context = true,
+    show_current_context_start = true,
+  }
+end
+
+M.load = function()
+  M.bufferline()
+  M.notify()
+  M.tree_sitter()
+  M.indentline()
 end
 
 return M

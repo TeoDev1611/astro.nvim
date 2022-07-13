@@ -12,18 +12,9 @@
 Made with love on Ecuador by Teo
 --]]
 
-require 'me.sets'
-require 'me.plugins'
-require 'me.maps'
+require 'core'
 
--- Some plugins importants
-
-require('cfg.ui').tree_sitter()
-
+-- The important plugins
 require 'impatient'
 require('impatient').enable_profile()
-
 vim.g.did_load_filetypes = 1
-
--- Some plugins configs
-require 'cfg.things'

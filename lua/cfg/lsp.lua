@@ -1,10 +1,10 @@
 -- Logger
-local logs = require 'me.logs'
-local util = require 'me.util'
+local logs = require 'core.logs'
+local util = require 'core.util'
 -- Modules
 local p, cmp = pcall(require, 'cmp')
--- local p2, null_ls = pcall(require, 'null-ls')
--- local b = null_ls.builtins
+local p2, null_ls = pcall(require, 'null-ls')
+local b = null_ls.builtins
 local p3, luasnip = pcall(require, 'luasnip')
 -- Valid
 if not p then
@@ -12,10 +12,10 @@ if not p then
   return
 end
 
--- if not p2 then
---   logs:log('warn', 'Not found the Null-LS module!')
---   return
--- end
+if not p2 then
+  logs:log('warn', 'Not found the Null-LS module!')
+  return
+end
 
 if not p3 then
   logs:log('warn', 'Not found the Luasnip module!')
@@ -31,98 +31,64 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
-local icons = {
-  Text = '',
-  Method = '',
-  Function = '',
-  Constructor = '',
-  Field = 'ﰠ',
-  Variable = '',
-  Class = 'ﴯ',
-  Interface = '',
-  Module = '',
-  Property = 'ﰠ',
-  Unit = '塞',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = 'פּ',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
-}
-
 cmp.setup {
   preselect = cmp.PreselectMode.Item,
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   formatting = {
+    fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
+      local lspkind_icons = {
+        Text = '',
+        Method = '',
+        Function = '',
+        Constructor = ' ',
+        Field = '',
+        Variable = '',
+        Class = '',
+        Interface = '',
+        Module = '硫',
+        Property = '',
+        Unit = ' ',
+        Value = '',
+        Enum = ' ',
+        Keyword = 'ﱃ',
+        Snippet = ' ',
+        Color = ' ',
+        File = ' ',
+        Reference = 'Ꮢ',
+        Folder = ' ',
+        EnumMember = ' ',
+        Constant = ' ',
+        Struct = ' ',
+        Event = '',
+        Operator = '',
+        TypeParameter = ' ',
+      }
+      local meta_type = vim_item.kind
+      -- load lspkind icons
+      vim_item.kind = lspkind_icons[vim_item.kind] .. ''
+
       vim_item.menu = ({
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
-        buffer = '[BUF]',
-        dictionary = '[DIC]',
+        buffer = ' Buffer',
+        nvim_lsp = meta_type,
+        path = ' Path',
+        luasnip = ' LuaSnip',
       })[entry.source.name]
 
       return vim_item
     end,
   },
-  completion = {
-    keyword_length = 1,
-  },
-  experimental = {
-    ghost_text = true,
-  },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  view = {
-    entries = 'custom',
-  },
-  mapping = {
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, {
-      'i',
-      's',
-    }),
-
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      'i',
-      's',
-    }),
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+  -- You can set mappings if you want
+  mapping = cmp.mapping.preset.insert {
+    ['<CR>'] = cmp.mapping.confirm { select = true },
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm { select = true },
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
@@ -220,7 +186,8 @@ require('lspconfig').util.default_config = vim.tbl_extend('force', require('lspc
 
 logs:log('info', 'Loaded the capabilities!')
 
---[[ local sources = {
+-- You can set your format sources here
+local sources = {
   b.formatting.stylua,
   b.formatting.black,
   b.formatting.rustfmt,
@@ -232,9 +199,9 @@ null_ls.setup {
   debug = true,
 }
 
-util.command('LspFormat', vim.lsp.buf.formatting_sync)
+util.command('LspFormat', vim.lsp.buf.format)
 
-logs:log('info', 'Load the Null-LS!') ]]
+logs:log('info', 'Load the Null-LS!')
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do

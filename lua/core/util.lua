@@ -67,7 +67,7 @@ local function fn_to_cmd(fn)
     return fn
   end
   table.insert(util._fns, fn)
-  return ('lua require\'me.util\'._fns[%d]()'):format(#util._fns)
+  return ('lua require\'core.util\'._fns[%d]()'):format(#util._fns)
 end
 
 local keymap_defaults = {

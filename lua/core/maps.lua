@@ -1,30 +1,22 @@
 -- Utils for the keymaps
-local ps, util = pcall(require, 'me.util')
-local logger = require 'me.logs'
+local ps, util = pcall(require, 'core.util')
+local logger = require 'core.logs'
 local keymap = util.keymap
-local p, builtin = pcall(require, 'telescope.builtin')
-
--- Valid if not exists telescope
-if not p then
-  logger:log('warn', 'Not found the telescope module run JetpackSync')
-  return
-end
-
--- Valid if not exists keymap wtf?
-if not ps then
-  return
-end
 
 -- Map Leader
 vim.g.mapleader = ' '
 
 keymap {
-  -- Telescope
-  ['<leader>ff'] = builtin.find_files,
-  ['<leader>fb'] = builtin.buffers,
-  ['<leader>fh'] = builtin.help_tags,
-  ['<leader>fg'] = builtin.live_grep,
-  ['<leader>fr'] = builtin.registers,
+  -- CtrlP
+  ['<leader>ff'] = function()
+    vim.cmd [[CtrlP]]
+  end,
+  ['<leader>fb'] = function()
+    vim.cmd [[CtrlPBuffer]]
+  end,
+  ['<leader>fg'] = function()
+    vim.cmd [[CtrlPLine]]
+  end,
   -- Tree
   ['<leader>n'] = function()
     vim.cmd [[NvimTreeToggle]]
