@@ -14,7 +14,7 @@ Made with love on Ecuador by Teo
 
 require 'core'
 
--- The important plugins
+-- The Fast Plugins
 require 'impatient'
 require('impatient').enable_profile()
 vim.g.did_load_filetypes = 1

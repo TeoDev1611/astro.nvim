@@ -43,7 +43,7 @@ dein.setup {
   -- Colors
   'projekt0n/github-nvim-theme',
   'Yagua/nebulous.nvim',
-  'sainnhe/gruvbox-material',
+  'wuelnerdotexe/vim-enfocado',
 
   -- Syntax
   {

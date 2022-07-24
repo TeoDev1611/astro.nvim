@@ -45,4 +45,8 @@ vim.g.gruvbox_material_cursor = 'orange'
 vim.g.gruvbox_material_ui_contrast = 'high'
 vim.g.gruvbox_material_palette = 'original'
 
-vim.cmd [[colo github_dark_default]]
+-- Enfocado
+vim.g.enfocado_plugins = { 'cmp', 'lsp', 'lps-installer', 'notify', 'rainbow', 'tree', 'treesitter', 'visual-multi' }
+vim.g.enfocado_style = 'neon'
+vim.cmd [[set t_Co=256]]
+vim.cmd [[colo enfocado]]

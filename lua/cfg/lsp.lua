@@ -5,7 +5,7 @@ local util = require 'core.util'
 local p, cmp = pcall(require, 'cmp')
 local p2, null_ls = pcall(require, 'null-ls')
 local b = null_ls.builtins
-local p3, luasnip = pcall(require, 'luasnip')
+local p3, installer = pcall(require, 'nvim-lsp-installer')
 -- Valid
 if not p then
   logs:log('warn', 'Not found the CMP module!')
@@ -18,7 +18,7 @@ if not p2 then
 end
 
 if not p3 then
-  logs:log('warn', 'Not found the Luasnip module!')
+  logs:log('warn', 'Not found the Lsp Installer module!')
   return
 end
 
@@ -98,6 +98,11 @@ cmp.setup {
     { name = 'buffer', keyword_length = 2 },
     { name = 'dictionary', keyword_length = 3, max_item_count = 25 },
   },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 }
 
 local dicwords = util.path_join(vim.fn.stdpath 'data', 'dictionary.txt')
@@ -145,7 +150,7 @@ server_opts.sumneko_lua = {
 
 logs:log('info', 'Loaded configs')
 
-require('nvim-lsp-installer').on_server_ready(function(server)
+installer.on_server_ready(function(server)
   local opts = {
     capabilities = capabilities,
   }

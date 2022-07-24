@@ -131,12 +131,22 @@ util.get_hl = function(group, attribute, fallback)
   local color = hl[attribute] or fallback
   if not color then
     vim.schedule(function()
-      vim.notify(fmt('%s %s does not exist', group, attribute), levels.INFO)
+      vim.notify(string.format('%s %s does not exist', group, attribute), levels.INFO)
     end)
     return 'NONE'
   end
   -- convert the decimal RGBA value from the hl by name to a 6 character hex + padding if needed
   return color
+end
+
+util.rmdir = function(path)
+  local command
+  if util.is_windows == true then
+    command = string.format('rmdir /s /q %s', path)
+  else
+    command = string.format('rm -rf %s', path)
+  end
+  os.execute(command)
 end
 
 return util

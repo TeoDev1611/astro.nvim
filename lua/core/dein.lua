@@ -132,26 +132,42 @@ local function new_plugins()
     vim.fn['dein#install']()
   end
 end
+
+local function clean()
+  local plugins_to_clean = vim.api.nvim_eval 'dein#check_clean()'
+  local next = next
+  if next(plugins_to_clean) == nil then
+    logs:log('info', 'Is cleaned all plugins!')
+    return
+  end
+  for _, plugs in ipairs(plugins_to_clean) do
+    utils.rmdir(plugs)
+  end
+  logs:log('info', 'Cleaned all plugins!')
+  return
+end
+
 local function setup_commands()
+  local dein = require 'core.dein'
   utils.command('Cwd', function()
     local path = vim.fn.getcwd()
     logs:log('info', string.format('The current working directory is: %s', path))
   end)
 
   utils.command('DeinInstall', function()
-    install()
+    dein.install()
   end)
 
   utils.command('DeinUpdate', function()
-    update()
-  end)
-
-  utils.command('DeinReInstall', function()
-    reinstall()
+    dein.update()
   end)
 
   utils.command('DeinRemotePlugins', function()
-    remote_plugins()
+    dein.remote_plugins()
+  end)
+
+  utils.command('DeinClean', function()
+    dein.clean()
   end)
 end
 
@@ -164,6 +180,7 @@ return {
   new_plugins = new_plugins,
   load_toml = load_toml,
   commands = setup_commands,
+  clean = clean,
   check_install = vim.fn['dein#check_install'],
   install = vim.fn['dein#install'],
   update = vim.fn['dein#update'],
