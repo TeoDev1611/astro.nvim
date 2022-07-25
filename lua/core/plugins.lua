@@ -25,13 +25,17 @@ dein.setup {
   'nvim-lua/plenary.nvim',
   'milisims/nvim-luaref',
 
-  -- Lsp
+  -- Installer
   'neovim/nvim-lspconfig',
   'williamboman/nvim-lsp-installer',
+  -- Config LSP
   'tamago324/nlsp-settings.nvim',
+  -- Formatter
   'jose-elias-alvarez/null-ls.nvim',
+  -- Snippet Engine
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
+  -- Lsp Engine
   'hrsh7th/nvim-cmp',
   'saadparwaiz1/cmp_luasnip',
   'hrsh7th/cmp-nvim-lua',
@@ -39,6 +43,9 @@ dein.setup {
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'uga-rosa/cmp-dictionary',
+  -- Lsp Utils
+  'ray-x/lsp_signature.nvim',
+  'folke/trouble.nvim',
 
   -- Colors
   'projekt0n/github-nvim-theme',
@@ -70,7 +77,6 @@ dein.setup {
   { 'kyazdani42/nvim-tree.lua', branch = 'nightly' },
 
   -- UI
-  'ray-x/lsp_signature.nvim',
   'akinsho/bufferline.nvim',
   'rcarriga/nvim-notify',
   'lukas-reineke/indent-blankline.nvim',

@@ -6,6 +6,9 @@ local p, cmp = pcall(require, 'cmp')
 local p2, null_ls = pcall(require, 'null-ls')
 local b = null_ls.builtins
 local p3, installer = pcall(require, 'nvim-lsp-installer')
+local p4, signature = pcall(require, 'lsp_signature')
+local p5, trouble = pcall(require, 'trouble')
+
 -- Valid
 if not p then
   logs:log('warn', 'Not found the CMP module!')
@@ -22,14 +25,19 @@ if not p3 then
   return
 end
 
+if not p4 then
+  logs:log('warn', 'Not found the Lsp Signature Module!')
+  return
+end
+
+if not p5 then
+  logs:log('warn', 'Not found the Trouble module!')
+  return
+end
+
 require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.cmd [[set completeopt=menu,menuone,noselect]]
-
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
-end
 
 cmp.setup {
   preselect = cmp.PreselectMode.Item,
@@ -220,4 +228,9 @@ vim.diagnostic.config {
   },
 }
 
-logs:log('info', 'Load the icons on vimlsp')
+logs:log('info', 'Loaded the icons on vimlsp')
+
+signature.setup()
+trouble.setup {}
+
+logs:log('info', 'Loaded the UI lsp tools')
