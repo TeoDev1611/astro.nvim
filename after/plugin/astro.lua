@@ -1,6 +1,13 @@
-require 'cfg.tree'
+-- Syntax Manager
+require 'cfg.syntax'
+-- Color Manager
 require 'cfg.colors'
-require('cfg.typing').load()
-require('cfg.ui').load()
+-- Interface
+require 'cfg.ui'
+require 'cfg.el'
+-- Fuzzy Finder
+require 'cfg.files'
+-- Lsp
 require 'cfg.lsp'
-require 'cfg.git'
+-- Typing
+require 'cfg.typing'.load()

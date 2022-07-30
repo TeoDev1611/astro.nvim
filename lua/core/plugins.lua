@@ -1,86 +1,98 @@
--- Load the Runtime
-local dein = require 'core.dein'
+-- Load the plugin manager
+vim.cmd [[packadd vim-packager]]
+-- Require the modules
+local ok, packager_start = pcall(require, 'packager')
+local logs = require 'core.logs'
 local util = require 'core.util'
 
--- Setup the settings!
-dein.settings()
+if not ok then
+  logs:log('info', 'Not found the Packager Plugin Manager')
+  return
+end
 
-local deinPath = util.path_join(vim.g['dein#cache_directory'], 'repos', 'github.com', 'Shougo', 'dein.vim')
+packager_start.setup(function(packager)
+  -- Package Manager
+  packager.add('kristijanhusak/vim-packager', { type = 'opt' })
 
-local runtime = string.format('set runtimepath+=%s', deinPath)
-
-vim.cmd(runtime)
-
-dein.setup {
-  -- Manage Dein
-  deinPath,
-  'wsdjeg/dein-ui.vim',
+  -- Colorschemes
+  packager.add 'folke/tokyonight.nvim'
+  packager.add 'LunarVim/Colorschemes'
+  packager.add 'marko-cerovac/material.nvim'
 
   -- Faster
-  { 'lewis6991/impatient.nvim' },
-  { 'nathom/filetype.nvim' },
-
-  -- Utils
-  'nvim-lua/popup.nvim',
-  'nvim-lua/plenary.nvim',
-  'milisims/nvim-luaref',
-
-  -- Installer
-  'neovim/nvim-lspconfig',
-  'williamboman/nvim-lsp-installer',
-  -- Config LSP
-  'tamago324/nlsp-settings.nvim',
-  -- Formatter
-  'jose-elias-alvarez/null-ls.nvim',
-  -- Snippet Engine
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
-  -- Lsp Engine
-  'hrsh7th/nvim-cmp',
-  'saadparwaiz1/cmp_luasnip',
-  'hrsh7th/cmp-nvim-lua',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'uga-rosa/cmp-dictionary',
-  -- Lsp Utils
-  'ray-x/lsp_signature.nvim',
-  'folke/trouble.nvim',
-
-  -- Colors
-  'projekt0n/github-nvim-theme',
-  'Yagua/nebulous.nvim',
-  'wuelnerdotexe/vim-enfocado',
+  packager.add 'nathom/filetype.nvim'
+  packager.add 'lewis6991/impatient.nvim'
 
   -- Syntax
-  {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  },
-  'p00f/nvim-ts-rainbow', -- Better Development
-  'gpanders/editorconfig.nvim',
-  'kyazdani42/nvim-web-devicons',
+  packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+  packager.add 'windwp/nvim-ts-autotag'
+  packager.add 'p00f/nvim-ts-rainbow'
 
-  -- Typing
-  'rhysd/accelerated-jk',
-  'numToStr/Comment.nvim',
-  'max397574/better-escape.nvim',
-  'windwp/nvim-autopairs',
-  { 'mg979/vim-visual-multi', branch = 'master' },
+  -- Editor Support
+  packager.add 'gpanders/editorconfig.nvim'
+  packager.add 'kyazdani42/nvim-web-devicons'
 
-  -- Git Tools
-  'lewis6991/gitsigns.nvim',
-  { 'lambdalisue/gina.vim', on = 'Gina' },
+  -- Utils
+  packager.add 'nvim-lua/plenary.nvim'
 
-  -- Files Find And Search
-  'ctrlpvim/ctrlp.vim',
-  { 'kyazdani42/nvim-tree.lua', branch = 'nightly' },
+  -- Apparience Tools ---
 
-  -- UI
-  'akinsho/bufferline.nvim',
-  'rcarriga/nvim-notify',
-  'lukas-reineke/indent-blankline.nvim',
-}
+  -- The Menu Apparience
+  packager.add 'gelguy/wilder.nvim'
+  -- Comments
+  packager.add 'folke/todo-comments.nvim'
+  -- Tabline
+  packager.add 'akinsho/bufferline.nvim'
+  -- Indent Line
+  packager.add 'lukas-reineke/indent-blankline.nvim'
+  -- Notifications
+  packager.add 'rcarriga/nvim-notify'
+  -- Statusline Statusline
+  packager.add 'tjdevries/express_line.nvim'
 
-dein.new_plugins()
-dein.commands()
+  -- File Search ---
+  packager.add('kyazdani42/nvim-tree.lua', { requires = 'kyazdani42/nvim-web-devicons' })
+  packager.add('nvim-telescope/telescope.nvim', {
+    requires = {
+      'nvim-telescope/telescope-fzy-native.nvim',
+    },
+  })
+
+  -- Lsp Setup ---
+
+  -- Lsp Helper
+  packager.add 'neovim/nvim-lspconfig'
+  -- Installer
+  packager.add('williamboman/mason.nvim', { requires = 'williamboman/mason-lspconfig.nvim' })
+  -- Snippet
+  packager.add('L3MON4D3/LuaSnip', { requires = 'rafamadriz/friendly-snippets' })
+  -- Lsp Settings Manager
+  packager.add 'tamago324/nlsp-settings.nvim'
+  -- Formatter
+  packager.add 'jose-elias-alvarez/null-ls.nvim'
+  -- Quick Fix
+  packager.add 'folke/trouble.nvim'
+  -- Lsp UI Helper
+  packager.add 'ray-x/lsp_signature.nvim'
+
+  -- Engine
+  packager.add('hrsh7th/nvim-cmp', {
+    requires = {
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'uga-rosa/cmp-dictionary',
+    },
+  })
+
+  -- Typing setup
+  packager.add 'rhysd/accelerated-jk'
+  packager.add 'numToStr/Comment.nvim'
+  packager.add 'max397574/better-escape.nvim'
+  packager.add 'windwp/nvim-autopairs'
+  packager.add('mg979/vim-visual-multi', { branch = 'master' })
+end, {
+  dir = util.path_join(vim.fn.stdpath 'data', 'site', 'pack', 'packager'),
+})

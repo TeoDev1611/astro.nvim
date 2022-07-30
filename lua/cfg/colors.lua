@@ -1,52 +1,13 @@
-local p, github = pcall(require, 'github-theme')
-local p2, nebulous = pcall(require, 'nebulous')
-local logs = require 'core.logs'
+-- Tokyo Style
 
-if not p then
-  logs:log('warn', 'Not found the github theme!')
-  return
-end
+vim.g.tokyonight_style = 'night'
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { 'packager' }
 
-if not p2 then
-  logs:log('warn', 'Not found the nebulous theme!')
-  return
-end
+-- Material Style
+vim.g.material_style = 'deep ocean'
 
--- Github
-github.setup {
-  theme_style = 'dark',
-  function_style = 'italic',
-  sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
-}
+-- Set the style
+vim.cmd [[colo material]]
 
--- Nebulous
-nebulous.setup {
-  variant = 'night',
-  disable = {
-    background = false,
-    endOfBuffer = true,
-    terminal_colors = false,
-  },
-  italic = {
-    comments = true,
-    keywords = false,
-    functions = true,
-    variables = false,
-  },
-  custom_colors = {
-    WinSeparator = { bg = 'None' },
-  },
-}
-
--- Gruvbox
-vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_better_performance = 1
-vim.g.gruvbox_material_cursor = 'orange'
-vim.g.gruvbox_material_ui_contrast = 'high'
-vim.g.gruvbox_material_palette = 'original'
-
--- Enfocado
-vim.g.enfocado_plugins = { 'cmp', 'lsp', 'lps-installer', 'notify', 'rainbow', 'tree', 'treesitter', 'visual-multi' }
-vim.g.enfocado_style = 'neon'
-vim.cmd [[set t_Co=256]]
-vim.cmd [[colo enfocado]]
+require 'core.logs':log('info', 'Loaded successfully the Colors module')
