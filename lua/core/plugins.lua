@@ -1,5 +1,6 @@
 -- Load the plugin manager
 vim.cmd [[packadd vim-packager]]
+
 -- Require the modules
 local ok, packager_start = pcall(require, 'packager')
 local logs = require 'core.logs'
@@ -49,6 +50,8 @@ packager_start.setup(function(packager)
   packager.add 'rcarriga/nvim-notify'
   -- Statusline Statusline
   packager.add 'tjdevries/express_line.nvim'
+  -- Start Page
+  packager.add 'goolord/alpha-nvim'
 
   -- File Search ---
   packager.add('kyazdani42/nvim-tree.lua', { requires = 'kyazdani42/nvim-web-devicons' })

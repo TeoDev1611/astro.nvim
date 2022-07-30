@@ -27,4 +27,4 @@ treesitter.setup {
   },
 }
 
-require 'core.logs':log('info', 'Loaded successfully the Syntax module')
+require('core.logs'):log('info', 'Loaded successfully the Syntax module')

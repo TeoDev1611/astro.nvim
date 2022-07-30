@@ -10,4 +10,4 @@ vim.g.material_style = 'deep ocean'
 -- Set the style
 vim.cmd [[colo material]]
 
-require 'core.logs':log('info', 'Loaded successfully the Colors module')
+require('core.logs'):log('info', 'Loaded successfully the Colors module')

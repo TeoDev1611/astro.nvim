@@ -56,4 +56,7 @@ tdc.setup {}
 -- Setup the notifications
 vim.notify = require 'notify'
 
+-- Setup Alpha
+require('alpha').setup(require('alpha.themes.startify').config)
+
 logs:log('info', 'Loaded successfully the UI Module')

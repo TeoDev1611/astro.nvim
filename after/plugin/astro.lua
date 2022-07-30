@@ -10,4 +10,4 @@ require 'cfg.files'
 -- Lsp
 require 'cfg.lsp'
 -- Typing
-require 'cfg.typing'.load()
+require('cfg.typing').load()
