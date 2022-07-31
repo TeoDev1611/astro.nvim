@@ -11,3 +11,5 @@ require 'cfg.files'
 require 'cfg.lsp'
 -- Typing
 require('cfg.typing').load()
+-- Git
+require 'cfg.vc'

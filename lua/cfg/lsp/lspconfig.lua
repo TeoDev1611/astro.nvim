@@ -2,10 +2,11 @@ local lspconfig = require 'lspconfig'
 
 local servers = {
   'denols',
+  'rust_analyzer',
+  'jsonls',
 }
 
-local function on_attach(client, bufnr)
-  lspconfig.util.default_config.on_attach(client, bufnr)
+local function on_attach()
   require('lsp_signature').on_attach()
 end
 
@@ -53,6 +54,9 @@ global_capabilities.textDocument.completion.completionItem.resolveSupport = {
 require('lspconfig').util.default_config = vim.tbl_extend('force', require('lspconfig').util.default_config, {
   capabilities = global_capabilities,
 })
+
+
+require('rust-tools').setup({})
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup { on_attach = on_attach }

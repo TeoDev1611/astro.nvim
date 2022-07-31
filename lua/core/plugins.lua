@@ -96,6 +96,13 @@ packager_start.setup(function(packager)
   packager.add 'max397574/better-escape.nvim'
   packager.add 'windwp/nvim-autopairs'
   packager.add('mg979/vim-visual-multi', { branch = 'master' })
+
+  -- Languages setup
+  packager.add('simrat39/rust-tools.nvim', { ft = 'rust' })
+
+  -- Git Setup
+  packager.add 'TimUntersberger/neogit'
+  packager.add 'lewis6991/gitsigns.nvim'
 end, {
   dir = util.path_join(vim.fn.stdpath 'data', 'site', 'pack', 'packager'),
 })
