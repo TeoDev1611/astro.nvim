@@ -55,8 +55,7 @@ require('lspconfig').util.default_config = vim.tbl_extend('force', require('lspc
   capabilities = global_capabilities,
 })
 
-
-require('rust-tools').setup({})
+require('rust-tools').setup {}
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup { on_attach = on_attach }

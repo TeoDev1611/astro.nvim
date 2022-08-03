@@ -21,7 +21,7 @@ keymap {
   ['<leader>fr'] = builtin.registers,
   -- Tree
   ['<leader>n'] = function()
-    vim.cmd [[NvimTreeToggle]]
+    vim.cmd [[Neotree toggle left]]
   end,
   ['<leader>nr'] = function()
     vim.cmd [[NvimTreeRefresh]]

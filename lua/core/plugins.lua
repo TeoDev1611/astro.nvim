@@ -1,4 +1,3 @@
--- Load the plugin manager
 vim.cmd [[packadd vim-packager]]
 
 -- Require the modules
@@ -10,7 +9,6 @@ if not ok then
   logs:log('info', 'Not found the Packager Plugin Manager')
   return
 end
-
 packager_start.setup(function(packager)
   -- Package Manager
   packager.add('kristijanhusak/vim-packager', { type = 'opt' })
@@ -32,7 +30,6 @@ packager_start.setup(function(packager)
   -- Editor Support
   packager.add 'gpanders/editorconfig.nvim'
   packager.add 'kyazdani42/nvim-web-devicons'
-
   -- Utils
   packager.add 'nvim-lua/plenary.nvim'
 
@@ -54,7 +51,15 @@ packager_start.setup(function(packager)
   packager.add 'goolord/alpha-nvim'
 
   -- File Search ---
-  packager.add('kyazdani42/nvim-tree.lua', { requires = 'kyazdani42/nvim-web-devicons' })
+  vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+  packager.add('nvim-neo-tree/neo-tree.nvim', {
+    branch = 'v2.x',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+  })
   packager.add('nvim-telescope/telescope.nvim', {
     requires = {
       'nvim-telescope/telescope-fzy-native.nvim',
