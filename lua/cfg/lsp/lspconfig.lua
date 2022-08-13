@@ -4,10 +4,15 @@ local servers = {
   'denols',
   'rust_analyzer',
   'jsonls',
+  'pyright',
+  'gopls',
 }
 
 local function on_attach()
-  require('lsp_signature').on_attach()
+  vim.keymap.set('n', 'R', '<cmd>Lspsaga rename<CR>', { silent = true })
+  vim.keymap.set('n', 'gd', '<cmd>lspsaga preview_definition<cr>', { silent = true })
+  vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
+  vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
 end
 
 lspconfig.sumneko_lua.setup {
@@ -19,6 +24,7 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
+  on_attach = on_attach,
 }
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }

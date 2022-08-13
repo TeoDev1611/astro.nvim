@@ -14,9 +14,9 @@ packager_start.setup(function(packager)
   packager.add('kristijanhusak/vim-packager', { type = 'opt' })
 
   -- Colorschemes
-  packager.add 'folke/tokyonight.nvim'
   packager.add 'LunarVim/Colorschemes'
   packager.add 'marko-cerovac/material.nvim'
+  packager.add 'bluz71/vim-moonfly-colors'
 
   -- Faster
   packager.add 'nathom/filetype.nvim'
@@ -81,7 +81,8 @@ packager_start.setup(function(packager)
   -- Quick Fix
   packager.add 'folke/trouble.nvim'
   -- Lsp UI Helper
-  packager.add 'ray-x/lsp_signature.nvim'
+  packager.add 'glepnir/lspsaga.nvim'
+  packager.add 'lewis6991/hover.nvim'
 
   -- Engine
   packager.add('hrsh7th/nvim-cmp', {
@@ -104,10 +105,15 @@ packager_start.setup(function(packager)
 
   -- Languages setup
   packager.add('simrat39/rust-tools.nvim', { ft = 'rust' })
+  packager.add('TeoDev1611/venom.nvim', { ft = 'python' })
 
   -- Git Setup
-  packager.add 'TimUntersberger/neogit'
   packager.add 'lewis6991/gitsigns.nvim'
+
+  if vim.fn.executable 'deno' == 1 then
+    packager.add 'vim-denops/denops.vim'
+    packager.add 'lambdalisue/gin.vim'
+  end
 end, {
   dir = util.path_join(vim.fn.stdpath 'data', 'site', 'pack', 'packager'),
 })

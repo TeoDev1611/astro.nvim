@@ -19,6 +19,8 @@ local sources = {
   b.formatting.rustfmt,
   b.formatting.gofumpt,
   b.formatting.goimports,
+  b.formatting.prettier,
+  b.formatting.jq,
 }
 
 -- Load
