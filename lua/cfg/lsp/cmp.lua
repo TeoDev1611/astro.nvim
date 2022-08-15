@@ -75,9 +75,9 @@ cmp.setup {
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
     { name = 'luasnip', max_item_count = 20 },
-    { name = 'nvim_lua', max_item_count = 25 },
-    { name = 'path', max_item_count = 20 },
-    { name = 'buffer', keyword_length = 2 },
+    { name = 'nvim_lua', max_item_count = 18 },
+    { name = 'path', max_item_count = 15 },
+    { name = 'buffer', keyword_length = 2, max_item_count = 15 },
   },
   snippet = {
     expand = function(args)
@@ -88,7 +88,3 @@ cmp.setup {
     ghost_text = true,
   },
 }
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true

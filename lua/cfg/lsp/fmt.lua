@@ -24,6 +24,7 @@ local sources = {
 }
 
 -- Load
+vim.lsp.buf.format { timeout_ms = 2000 }
 null_ls.setup {
   sources = sources,
   debug = true,
