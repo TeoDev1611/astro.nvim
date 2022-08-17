@@ -2,11 +2,7 @@ local open = io.open
 local util = {}
 local levels = vim.log.levels
 
-if jit ~= nil then
-  util.is_windows = jit.os == 'Windows'
-else
-  util.is_windows = package.config:sub(1, 1) == '\\'
-end
+util.is_windows = vim.loop.os_uname().sysname == 'Windows'
 
 util.get_separator = function()
   if util.is_windows then

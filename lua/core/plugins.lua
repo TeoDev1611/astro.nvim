@@ -14,10 +14,11 @@ packager_start.setup(function(packager)
   packager.add('kristijanhusak/vim-packager', { type = 'opt' })
 
   -- Colorschemes
-  packager.add 'LunarVim/Colorschemes'
   packager.add 'marko-cerovac/material.nvim'
   packager.add 'bluz71/vim-moonfly-colors'
-
+  packager.add 'nanotech/jellybeans.vim'
+  packager.add 'techtuner/aura-neovim'
+  packager.add 'xiyaowong/nvim-transparent'
   -- Faster
   packager.add 'nathom/filetype.nvim'
   packager.add 'lewis6991/impatient.nvim'
@@ -83,7 +84,6 @@ packager_start.setup(function(packager)
   -- Lsp UI Helper
   packager.add 'glepnir/lspsaga.nvim'
   packager.add 'lewis6991/hover.nvim'
-
   -- Engine
   packager.add('hrsh7th/nvim-cmp', {
     requires = {
@@ -106,10 +106,13 @@ packager_start.setup(function(packager)
   -- Languages setup
   packager.add('simrat39/rust-tools.nvim', { ft = 'rust' })
   packager.add('TeoDev1611/venom.nvim', { ft = 'python' })
-
+  packager.add('iamcco/markdown-preview.nvim', {
+    ['do'] = function()
+      vim.fn['mkdp#util#install']()
+    end,
+  })
   -- Git Setup
   packager.add 'lewis6991/gitsigns.nvim'
-
   if vim.fn.executable 'deno' == 1 then
     packager.add 'vim-denops/denops.vim'
     packager.add 'lambdalisue/gin.vim'

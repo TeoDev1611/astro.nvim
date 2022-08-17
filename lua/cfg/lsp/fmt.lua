@@ -19,12 +19,11 @@ local sources = {
   b.formatting.rustfmt,
   b.formatting.gofumpt,
   b.formatting.goimports,
-  b.formatting.prettier,
   b.formatting.jq,
+  b.formatting.deno_fmt,
 }
 
 -- Load
-vim.lsp.buf.format { timeout_ms = 2000 }
 null_ls.setup {
   sources = sources,
   debug = true,
@@ -32,3 +31,4 @@ null_ls.setup {
 
 -- Make the command
 util.command('LspFormat', vim.lsp.buf.format)
+vim.lsp.buf.format { timeout_ms = 2000 }

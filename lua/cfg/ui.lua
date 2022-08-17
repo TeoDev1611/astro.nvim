@@ -7,7 +7,6 @@ local ok_bf, bf = pcall(require, 'bufferline')
 local ok_ib, ib = pcall(require, 'indent_blankline')
 local ok_wilder, wilder = pcall(require, 'wilder')
 local ok_tdc, tdc = pcall(require, 'todo-comments')
-
 if not ok_bf then
   logs:log('warn', 'Not found the bufferline module!!!')
   return
@@ -57,6 +56,6 @@ tdc.setup {}
 vim.notify = require 'notify'
 
 -- Setup Alpha
-require('alpha').setup(require('alpha.themes.startify').config)
+require('alpha').setup(require('alpha.themes.theta').config)
 
 logs:log('info', 'Loaded successfully the UI Module')

@@ -89,7 +89,6 @@ local diagnostic_display = diagnostic.make_buffer()
 require('el').setup {
   generator = function(window, buffer)
     local is_minimal = minimal_status_line(window, buffer)
-    local is_sourcegraph = is_sourcegraph(window, buffer)
 
     local mode = extensions.gen_mode { format_string = ' %s ' }
     if is_sourcegraph then

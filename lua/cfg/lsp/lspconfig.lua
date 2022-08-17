@@ -4,6 +4,7 @@ local servers = {
   'denols',
   'rust_analyzer',
   'jsonls',
+  'yamlls',
   'pyright',
   'gopls',
 }
