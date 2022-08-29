@@ -17,16 +17,17 @@ packager_start.setup(function(packager)
   packager.add 'marko-cerovac/material.nvim'
   packager.add 'bluz71/vim-moonfly-colors'
   packager.add 'nanotech/jellybeans.vim'
-  packager.add 'techtuner/aura-neovim'
-  packager.add 'xiyaowong/nvim-transparent'
   -- Faster
   packager.add 'nathom/filetype.nvim'
   packager.add 'lewis6991/impatient.nvim'
 
   -- Syntax
-  packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+  -- Remove TreeSitter temporaly for bugs
+  --[[ packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
   packager.add 'windwp/nvim-ts-autotag'
-  packager.add 'p00f/nvim-ts-rainbow'
+  packager.add 'p00f/nvim-ts-rainbow' ]]
+  packager.add 'sheerun/vim-polyglot'
+  packager.add 'kien/rainbow_parentheses.vim'
 
   -- Editor Support
   packager.add 'gpanders/editorconfig.nvim'
@@ -113,10 +114,7 @@ packager_start.setup(function(packager)
   })
   -- Git Setup
   packager.add 'lewis6991/gitsigns.nvim'
-  if vim.fn.executable 'deno' == 1 then
-    packager.add 'vim-denops/denops.vim'
-    packager.add 'lambdalisue/gin.vim'
-  end
+  packager.add 'lambdalisue/gina.vim'
 end, {
   dir = util.path_join(vim.fn.stdpath 'data', 'site', 'pack', 'packager'),
 })
