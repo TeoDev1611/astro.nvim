@@ -23,11 +23,9 @@ packager_start.setup(function(packager)
 
   -- Syntax
   -- Remove TreeSitter temporaly for bugs
-  --[[ packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+  packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
   packager.add 'windwp/nvim-ts-autotag'
-  packager.add 'p00f/nvim-ts-rainbow' ]]
-  packager.add 'sheerun/vim-polyglot'
-  packager.add 'kien/rainbow_parentheses.vim'
+  packager.add 'p00f/nvim-ts-rainbow'
 
   -- Editor Support
   packager.add 'gpanders/editorconfig.nvim'
@@ -46,7 +44,7 @@ packager_start.setup(function(packager)
   -- Indent Line
   packager.add 'lukas-reineke/indent-blankline.nvim'
   -- Notifications
-  packager.add 'rcarriga/nvim-notify'
+  packager.add 'vigoux/notifier.nvim'
   -- Statusline Statusline
   packager.add 'tjdevries/express_line.nvim'
   -- Start Page
@@ -110,6 +108,11 @@ packager_start.setup(function(packager)
   packager.add('iamcco/markdown-preview.nvim', {
     ['do'] = function()
       vim.fn['mkdp#util#install']()
+    end,
+  })
+  packager.add('heavenshell/vim-jsdoc', {
+    ['do'] = function()
+      vim.cmd [[!make install]]
     end,
   })
   -- Git Setup

@@ -1,5 +1,4 @@
 -- Utils
-local utils = require 'core.util'
 local logs = require 'core.logs'
 
 -- Modules
@@ -7,6 +6,7 @@ local ok_bf, bf = pcall(require, 'bufferline')
 local ok_ib, ib = pcall(require, 'indent_blankline')
 local ok_wilder, wilder = pcall(require, 'wilder')
 local ok_tdc, tdc = pcall(require, 'todo-comments')
+local ok_notify, notify = pcall(require, 'notifier')
 if not ok_bf then
   logs:log('warn', 'Not found the bufferline module!!!')
   return
@@ -24,6 +24,12 @@ end
 
 if not ok_tdc then
   logs:log('warn', 'Not found the todo comments!!!')
+  return
+end
+
+if not ok_notify then
+  logs:log('warn', 'Not found the notify module!!!')
+  return
 end
 
 -- Setup the bufferline
@@ -53,7 +59,7 @@ wilder.set_option(
 tdc.setup {}
 
 -- Setup the notifications
-vim.notify = require 'notify'
+notify.setup {}
 
 -- Setup Alpha
 require('alpha').setup(require('alpha.themes.theta').config)
