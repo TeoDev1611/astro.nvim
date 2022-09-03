@@ -1,24 +1,24 @@
 -- Utils for the keymaps
-local ps, util = pcall(require, 'core.util')
-local logger = require 'core.logs'
+local util = require 'core.util'
 local keymap = util.keymap
-local p, builtin = pcall(require, 'telescope.builtin')
-
-if not p then
-  logger:log('warn', 'Not found the telescope module!!!')
-  return
-end
 
 -- Map Leader
 vim.g.mapleader = ' '
 
 keymap {
   -- CtrlP
-  ['<leader>ff'] = builtin.find_files,
-  ['<leader>fb'] = builtin.buffers,
-  ['<leader>fh'] = builtin.help_tags,
-  ['<leader>fg'] = builtin.live_grep,
-  ['<leader>fr'] = builtin.registers,
+  ['<leader>ff'] = function()
+    vim.cmd [[CtrlP]]
+  end,
+  ['<leader>fb'] = function()
+    vim.cmd [[CtrlPBuffer]]
+  end,
+  ['<leader>fh'] = function()
+    vim.cmd [[CtrlPHelp]]
+  end,
+  ['<leader>fg'] = function()
+    vim.cmd [[CtrlPLine]]
+  end,
   -- Tree
   ['<leader>n'] = function()
     vim.cmd [[Neotree toggle left]]

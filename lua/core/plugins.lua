@@ -14,9 +14,10 @@ packager_start.setup(function(packager)
   packager.add('kristijanhusak/vim-packager', { type = 'opt' })
 
   -- Colorschemes
-  packager.add 'marko-cerovac/material.nvim'
+  packager.add 'ayu-theme/ayu-vim'
   packager.add 'bluz71/vim-moonfly-colors'
-  packager.add 'nanotech/jellybeans.vim'
+  packager.add 'rafalbromirski/vim-aurora'
+  packager.add 'tristen/superman'
   -- Faster
   packager.add 'nathom/filetype.nvim'
   packager.add 'lewis6991/impatient.nvim'
@@ -47,8 +48,6 @@ packager_start.setup(function(packager)
   packager.add 'vigoux/notifier.nvim'
   -- Statusline Statusline
   packager.add 'tjdevries/express_line.nvim'
-  -- Start Page
-  packager.add 'goolord/alpha-nvim'
 
   -- File Search ---
   vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
@@ -60,12 +59,14 @@ packager_start.setup(function(packager)
       'MunifTanjim/nui.nvim',
     },
   })
-  packager.add('nvim-telescope/telescope.nvim', {
-    requires = {
-      'nvim-telescope/telescope-fzy-native.nvim',
-    },
+  packager.add 'ctrlpvim/ctrlp.vim'
+  packager.add 'hara/ctrlp-colorscheme'
+  packager.add 'zeero/vim-ctrlp-help'
+  packager.add('raghur/fruzzy', {
+    ['do'] = function()
+      vim.fn['fruzzy#install']()
+    end,
   })
-
   -- Lsp Setup ---
 
   -- Lsp Helper

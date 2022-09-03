@@ -61,7 +61,4 @@ tdc.setup {}
 -- Setup the notifications
 notify.setup {}
 
--- Setup Alpha
-require('alpha').setup(require('alpha.themes.theta').config)
-
 logs:log('info', 'Loaded successfully the UI Module')
