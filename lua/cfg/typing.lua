@@ -7,11 +7,7 @@ M.comment = function()
     logs:logs('warn', 'Not found the Comment plugin run :JetpackSync')
     return
   end
-  c.setup {
-    mappings = {
-      extended = true,
-    },
-  }
+  c.setup {}
 end
 
 M.escape = function()

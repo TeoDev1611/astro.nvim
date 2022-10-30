@@ -16,6 +16,6 @@ vim.g.rasmus_italic_functions = true
 vim.g.rasmus_bold_functions = true
 
 -- Set the style
-vim.cmd [[colo superman]]
+vim.cmd [[colo iceberg]]
 
 logs:log('info', 'Loaded successfully the Colors module')

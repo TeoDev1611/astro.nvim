@@ -14,10 +14,10 @@ packager_start.setup(function(packager)
   packager.add('kristijanhusak/vim-packager', { type = 'opt' })
 
   -- Colorschemes
-  packager.add 'ayu-theme/ayu-vim'
   packager.add 'bluz71/vim-moonfly-colors'
   packager.add 'rafalbromirski/vim-aurora'
-  packager.add 'tristen/superman'
+  packager.add 'cocopon/iceberg.vim'
+
   -- Faster
   packager.add 'nathom/filetype.nvim'
   packager.add 'lewis6991/impatient.nvim'
@@ -25,7 +25,6 @@ packager_start.setup(function(packager)
   -- Syntax
   -- Remove TreeSitter temporaly for bugs
   packager.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-  packager.add 'windwp/nvim-ts-autotag'
   packager.add 'p00f/nvim-ts-rainbow'
 
   -- Editor Support
@@ -35,9 +34,6 @@ packager_start.setup(function(packager)
   packager.add 'nvim-lua/plenary.nvim'
 
   -- Apparience Tools ---
-
-  -- The Menu Apparience
-  packager.add 'gelguy/wilder.nvim'
   -- Comments
   packager.add 'folke/todo-comments.nvim'
   -- Tabline
@@ -47,27 +43,11 @@ packager_start.setup(function(packager)
   -- Notifications
   packager.add 'vigoux/notifier.nvim'
   -- Statusline Statusline
-  packager.add 'tjdevries/express_line.nvim'
+  packager.add 'nvim-lualine/lualine.nvim'
 
   -- File Search ---
-  vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
-  packager.add('nvim-neo-tree/neo-tree.nvim', {
-    branch = 'v2.x',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-    },
-  })
-  packager.add 'ctrlpvim/ctrlp.vim'
-  packager.add 'hara/ctrlp-colorscheme'
-  packager.add 'zeero/vim-ctrlp-help'
-  packager.add('raghur/fruzzy', {
-    ['do'] = function()
-      vim.fn['fruzzy#install']()
-    end,
-  })
-  -- Lsp Setup ---
+  packager.add('nvim-tree/nvim-tree.lua', { requires = 'nvim-tree/nvim-web-devicons', tag = 'nightly' })
+  packager.add('nvim-telescope/telescope.nvim', { tag = '0.1.x' })
 
   -- Lsp Helper
   packager.add 'neovim/nvim-lspconfig'
@@ -92,7 +72,6 @@ packager_start.setup(function(packager)
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'uga-rosa/cmp-dictionary',
     },
   })
 
@@ -104,16 +83,10 @@ packager_start.setup(function(packager)
   packager.add('mg979/vim-visual-multi', { branch = 'master' })
 
   -- Languages setup
-  packager.add('simrat39/rust-tools.nvim', { ft = 'rust' })
   packager.add('TeoDev1611/venom.nvim', { ft = 'python' })
   packager.add('iamcco/markdown-preview.nvim', {
     ['do'] = function()
       vim.fn['mkdp#util#install']()
-    end,
-  })
-  packager.add('heavenshell/vim-jsdoc', {
-    ['do'] = function()
-      vim.cmd [[!make install]]
     end,
   })
   -- Git Setup

@@ -22,9 +22,6 @@ treesitter.setup {
   rainbow = {
     enable = true,
   },
-  autotag = {
-    enable = true,
-  },
 }
 
 require('core.logs'):log('info', 'Loaded successfully the Syntax module')

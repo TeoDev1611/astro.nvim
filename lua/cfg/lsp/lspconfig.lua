@@ -7,18 +7,20 @@ local servers = {
   'yamlls',
   'pyright',
   'gopls',
+  'zls',
 }
 
 -- Capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Attach
 local function on_attach()
-  vim.keymap.set('n', 'R', '<cmd>Lspsaga rename<CR>', { silent = true })
-  vim.keymap.set('n', 'gd', '<cmd>lspsaga preview_definition<cr>', { silent = true })
-  vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
-  vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
+  vim.keymap.set('n', 'R', '<cmd>Lspsaga rename<CR>', { silent = true, desc = 'Rename Lspsaga' })
+  vim.keymap.set('n', 'gd', '<cmd>Lspsaga preview_definition<cr>', { silent = true, desc = 'Preview Lsps' })
+  vim.keymap.set('n', 'D', require('hover').hover, { desc = 'hover.nvim', silent = true })
+  vim.keymap.set('n', 'gD', '<cmd>Lspsaga lsp_finder<cr>', { silent = true, desc = 'Find Lsp' })
+  vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)', silent = true })
 end
 
 lspconfig.sumneko_lua.setup {
@@ -43,13 +45,6 @@ end
 vim.diagnostic.config {
   virtual_text = {
     prefix = '●',
-  },
-}
-
-require('rust-tools').setup {
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
   },
 }
 

@@ -1,13 +1,13 @@
 -- Syntax Manager
 require 'cfg.syntax'
--- Color Manager
+-- -- Color Manager
 require 'cfg.colors'
 -- Interface
 require 'cfg.ui'
-require 'cfg.el'
+-- require 'cfg.el'
 -- Fuzzy Finder
 require 'cfg.files'
--- Lsp
+-- -- Lsp
 require 'cfg.lsp'
 -- Typing
 require('cfg.typing').load()
