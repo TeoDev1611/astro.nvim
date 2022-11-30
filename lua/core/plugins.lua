@@ -17,7 +17,8 @@ packager_start.setup(function(packager)
   packager.add 'bluz71/vim-moonfly-colors'
   packager.add 'rafalbromirski/vim-aurora'
   packager.add 'cocopon/iceberg.vim'
-
+  packager.add 'ellisonleao/gruvbox.nvim'
+  packager.add 'folke/lsp-colors.nvim'
   -- Faster
   packager.add 'nathom/filetype.nvim'
   packager.add 'lewis6991/impatient.nvim'

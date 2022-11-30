@@ -24,4 +24,6 @@ treesitter.setup {
   },
 }
 
+vim.g.indent_blankline_use_treesitter = true
+
 require('core.logs'):log('info', 'Loaded successfully the Syntax module')
