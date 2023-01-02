@@ -5,11 +5,6 @@
 This is my personal version _not distro, not issues_ **only for my personal use
 and as reference for write a new config**
 
-# How install this?
-
-This use the [Vim-Packager](https://github.com/kristijanhusak/vim-packager)
-plugin manager and Deno for the Git Client.
-
 ## Requirements
 
 - Neovim 0.20+ OR Vim 8.0.0902+
@@ -23,12 +18,11 @@ plugin manager and Deno for the Git Client.
 
 ```sh
 git clone https://github.com/TeoDev1611/astro.nvim ~/.config/nvim
-git clone https://github.com/kristijanhusak/vim-packager ~/.local/share/nvim/site/pack/packager/opt/vim-packager
-nvim +PackagerInstall
 ```
 
 > **Note:** for this os is avaliable fzf and you need install this:
-- fzf 
+
+- fzf
 - viu _optional_
 - fd
 - bat _optional_
@@ -38,8 +32,6 @@ nvim +PackagerInstall
 
 ```sh
 git clone https://github.com/TeoDev1611/astro.nvim ~/.config/nvim
-git clone https://github.com/kristijanhusak/vim-packager ~/AppData/Local/nvim-data/site/pack/packager/opt/vim-packager
-nvim +PackagerInstall
 ```
 
 Done!
