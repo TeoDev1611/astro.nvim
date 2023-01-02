@@ -27,6 +27,13 @@ git clone https://github.com/kristijanhusak/vim-packager ~/.local/share/nvim/sit
 nvim +PackagerInstall
 ```
 
+> **Note:** for this os is avaliable fzf and you need install this:
+- fzf 
+- viu _optional_
+- fd
+- bat _optional_
+- ripgrep or rg
+
 ### Windows (CMD)
 
 ```sh
