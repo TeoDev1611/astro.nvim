@@ -19,6 +19,10 @@ vim.opt.showcmd = true
 vim.opt.ruler = true
 vim.opt.hidden = true
 vim.opt.ignorecase = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.cmd 'set laststatus=3'
 vim.cmd 'set cursorline'
 vim.cmd 'set nowritebackup'

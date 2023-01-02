@@ -4,7 +4,7 @@ local logs = require 'core.logs'
 M.comment = function()
   local present, c = pcall(require, 'Comment')
   if not present then
-    logs:logs('warn', 'Not found the Comment plugin run :JetpackSync')
+    logs:logs('warn', 'Not found the Comment plugin run :PackagerInstall')
     return
   end
   c.setup {}
@@ -13,7 +13,7 @@ end
 M.escape = function()
   local present, e = pcall(require, 'better_escape')
   if not present then
-    logs:logs('warn', 'Not found the better escape plugin run :JetpackSync')
+    logs:logs('warn', 'Not found the better escape plugin run :PackagerInstall')
     return
   end
   e.setup {
@@ -26,7 +26,7 @@ end
 M.autop = function()
   local present, a = pcall(require, 'nvim-autopairs')
   if not present then
-    logs:logs('warn', 'Not found the autopairs plugin run :JetpackSync')
+    logs:logs('warn', 'Not found the autopairs plugin run :PackagerInstall')
     return
   end
   a.setup {

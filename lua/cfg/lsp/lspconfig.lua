@@ -1,5 +1,9 @@
 local lspconfig = require 'lspconfig'
 
+-- Setup the config of the lsp
+local neoconf = require 'neoconf'
+neoconf.setup{}
+
 local servers = {
   'denols',
   'rust_analyzer',

@@ -17,7 +17,6 @@ packager_start.setup(function(packager)
   packager.add 'bluz71/vim-moonfly-colors'
   packager.add 'rafalbromirski/vim-aurora'
   packager.add 'cocopon/iceberg.vim'
-  packager.add 'ellisonleao/gruvbox.nvim'
   packager.add 'folke/lsp-colors.nvim'
   -- Faster
   packager.add 'nathom/filetype.nvim'
@@ -48,8 +47,16 @@ packager_start.setup(function(packager)
 
   -- File Search ---
   packager.add('nvim-tree/nvim-tree.lua', { requires = 'nvim-tree/nvim-web-devicons', tag = 'nightly' })
-  packager.add('nvim-telescope/telescope.nvim', { tag = '0.1.x' })
-
+  if string.lower(vim.loop.os_uname().sysname) == 'windows' then
+    packager.add 'nvim-telescope/telescope.nvim'
+  else
+    packager.add 'ibhagwan/fzf-lua'
+    packager.add('junegunn/fzf', {
+      ['do'] = function()
+        vim.fn['fzf#install']()
+      end,
+    })
+  end
   -- Lsp Helper
   packager.add 'neovim/nvim-lspconfig'
   -- Installer
@@ -57,7 +64,7 @@ packager_start.setup(function(packager)
   -- Snippet
   packager.add('L3MON4D3/LuaSnip', { requires = 'rafamadriz/friendly-snippets' })
   -- Lsp Settings Manager
-  packager.add 'tamago324/nlsp-settings.nvim'
+  packager.add 'folke/neoconf.nvim'
   -- Formatter
   packager.add 'jose-elias-alvarez/null-ls.nvim'
   -- Quick Fix

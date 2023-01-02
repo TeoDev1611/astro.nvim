@@ -1,8 +1,7 @@
 local logs = require 'core.logs'
 local present, gruvbox = pcall(require, 'gruvbox')
 
--- Tokyo Style
-vim.g.tokyonight_style = 'night'
+-- Tokyo Style vim.g.tokyonight_style = 'night'
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { 'packager' }
 
@@ -26,6 +25,6 @@ end
 gruvbox.setup {
   contrast = 'hard',
 }
-vim.cmd [[colo gruvbox]]
+vim.cmd [[colo aurora]]
 
 logs:log('info', 'Loaded successfully the Colors module')

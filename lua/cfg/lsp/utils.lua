@@ -4,7 +4,6 @@ local logs = require 'core.logs'
 -- External
 local p4, hover = pcall(require, 'hover')
 local p5, trouble = pcall(require, 'trouble')
-local p6, nlspsettings = pcall(require, 'nlspsettings')
 local p7, lspsaga = pcall(require, 'lspsaga')
 
 if not p4 then
@@ -14,11 +13,6 @@ end
 
 if not p5 then
   logs:log('warn', 'Not found the Trouble module!')
-  return
-end
-
-if not p6 then
-  logs:log('warn', 'Not found the Nlspsettings module')
   return
 end
 
@@ -40,4 +34,3 @@ lspsaga.init_lsp_saga {
   },
 }
 trouble.setup {}
-nlspsettings.setup {}
