@@ -62,8 +62,6 @@ return {
       }
     end,
   },
-  -- Editor Tools
-  'gpanders/editorconfig.nvim',
   -- Icons
   'kyazdani42/nvim-web-devicons',
   -- Utils
@@ -239,7 +237,16 @@ return {
     dependencies = {
       { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true },
       { 'glepnir/lspsaga.nvim', cmd = 'Lspsaga' },
-      'lewis6991/hover.nvim',
+      {
+        'lewis6991/hover.nvim',
+        config = function()
+          require('hover').setup {
+            init = function()
+              require 'hover.providers.lsp'
+            end,
+          }
+        end,
+      },
     },
     config = function()
       local lspconfig = require 'lspconfig'
@@ -261,7 +268,7 @@ return {
       local function on_attach()
         vim.keymap.set('n', 'R', '<cmd>Lspsaga rename<CR>', { silent = true, desc = 'Rename Lspsaga' })
         vim.keymap.set('n', 'gd', '<cmd>Lspsaga preview_definition<cr>', { silent = true, desc = 'Preview Lsp' })
-        vim.keymap.set('n', 'D', require('hover').hover, { desc = 'hover.nvim', silent = true })
+        vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim', silent = true })
         vim.keymap.set('n', 'gD', '<cmd>Lspsaga lsp_finder<cr>', { silent = true, desc = 'Find Lsp' })
         vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)', silent = true })
       end
