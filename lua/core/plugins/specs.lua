@@ -4,15 +4,15 @@ return {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
-    config = function()
-      local tokyonight = require 'tokyonight'
-      tokyonight.setup { style = 'night' }
-      tokyonight.load()
-    end,
   },
   -- Load the other color schemes
   'rafalbromirski/vim-aurora',
-  'bluz71/vim-moonfly-colors',
+  {
+    'bluz71/vim-moonfly-colors',
+    config = function()
+      vim.cmd 'colo moonfly'
+    end,
+  },
   'cocopon/iceberg.vim',
 
   -- Faster Loading
@@ -105,59 +105,6 @@ return {
   {
     'vigoux/notifier.nvim',
     config = true,
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    event = 'BufWinEnter',
-    config = function()
-      require('lualine').setup {
-        options = {
-          icons_enabled = true,
-          theme = 'auto',
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-          disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-          },
-          ignore_focus = {},
-          always_divide_middle = true,
-          globalstatus = false,
-          refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-          },
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = { 'filename' },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = {
-            {
-              require('lazy.status').updates,
-              cond = require('lazy.status').has_updates,
-              color = { fg = '#ff9e64' },
-            },
-          },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = { 'nvim-tree' },
-      }
-      vim.cmd 'set laststatus=3'
-    end,
   },
   -- Snippets
   {
@@ -252,12 +199,11 @@ return {
       local lspconfig = require 'lspconfig'
       local servers = {
         'denols',
-        'rust_analyzer',
         'jsonls',
         'yamlls',
         'pyright',
         'gopls',
-        'zls',
+        'nimls',
       }
 
       -- Capabilities
@@ -273,7 +219,7 @@ return {
         vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)', silent = true })
       end
 
-      lspconfig.sumneko_lua.setup {
+      lspconfig.lua_ls.setup {
         settings = {
           Lua = {
             diagnostics = { globals = { 'vim' } },
@@ -337,7 +283,6 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-emoji',
       'saadparwaiz1/cmp_luasnip',
     },
     config = function()
@@ -411,7 +356,6 @@ return {
           { name = 'nvim_lua', max_item_count = 18 },
           { name = 'path', max_item_count = 15 },
           { name = 'buffer', keyword_length = 2, max_item_count = 15 },
-          { name = 'emoji', max_item_count = 15 },
         },
         experimental = {
           ghost_text = {
@@ -478,22 +422,18 @@ return {
     'TeoDev1611/venom.nvim',
     ft = 'python',
   },
+  {
+    'baabelfish/nvim-nim',
+    ft = 'nim',
+  },
   -- Fuzzy Find
   {
-    'ibhagwan/fzf-lua',
-    cmd = 'FzfLua',
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = 'Telescope',
     keys = {
-      { '<leader>ff', ':FzfLua files<CR>' },
-      { '<leader>fd', ':FzfLua grep<CR>' },
-      { '<leader>fb', ':FzfLua builtin<CR>' },
+      { '<leader>ff', ':Telescope git_files<CR>' },
     },
-    cond = function()
-      if vim.loop.os_uname().sysname == 'Linux' or vim.loop.os_uname().sysname == 'MacOS' then
-        return true
-      else
-        return false
-      end
-    end,
   },
   -- File Tree
   {
@@ -502,57 +442,5 @@ return {
     keys = {
       { '<leader>n', ':NvimTreeToggle<CR>' },
     },
-  },
-  {
-    'goolord/alpha-nvim',
-    event = 'VimEnter',
-    config = function()
-      local dashboard = require 'alpha.themes.dashboard'
-      local logo = [[
-       _________
-      /___   ___\
-     //@@@\ /@@@\\
-     \\@@@/ \@@@//
-      \___ " ___/
-         | - |
-          \_/
-      ]]
-
-      dashboard.section.header.val = vim.split(logo, '\n')
-      dashboard.section.buttons.val = {
-        dashboard.button('f', ' ' .. ' Find file', ':FzfLua files<CR>'),
-        dashboard.button('n', ' ' .. ' New file', ':ene <BAR> startinsert <CR>'),
-        dashboard.button('c', ' ' .. ' Config', ':e $MYVIMRC <CR>'),
-        dashboard.button('q', ' ' .. ' Quit', ':qa<CR>'),
-      }
-      for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = 'AlphaButtons'
-        button.opts.hl_shortcut = 'AlphaShortcut'
-      end
-      dashboard.section.footer.opts.hl = 'Comment'
-      dashboard.section.header.opts.hl = 'Identifier'
-      dashboard.section.buttons.opts.hl = '@boolean'
-      dashboard.opts.layout[1].val = 8
-
-      local alpha = require 'alpha'
-      if vim.o.filetype == 'lazy' then
-        -- close and re-open Lazy after showing alpha
-        vim.cmd.close()
-        alpha.setup(dashboard.opts)
-        require('lazy').show()
-      else
-        alpha.setup(dashboard.opts)
-      end
-
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'LazyVimStarted',
-        callback = function()
-          local stats = require('lazy').stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = '⚡ Neovim loaded ' .. stats.count .. ' plugins in ' .. ms .. 'ms'
-          pcall(vim.cmd.AlphaRedraw)
-        end,
-      })
-    end,
   },
 }

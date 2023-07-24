@@ -20,7 +20,7 @@ vim.g.mapleader = ' '
 require('lazy').setup {
   spec = 'core.plugins.specs',
   checker = { enabled = true },
-  install = { colorschemes = { 'tokyonight', 'habamax' } },
+  install = { colorschemes = { 'moonfly', 'habamax' } },
   performance = {
     cache = {
       enabled = true,
