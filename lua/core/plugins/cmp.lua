@@ -1,92 +1,31 @@
 return {
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim',
-      'windwp/nvim-autopairs',
+  'saghen/blink.cmp',
+  dependencies = { 'rafamadriz/friendly-snippets' },
+  version = '1.*',
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = { preset = 'default' },
+    appearance = {
+      nerd_font_variant = 'normal',
     },
-    config = function()
-      local cmp = require 'cmp'
-      local lspkind = require 'lspkind'
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      cmp.setup {
-        preselect = cmp.PreselectMode.Item,
-        formatting = {
-          format = lspkind.cmp_format(),
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-e>'] = cmp.mapping.close(),
-        },
-        performance = { debounce = 20, fetching_timeout = 284, throttle = 20 },
-        snippet = {
-          expand = function(args)
-            if package.loaded['luasnip'] then
-              require('luasnip').lsp_expand(args.body)
-            else
-              error 'No Snippet Engine'
-            end
-          end,
-        },
-        window = {
-          completion = {
-            -- border = 'rounded',
-            scrollbar = false,
-            winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
-          },
-          documentation = {
-            -- border = 'rounded',
-            winhighlight = 'FloatBorder:FloatBorder',
-          },
-        },
-        sources = cmp.config.sources {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip', max_item_count = 20 },
-          { name = 'nvim_lua', max_item_count = 18 },
-          { name = 'path', max_item_count = 15 },
-          { name = 'buffer', keyword_length = 2, max_item_count = 15 },
-          { name = 'gleam', keyword_length = 3 },
-        },
-        experimental = {
-          ghost_text = {
-            hl_group = 'LspCodeLens',
-          },
-        },
+    completion = { 
+      documentation = { auto_show = true },
+      ghost_text = { 
+        enabled = true,
+        show_with_menu = true,
+      },
+      list = {
+        selection = {
+          preselect = true, 
+          auto_insert = true 
+        }
       }
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
-  -- Snippets
-  {
-    'L3MON4D3/LuaSnip',
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-      end,
     },
-    config = {
-      history = true,
-      delete_check_events = 'TextChanged',
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    init = function()
-      local function jump(key, dir)
-        vim.keymap.set({ 'i', 's' }, key, function()
-          return require('luasnip').jump(dir) or key
-        end, { expr = true })
-      end
-
-      jump('<tab>', 1)
-      jump('<s-tab>', -1)
-    end,
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
   },
+  opts_extend = { 'sources.default' },
 }

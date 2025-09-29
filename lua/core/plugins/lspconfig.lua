@@ -1,12 +1,4 @@
 -- Functions
-local function sign_setup()
-  local signs = { Error = '', Warn = '', Hint = '', Info = ' ' }
-  for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
-end
-
 local function on_attach()
   vim.keymap.set('n', 'R', '<cmd>Lspsaga rename<CR>', { silent = true, desc = 'Rename Lspsaga' })
   vim.keymap.set('n', 'gd', '<cmd>Lspsaga preview_definition<cr>', { silent = true, desc = 'Preview Lsp' })
@@ -44,7 +36,7 @@ return {
     'neovim/nvim-lspconfig',
     event = 'BufReadPre',
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'saghen/blink.cmp' },
       { 'williamboman/mason-lspconfig.nvim' },
       {
         'lewis6991/hover.nvim',
@@ -58,19 +50,13 @@ return {
       },
     },
     config = function()
-      sign_setup()
       diagnostics_setup()
       lsp_handlers_setup()
       on_attach()
-
       local lspconfig = require 'lspconfig'
-
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       require('mason-lspconfig').setup()
-      -- Attach
-
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
