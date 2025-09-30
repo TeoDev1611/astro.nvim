@@ -26,15 +26,12 @@ return {
       json = { 'deno_fmt' },
       toml = { 'taplo' },
       go = { 'gofmt', 'goimports', 'gofumpt' },
-      gleam = { 'gleam' },
       zig = { 'zigfmt' },
       yaml = { 'yamlfmt' },
     },
-    -- Set default options
     default_format_opts = {
       lsp_format = 'fallback',
     },
-    -- Set up format-on-save
     format_on_save = { timeout_ms = 500 },
   },
   init = function()

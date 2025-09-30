@@ -9,18 +9,18 @@ return {
     appearance = {
       nerd_font_variant = 'normal',
     },
-    completion = { 
+    completion = {
       documentation = { auto_show = true },
-      ghost_text = { 
+      ghost_text = {
         enabled = true,
         show_with_menu = true,
       },
       list = {
         selection = {
-          preselect = true, 
-          auto_insert = true 
-        }
-      }
+          preselect = true,
+          auto_insert = true,
+        },
+      },
     },
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
