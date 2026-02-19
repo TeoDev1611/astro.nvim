@@ -20,11 +20,11 @@ return {
     },
 
     config = function()
-      require("mason-conform").setup({
-        ignore_install = { "deno_fmt" },
-      })
+      require('mason-conform').setup {
+        ignore_install = { 'deno_fmt' },
+      }
 
-      require("conform").setup({
+      require('conform').setup {
         formatters_by_ft = {
           lua = { 'stylua' },
           python = { 'black', 'isort' },
@@ -43,8 +43,8 @@ return {
           zig = { 'zigfmt' },
           yaml = { 'yamlfmt' },
 
-          ["*"] = { "codespell" },
-          ["_"] = { "trim_whitespace" },
+          ['*'] = { 'codespell' },
+          ['_'] = { 'trim_whitespace' },
         },
 
         default_format_opts = {
@@ -53,11 +53,11 @@ return {
 
         format_on_save = {
           timeout_ms = 500, -- Si tarda más de 0.5s, no bloquea el guardado
-          lsp_format = "fallback",
+          lsp_format = 'fallback',
         },
-      })
+      }
 
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+      vim.o.formatexpr = 'v:lua.require\'conform\'.formatexpr()'
     end,
-  }
+  },
 }

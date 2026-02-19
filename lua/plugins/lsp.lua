@@ -29,7 +29,6 @@ return {
               capabilities = capabilities,
               settings = {
                 Lua = {
-                  hint = { enable = true },
                   diagnostics = { globals = { 'vim' } },
                 },
               },
@@ -60,23 +59,6 @@ return {
           ['pyright'] = function()
             require('lspconfig').pyright.setup {
               capabilities = capabilities,
-            }
-          end,
-
-          -- Latex
-          ['texlab'] = function()
-            require('lspconfig').texlab.setup {
-              capabilities = capabilities,
-              settings = {
-                texlab = {
-                  build = {
-                    -- Usar latexmk para compilar al guardar
-                    executable = 'latexmk',
-                    args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
-                    onSave = true, -- Compilar al guardar
-                  },
-                },
-              },
             }
           end,
         },

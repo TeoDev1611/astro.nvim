@@ -8,9 +8,19 @@ return {
     'arturgoms/moonbow.nvim',
     lazy = false,
     priority = 1000,
+  },
+  {
+    'Shatur/neovim-ayu',
+    lazy = false,
+    priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'moonbow'
+      vim.cmd 'colo ayu-dark'
     end,
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    lazy = false,
   },
   {
     'lukas-reineke/indent-blankline.nvim',
